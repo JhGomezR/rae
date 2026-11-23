@@ -19,6 +19,7 @@ const ADMIN: [string, string][] = [
   ['/admin/resultados/alcance', 'Nivel de alcance'],
   ['/admin/comparativo', 'Comparativo'],
   ['/admin/plan-mejoramiento', 'Plan de mejoramiento'],
+  ['/admin/informes', 'Informes'],
   ['/admin/curriculo', 'Base de conocimiento'],
   ['/admin/periodos', 'Periodos'],
   ['/admin/importar', 'Importar consolidado'],

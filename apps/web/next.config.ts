@@ -16,6 +16,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/api/[...ruta]': [
       '../../apps/api/dist/**',
+      '../../apps/api/assets/**',
       '../../apps/api/package.json',
       '../../packages/shared/dist/**',
       '../../packages/shared/package.json',

@@ -1,5 +1,6 @@
 /* Prueba de punta a punta contra el despliegue real, con personas ficticias. */
 import ExcelJS from 'exceljs';
+import ExcelJSZip from 'jszip';
 
 const BASE = process.env.BASE_URL ?? 'http://localhost:8080';
 const ADMIN = process.env.ADMIN_DOCUMENTO;
@@ -282,6 +283,29 @@ async function main() {
         .toString() === '%PDF',
     'PDF del plan',
   );
+
+  console.log('Informes');
+  const informes = await admin.datos('/api/informes');
+  ok(informes.informes.length === 3, 'los tres informes tienen estadísticas');
+  ok((await juan.pedir('/api/informes')).status === 403, 'un estudiante no accede a informes');
+  for (const clave of ['021', '022', '023']) {
+    const word = await admin.pedir(`/api/informes/${clave}/descargar?formato=docx`);
+    const bw = Buffer.from(await word.arrayBuffer());
+    const zip = await ExcelJSZip.loadAsync(bw);
+    const xml = await zip.file('word/document.xml').async('string');
+    ok(
+      word.ok && !xml.includes('{{') && !xml.includes('w:highlight'),
+      `Word ${clave} diligenciado`,
+    );
+    const pdf2 = await admin.pedir(`/api/informes/${clave}/descargar?formato=pdf`);
+    ok(
+      pdf2.ok &&
+        Buffer.from(await pdf2.arrayBuffer())
+          .subarray(0, 4)
+          .toString() === '%PDF',
+      `PDF ${clave}`,
+    );
+  }
 
   console.log('Sesión');
   const viejo = ana.cookies.get('refresh');

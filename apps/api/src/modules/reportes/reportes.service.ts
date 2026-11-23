@@ -2,19 +2,11 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Momento, nivelDePct, Rol } from '@rae/shared';
 import ExcelJS from 'exceljs';
 import type { Response } from 'express';
-import PdfPrinter from 'pdfmake';
 import type { Content, TDocumentDefinitions } from 'pdfmake/interfaces';
+import { crearImpresora } from '../../infrastructure/pdf/impresora';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { PlanService } from '../resultados/plan.service';
 import { ResultadosService } from '../resultados/resultados.service';
-
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const fuentes = require('pdfmake/build/vfs_fonts') as {
-  pdfMake?: { vfs: Record<string, string> };
-  vfs?: Record<string, string>;
-} & Record<string, unknown>;
-const vfs = (fuentes.pdfMake?.vfs ?? fuentes.vfs ?? fuentes) as Record<string, string>;
-const fuente = (a: string) => Buffer.from(vfs[a] as string, 'base64');
 
 const COMUNES = [
   'Periodo',
@@ -174,14 +166,7 @@ export class ReportesService {
   async planPdf(res: Response, periodoId?: number): Promise<void> {
     const { periodo, caracteristicas } = await this.plan.calcular(periodoId);
     if (!periodo) throw new NotFoundException('No hay un periodo activo.');
-    const printer = new PdfPrinter({
-      Roboto: {
-        normal: fuente('Roboto-Regular.ttf'),
-        bold: fuente('Roboto-Medium.ttf'),
-        italics: fuente('Roboto-Italic.ttf'),
-        bolditalics: fuente('Roboto-MediumItalic.ttf'),
-      },
-    });
+    const printer = crearImpresora();
     const ESTADOS: Record<string, string> = {
       CUMPLE: 'Cumple',
       EN_PROGRESO: 'En progreso',

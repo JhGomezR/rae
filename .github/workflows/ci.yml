@@ -55,7 +55,7 @@ jobs:
           (cd apps/web && NODE_ENV=production pnpm exec next start -p 3000 > /tmp/web.log 2>&1 &)
           for i in $(seq 1 40); do curl -sf -o /dev/null http://localhost:3000/login && break; sleep 1; done
           mkdir -p /tmp/humo && cp scripts/prueba-humo.mjs /tmp/humo/
-          cd /tmp/humo && npm init -y >/dev/null && npm i exceljs@4 --silent
+          cd /tmp/humo && npm init -y >/dev/null && npm i exceljs@4 jszip@3 --silent
           node prueba-humo.mjs
       - name: Registros si algo falla
         if: failure()

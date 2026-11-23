@@ -26,6 +26,8 @@ Monorepo pnpm · Next.js 15 · NestJS 11 como función de Vercel · Prisma 6 · 
 4. Despliega. El build de producción aplica las migraciones y carga el currículo; las vistas previas no modifican la base de datos.
 5. Entra como administrador, importa el consolidado y abre el momento en **Panel**.
 
+En **Informes** se consultan las estadísticas y se descargan en Word y PDF los formatos 021, 022 y 023 del plan de mejoramiento. Allí se registra una sola vez el responsable y, si se desea, su firma; la firma se guarda de forma privada en la base de datos y solo se incluye al marcarla.
+
 Los recordatorios corren una vez al día (7:00 a. m., Colombia). En **Correos** se pueden enviar en cualquier momento.
 
 ## Desarrollo local

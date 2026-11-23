@@ -27,6 +27,8 @@
   --lv4: #2b4fb8;
   --lv4-bg: #e3e9fb;
   --on-lv: #ffffff;
+  --serie1: #00909c;
+  --serie2: #b45309;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -56,6 +58,8 @@
     --lv4: #8fa8f2;
     --lv4-bg: #1f2a4a;
     --on-lv: #12191b;
+    --serie1: #00a6b3;
+    --serie2: #d07c25;
   }
 }
 

@@ -12,6 +12,7 @@ import { AuthController } from './modules/auth/auth.controller';
 import { AuthService } from './modules/auth/auth.service';
 import { CurriculoModule } from './modules/curriculo/curriculo.module';
 import { EncuestasModule } from './modules/encuestas/encuestas.module';
+import { InformesModule } from './modules/informes/informes.module';
 import { MatriculasModule } from './modules/matriculas/matriculas.module';
 import { NotificacionesModule } from './modules/notificaciones/notificaciones.module';
 import { PeriodosModule } from './modules/periodos/periodos.module';
@@ -38,6 +39,7 @@ import { UsuariosModule } from './modules/usuarios/usuarios.controller';
     MatriculasModule,
     EncuestasModule,
     ResultadosModule,
+    InformesModule,
     NotificacionesModule,
   ],
   controllers: [AuthController],

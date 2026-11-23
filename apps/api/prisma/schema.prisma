@@ -157,6 +157,7 @@ model Periodo {
   cursos             Curso[]
   encuestas          Encuesta[]
   recomendaciones    Recomendacion[]
+  informes           InformeAjuste[]
 }
 
 model UnidadFormacion {
@@ -390,6 +391,25 @@ model NotificacionOutbox {
 
   @@index([estado, enviarDespuesDe])
   @@index([usuarioId, tipo, creadaEn])
+}
+
+/// Textos que el administrador ajusta en cada informe del plan de mejoramiento.
+model InformeAjuste {
+  periodoId     Int
+  clave         String   @db.VarChar(3)
+  datos         Json
+  actualizadoEn DateTime @updatedAt
+  periodo       Periodo  @relation(fields: [periodoId], references: [id], onDelete: Cascade)
+
+  @@id([periodoId, clave])
+}
+
+/// Archivos privados del sistema, como la firma de los informes.
+model ArchivoSistema {
+  clave         String   @id @db.VarChar(60)
+  tipo          String   @db.VarChar(40)
+  datos         Bytes
+  actualizadoEn DateTime @updatedAt
 }
 
 model Auditoria {
