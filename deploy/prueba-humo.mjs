@@ -12,6 +12,8 @@ function ok(condicion, mensaje) {
   console.log(`  ok ${mensaje}`);
 }
 
+const destino = (res) => new URL(res.headers.get('location') ?? '/', BASE).pathname;
+
 class Cliente {
   cookies = new Map();
   async pedir(ruta, { metodo = 'GET', json, form } = {}) {
@@ -119,10 +121,7 @@ async function main() {
   console.log('Acceso');
   ok((await fetch(`${BASE}/api/salud`)).ok, 'la API y la base de datos responden');
   const anon = await new Cliente().pedir('/admin/panel');
-  ok(
-    anon.status === 307 && anon.headers.get('location') === '/login',
-    'sin sesión redirige a /login',
-  );
+  ok(anon.status === 307 && destino(anon) === '/login', 'sin sesión redirige a /login');
   ok((await new Cliente().pedir('/api/usuarios')).status === 401, 'la API exige sesión');
 
   const admin = new Cliente();
@@ -132,7 +131,7 @@ async function main() {
   });
   ok((await admin.pedir('/api/usuarios')).status === 403, 'el primer ingreso es obligatorio');
   const pagina = await admin.pedir('/admin/panel');
-  ok(pagina.headers.get('location') === '/primer-ingreso', 'la web fuerza el primer ingreso');
+  ok(destino(pagina) === '/primer-ingreso', 'la web fuerza el primer ingreso');
   await admin.datos('/api/auth/primer-ingreso', {
     metodo: 'POST',
     json: { claveNueva: 'Admin-Prueba-2026!', email: 'admin@example.test' },
@@ -182,10 +181,7 @@ async function main() {
     'docente no abre curso ajeno',
   );
   ok((await ana.pedir('/api/usuarios')).status === 403, 'estudiante no entra a administración');
-  ok(
-    (await ana.pedir('/admin/panel')).headers.get('location') === '/mis-encuestas',
-    'la web bloquea /admin',
-  );
+  ok(destino(await ana.pedir('/admin/panel')) === '/mis-encuestas', 'la web bloquea /admin');
 
   console.log('Encuestas');
   const id = cursosAna[0].id;
