@@ -1,0 +1,16 @@
+**/node_modules
+**/dist
+**/.next
+**/coverage
+**/.env
+**/.env.*
+!**/.env.example
+**/*.xlsx
+**/*.sql
+**/*.sql.gz
+.git
+.github
+.husky
+.claude
+docs
+backups

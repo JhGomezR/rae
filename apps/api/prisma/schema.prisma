@@ -1,0 +1,392 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Rol {
+  ADMIN
+  DOCENTE
+  ESTUDIANTE
+}
+
+enum Momento {
+  APRECIACION
+  ALCANCE
+}
+
+enum EstadoEncuesta {
+  BORRADOR
+  ENVIADA
+}
+
+enum TipoCompetencia {
+  GENERICA
+  ESPECIFICA
+}
+
+enum Seccion {
+  OBJETIVO
+  GENERICA
+  ESPECIFICA
+  RAE
+}
+
+enum TipoItem {
+  OBJETIVO
+  RA
+  COMPETENCIA
+  RAE
+}
+
+enum NivelPregunta {
+  ESTUDIANTE
+  DOCENTE
+}
+
+enum Ciclo {
+  TECNOLOGICO
+  PROFESIONAL
+}
+
+enum TipoEstrategia {
+  DIDACTICA
+  ACTIVA
+}
+
+enum EstadoRecomendacion {
+  APLICADA
+  PARCIAL
+  NO_APLICADA
+}
+
+enum EstadoImportacion {
+  PREVISUALIZADA
+  APLICADA
+  FALLIDA
+}
+
+enum TipoNotificacion {
+  AVISO_APERTURA
+  RECORDATORIO
+}
+
+enum EstadoNotificacion {
+  PENDIENTE
+  ENVIADA
+  FALLIDA
+}
+
+model Usuario {
+  id               Int       @id @default(autoincrement())
+  documento        String    @unique @db.VarChar(20)
+  nombreCompleto   String    @db.VarChar(150)
+  primerApellido   String    @db.VarChar(60)
+  primerNombre     String    @db.VarChar(60)
+  rol              Rol
+  email            String?   @unique @db.VarChar(150)
+  passwordHash     String    @db.VarChar(255)
+  debeCambiarClave Boolean   @default(true)
+  activo           Boolean   @default(true)
+  ultimoIngreso    DateTime?
+  creadoEn         DateTime  @default(now())
+  actualizadoEn    DateTime  @updatedAt
+
+  cursosDocente  Curso[]              @relation("DocenteCurso")
+  inscripciones  Inscripcion[]
+  encuestas      Encuesta[]
+  refreshTokens  RefreshToken[]
+  notificaciones NotificacionOutbox[]
+
+  @@index([rol])
+}
+
+model RefreshToken {
+  id         Int       @id @default(autoincrement())
+  usuarioId  Int
+  tokenHash  String    @unique @db.VarChar(64)
+  expiraEn   DateTime
+  revocadoEn DateTime?
+  creadoEn   DateTime  @default(now())
+  usuario    Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@index([usuarioId])
+}
+
+model Sede {
+  id     Int     @id @default(autoincrement())
+  codigo String  @unique @db.VarChar(40)
+  cursos Curso[]
+}
+
+model Programa {
+  id     Int     @id @default(autoincrement())
+  nombre String  @unique @db.VarChar(120)
+  ciclo  Ciclo
+  cursos Curso[]
+}
+
+model Periodo {
+  id                 Int       @id @default(autoincrement())
+  codigo             String    @unique @db.VarChar(10)
+  anio               Int
+  numero             Int
+  activo             Boolean   @default(false)
+  apreciacionAbierta Boolean   @default(false)
+  alcanceAbierto     Boolean   @default(false)
+  apreciacionCierra  DateTime?
+  alcanceCierra      DateTime?
+  cursos             Curso[]
+  encuestas          Encuesta[]
+  recomendaciones    Recomendacion[]
+}
+
+model UnidadFormacion {
+  id               Int     @id
+  nombre           String  @db.VarChar(150)
+  nombreClave      String  @unique @db.VarChar(150)
+  semestre         Int
+  ciclo            Ciclo
+  archivosSyllabus Json
+  editado          Boolean @default(false)
+
+  competencias    CompetenciaUnidad[]
+  items           ItemEvaluable[]
+  alias           AliasUnidad[]
+  cursos          Curso[]
+  recomendaciones Recomendacion[]
+}
+
+model AliasUnidad {
+  id       Int             @id @default(autoincrement())
+  alias    String          @unique @db.VarChar(150)
+  unidadId Int
+  unidad   UnidadFormacion @relation(fields: [unidadId], references: [id], onDelete: Cascade)
+}
+
+model CompetenciaUnidad {
+  id          Int             @id @default(autoincrement())
+  unidadId    Int
+  clave       String          @db.VarChar(10)
+  codigo      String?         @db.VarChar(5)
+  tipo        TipoCompetencia
+  texto       String          @db.Text
+  tituloCorto String          @db.VarChar(200)
+  orden       Int
+  unidad      UnidadFormacion @relation(fields: [unidadId], references: [id], onDelete: Cascade)
+  items       ItemEvaluable[]
+
+  @@unique([unidadId, clave])
+  @@index([codigo])
+}
+
+/// Lo que realmente se pregunta. Nunca se borra si tiene respuestas: se desactiva.
+model ItemEvaluable {
+  id                  Int                @id @default(autoincrement())
+  unidadId            Int
+  clave               String             @db.VarChar(20)
+  seccion             Seccion
+  tipo                TipoItem
+  competenciaUnidadId Int?
+  texto               String             @db.Text
+  capacidad           String             @db.VarChar(500)
+  orden               Int
+  activo              Boolean            @default(true)
+  unidad              UnidadFormacion    @relation(fields: [unidadId], references: [id])
+  competencia         CompetenciaUnidad? @relation(fields: [competenciaUnidadId], references: [id], onDelete: SetNull)
+  preguntas           PreguntaPractica[]
+  respuestas          RespuestaItem[]
+
+  @@unique([unidadId, clave])
+}
+
+model PreguntaPractica {
+  id             Int           @id @default(autoincrement())
+  itemId         Int
+  nivel          NivelPregunta
+  enunciado      String        @db.Text
+  opciones       Json
+  indiceCorrecta Int           @default(0)
+  activa         Boolean       @default(true)
+  item           ItemEvaluable @relation(fields: [itemId], references: [id])
+
+  @@unique([itemId, nivel])
+}
+
+model Curso {
+  id             Int             @id @default(autoincrement())
+  periodoId      Int
+  sedeId         Int
+  programaId     Int
+  unidadId       Int
+  grupo          String          @db.VarChar(5)
+  semestreOferta Int
+  docenteId      Int
+  periodo        Periodo         @relation(fields: [periodoId], references: [id])
+  sede           Sede            @relation(fields: [sedeId], references: [id])
+  programa       Programa        @relation(fields: [programaId], references: [id])
+  unidad         UnidadFormacion @relation(fields: [unidadId], references: [id])
+  docente        Usuario         @relation("DocenteCurso", fields: [docenteId], references: [id])
+  inscripciones  Inscripcion[]
+  encuestas      Encuesta[]
+  recomendaciones Recomendacion[]
+  seguimientos   SeguimientoRecomendacion[]
+
+  @@unique([periodoId, sedeId, programaId, unidadId, grupo, docenteId])
+  @@index([docenteId, periodoId])
+}
+
+model Inscripcion {
+  id                 Int     @id @default(autoincrement())
+  cursoId            Int
+  estudianteId       Int
+  semestreEstudiante Int
+  activa             Boolean @default(true)
+  curso              Curso   @relation(fields: [cursoId], references: [id], onDelete: Cascade)
+  estudiante         Usuario @relation(fields: [estudianteId], references: [id])
+
+  @@unique([cursoId, estudianteId])
+  @@index([estudianteId])
+}
+
+model Encuesta {
+  id            Int                  @id @default(autoincrement())
+  cursoId       Int
+  usuarioId     Int
+  periodoId     Int
+  rol           Rol
+  momento       Momento
+  estado        EstadoEncuesta       @default(BORRADOR)
+  general       Json
+  enviadaEn     DateTime?
+  creadoEn      DateTime             @default(now())
+  actualizadoEn DateTime             @updatedAt
+  curso         Curso                @relation(fields: [cursoId], references: [id])
+  usuario       Usuario              @relation(fields: [usuarioId], references: [id])
+  periodo       Periodo              @relation(fields: [periodoId], references: [id])
+  items         RespuestaItem[]
+  estrategias   EncuestaEstrategia[]
+
+  @@unique([cursoId, usuarioId, momento])
+  @@index([periodoId, momento, rol, estado])
+}
+
+model RespuestaItem {
+  id                 Int           @id @default(autoincrement())
+  encuestaId         Int
+  itemId             Int
+  nivel              Int?          @db.TinyInt
+  evaluados          Int?
+  alcanzan           Int?
+  evidencia          String?       @db.VarChar(500)
+  instrumento        String?       @db.VarChar(60)
+  preguntaPracticaId Int?
+  opcionElegida      Int?
+  acierto            Boolean?
+  textoItem          String?       @db.Text
+  enunciadoPregunta  String?       @db.Text
+  textoRespuesta     String?       @db.Text
+  encuesta           Encuesta      @relation(fields: [encuestaId], references: [id], onDelete: Cascade)
+  item               ItemEvaluable @relation(fields: [itemId], references: [id])
+
+  @@unique([encuestaId, itemId])
+}
+
+model EstrategiaPedagogica {
+  id        Int                  @id @default(autoincrement())
+  tipo      TipoEstrategia
+  nombre    String               @unique @db.VarChar(120)
+  encuestas EncuestaEstrategia[]
+}
+
+model EncuestaEstrategia {
+  encuestaId   Int
+  estrategiaId Int
+  encuesta     Encuesta             @relation(fields: [encuestaId], references: [id], onDelete: Cascade)
+  estrategia   EstrategiaPedagogica @relation(fields: [estrategiaId], references: [id])
+
+  @@id([encuestaId, estrategiaId])
+}
+
+model Recomendacion {
+  id           Int                        @id @default(autoincrement())
+  periodoId    Int
+  unidadId     Int
+  cursoId      Int
+  texto        String                     @db.Text
+  creadaEn     DateTime                   @default(now())
+  periodo      Periodo                    @relation(fields: [periodoId], references: [id])
+  unidad       UnidadFormacion            @relation(fields: [unidadId], references: [id])
+  curso        Curso                      @relation(fields: [cursoId], references: [id])
+  seguimientos SeguimientoRecomendacion[]
+
+  @@index([periodoId, unidadId])
+}
+
+model SeguimientoRecomendacion {
+  id              Int                 @id @default(autoincrement())
+  recomendacionId Int
+  cursoId         Int
+  estado          EstadoRecomendacion
+  recomendacion   Recomendacion       @relation(fields: [recomendacionId], references: [id], onDelete: Cascade)
+  curso           Curso               @relation(fields: [cursoId], references: [id])
+
+  @@unique([recomendacionId, cursoId])
+}
+
+model CaracteristicaPlan {
+  id       Int    @id @default(autoincrement())
+  numeros  String @unique @db.VarChar(20)
+  nombre   String @db.VarChar(200)
+  aspecto  String @db.Text
+  objetivo String @db.Text
+  meta     String @db.Text
+  orden    Int
+}
+
+model Importacion {
+  id        Int               @id @default(autoincrement())
+  archivo   String            @db.VarChar(200)
+  usuarioId Int
+  creadaEn  DateTime          @default(now())
+  estado    EstadoImportacion @default(PREVISUALIZADA)
+  resumen   Json
+  errores   Json
+  /// Filas normalizadas; se borran al aplicar para no conservar datos personales de más.
+  filas     Json?
+}
+
+model NotificacionOutbox {
+  id              Int                @id @default(autoincrement())
+  usuarioId       Int
+  tipo            TipoNotificacion
+  asunto          String             @db.VarChar(200)
+  cuerpoHtml      String             @db.Text
+  estado          EstadoNotificacion @default(PENDIENTE)
+  intentos        Int                @default(0)
+  enviarDespuesDe DateTime           @default(now())
+  enviadaEn       DateTime?
+  error           String?            @db.VarChar(500)
+  creadaEn        DateTime           @default(now())
+  usuario         Usuario            @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  @@index([estado, enviarDespuesDe])
+  @@index([usuarioId, tipo, creadaEn])
+}
+
+model Auditoria {
+  id        BigInt   @id @default(autoincrement())
+  usuarioId Int?
+  accion    String   @db.VarChar(120)
+  entidad   String   @db.VarChar(60)
+  entidadId String?  @db.VarChar(40)
+  ip        String?  @db.VarChar(60)
+  creadaEn  DateTime @default(now())
+
+  @@index([entidad, entidadId])
+  @@index([creadaEn])
+}

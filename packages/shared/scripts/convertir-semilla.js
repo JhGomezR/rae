@@ -16,6 +16,7 @@ const w = JSON.parse(JSON.stringify(contexto.window));
 const escribir = (nombre, datos) =>
   fs.writeFileSync(path.join(destino, nombre), `${JSON.stringify(datos, null, 1)}\n`);
 
+for (const u of w.CURRICULO_BASE) u.nombre = u.nombre.replace('Requermimientos', 'Requerimientos');
 escribir('curriculo.json', { version: w.CURRICULO_VERSION, unidades: w.CURRICULO_BASE });
 escribir('preguntas.json', { preguntas: w.PREGUNTAS, descartados: w.TEXTOS_DESCARTADOS ?? [] });
 escribir('practicas.json', w.PRACTICAS);

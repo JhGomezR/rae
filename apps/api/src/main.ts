@@ -1,16 +1,22 @@
-import { existsSync } from 'node:fs';
+import { ConsoleLogger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import type { NestExpressApplication } from '@nestjs/platform-express';
+import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 import { AppModule } from './app.module';
-
-// Carga apps/api/.env si existe (la configuración validada con Zod llega en el Paso 5).
-if (existsSync('.env')) process.loadEnvFile('.env');
+import { env } from './config/env';
 
 async function bootstrap(): Promise<void> {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: new ConsoleLogger({ json: env.NODE_ENV === 'production' }),
+  });
+  app.set('trust proxy', 1);
+  app.use(helmet());
+  app.use(cookieParser());
   app.setGlobalPrefix('api');
-  app.enableCors({ origin: process.env.WEB_ORIGIN ?? 'http://localhost:3000', credentials: true });
+  app.enableCors({ origin: env.WEB_ORIGIN, credentials: true });
   app.enableShutdownHooks();
-  await app.listen(Number(process.env.API_PORT ?? 4000));
+  await app.listen(env.API_PORT, '0.0.0.0');
 }
 
 void bootstrap();
