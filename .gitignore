@@ -32,3 +32,14 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .idea/
+
+# Contexto de Claude: nunca subir
+CLAUDE.md
+**/CLAUDE.md
+CLAUDE.local.md
+.claude/
+**/.claude/
+docs/
+*blueprint*
+*.skill
+skills/
