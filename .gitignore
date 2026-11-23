@@ -1,0 +1,33 @@
+# Dependencias y builds
+node_modules/
+dist/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Entorno y secretos (nunca subir)
+.env
+.env.*
+!.env.example
+
+# Datos personales y respaldos (Ley 1581): nunca subir
+*.xlsx
+!packages/shared/test/fixtures/*.xlsx
+!apps/api/test/fixtures/*.xlsx
+*.sql
+*.sql.gz
+backups/
+
+# Pruebas E2E
+playwright-report/
+test-results/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea/

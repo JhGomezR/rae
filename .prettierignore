@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+**/dist
+**/.next
+**/coverage
+**/node_modules
+**/prisma/migrations
+packages/shared/seed
+tools

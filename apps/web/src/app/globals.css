@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+/* Tokens del prototipo (D:\rae\web\css\styles.css). Modo claro y oscuro. */
+:root {
+  --bg: #f5f3ee;
+  --surface: #ffffff;
+  --ink: #1b2426;
+  --muted: #5b6668;
+  --line: #e2ded4;
+  --primary: #0f5c63;
+  --primary-ink: #ffffff;
+  --accent: #b45309;
+  --login: #1f3a60;
+  --lv1: #b4372b;
+  --lv2: #a86a05;
+  --lv3: #0f766e;
+  --lv4: #2b4fb8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --bg: #12191b;
+    --surface: #192326;
+    --ink: #e7ecec;
+    --muted: #9fb0b2;
+    --line: #2a3a3e;
+    --primary: #5cc0c8;
+    --primary-ink: #0b1416;
+  }
+}
+
+:root.dark {
+  --bg: #12191b;
+  --surface: #192326;
+  --ink: #e7ecec;
+  --muted: #9fb0b2;
+  --line: #2a3a3e;
+  --primary: #5cc0c8;
+  --primary-ink: #0b1416;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-accent: var(--accent);
+  --color-login: var(--login);
+  --color-lv1: var(--lv1);
+  --color-lv2: var(--lv2);
+  --color-lv3: var(--lv3);
+  --color-lv4: var(--lv4);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
+  --radius-card: 12px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+}
