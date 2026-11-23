@@ -17,6 +17,7 @@ next-env.d.ts
 !packages/shared/test/fixtures/*.xlsx
 !apps/api/test/fixtures/*.xlsx
 *.sql
+!apps/api/prisma/migrations/**/*.sql
 *.sql.gz
 backups/
 
