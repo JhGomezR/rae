@@ -1,0 +1,3732 @@
+{
+ "version": "f0d36ec37e",
+ "unidades": [
+  {
+   "id": 1,
+   "nombre": "Razonamiento Lógico y Cuantitativo",
+   "semestre": 1,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Syllabus Razonamiento Lógico y Cuantitativo Versión 2.docx"
+   ],
+   "objetivos": [],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": []
+    },
+    {
+     "codigo": "",
+     "texto": "El estudiante Contextualiza los conceptos que permiten potenciar la capacidad analítica, lógica, interpretativa y creativa en la solución de aplicaciones y problemas matemáticos tendientes a la construcción y desarrollo del pensamiento lógico –matemático los cuales deben proporcionar la formación profesional adecuada acorde con las necesidades del mundo laboral dentro del contexto real.",
+     "resultados": []
+    },
+    {
+     "codigo": "",
+     "texto": "El estudiante Contextualiza términos, predicados, razonamientos y demostraciones en la solución de situaciones reales que contribuyen con su desarrollo dentro del campo de formación profesional y laboral, donde se provea de las herramientas necesarias que fortalezcan su quehacer docente",
+     "resultados": []
+    }
+   ],
+   "especificas": [],
+   "rae": [
+    "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+    "Transforma la representación de una o más piezas de información.",
+    "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+    "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+    "Resuelve un problema que involucra información cuantitativa o esquemática."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 2,
+   "nombre": "Aplicación de las Matemáticas y Física",
+   "semestre": 1,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Aplicación a las matematicas y fisica VERSION 2 TITOTAPIA.docx"
+   ],
+   "objetivos": [
+    "Capacidad de comprender e interpretar la información aprendida.",
+    "Capacidad de utilizar la información aprendida en situaciones nuevas.",
+    "Utilizar ideas y conceptos para resolver problemas."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 3,
+   "nombre": "Algoritmos y Programación 1",
+   "semestre": 1,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Algoritmos y Programación 1.docx"
+   ],
+   "objetivos": [
+    "\"Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" y \"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\", proporcionando al estudiante las bases fundamentales de la lógica de programación y el desarrollo de algoritmos que son esenciales para la construcción de soluciones de software.",
+    "\"El desarrollo de habilidades de comunicación en forma oral y escrita de manera eficiente y efectiva; con aptitudes para trabajar individualmente y en equipo\" mediante la documentación de algoritmos y soluciones computacionales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 4,
+   "nombre": "Introducción a la Ingeniería de Sistemas",
+   "semestre": 1,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Syllbus Introducción a la Ingeniería de Sistemas.docx"
+   ],
+   "objetivos": [
+    "Ubicar a los estudiantes dentro de lo que significa ser Ingeniero de Sistemas, cuál es su papel dentro de las organizaciones y cuál es su futuro como profesional.",
+    "Ofrecer a los estudiantes los elementos esenciales que le permitan empezar a    entender el mundo computacional, su estructuración y la importancia del manejo de las variables tecnológica, así como la cultura de la información en el desarrollo de las organizaciones.",
+    "El compromiso con el desarrollo Institucional y de la región, con aprecio por los valores culturales de su entorno, proporcionando al estudiante una visión integral del campo profesional de la Ingeniería de Sistemas, su evolución histórica, fundamentos teóricos y el contexto regional y nacional donde ejercerá su profesión.",
+    "Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" introduciendo conceptos fundamentales sobre sistemas, metodologías y técnicas que se aplicarán en el desarrollo de software."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen un texto",
+      "Entiende el significado de los elementos que constituyen un texto.",
+      "Identifica los eventos narrados de manera explícita en un texto (literario, descriptivo, caricatura o cómic) y los personajes involucrados (si los hay)."
+     ]
+    },
+    {
+     "codigo": "CG08",
+     "texto": "Reconoce la existencia de diversidad y multiperspectivismo.",
+     "resultados": [
+      "Reconoce y Analiza en el marco del respeto, la existencia de diferentes perspectivas en situaciones donde    interactúan diferentes partes.",
+      "Analiza un problema o conflicto social desde diferentes perspectivas."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+      "Comprende las relaciones entre diferentes partes o enunciados de un texto.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo."
+     ]
+    },
+    {
+     "codigo": "CG07",
+     "texto": "Identifica la organización del estado colombiano, los fundamentos del modelo de estado social de derecho y las particularidades de nuestro país.",
+     "resultados": [
+      "Conoce la constitución política de Colombia, sus principios fundamentales, derechos, deberes y la organización del estado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Comprende y aplica las técnicas y normas de recolección de información para determinar los requisitos del software y aplicaciones con base en las necesidades del cliente.",
+     "resultados": [
+      "Conocer los conceptos de requisitos software y sus tipos.",
+      "Comprender las normas y modelos técnicos existentes para aplicarlos en la obtención de los requisitos del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software.",
+      "Escribir documentos técnicos relacionados con servicios TIC."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 5,
+   "nombre": "Comunicación Escrita",
+   "semestre": 1,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Comunicación Escrita.docx"
+   ],
+   "objetivos": [
+    "Fortalecer prácticas de producción escrita, a partir de la articulación con procesos de interpretación y análisis textual, y la puesta en marcha de ejercicios de planeación, redacción y autocorrección en el propósito de comunicar efectiva y afectivamente como parte de la formación integral."
+   ],
+   "genericas": [
+    {
+     "codigo": "",
+     "texto": "Comunicación escrita-La organización del texto: Estructurar el texto siguiendo esquemas adecuados al tipo de actividad propuesta para justificar con argumentos la opinión del tema.",
+     "resultados": []
+    },
+    {
+     "codigo": "",
+     "texto": "Lectura crítica-Reflexionar de manera crítica un texto, validando los argumentos para evaluar su contenido.",
+     "resultados": []
+    }
+   ],
+   "especificas": [],
+   "rae": [
+    "Construye documentos escritos teniendo en cuenta la estructura adecuada en cuanto a lo gramatical, sintáctico, semántico, y aplicando reglas de ortografía.",
+    "Utiliza de forma apropiada el lenguaje escrito, con el propósito de sustentar de manera justificada y asertiva cualquier planteamiento o punto de vista frente a una temática."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 6,
+   "nombre": "PPI y CPC",
+   "semestre": 1,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Constitución Política y Democracia.docx",
+    "Proyecto Pedagógico Institucional y CPC.docx"
+   ],
+   "objetivos": [
+    "Aproximar al estudiante al conocimiento de las más relevantes perspectivas del estudio de la Constitución Política, con el propósito de promover conciencia sobre los derechos fundamentales de la persona humana y estimular la práctica de los principios y valores de la participación ciudadana, el reconocimiento de las instituciones democráticas y la importancia de promover la democracia como forma de gobierno.",
+    "Permitir dinamizar, orientar, alimentar y proyectar la actividad académica, investigativa y de proyección social de directivos, docentes, estudiantes y personal administrativo, quienes al estar comprometidos con la calidad de la educación son conscientes de la necesidad del aporte colectivo y personal, que hoy es imprescindible en toda organización"
+   ],
+   "genericas": [
+    {
+     "codigo": "",
+     "texto": "Estructurar el texto y las ideas siguiendo esquemas adecuados al tipo de actividad propuesta para justificar con argumentos la opinión del tema y la solución a las problemáticas sociales desde el multiperspectivismo y el pensamiento sistémico.",
+     "resultados": []
+    },
+    {
+     "codigo": "",
+     "texto": "Estructurar el texto y las ideas siguiendo esquemas adecuados al tipo de actividad propuesta para justificar con argumentos la opinión del tema y la solución a las problemáticas sociales desde el multiperspectivismo y el pensamiento sistémico",
+     "resultados": []
+    }
+   ],
+   "especificas": [],
+   "rae": [
+    "Comprende las diferentes perspectivas que se enmarcan en la normatividad vigente necesarias en el contexto ciudadano.",
+    "Identifica instrumentos diagnósticos encaminados a la solución de conflictos en el contexto territorial.",
+    "Comprende las diferentes perspectivas que se enmarcan en la normatividad vigente necesarias en el contexto ciudadano."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 7,
+   "nombre": "Calculo Diferencial",
+   "semestre": 2,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Cálculo Diferencial Version 2 Tito.docx"
+   ],
+   "objetivos": [
+    "Desarrollar la destreza analítica, gráfica, interpretativa y operativa que permitan la comprensión de conceptos como funciones y su representación gráfica, límites, continuidad y diferenciación respecto de funciones reales de una variable real con aplicaciones en el planteamiento y resolución de problemas de ingeniería."
+   ],
+   "genericas": [
+    {
+     "codigo": "",
+     "texto": "Identificar situaciones concretas de manera abstracta aplicando un lenguaje matemático para analizar o resolver problemas del contexto.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática"
+     ]
+    }
+   ],
+   "especificas": [],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 8,
+   "nombre": "Algebra Lineal",
+   "semestre": 2,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Syllabus_Algebra_Lineal.docx"
+   ],
+   "objetivos": [],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Razonamiento cuantitativo",
+     "resultados": [
+      "Comprender los fundamentos matemáticos del álgebra lineal y su relación con otras áreas de la ingeniería de sistemas, las ciencias de la computación y el análisis de datos",
+      "Aplicar razonamiento abstracto en la verificación de propiedades algebraicas, demostración de teoremas básicos e interpretación geométrica de transformaciones lineales"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Formular y resolver sistemas de ecuaciones lineales que modelen situaciones reales de ingeniería de sistemas, telecomunicaciones, economía o ciencias de la computación",
+      "Seleccionar y aplicar las técnicas de álgebra lineal más apropiadas (eliminación gaussiana, factorización LU, diagonalización, SVD) para cada tipo de problema"
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Validación de procedimientos",
+     "resultados": [
+      "Verificar la corrección de cálculos matriciales mediante propiedades algebraicas y herramientas computacionales (NumPy, MATLAB)",
+      "Validar soluciones obtenidas algebraicamente mediante interpretación geométrica e implementación computacional comparada"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Modelado matemático",
+     "resultados": [
+      "Representar problemas de ingeniería de sistemas como modelos de álgebra lineal: sistemas de ecuaciones, transformaciones lineales o factorizaciones matriciales",
+      "Analizar e interpretar las soluciones matemáticas en el contexto del problema original de ingeniería"
+     ]
+    },
+    {
+     "codigo": "CE02",
+     "texto": "Computación científica y álgebra lineal numérica",
+     "resultados": [
+      "Implementar algoritmos de álgebra lineal computacional en Python con NumPy y SciPy, o en MATLAB/Octave, con código documentado y eficiente",
+      "Utilizar herramientas de software para la solución de sistemas lineales, cálculo de determinantes, valores propios y descomposición SVD en problemas de ingeniería"
+     ]
+    },
+    {
+     "codigo": "CE03",
+     "texto": "Fundamentación matemática para ciencias de datos y aprendizaje automático",
+     "resultados": [
+      "Aplicar conceptos de álgebra lineal (eigenvalores, SVD, proyecciones) como fundamento matemático para el aprendizaje automático, análisis de datos y procesamiento de imágenes",
+      "Relacionar la descomposición en valores singulares (SVD) con el Análisis de Componentes Principales (PCA), la compresión de datos y los sistemas de recomendación"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 9,
+   "nombre": "Estructura de Datos Orientada a Objetos",
+   "semestre": 2,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Estructura de Datos Orientada a Objetos.docx"
+   ],
+   "objetivos": [
+    "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio de estructuras de datos fundamentales y su implementación usando programación orientada a objetos, lo cual es esencial para crear aplicaciones eficientes y escalables.",
+    "\"La aplicación de pruebas y mantenimiento de soluciones de software y aplicaciones optimizando recursos y tiempo\" a través del uso de estructuras de datos apropiadas que optimizan el rendimiento de las aplicaciones."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 10,
+   "nombre": "Algoritmos y Programación 2",
+   "semestre": 2,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Algoritmos y Programación 2.docx"
+   ],
+   "objetivos": [
+    "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" profundizando en estructuras de datos avanzadas y fundamentos de la programación orientada a objetos que son esenciales para el desarrollo de soluciones de software más complejas.",
+    "\"La habilidad para adaptarse a los cambios tecnológicos y de sostenibilidad ambiental, con una actitud de formación continua a lo largo de su vida profesional\" mediante el aprendizaje de nuevas estructuras de programación y paradigmas."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 11,
+   "nombre": "Lectura Crítica",
+   "semestre": 2,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Lectura Critica_TDS II.docx"
+   ],
+   "objetivos": [
+    "Desarrollar en el estudiante la capacidad de entender, interpretar y evaluar textos, tanto en la vida cotidiana, como en ámbitos académicos; que le permitan tener una compresión lectora donde pueda interpretar, aprender y tomar posturas críticas frente a un texto."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG03",
+     "texto": "Reflexiona a partir de un texto y evalúa su contenido.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": []
+    }
+   ],
+   "especificas": [],
+   "rae": [
+    "Entiende el significado de los elementos que constituyen un texto.",
+    "Identifica los eventos narrados de manera explícita en un texto (literario, descriptivo, caricatura o cómic) y los personajes involucrados (si los hay).",
+    "Comprende la estructura formal de un texto y la función de sus partes.",
+    "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+    "Comprende las relaciones entre diferentes partes o enunciados de un texto.",
+    "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo.",
+    "Identifica el tipo de relación existente entre diferentes elementos de un texto (discontinuo)."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 12,
+   "nombre": "Cultura Amazónica",
+   "semestre": 2,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Cultura Amazónica.docx"
+   ],
+   "objetivos": [
+    "Dimensionar la convivencia con el entorno ya sea en los ambientes físico bióticos, socioeconómicos, políticos, culturales y ambientales, entendiendo que el desarrollo sostenible de la amazonia constituye un todo, donde la interacción de sus diversos elementos genera una base de sustentación en el tiempo y espacio al servicio de las comunidades."
+   ],
+   "genericas": [],
+   "especificas": [
+    {
+     "codigo": "",
+     "texto": "Comprender la dinámica entre grupos étnicos, biota y medio ambiente con la participación de saberes colectivos para ampliar el conocimiento de las relaciones sociales-simbólicas entre cultura y naturaleza.",
+     "resultados": []
+    }
+   ],
+   "rae": [
+    "Comprende el valor de la diversidad étnica y cultural en la dimensión de identidad, saberes y costumbres que contribuyen a la conservación de los recursos natuales del territorio."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 13,
+   "nombre": "Calculo Integral",
+   "semestre": 3,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Cálculo Integral Version 2 Tito.docx"
+   ],
+   "objetivos": [
+    "Brindar los conceptos, herramientas y técnicas para la interpretación, representación, formulación, modelación, argumentación, ejecución, aplicaciones  y dar respuesta a problemas en ingeniería mediante el uso del cálculo integral, en una variable."
+   ],
+   "genericas": [
+    {
+     "codigo": "",
+     "texto": "Razonamiento cuantitativo-Identificar situaciones concretas de manera abstracta aplicando un lenguaje matemático para analizar o resolver problemas del contexto..",
+     "resultados": []
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [],
+   "rae": [
+    "Resuelve problemáticas de carácter esquemático considerando la lógica y la matemática como herramienta de cultura y pensamiento."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 14,
+   "nombre": "Estadistica y Probabilidades",
+   "semestre": 3,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "4. Syllabus-ESTADISTICA Y PROBABILIDADES ok.docx"
+   ],
+   "objetivos": [
+    "La estadística es una herramienta fundamental en la formación profesional en diferentes áreas. Es a través de este saber estadístico que el estudiante interactúa con áreas de investigación y aplicación profesional, las cuales son parte esencial de su campo profesional fortaleciendo así su perfil de formación, dado que lo ayudara a una toma inteligente de decisiones"
+   ],
+   "genericas": [
+    {
+     "codigo": "",
+     "texto": "Modelar situaciones concretas de manera abstracta aplicando un lenguaje matemático para analizar o resolver problemas del contexto.",
+     "resultados": []
+    }
+   ],
+   "especificas": [],
+   "rae": [
+    "Desarrollo fórmulas matemáticas para explicar el comportamiento de sistemas complejos ante situaciones difíciles de observar en la realidad"
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 15,
+   "nombre": "Programación Orientada a Objetos",
+   "semestre": 3,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "PROGRAMACIÓN ORIENTADA A OBJETOS 2026-1.docx"
+   ],
+   "objetivos": [
+    "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio completo de los principios y técnicas de la Programación Orientada a Objetos, lo cual es fundamental para desarrollar aplicaciones robustas, mantenibles y escalables.",
+    "\"La aplicación de pruebas y mantenimiento de soluciones de software y aplicaciones optimizando recursos y tiempo\" a través de código bien estructurado que facilita el mantenimiento y las pruebas."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 16,
+   "nombre": "Definición y Análisis de Requermimientos",
+   "semestre": 3,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Definición y Análisis de Requermimientosnew.docx"
+   ],
+   "objetivos": [
+    "\"Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" proporcionando al estudiante las competencias necesarias para identificar, analizar, documentar y validar los requerimientos de software de manera sistemática y profesional, utilizando técnicas reconocidas internacionalmente."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen un texto.",
+      "Identifica los eventos narrados de manera explícita en un texto (literario, descriptivo, caricatura o cómic) y los personajes involucrados (si los hay)."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+      "Comprende las relaciones entre diferentes partes o enunciados de un texto.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Comprende y aplica las técnicas y normas de recolección de información para determinar los requisitos del software y aplicaciones con base en las necesidades del cliente.",
+     "resultados": [
+      "Conocer los conceptos de requisitos software y sus tipos.",
+      "Comprender las normas y modelos técnicos existentes para aplicarlos en la obtención de los requisitos del software.",
+      "Definir el objetivo y alcance del software en acuerdo a las necesidades del cliente.",
+      "Preparar documentos técnicos de requisitos funcionales, no funcionales y restricciones que soporten el diseño del software y aplicaciones."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software.",
+      "Escribir documentos técnicos relacionados con servicios TIC."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 17,
+   "nombre": "Introducción a Base de Datos",
+   "semestre": 3,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Syllabus 2026 - Introducción a Base de Datos.docx"
+   ],
+   "objetivos": [
+    "El diseño, mantenimiento, actualización y soporte a bases de datos relacionales y sistemas de información de su entorno\" proporcionando los fundamentos teóricos y conceptuales de las bases de datos relacionales y no relacionales, así como el conocimiento de los Sistemas Gestores de Bases de Datos (SGBD).",
+    "Desarrollar en el estudiante las competencias básicas para diseñar, mantener, actualizar y dar soporte a bases de datos, mediante la comprensión de los fundamentos teóricos y conceptuales de las bases de datos relacionales y no relacionales, así como del uso de los Sistemas Gestores de Bases de Datos (SGBD)."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE06",
+     "texto": "Usa un SGBD para diseñar una base de datos relacional.",
+     "resultados": [
+      "Diseñar el modelo E/R y modelo relacional de una BD usando diferentes herramientas de diseño."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 18,
+   "nombre": "Sostenibilidad Ambiental",
+   "semestre": 3,
+   "ciclo": "Tecnológico",
+   "archivos": [],
+   "objetivos": [],
+   "genericas": [],
+   "especificas": [],
+   "rae": [],
+   "estado": "sin_syllabus"
+  },
+  {
+   "id": 19,
+   "nombre": "Ecuaciones Diferenciales",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Ecuaciones Diferenciales Version 2..docx"
+   ],
+   "objetivos": [
+    "Brindar los conceptos y métodos para analizar y resolver las diferentes clases de ecuaciones diferenciales ordinarias, de primer orden y de segundo orden y orden superior, como un medio y una herramienta que permita solucionar  diferentes tipos de problemas en ingeniería y en otras ciencias y áreas aplicadas."
+   ],
+   "genericas": [
+    {
+     "codigo": "",
+     "texto": "Argumentar procedimientos y estrategias a partir de modelos matemáticos y resultados para dar validez o pertinencia a una solución propuesta.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [],
+   "rae": [
+    "Aplica la teoría de modelos para estudiar fenómenos o comportamientos impredecibles en cuanto a su complejidad.",
+    "Interpreta modelos matemáticos en términos de realidad y aproximación científica al comportamiento de un sistema complejo."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 20,
+   "nombre": "Programación Orientada a la Web",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Programación Orientada a la Web.docx"
+   ],
+   "objetivos": [
+    "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio de tecnologías web del lado del cliente (Frontend) para crear interfaces de usuario interactivas y responsivas.",
+    "\"El despliegue y documentación técnica del software y aplicaciones\" proporcionando las bases para publicar aplicaciones web"
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE05",
+     "texto": "Concreta el despliegue y documentación del proyecto de software.",
+     "resultados": [
+      "Instalar las aplicaciones base y el software de acuerdo a la arquitectura del sistema.",
+      "Construir la documentación técnica del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 21,
+   "nombre": "Proyecto de Software 1",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Proyecto de Software 1.docx"
+   ],
+   "objetivos": [
+    "Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas.",
+    "El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas."
+   ],
+   "genericas": [],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Comprende y aplica las técnicas y normas de recolección de información para determinar los requisitos del software y aplicaciones con base en las necesidades del cliente.",
+     "resultados": [
+      "Conocer los conceptos de requisitos software y sus tipos.",
+      "Comprender las normas y modelos técnicos existentes para aplicarlos en la obtención de los requisitos del software.",
+      "Definir el objetivo y alcance del software en acuerdo a las necesidades del cliente.",
+      "Preparar documentos técnicos de requisitos funcionales, no funcionales y restricciones que soporten el diseño del software y aplicaciones."
+     ]
+    },
+    {
+     "codigo": "CE02",
+     "texto": "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.",
+     "resultados": [
+      "Definir un esbozo de la arquitectura aplicada al diseño.",
+      "Dibujar modelos en lenguajes estandarizados que comuniquen en etapa temprana la solución al proyecto de software.",
+      "Refinar la arquitectura y modelos con base en las validaciones con el cliente.",
+      "Preparar el plan de pruebas del software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 22,
+   "nombre": "Diseño de Sistemas de Información",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Diseño de Sistemas de Información 2026-1.docx"
+   ],
+   "objetivos": [
+    "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" proporcionando las competencias para transformar los requerimientos en diseños técnicos que guíen la implementación de sistemas de información.",
+    "\"Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" mediante la aplicación de modelos estándar y técnicas de diseño reconocidas internacionalmente."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE02",
+     "texto": "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.",
+     "resultados": [
+      "Definir un esbozo de la arquitectura aplicada al diseño.",
+      "Dibujar modelos en lenguajes estandarizados que comuniquen en etapa temprana la solución al proyecto de software.",
+      "Refinar la arquitectura y modelos con base en las validaciones con el cliente.",
+      "Preparar el plan de pruebas del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 23,
+   "nombre": "Diseño de Base de Datos",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Diseño de Base de Datos.docx"
+   ],
+   "objetivos": [
+    "\"El diseño, mantenimiento, actualización y soporte a bases de datos relacionales y sistemas de información de su entorno\" profundizando en las técnicas avanzadas de diseño de bases de datos relacionales y proporcionando una introducción práctica al diseño de bases de datos NoSQL."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE06",
+     "texto": "Usa un SGBD para diseñar una base de datos relacional.",
+     "resultados": [
+      "Diseñar el modelo E/R y modelo relacional de una BD usando diferentes herramientas de diseño."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 24,
+   "nombre": "Redes y Comunicaciones 1",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Redes y Comunicaciones 1 new.docx"
+   ],
+   "objetivos": [
+    "Comprender los fundamentos de redes de datos y comunicaciones mediante el estudio del modelo de referencia OSI y la arquitectura TCP/IP, aplicando conceptos de direccionamiento IP, subredes, protocolos de las capas de red y transporte, configuración básica de dispositivos de red de capa 1, 2 y 3 (hubs, switches, routers), y técnicas de verificación de conectividad, para diseñar, implementar y brindar soporte técnico a redes LAN básicas en entornos empresariales y educativos, siguiendo estándares y normas internacionales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen estándares de redes (IEEE 802.3, IEEE 802.11, RFCs).",
+      "Identifica los protocolos y procesos descritos en documentación técnica de redes."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal del modelo OSI y TCP/IP y la función de cada capa.",
+      "Comprende las relaciones entre diferentes protocolos en la comunicación de red (HTTP sobre TCP sobre IP sobre Ethernet)."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma representaciones de direcciones IP entre formatos (decimal punteado, binario, hexadecimal)."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña esquemas de direccionamiento IP y subredes calculando rangos, máscaras y cantidad de hosts.",
+      "Ejecuta estrategias de troubleshooting de conectividad utilizando herramientas (ping, traceroute, ipconfig).",
+      "Resuelve problemas de comunicación entre dispositivos analizando direcciones IP, máscaras de subred y rutas."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce documentación técnica de configuración de red con instrucciones claras y secuenciales.",
+      "Produce diagramas de red con nomenclatura y simbología estándar.",
+      "Produce informes de troubleshooting con lenguaje técnico apropiado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE07",
+     "texto": "Aplica las normas técnicas para brindar soporte de calidad a redes de datos y comunicaciones en entornos empresariales.",
+     "resultados": [
+      "Conocer los estándares y normas de aplicación internacional y nacional para el diseño y mantenimiento de redes de datos LAN y WLAN de acuerdo a las necesidades del entorno.",
+      "Comprender el concepto del modelo OSI que se aplica a las redes de datos y comunicaciones.",
+      "Aplicar configuraciones de red bajo el protocolo TCP/IP.",
+      "Aplicar configuraciones a dispositivos de red capa 1, 2 y 3."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con configuración y mantenimiento de redes.",
+      "Escribir documentos técnicos relacionados con servicios de conectividad y soporte de red.",
+      "Presentar documentos de diseño de red con diagramas y tablas de direccionamiento."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 25,
+   "nombre": "Metodología de Investigación",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Syllabus 2026 - Metodología de la Investigación.docx"
+   ],
+   "objetivos": [
+    "Proponer ideas para que a partir de ellas pueda establecer la relevancia de aquello que pretende conocer dentro de la multitud de objetos de estudio posibles que lo rodea, reconociendo que una buena teoría asegura el éxito de la práctica investigativa.",
+    "Identificar y analizar problemáticas del contexto académico, social u organizacional, susceptibles de ser abordadas mediante un proceso de investigación.",
+    "Aplicar los fundamentos del método científico para la formulación del problema de investigación, los objetivos y la justificación del estudio.",
+    "Diseñar de manera conceptual la metodología de una investigación básica o aplicada, considerando el enfoque, tipo de estudio y criterios éticos y académicos."
+   ],
+   "genericas": [
+    {
+     "codigo": "",
+     "texto": "Estructurar el texto y las ideas siguiendo esquemas adecuados al tipo de actividad propuesta para justificar con argumentos la opinión del tema y la solución a las problemáticas sociales desde el multiperspectivismo y el pensamiento sistémico.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE12",
+     "texto": "Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.",
+     "resultados": [
+      "Derivar conclusiones consistentes con información que la respalde.",
+      "Evaluar la metodología o hipótesis inicial, conjeturas o posibles explicaciones a partir del análisis de los resultados."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Reconoce su papel y responsabilidad disciplinar, social y ética como ingeniero en un contexto de desempeño profesional.",
+     "resultados": [
+      "Identificar sus responsabilidades éticas, sociales y técnicas en el ejercicio de su profesión frente a referentes de actuación como códigos y normas."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 26,
+   "nombre": "Electiva Profesional 1",
+   "semestre": 4,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Electiva Profesional 1 - Diseño de Apps Uniputumayo.docx"
+   ],
+   "objetivos": [
+    "Aplicar principios de diseño de experiencia de usuario (UX) y diseño de interfaz de usuario (UI) para crear aplicaciones móviles y web mediante el uso de metodologías centradas en el usuario (Design Thinking, User-Centered Design), técnicas de investigación de usuarios (personas, user journey maps, entrevistas), prototipado de baja y alta fidelidad, principios de diseño visual (tipografía, color, espaciado, jerarquía), patrones de diseño de interfaces móviles (Material Design, iOS Human Interface Guidelines), y herramientas de diseño (Figma, Adobe XD), para desarrollar prototipos interactivos funcionales y especificaciones de diseño que guíen la implementación de aplicaciones con interfaces intuitivas, accesibles y atractivas visualmente."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen guías de diseño (Material Design Guidelines, iOS HIG, WCAG).",
+      "Identifica los principios y patrones de diseño descritos en documentación de UX/UI."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+      "Comprende las relaciones entre diferentes partes o enunciados de un texto",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo",
+      "Identifica el tipo de relación existente entre diferentes elementos de un texto (discontinuo)"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Comprende y aplica las técnicas y normas de recolección de información para determinar los requisitos del software y aplicaciones con base en las necesidades del cliente.",
+     "resultados": [
+      "Conocer los conceptos de requisitos software y sus tipos.",
+      "Comprender las técnicas de investigación de usuarios (entrevistas, encuestas, observación) para determinar necesidades de diseño.",
+      "Definir el objetivo y alcance del software en acuerdo a las necesidades del cliente.",
+      "Preparar documentos técnicos de requisitos funcionales, no funcionales y restricciones que soporten el diseño del software y aplicaciones."
+     ]
+    },
+    {
+     "codigo": "CE02",
+     "texto": "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.",
+     "resultados": [
+      "Definir un esbozo de la arquitectura aplicada al diseño.",
+      "Dibujar modelos en lenguajes estandarizados que comuniquen en etapa temprana la solución al proyecto de software.",
+      "Refinar la arquitectura y modelos con base en las validaciones con el cliente.",
+      "Preparar especificaciones de diseño visual y de interacción para el equipo de desarrollo."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 27,
+   "nombre": "Programación BackEnd",
+   "semestre": 5,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Programación BackEnd Uniputumayo.docx"
+   ],
+   "objetivos": [
+    "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el desarrollo de aplicaciones del lado del servidor que gestionan la lógica de negocio y el acceso a datos.",
+    "\"El despliegue y documentación técnica del software y aplicaciones\" proporcionando competencias para implementar servicios backend y APIs."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE05",
+     "texto": "Concreta el despliegue y documentación del proyecto de software.",
+     "resultados": [
+      "Instalar las aplicaciones base y el software de acuerdo a la arquitectura del sistema.",
+      "Construir la documentación técnica del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 28,
+   "nombre": "Proyecto de Software 2",
+   "semestre": 5,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Proyecto de Software 2.docx"
+   ],
+   "objetivos": [
+    "Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas.",
+    "El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas."
+   ],
+   "genericas": [],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Comprende y aplica las técnicas y normas de recolección de información para determinar los requisitos del software y aplicaciones con base en las necesidades del cliente.",
+     "resultados": [
+      "Conocer los conceptos de requisitos software y sus tipos.",
+      "Comprender las normas y modelos técnicos existentes para aplicarlos en la obtención de los requisitos del software.",
+      "Definir el objetivo y alcance del software en acuerdo a las necesidades del cliente.",
+      "Preparar documentos técnicos de requisitos funcionales, no funcionales y restricciones que soporten el diseño del software y aplicaciones."
+     ]
+    },
+    {
+     "codigo": "CE02",
+     "texto": "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.",
+     "resultados": [
+      "Definir un esbozo de la arquitectura aplicada al diseño.",
+      "Dibujar modelos en lenguajes estandarizados que comuniquen en etapa temprana la solución al proyecto de software.",
+      "Refinar la arquitectura y modelos con base en las validaciones con el cliente.",
+      "Preparar el plan de pruebas del software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 29,
+   "nombre": "Pruebas de Software e Implementación",
+   "semestre": 5,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Pruebas de Software e Implementación.docx"
+   ],
+   "objetivos": [
+    "Aplicar técnicas y estrategias de pruebas de software para verificar y validar la calidad de aplicaciones mediante la ejecución de pruebas unitarias, de integración, de sistema y de aceptación, utilizando herramientas automatizadas (JUnit, Selenium, Postman), técnicas de depuración, análisis de cobertura de código y estrategias de despliegue controlado, asegurando que el software cumpla con los requisitos funcionales y no funcionales establecidos antes de su implementación en ambientes productivos, aplicando normas técnicas de calidad y generando documentación técnica completa del proceso de pruebas."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen la documentación técnica de pruebas (planes de prueba, casos de prueba, reportes de defectos).",
+      "Identifica los eventos y procesos descritos en estándares de calidad de software (IEEE 829, ISO 25010)."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un plan de pruebas y la función de sus partes (alcance, estrategia, recursos, cronograma).",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en documentación de requisitos y especificaciones de pruebas.",
+      "Comprende las relaciones entre diferentes secciones de documentación técnica (requisitos → casos de prueba → resultados)."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presentada en reportes de cobertura de código (gráficas, tablas, porcentajes).",
+      "Transforma la representación de métricas de calidad (densidad de defectos, tasas de fallo) en distintos formatos (tablas, gráficos, dashboards)."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes de pruebas considerando métricas de cobertura objetivo (porcentajes de líneas, ramas, caminos).",
+      "Ejecuta estrategias de depuración basadas en análisis de logs y métricas de rendimiento.",
+      "Resuelve problemas de calidad del software calculando y analizando métricas (cobertura de código, densidad de defectos, eficiencia de remoción de defectos)."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce reportes de pruebas que establecen claramente el contexto, objetivos y resultados obtenidos.",
+      "Produce documentación técnica de casos de prueba con ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce informes técnicos con lenguaje apropiado para el auditorio técnico y no técnico (desarrolladores, clientes, gerentes)."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE02",
+     "texto": "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.",
+     "resultados": [
+      "Preparar el plan de pruebas del software.",
+      "Dibujar modelos y esquemas que comuniquen la estrategia de pruebas (matrices de trazabilidad, diagramas de flujo de pruebas)."
+     ]
+    },
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación aplicados a la escritura de pruebas automatizadas.",
+      "Codificar pruebas unitarias y de integración en lenguajes de programación (Java, Python, JavaScript).",
+      "Integrar las pruebas automatizadas en el flujo de desarrollo del software."
+     ]
+    },
+    {
+     "codigo": "CE04",
+     "texto": "Realiza pruebas y mantenimiento al software para garantizar que las funcionalidades se desarrollaron e implementaron correctamente y de acuerdo con las especificaciones del diseño.",
+     "resultados": [
+      "Aplicar el plan de pruebas al software.",
+      "Realizar pruebas individuales a cada subconjunto del software.",
+      "Realizar pruebas de integración software.",
+      "Realizar pruebas del sistema.",
+      "Preparar el informe técnico de las pruebas del software que permitan la refinación del software.",
+      "Realizar mantenimiento del software a partir de las necesidades identificadas."
+     ]
+    },
+    {
+     "codigo": "CE05",
+     "texto": "Concreta el despliegue y documentación del proyecto de software.",
+     "resultados": [
+      "Instalar las aplicaciones base y el software de acuerdo a la arquitectura del sistema.",
+      "Construir la documentación técnica del software.",
+      "Capacitar a los diferentes stakeholders (cliente/empresa) sobre el funcionamiento del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con planes de pruebas, casos de prueba, reportes de defectos y resultados de ejecución.",
+      "Escribir documentos técnicos relacionados con servicios de calidad y aseguramiento de software.",
+      "Presentar documentos de métricas de calidad y estimaciones de tiempo para actividades de QA."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 30,
+   "nombre": "Desarrollo de Base de Datos",
+   "semestre": 5,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Desarrollo de Base de Datos.docx"
+   ],
+   "objetivos": [
+    "\"El diseño, mantenimiento, actualización y soporte a bases de datos relacionales y sistemas de información de su entorno\" mediante el dominio del lenguaje SQL para la manipulación de datos y objetos de base de datos, así como las operaciones de mantenimiento y soporte técnico.",
+    "\"El desarrollo de habilidades de comunicación en forma oral y escrita de manera eficiente y efectiva\" a través de la documentación técnica de bases de datos."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE06",
+     "texto": "Usa un SGBD para diseñar una base de datos relacional.",
+     "resultados": [
+      "Diseñar el modelo E/R y modelo relacional de una BD usando diferentes herramientas de diseño.",
+      "Manipular los objetos de la BD y los datos.",
+      "Realizar mantenimiento a la estructura y datos de una BD usando las estructuras de lenguaje estructurado DDL, DML.",
+      "Proveer soporte técnico a BD relacionales de acuerdo a los requerimientos del usuario."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 31,
+   "nombre": "Redes y Comunicaciones 2",
+   "semestre": 5,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Redes y Comunicaciones 2.docx"
+   ],
+   "objetivos": [
+    "Aplicar conceptos avanzados de redes de datos mediante la configuración de VLANs, enrutamiento estático y dinámico (RIP, OSPF básico), switching avanzado (STP, EtherChannel), protocolos de capa de aplicación (HTTP, FTP, SMTP, DNS), listas de control de acceso (ACL), NAT/PAT, y servicios de red empresariales (DHCP, DNS, NTP), para diseñar, implementar, configurar y administrar redes LAN segmentadas y redes WAN básicas en entornos empresariales, siguiendo estándares internacionales y aplicando técnicas de troubleshooting sistemático para garantizar la disponibilidad y rendimiento de la infraestructura de red."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen documentación técnica de configuración avanzada de redes (comandos IOS, configuraciones VLAN, protocolos de enrutamiento).",
+      "Identifica los procesos y algoritmos descritos en protocolos de enrutamiento (RIP, OSPF)."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de configuraciones de red multi-capa (VLANs, enrutamiento inter-VLAN, ACLs, NAT).",
+      "Comprende las relaciones entre diferentes protocolos y servicios en una red empresarial (DHCP, DNS, routing, switching).",
+      "Identifica y caracteriza las diferentes etapas de troubleshooting de red."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de tablas de enrutamiento, tablas VLAN, y tablas MAC.",
+      "Transforma representaciones de configuraciones de red entre formatos (comandos CLI, diagramas de topología, tablas de direccionamiento)."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña esquemas de VLANs calculando cantidad de usuarios por segmento y optimizando el tráfico broadcast.",
+      "Ejecuta estrategias de troubleshooting de conectividad avanzado (problemas de enrutamiento, VLANs, ACLs).",
+      "Resuelve problemas de comunicación inter-VLAN y entre redes WAN analizando tablas de enrutamiento y configuraciones."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce documentación técnica de configuración avanzada de red con comandos secuenciales y explicaciones claras.",
+      "Produce diagramas de red multi-capa con nomenclatura estándar.",
+      "Produce informes de troubleshooting avanzado con análisis técnico apropiado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE07",
+     "texto": "Aplica las normas técnicas para brindar soporte de calidad a redes de datos y comunicaciones en entornos empresariales.",
+     "resultados": [
+      "Conocer los estándares y normas de aplicación internacional y nacional para el diseño y mantenimiento de redes de datos LAN y WLAN de acuerdo a las necesidades del entorno.",
+      "Comprender el concepto modelo OSI que se aplica a las redes de datos y comunicaciones.",
+      ". Aplicar configuraciones de red bajo el protocolo TCP/IP.",
+      "Aplicar configuraciones a dispositivos de red capa 1, 2 y 3."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software.",
+      "Escribir documentos técnicos relacionados con servicios de red empresariales (DHCP, DNS, NTP).",
+      "Presentar documentos de diseño de red empresarial con diagramas multi-capa y tablas de enrutamiento."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 32,
+   "nombre": "Técnicas de Investigación",
+   "semestre": 5,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Syllabus 2026 - Tecnicas de Investigación.docx"
+   ],
+   "objetivos": [
+    "Aplicar de manera adecuada las principales técnicas de investigación para la recolección, organización y análisis de información científica, garantizando validez, confiabilidad y rigor académico.",
+    "Seleccionar y diseñar instrumentos de recolección de datos coherentes con el enfoque metodológico, el tipo de investigación y el problema planteado, considerando criterios éticos y contextuales.",
+    "Analizar e interpretar información recolectada mediante técnicas cualitativas y cuantitativas, apoyándose en herramientas básicas de análisis de datos para la toma de decisiones académicas y profesionales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE12",
+     "texto": "Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.",
+     "resultados": [
+      "Derivar conclusiones consistentes con información que la respalde.",
+      "Evaluar la metodología o hipótesis inicial, conjeturas o posibles explicaciones a partir del análisis de los resultados."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Reconoce su papel y responsabilidad disciplinar, social y ética como ingeniero en un contexto de desempeño profesional.",
+     "resultados": [
+      "Identificar sus responsabilidades éticas, sociales y técnicas en el ejercicio de su profesión frente a referentes de actuación como códigos y normas."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 33,
+   "nombre": "Electiva Profesional 2",
+   "semestre": 5,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Electiva Profesional 2 - Redes Inalámbricas.docx"
+   ],
+   "objetivos": [
+    "Aplicar conceptos avanzados de tecnologías de redes inalámbricas mediante el estudio en profundidad de estándares Wi-Fi (IEEE 802.11a/b/g/n/ac/ax), arquitecturas WLAN empresariales (autónoma vs controlada), técnicas de site survey y planificación de cobertura, configuración avanzada de access points y wireless LAN controllers, seguridad inalámbrica (WPA2-Enterprise, 802.1X, RADIUS), optimización de rendimiento (roaming, load balancing, band steering), introducción a tecnologías inalámbricas complementarias (Bluetooth, ZigBee, LoRaWAN, 5G), y troubleshooting avanzado de WLAN, para diseñar, implementar, administrar y optimizar redes inalámbricas empresariales de alto rendimiento, escalables y seguras, siguiendo mejores prácticas y estándares internacionales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen estándares de redes inalámbricas (IEEE 802.11, especificaciones técnicas de equipos).",
+      "Identifica los protocolos y tecnologías descritos en documentación técnica de WLAN."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de arquitecturas WLAN empresariales y la función de sus componentes (APs, WLC, RADIUS).",
+      "Comprende las relaciones entre diferentes tecnologías inalámbricas y sus aplicaciones (Wi-Fi, Bluetooth, LoRaWAN)."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de información de site survey presentada en mapas de calor (heatmaps), gráficos de niveles de señal, tablas de canales.",
+      "Transforma representaciones de configuraciones WLAN entre formatos (comandos CLI, diagramas de topología, tablas de parámetros RF)."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña redes WLAN calculando cantidad de APs necesarios, ubicación óptima, potencia de transmisión, selección de canales.",
+      "Ejecuta estrategias de troubleshooting de problemas de cobertura, interferencias, roaming, analizando métricas RF (RSSI, SNR, noise floor).",
+      "Resuelve problemas de rendimiento de WLAN midiendo throughput, latencia, packet loss, y aplicando técnicas de optimización."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce documentación técnica de diseño de WLAN (site survey reports, design documents) con instrucciones claras y secuenciales.",
+      "Produce reportes de site survey con mapas de calor, análisis de cobertura y recomendaciones técnicas.",
+      "Produce informes de troubleshooting de WLAN con análisis técnico apropiado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE07",
+     "texto": "Aplica las normas técnicas para brindar soporte de calidad a redes de datos y comunicaciones en entornos empresariales.",
+     "resultados": [
+      "Conocer los estándares y normas de aplicación internacional y nacional para el diseño y mantenimiento de redes de datos LAN y WLAN de acuerdo a las necesidades del entorno.",
+      "Comprender el concepto modelo OSI que se aplica a las redes de datos y comunicaciones.",
+      "Aplicar configuraciones de red bajo el protocolo TCP/IP.",
+      "Aplicar configuraciones a dispositivos de red capa 1, 2 y 3"
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con diseño de WLAN (site survey reports, RF design documents, configuration guides).",
+      "Escribir documentos técnicos relacionados con servicios inalámbricos empresariales (políticas de seguridad WLAN, procedimientos de troubleshooting).",
+      "Presentar documentos de diseño de WLAN con diagramas, mapas de cobertura, y especificaciones técnicas."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 34,
+   "nombre": "Programación FrontEnd",
+   "semestre": 6,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Programación FrontEnd.docx"
+   ],
+   "objetivos": [
+    "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio de frameworks modernos de JavaScript para crear aplicaciones web interactivas de tipo SPA (Single Page Application).",
+    "\"La aplicación de pruebas y mantenimiento de soluciones de software y aplicaciones optimizando recursos y tiempo\" a través del desarrollo de aplicaciones frontend escalables y mantenibles."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE05",
+     "texto": "Concreta el despliegue y documentación del proyecto de software.",
+     "resultados": [
+      "Instalar las aplicaciones base y el software de acuerdo a la arquitectura del sistema.",
+      "Construir la documentación técnica del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con hardware y software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 35,
+   "nombre": "Proyecto de Software 3",
+   "semestre": 6,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Proyecto de Software 3.docx"
+   ],
+   "objetivos": [
+    "Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas.",
+    "El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas."
+   ],
+   "genericas": [],
+   "especificas": [
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Definir una metodología de desarrollo de software acorde las necesidades y tipo de empresa.",
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE04",
+     "texto": "Realiza pruebas y mantenimiento al software para garantizar que las funcionalidades se desarrollaron e implementaron correctamente y de acuerdo con las especificaciones del diseño.",
+     "resultados": [
+      "Aplicar el plan de pruebas al software.",
+      "Realiza pruebas individuales a cada subconjunto del software.",
+      "Realizar pruebas de integración software.",
+      "Realizar pruebas del sistema.",
+      "Preparar el informe técnico de las pruebas del software que permitan la refinación del software.",
+      "Realizar mantenimiento del software a partir de las necesidades identificadas."
+     ]
+    },
+    {
+     "codigo": "CE05",
+     "texto": "Concreta el despliegue y documentación del proyecto de software.",
+     "resultados": [
+      "Instalar las aplicaciones base y el software de acuerdo a la arquitectura del sistema.",
+      "Construir la documentación técnica del software.",
+      "Capacitar a los diferentes stakeholders (cliente/empresa) sobre el funcionamiento del software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 36,
+   "nombre": "Metodología de Desarrollo de Software",
+   "semestre": 6,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Metodologia de Desarrollo de Software Uniputumayo.docx"
+   ],
+   "objetivos": [
+    "Aplicar metodologías de desarrollo de software tradicionales y ágiles para gestionar proyectos de software de manera efectiva, comprendiendo los fundamentos de cada enfoque metodológico (cascada, iterativo, incremental, Scrum, Kanban, XP), seleccionando la metodología apropiada según el contexto del proyecto, implementando prácticas ágiles (sprints, retrospectivas, daily meetings, user stories), y documentando el proceso de desarrollo utilizando herramientas de gestión de proyectos (Jira, Trello, Azure DevOps), para garantizar entregas de valor continuas y adaptativas a las necesidades del cliente."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen documentación de metodologías (Scrum Guide, Manifiesto Ágil, guías de PMBOK).",
+      "Identifica los eventos, roles y artefactos descritos en marcos de trabajo ágiles."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de frameworks metodológicos y la función de sus componentes (roles, eventos, artefactos).",
+      "Identifica y caracteriza las diferentes fases de ciclos de vida de desarrollo (SDLC).",
+      "Comprende las relaciones entre diferentes ceremonias ágiles y su propósito dentro del ciclo iterativo."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes de iteración (sprints) considerando velocidad del equipo y capacidad.",
+      "Ejecuta estrategias de estimación de esfuerzo utilizando técnicas como Planning Poker y puntos de historia.",
+      "Resuelve problemas de planificación de proyecto calculando métricas ágiles (burndown, velocity, lead time)."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce documentación de proyecto (Product Backlog, Sprint Backlog, retrospectivas) con ideas claras y secuenciales.",
+      "Produce historias de usuario bien estructuradas con formato estándar (Como [rol], quiero [funcionalidad], para [beneficio]).",
+      "Produce informes de seguimiento de proyecto con lenguaje apropiado para stakeholders técnicos y de negocio."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Comprende y aplica las técnicas y normas de recolección de información para determinar los requisitos del software y aplicaciones con base en las necesidades del cliente.",
+     "resultados": [
+      "Conocer los conceptos de requisitos software y sus tipos.",
+      "Comprender las normas y modelos técnicos existentes para aplicarlos en la obtención de requisitos del software.",
+      "Definir el objetivo y alcance del software en acuerdo a las necesidades del cliente.",
+      "Preparar documentos técnicos de historias de usuario con criterios de aceptación que soporten el diseño del software."
+     ]
+    },
+    {
+     "codigo": "CE02",
+     "texto": "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.",
+     "resultados": [
+      "Definir un esbozo de la arquitectura aplicada al diseño.",
+      "Dibujar modelos y diagramas que comuniquen la solución (user story mapping, release plan).",
+      "Refinar la arquitectura y modelos con base en las validaciones con el cliente.",
+      "Preparar el plan de pruebas del software."
+     ]
+    },
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Definir una metodología de desarrollo de software acorde a las necesidades y tipo de empresa.",
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE05",
+     "texto": "Concreta el despliegue y documentación del proyecto de software.",
+     "resultados": [
+      "Construir la documentación técnica del software.",
+      "Capacitar a los diferentes stakeholders (cliente/empresa) sobre el funcionamiento del software."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con planificación de sprints, retrospectivas, y reportes de avance.",
+      "Presentar un documento de estimación de costos en el desarrollo de software."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 37,
+   "nombre": "Telemática",
+   "semestre": 6,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Telemática.docx"
+   ],
+   "objetivos": [
+    "Aplicar conceptos de servicios telemáticos y tecnologías de comunicación avanzadas mediante el estudio de servicios de red empresariales (VoIP, videoconferencia, streaming), calidad de servicio (QoS), redes inalámbricas (Wi-Fi, configuración de access points, seguridad inalámbrica), virtualización de redes (VPNs, túneles seguros), administración de servidores de red (web, correo, FTP, proxy), y protocolos de gestión (SNMP, Syslog), para diseñar, implementar, administrar y dar soporte a servicios telemáticos integrados en entornos empresariales y de telecomunicaciones, garantizando disponibilidad, rendimiento y seguridad de los servicios según estándares internacionales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen documentación técnica de servicios telemáticos (VoIP, VPN, QoS, protocolos de gestión).",
+      "Identifica los procesos y tecnologías descritos en estándares de telecomunicaciones (IEEE 802.11, SIP, H.323)."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de arquitecturas de servicios telemáticos y la función de sus componentes (servidores, gateways, access points, VPN tunnels).",
+      "Comprende las relaciones entre diferentes protocolos y servicios en una infraestructura telemática integrada (VoIP sobre VPN, QoS para videoconferencia)."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de métricas de QoS presentadas en gráficos (latencia, jitter, packet loss, throughput).",
+      "Transforma representaciones de configuraciones de servicios telemáticos entre formatos (comandos CLI, diagramas de flujo de tráfico, políticas QoS)."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña políticas de QoS calculando ancho de banda necesario para servicios críticos (VoIP, videoconferencia).",
+      "Ejecuta estrategias de optimización de redes inalámbricas midiendo niveles de señal, interferencias y throughput.",
+      "Resuelve problemas de calidad de servicios telemáticos analizando métricas de rendimiento y logs de servidor."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce documentación técnica de configuración de servicios telemáticos con instrucciones claras y secuenciales.",
+      "Produce diagramas de arquitectura de servicios con nomenclatura estándar.",
+      "Produce informes de análisis de rendimiento de servicios telemáticos con lenguaje técnico apropiado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE07",
+     "texto": "Aplica las normas técnicas para brindar soporte de calidad a redes de datos y comunicaciones en entornos empresariales.",
+     "resultados": [
+      "Conocer los estándares y normas de aplicación internacional y nacional para el diseño y mantenimiento de redes de datos LAN y WLAN de acuerdo a las necesidades del entorno.",
+      "Comprender el concepto modelo OSI que se aplica a las redes de datos y comunicaciones.",
+      "Aplicar configuraciones de red bajo el protocolo TCP/IP.",
+      "Aplicar configuraciones a dispositivos de red capa 1, 2 y 3"
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con configuración de servicios telemáticos (VoIP, VPN, servidores de red).",
+      "Escribir documentos técnicos relacionados con servicios TIC incluyendo manuales de administración de servicios de red.",
+      "Presentar documentos de diseño de arquitectura de servicios telemáticos con diagramas y especificaciones técnicas."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 38,
+   "nombre": "Electiva Profesional 3",
+   "semestre": 6,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Electiva Profesional 3 - Frameworks de aplicaciones.docx"
+   ],
+   "objetivos": [
+    "Aplicar frameworks modernos de desarrollo de software para construir aplicaciones web full-stack mediante el uso de frameworks backend (Django, Spring Boot, Express.js), frameworks frontend (React, Angular, Vue.js), herramientas de gestión de dependencias (npm, pip, Maven), arquitectura de microservicios básica, contenedorización con Docker, orquestación con Docker Compose, pipelines de CI/CD básicos (GitHub Actions, GitLab CI), y despliegue en plataformas cloud (Heroku, AWS, Azure, Google Cloud), para desarrollar, integrar, desplegar y mantener aplicaciones empresariales escalables, mantenibles y de alto rendimiento siguiendo mejores prácticas de la industria."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen documentación técnica de frameworks (guías oficiales de Django, React, Spring Boot).",
+      "Identifica los componentes y patrones arquitectónicos descritos en documentación de frameworks (MVC, MVVM, componentes, servicios)."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de arquitecturas de aplicaciones full-stack y la función de sus componentes (frontend, backend, base de datos, APIs).",
+      "Comprende las relaciones entre diferentes capas de una aplicación (presentación, lógica de negocio, acceso a datos).",
+      "Identifica y caracteriza las diferentes etapas de pipelines de CI/CD (build, test, deploy)."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña arquitecturas de aplicaciones considerando métricas de rendimiento (tiempo de respuesta, throughput, escalabilidad).",
+      "Ejecuta estrategias de optimización de aplicaciones analizando métricas de carga (tiempo de carga, tamaño de bundles, queries de base de datos).",
+      "Resuelve problemas de rendimiento de aplicaciones midiendo y optimizando componentes críticos."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce documentación técnica de aplicaciones (README, API docs, guías de despliegue) con instrucciones claras y secuenciales.",
+      "Produce documentación de código con comentarios apropiados y docstrings.",
+      "Produce informes de arquitectura de software con diagramas y especificaciones técnicas."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE02",
+     "texto": "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.",
+     "resultados": [
+      "Definir un esbozo de la arquitectura aplicada al diseño.",
+      "Dibujar modelos que comuniquen la solución: diagramas de arquitectura, diagramas de componentes, diagramas de despliegue.",
+      "Refinar la arquitectura con base en validaciones y pruebas de rendimiento.",
+      "Preparar documentación técnica de APIs (Swagger/OpenAPI)."
+     ]
+    },
+    {
+     "codigo": "CE03",
+     "texto": "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.",
+     "resultados": [
+      "Definir una metodología de desarrollo de software acorde las necesidades y tipo de empresa.",
+      "Conocer los fundamentos de programación.",
+      "Codificar las funcionalidades del software.",
+      "Integrar las funcionalidades del software."
+     ]
+    },
+    {
+     "codigo": "CE04",
+     "texto": "Realiza pruebas y mantenimiento al software para garantizar que las funcionalidades se desarrollaron e implementaron correctamente y de acuerdo con las especificaciones del diseño.",
+     "resultados": [
+      "Aplicar pruebas automatizadas en aplicaciones con frameworks (pruebas unitarias con Jest, pytest; pruebas de integración).",
+      "Realizar pruebas de APIs con herramientas (Postman, Insomnia).",
+      "Preparar informes de pruebas y cobertura de código."
+     ]
+    },
+    {
+     "codigo": "CE05",
+     "texto": "Concreta el despliegue y documentación del proyecto de software.",
+     "resultados": [
+      "Instalar las aplicaciones base y el software de acuerdo a la arquitectura del sistema.",
+      "Construir la documentación técnica del software.",
+      "Capacitar sobre el funcionamiento del software mediante documentación clara y demos."
+     ]
+    },
+    {
+     "codigo": "CE08",
+     "texto": "Produce documentos técnicos de soporte y/o servicios TIC.",
+     "resultados": [
+      "Escribir documentos técnicos relacionados con arquitectura de aplicaciones, configuración de frameworks, despliegue con Docker.",
+      "Escribir documentos técnicos relacionados con APIs REST (documentación con Swagger/OpenAPI).",
+      "Presentar documentos de arquitectura de software con diagramas y justificación de decisiones técnicas."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 39,
+   "nombre": "Electiva Complementaria 1",
+   "semestre": 6,
+   "ciclo": "Tecnológico",
+   "archivos": [
+    "Syllabus 2026 - Electiva Complementaria I.docx"
+   ],
+   "objetivos": [
+    "Analizar e interpretar textos de diversa tipología, identificando ideas principales, intenciones comunicativas y relaciones implícitas, para responder de manera argumentada a preguntas tipo SABER TyT del módulo de Lectura Crítica.",
+    "Evaluar situaciones problema de carácter social y ciudadano, reconociendo derechos, deberes, principios democráticos y mecanismos de convivencia, con el fin de proponer soluciones fundamentadas en contextos similares a los evaluados en el módulo de Competencias Ciudadanas.",
+    "Aplicar habilidades de pensamiento crítico y toma de decisiones responsables, integrando la comprensión lectora y el análisis ciudadano, para mejorar su desempeño académico y asumir un rol activo y ético en contextos sociales, académicos y profesionales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Identifica los eventos narrados de manera explícita en un texto (literario, descriptivo, caricatura o cómic) y los personajes involucrados (si los hay)."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo."
+     ]
+    },
+    {
+     "codigo": "CG07",
+     "texto": "Identifica la organización del estado colombiano, los fundamentos del modelo de estado social de derecho y las",
+     "resultados": [
+      "Conoce la constitución política de Colombia, sus principios fundamentales, derechos, deberes y la organización del estado."
+     ]
+    },
+    {
+     "codigo": "CG08",
+     "texto": "Reconoce la existencia de diversidad y multiperspectivismo.",
+     "resultados": [
+      "Reconoce y Analiza en el marco del respeto, la existencia de diferentes perspectivas en situaciones donde interactúan diferentes partes."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE12",
+     "texto": "Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.",
+     "resultados": [
+      "Derivar conclusiones consistentes con información que la respalde.",
+      "Evaluar la metodología o hipótesis inicial, conjeturas o posibles explicaciones a partir del análisis de los resultados."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Reconoce su papel y responsabilidad disciplinar, social y ética como ingeniero en un contexto de desempeño profesional.",
+     "resultados": [
+      "Identificar sus responsabilidades éticas, sociales y técnicas en el ejercicio de su profesión frente a referentes de actuación como códigos y normas."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 40,
+   "nombre": "Investigación de Operaciones",
+   "semestre": 7,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Investigación de Operaciones.docx"
+   ],
+   "objetivos": [
+    "Aplicar modelos y técnicas matemáticas de investigación de operaciones para la optimización de recursos y toma de decisiones en sistemas organizacionales, contribuyendo a la formulación, dirección, planeación, evaluación y control de estrategias empresariales en proyectos TI."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+     "resultados": [
+      "Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible en el marco de la solución a un problema.",
+      "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos.",
+      "Establece la validez o pertinencia de una solución propuesta a un problema dado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Formula y evalúa proyectos con enfoque TIC, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+     "resultados": [
+      "Caracterizar el proyecto de acuerdo con su índole o naturaleza social, económica, de inversión (entre otros) y el entorno utilizando referentes apropiados.",
+      "Cuantificar, en el marco de la planeación de un proyecto, elementos fundamentales como alcance, tiempo y costo."
+     ]
+    },
+    {
+     "codigo": "CE12",
+     "texto": "Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.",
+     "resultados": [
+      "Derivar conclusiones consistentes con información que la respalde.",
+      "Evaluar la metodología o hipótesis inicial, conjeturas o posibles explicaciones a partir del análisis de los resultados."
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas.",
+     "resultados": [
+      "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.",
+      "Determinar las ventajas y limitaciones de usar un determinado modelo.",
+      "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 41,
+   "nombre": "Programación Avanzada",
+   "semestre": 7,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Programación Avanzada V2.docx"
+   ],
+   "objetivos": [
+    "Desarrollar soluciones de software complejas aplicando técnicas avanzadas de programación, patrones de diseño, estructuras de datos eficientes y paradigmas modernos, para construir aplicaciones escalables y mantenibles que soporten las necesidades de proyectos TI empresariales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen un texto."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software.",
+     "resultados": [
+      "Comprender e interpretar en un marco técnico la información para identificar el problema que se requiere resolver en un contexto específico.",
+      "Diferenciar y plantear restricciones y requerimientos del producto tecnológico por diseñar.",
+      "Formular las especificaciones técnicas para el diseño del producto tecnológico.",
+      "Reconocer alternativas viables de solución para satisfacer requerimientos, restricciones y especificaciones técnicas de diseño.",
+      "Comparar alternativas viables de solución de acuerdo con criterios determinados.",
+      "Seleccionar la alternativa más adecuada de solución."
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Aplica los conocimientos de las matemáticas, la tecnología y las ciencias de la ingeniería para especificar en forma detallada un producto tecnológico.",
+     "resultados": [
+      "Realizar cálculos y procedimientos necesarios para detallar el producto tecnológico y sus componentes.",
+      "Plantear especificaciones para el proceso de desarrollo del producto tecnológico.",
+      "Revisar, verificar y validar que una solución cumpla con las especificaciones técnicas de diseño."
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas.",
+     "resultados": [
+      "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.",
+      "Determinar las ventajas y limitaciones de usar un determinado modelo.",
+      "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 42,
+   "nombre": "Arquitectura de Software",
+   "semestre": 7,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Arquitectura de Software.docx"
+   ],
+   "objetivos": [
+    "Diseñar arquitecturas de software robustas, escalables y mantenibles que satisfagan requisitos funcionales y atributos de calidad, aplicando estilos arquitectónicos, patrones y tácticas apropiadas para liderar proyectos de desarrollo de software empresarial."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+      "Comprende las relaciones entre diferentes partes o enunciados de un texto."
+     ]
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Reflexiona a partir de un texto y evalúa su contenido.",
+     "resultados": [
+      "Establece la validez e implicaciones de un enunciado de un texto (argumentativo o expositivo).",
+      "Establece relaciones entre un texto y otros textos o enunciados.",
+      "Reconoce las estrategias discursivas en un texto.",
+      "Contextualiza adecuadamente un texto o la información contenida en este."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Formula y evalúa proyectos con enfoque TIC, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+     "resultados": [
+      "Caracterizar el proyecto de acuerdo con su índole o naturaleza social, económica, de inversión (entre otros) y el entorno utilizando referentes apropiados.",
+      "Aplicar las metodologías apropiadas para la formulación de un proyecto."
+     ]
+    },
+    {
+     "codigo": "CE10",
+     "texto": "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software.",
+     "resultados": [
+      "Comprender e interpretar en un marco técnico la información para identificar el problema que se requiere resolver en un contexto específico.",
+      "Diferenciar y plantear restricciones y requerimientos del producto tecnológico por diseñar.",
+      "Formular las especificaciones técnicas para el diseño del producto tecnológico.",
+      "Reconocer alternativas viables de solución para satisfacer requerimientos, restricciones y especificaciones técnicas de diseño.",
+      "Comparar alternativas viables de solución de acuerdo con criterios determinados.",
+      "Seleccionar la alternativa más adecuada de solución."
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Aplica los conocimientos de las matemáticas, la tecnología y las ciencias de la ingeniería para especificar en forma detallada un producto tecnológico.",
+     "resultados": [
+      "Realizar cálculos y procedimientos necesarios para detallar el producto tecnológico y sus componentes.",
+      "Plantear especificaciones para el proceso de desarrollo del producto tecnológico.",
+      "Revisar, verificar y validar que una solución cumpla con las especificaciones técnicas de diseño."
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas.",
+     "resultados": [
+      "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.",
+      "Determinar las ventajas y limitaciones de usar un determinado modelo.",
+      "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 43,
+   "nombre": "Base de Datos No Relacionales",
+   "semestre": 7,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Base de Datos No Relacionales V2.docx"
+   ],
+   "objetivos": [
+    "Diseñar e implementar soluciones de almacenamiento y gestión de datos utilizando bases de datos NoSQL, seleccionando el tipo apropiado según las características del problema, para soportar aplicaciones modernas con grandes volúmenes de datos, alta escalabilidad y requisitos de rendimiento exigentes."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software.",
+     "resultados": [
+      "Comprender e interpretar en un marco técnico la información para identificar el problema que se requiere resolver en un contexto específico.",
+      "Reconocer alternativas viables de solución para satisfacer requerimientos, restricciones y especificaciones técnicas de diseño.",
+      "Comparar alternativas viables de solución de acuerdo con criterios determinados.",
+      "Seleccionar la alternativa más adecuada de solución."
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Aplica los conocimientos de las matemáticas, la tecnología y las ciencias de la ingeniería para especificar en forma detallada un producto tecnológico.",
+     "resultados": [
+      "Realizar cálculos y procedimientos necesarios para detallar el producto tecnológico y sus componentes.",
+      "Plantear especificaciones para el proceso de desarrollo del producto tecnológico.",
+      "Revisar, verificar y validar que una solución cumpla con las especificaciones técnicas de diseño."
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas.",
+     "resultados": [
+      "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.",
+      "Determinar las ventajas y limitaciones de usar un determinado modelo.",
+      "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Evalúa la efectividad de recursos tecnológicos que sean usados en la organización basado en la arquitectura empresarial.",
+     "resultados": [
+      "Configurar, usar y administrar recursos tecnológicos (HW/SW).",
+      "Diseñar planes de mejoramiento para el uso eficiente de recursos tecnológicos o su actualización."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 44,
+   "nombre": "Soluciones en Telecomunicaciones",
+   "semestre": 7,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Soluciones en Telecomunicaciones.docx"
+   ],
+   "objetivos": [
+    "Diseñar e implementar soluciones integrales de telecomunicaciones para entornos empresariales, aplicando tecnologías convergentes de voz, datos y video, así como servicios en la nube, para soportar la infraestructura de comunicaciones de organizaciones modernas."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+     "resultados": [
+      "Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible en el marco de la solución a un problema.",
+      "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos.",
+      "Establece la validez o pertinencia de una solución propuesta a un problema dado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Formula y evalúa proyectos con enfoque TIC, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+     "resultados": [
+      "Caracterizar el proyecto de acuerdo con su índole o naturaleza social, económica, de inversión (entre otros) y el entorno utilizando referentes apropiados.",
+      "Aplicar las metodologías apropiadas para la formulación de un proyecto.",
+      "Formular el proyecto, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+      "Analizar e interpretar la viabilidad financiera de un proyecto."
+     ]
+    },
+    {
+     "codigo": "CE10",
+     "texto": "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software.",
+     "resultados": [
+      "Comprender e interpretar en un marco técnico la información para identificar el problema que se requiere resolver en un contexto específico.",
+      "Reconocer alternativas viables de solución para satisfacer requerimientos, restricciones y especificaciones técnicas de diseño.",
+      "Comparar alternativas viables de solución de acuerdo con criterios determinados.",
+      "Seleccionar la alternativa más adecuada de solución."
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Aplica los conocimientos de las matemáticas, la tecnología y las ciencias de la ingeniería para especificar en forma detallada un producto tecnológico.",
+     "resultados": [
+      "Realizar cálculos y procedimientos necesarios para detallar el producto tecnológico y sus componentes.",
+      "Plantear especificaciones para el proceso de desarrollo del producto tecnológico.",
+      "Revisar, verificar y validar que una solución cumpla con las especificaciones técnicas de diseño."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Evalúa la efectividad de recursos tecnológicos que sean usados en la organización basado en la arquitectura empresarial.",
+     "resultados": [
+      "Configurar, usar y administrar recursos tecnológicos (HW/SW).",
+      "Diseñar planes de mejoramiento para el uso eficiente de recursos tecnológicos o su actualización.",
+      "Organizar el procesamiento electrónico de información según normatividad de gestión de la información y los protocolos de seguimiento organizacional."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 45,
+   "nombre": "Emprendimiento",
+   "semestre": 7,
+   "ciclo": "Profesional",
+   "archivos": [
+    "7. Emprendimiento.docx"
+   ],
+   "objetivos": [
+    "Desarrollar una mentalidad emprendedora a través de la implementación y apropiación de herramientas efectivas y, a partir de eventuales iniciativas de emprendimiento empresarial (potenciales negocios), generar valor en el ecosistema emprendedor para proyectarse en el contexto local, nacional o internacional"
+   ],
+   "genericas": [],
+   "especificas": [
+    {
+     "codigo": "",
+     "texto": "Aplicar estrategias que permitan la conservación y el uso sostenible de los recursos tecnológicos.",
+     "resultados": []
+    }
+   ],
+   "rae": [
+    "Conoce herramientas conceptuales, instrumentales y normativas para la evaluación del estado de conservación del patrimonio biológico",
+    "Comprende el valor de la diversidad étnica y cultural en la dimensión de identidad, saberes y costumbres que contribuyen a la conservación de los recursos naturales del territorio."
+   ],
+   "estado": "completo"
+  },
+  {
+   "id": 46,
+   "nombre": "Analítica de Datos",
+   "semestre": 8,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Analitica de Datos V2.docx"
+   ],
+   "objetivos": [
+    "Aplicar técnicas y herramientas de analítica de datos para extraer información valiosa, generar insights de negocio y soportar la toma de decisiones basada en datos, mediante el análisis exploratorio, visualización y modelado estadístico de grandes volúmenes de información."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.",
+     "resultados": [
+      "Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible en el marco de la solución a un problema.",
+      "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos.",
+      "Establece la validez o pertinencia de una solución propuesta a un problema dado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE12",
+     "texto": "Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.",
+     "resultados": [
+      "Derivar conclusiones consistentes con información que la respalde.",
+      "Evaluar la metodología o hipótesis inicial, conjeturas o posibles explicaciones a partir del análisis de los resultados."
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas.",
+     "resultados": [
+      "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.",
+      "Determinar las ventajas y limitaciones de usar un determinado modelo.",
+      "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Evalúa la efectividad de recursos tecnológicos que sean usados en la organización basado en la arquitectura empresarial.",
+     "resultados": [
+      "Configurar, usar y administrar recursos tecnológicos (HW/SW).",
+      "Diseñar planes de mejoramiento para el uso eficiente de recursos tecnológicos o su actualización."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 47,
+   "nombre": "Sistemas Operativos",
+   "semestre": 8,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Sistemas Operativos.docx"
+   ],
+   "objetivos": [
+    "Comprender los fundamentos de los sistemas operativos modernos y administrar recursos del sistema (procesador, memoria, almacenamiento, E/S) mediante técnicas de gestión de procesos, memoria, archivos y concurrencia, capacitando al estudiante para diseñar, optimizar y administrar sistemas operativos en entornos empresariales y de desarrollo."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Comprensión de conocimientos",
+     "resultados": [
+      "Comprender los fundamentos teóricos de los sistemas operativos (arquitectura, kernel, llamadas al sistema)",
+      "Comprender algoritmos de planificación, gestión de memoria y sistemas de archivos"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Implementar soluciones a problemas de concurrencia, deadlocks y sincronización",
+      "Optimizar el rendimiento del sistema mediante técnicas de tuning"
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Validación de procedimientos",
+     "resultados": [
+      "Validar la correctitud de algoritmos de planificación y gestión de memoria mediante simulaciones",
+      "Evaluar el desempeño de sistemas operativos en diferentes escenarios"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones",
+     "resultados": [
+      "Diseñar estrategias de gestión de procesos y memoria para optimizar el rendimiento del sistema",
+      "Configurar y personalizar kernels para requisitos específicos"
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Implementación técnica",
+     "resultados": [
+      "Implementar programas de sistema que interactúan con el kernel mediante syscalls",
+      "Desarrollar scripts de administración y automatización en Linux/Unix"
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Modelado y predicción",
+     "resultados": [
+      "Modelar el comportamiento de sistemas operativos mediante simuladores",
+      "Predecir el rendimiento del sistema bajo diferentes cargas de trabajo"
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes",
+     "resultados": [
+      "Integrar componentes del sistema operativo (procesos, memoria, E/S) en soluciones coherentes",
+      "Configurar sistemas operativos en entornos virtualizados y contenedores"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 48,
+   "nombre": "Bases de Datos y Almacenamiento Masivo",
+   "semestre": 8,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Bases de Datos y Almacenamiento Masivo.docx"
+   ],
+   "objetivos": [
+    "Diseñar, implementar y administrar soluciones de bases de datos escalables y sistemas de almacenamiento masivo para grandes volúmenes de datos (Big Data), aplicando tecnologías de bases de datos distribuidas, NoSQL especializadas, data lakes, almacenamiento en cloud, técnicas de sharding, replicación y optimización de consultas, capacitando al estudiante para gestionar infraestructuras de datos empresariales de alta disponibilidad y rendimiento."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Razonamiento cuantitativo",
+     "resultados": [
+      "Comprender modelos de consistencia y teorema CAP en sistemas distribuidos",
+      "Analizar métricas de rendimiento de bases de datos (throughput, latencia, IOPS)"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Resolver problemas de escalabilidad mediante particionamiento y replicación",
+      "Optimizar consultas en bases de datos distribuidas"
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Validación de procedimientos",
+     "resultados": [
+      "Validar estrategias de respaldo y recuperación ante desastres",
+      "Evaluar el rendimiento de sistemas de almacenamiento mediante benchmarks"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones",
+     "resultados": [
+      "Diseñar arquitecturas de bases de datos distribuidas y data lakes",
+      "Diseñar estrategias de particionamiento y replicación"
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Implementación técnica",
+     "resultados": [
+      "Implementar clusters de bases de datos distribuidas (Cassandra, MongoDB, CockroachDB)",
+      "Configurar sistemas de almacenamiento en cloud (S3, Azure Blob, GCS)"
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Modelado y predicción",
+     "resultados": [
+      "Modelar esquemas de datos para almacenamiento masivo",
+      "Predecir requisitos de almacenamiento y escalamiento"
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes",
+     "resultados": [
+      "Integrar bases de datos relacionales y NoSQL en arquitecturas políglota",
+      "Configurar pipelines de ingesta de datos masivos"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 49,
+   "nombre": "Arquitectura Empresarial de TI",
+   "semestre": 8,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Arquitectura Empresarial de TI new.docx"
+   ],
+   "objetivos": [
+    "Aplicar marcos de referencia de arquitectura empresarial para alinear la estrategia de TI con los objetivos de negocio, diseñando arquitecturas integradas que optimicen procesos, aplicaciones, datos e infraestructura tecnológica en organizaciones."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Comprende las relaciones entre diferentes partes o enunciados de un texto.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo."
+     ]
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Reflexiona a partir de un texto y evalúa su contenido.",
+     "resultados": [
+      "Establece la validez e implicaciones de un enunciado de un texto (argumentativo o expositivo).",
+      "Establece relaciones entre un texto y otros textos o enunciados.",
+      "Reconoce las estrategias discursivas en un texto.",
+      "Contextualiza adecuadamente un texto o la información contenida en este."
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.",
+     "resultados": [
+      "Produce escritos que establecen claramente el tema y contexto propuestos.",
+      "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.",
+      "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Formula y evalúa proyectos con enfoque TIC, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+     "resultados": [
+      "Caracterizar el proyecto de acuerdo con su índole o naturaleza social, económica, de inversión (entre otros) y el entorno utilizando referentes apropiados.",
+      "Aplicar las metodologías apropiadas para la formulación de un proyecto.",
+      "Formular el proyecto, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas."
+     ]
+    },
+    {
+     "codigo": "CE10",
+     "texto": "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software.",
+     "resultados": [
+      "Comprender e interpretar en un marco técnico la información para identificar el problema que se requiere resolver en un contexto específico.",
+      "Formular las especificaciones técnicas para el diseño del producto tecnológico.",
+      "Reconocer alternativas viables de solución para satisfacer requerimientos, restricciones y especificaciones técnicas de diseño.",
+      "Comparar alternativas viables de solución de acuerdo con criterios determinados.",
+      "Seleccionar la alternativa más adecuada de solución."
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas.",
+     "resultados": [
+      "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.",
+      "Determinar las ventajas y limitaciones de usar un determinado modelo.",
+      "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Evalúa la efectividad de recursos tecnológicos que sean usados en la organización basado en la arquitectura empresarial.",
+     "resultados": [
+      "Configurar, usar y administrar recursos tecnológicos (HW/SW).",
+      "Diseñar planes de mejoramiento para el uso eficiente de recursos tecnológicos o su actualización.",
+      "Organizar el procesamiento electrónico de información según normatividad de gestión de la información y los protocolos de seguimiento organizacional."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 50,
+   "nombre": "Electiva Profesional 4",
+   "semestre": 8,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Electiva Profesional 4 - Seguridad de la información.docx"
+   ],
+   "objetivos": [
+    "Diseñar e implementar políticas, procedimientos y controles de seguridad de la información para proteger los activos de información organizacionales mediante frameworks de seguridad (ISO 27001, NIST CSF), análisis de riesgos, gestión de vulnerabilidades, cumplimiento normativo, auditorías de seguridad y respuesta a incidentes, capacitando al estudiante para establecer y gestionar Sistemas de Gestión de Seguridad de la Información (SGSI) empresariales."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG02",
+     "texto": "Aplicación de conocimientos",
+     "resultados": [
+      "Aplicar frameworks de seguridad (ISO 27001, NIST CSF, CIS Controls)",
+      "Aplicar metodologías de análisis de riesgos (ISO 27005, NIST RMF)"
+     ]
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Análisis y síntesis",
+     "resultados": [
+      "Analizar amenazas y vulnerabilidades de activos de información",
+      "Sintetizar políticas de seguridad alineadas a objetivos de negocio"
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Validación de procedimientos",
+     "resultados": [
+      "Realizar auditorías de seguridad de la información",
+      "Evaluar la efectividad de controles de seguridad"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Gestión de proyectos TI",
+     "resultados": [
+      "Planificar y ejecutar proyectos de implementación de SGSI",
+      "Gestionar presupuestos de seguridad de la información"
+     ]
+    },
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones",
+     "resultados": [
+      "Diseñar arquitecturas de seguridad en profundidad",
+      "Diseñar políticas y procedimientos de seguridad"
+     ]
+    },
+    {
+     "codigo": "CE12",
+     "texto": "Análisis y evaluación",
+     "resultados": [
+      "Analizar riesgos de seguridad mediante metodologías formales",
+      "Evaluar la madurez de la seguridad de la información"
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes",
+     "resultados": [
+      "Integrar controles de seguridad en infraestructuras existentes",
+      "Implementar SGSI completo según ISO 27001"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 51,
+   "nombre": "Electiva Complementaria 2",
+   "semestre": 8,
+   "ciclo": "Profesional",
+   "archivos": [],
+   "objetivos": [],
+   "genericas": [],
+   "especificas": [],
+   "rae": [],
+   "estado": "sin_syllabus"
+  },
+  {
+   "id": 52,
+   "nombre": "Sistemas Distribuidos",
+   "semestre": 9,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Sistemas Distribuidos.docx"
+   ],
+   "objetivos": [
+    "Diseñar, implementar y gestionar sistemas distribuidos escalables y confiables, aplicando paradigmas de comunicación (RPC, mensajería, streaming), algoritmos de consenso, coordinación distribuida, replicación, particionamiento, tolerancia a fallos, consistencia de datos y arquitecturas modernas (microservicios, serverless, edge computing), capacitando al estudiante para construir sistemas que ejecutan en múltiples nodos coordinados para resolver problemas complejos de gran escala."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Comprensión de conocimientos",
+     "resultados": [
+      "Comprender principios de sistemas distribuidos (transparencia, escalabilidad, tolerancia a fallos)",
+      "Comprender modelos de consistencia y teorema CAP"
+     ]
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Análisis y síntesis",
+     "resultados": [
+      "Analizar trade-offs en diseño de sistemas distribuidos (consistencia vs disponibilidad)",
+      "Sintetizar soluciones arquitectónicas para problemas distribuidos"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Resolver problemas de coordinación y sincronización distribuida",
+      "Implementar soluciones de tolerancia a fallos"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones",
+     "resultados": [
+      "Diseñar arquitecturas de sistemas distribuidos escalables",
+      "Diseñar protocolos de comunicación y coordinación"
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Implementación técnica",
+     "resultados": [
+      "Implementar sistemas distribuidos con frameworks modernos (gRPC, Apache Kafka, ZooKeeper)",
+      "Desarrollar microservicios comunicados mediante mensajería"
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Modelado y predicción",
+     "resultados": [
+      "Modelar comportamiento de sistemas distribuidos bajo fallos",
+      "Predecir el rendimiento de sistemas distribuidos"
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes",
+     "resultados": [
+      "Integrar componentes distribuidos heterogéneos",
+      "Configurar sistemas de orquestación y service mesh"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 53,
+   "nombre": "Sistemas Expertos",
+   "semestre": 9,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Sistemas Expertos.docx"
+   ],
+   "objetivos": [
+    "Diseñar, desarrollar y evaluar sistemas expertos basados en conocimiento para resolver problemas complejos que requieren experiencia humana especializada, aplicando técnicas de representación del conocimiento, motores de inferencia, razonamiento bajo incertidumbre y aprendizaje, capacitando al estudiante para construir sistemas inteligentes de apoyo a la toma de decisiones en dominios especializados (medicina, finanzas, ingeniería, diagnóstico, etc.)."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Comprensión de conocimientos",
+     "resultados": [
+      "Comprender arquitecturas de sistemas expertos (base de conocimiento, motor de inferencia, interfaz)",
+      "Comprender métodos de razonamiento (deductivo, inductivo, abductivo)"
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Aplicación de conocimientos",
+     "resultados": [
+      "Aplicar técnicas de ingeniería del conocimiento para capturar expertise",
+      "Aplicar lógica y razonamiento formal en sistemas expertos"
+     ]
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Análisis y síntesis",
+     "resultados": [
+      "Analizar dominios de conocimiento complejos",
+      "Sintetizar reglas de conocimiento a partir de expertise humana"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones",
+     "resultados": [
+      "Diseñar arquitecturas de sistemas expertos para dominios especializados",
+      "Diseñar bases de conocimiento con reglas, marcos, redes semánticas"
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Implementación técnica",
+     "resultados": [
+      "Implementar sistemas expertos con herramientas especializadas (CLIPS, Prolog, Drools)",
+      "Desarrollar motores de inferencia personalizados"
+     ]
+    },
+    {
+     "codigo": "CE12",
+     "texto": "Análisis y evaluación",
+     "resultados": [
+      "Analizar la completitud y consistencia de bases de conocimiento",
+      "Evaluar el desempeño de sistemas expertos mediante métricas"
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Modelado y predicción",
+     "resultados": [
+      "Modelar conocimiento experto con ontologías",
+      "Predecir diagnósticos y soluciones mediante razonamiento"
+     ]
+    },
+    {
+     "codigo": "CE15",
+     "texto": "Innovación y emprendimiento",
+     "resultados": [
+      "Proponer aplicaciones innovadoras de sistemas expertos",
+      "Evaluar viabilidad comercial de sistemas expertos empresariales"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 54,
+   "nombre": "Diseño y Formulación de Proyectos TI",
+   "semestre": 9,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Diseño y Formulación de Proyectos TI.docx"
+   ],
+   "objetivos": [
+    "Formular y evaluar proyectos de tecnologías de información y comunicación (TIC) desde la concepción de la idea hasta el diseño completo del proyecto, aplicando metodologías de formulación (Marco Lógico, Canvas, Lean Startup), análisis de viabilidad técnica, económica, operativa y financiera, elaboración de estudios de mercado, análisis costo-beneficio, identificación de fuentes de financiación y preparación de propuestas profesionales, capacitando al estudiante para presentar proyectos TIC ante inversionistas, entidades financiadoras o dentro de organizaciones."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG02",
+     "texto": "Aplicación de conocimientos",
+     "resultados": [
+      "Aplicar metodologías de formulación de proyectos (PMI, Marco Lógico)",
+      "Aplicar técnicas de evaluación financiera (VAN, TIR, B/C)"
+     ]
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Análisis y síntesis",
+     "resultados": [
+      "Analizar la viabilidad de proyectos TIC en múltiples dimensiones",
+      "Sintetizar información compleja en propuestas ejecutivas"
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Razonamiento cuantitativo",
+     "resultados": [
+      "Realizar análisis financieros y evaluación económica de proyectos",
+      "Interpretar indicadores de rentabilidad y viabilidad"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Gestión de proyectos TI",
+     "resultados": [
+      "Formular proyectos TIC con alcance, cronograma, presupuesto y riesgos",
+      "Gestionar interesados y comunicación del proyecto"
+     ]
+    },
+    {
+     "codigo": "CE12",
+     "texto": "Análisis y evaluación",
+     "resultados": [
+      "Analizar la factibilidad técnica, económica y operativa de proyectos TIC",
+      "Evaluar alternativas de solución mediante criterios múltiples"
+     ]
+    },
+    {
+     "codigo": "CE15",
+     "texto": "Innovación y emprendimiento",
+     "resultados": [
+      "Identificar oportunidades de negocio basadas en TIC",
+      "Evaluar modelos de negocio y estrategias de monetización",
+      "Preparar pitch deck para inversionistas"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 55,
+   "nombre": "Minería de Datos",
+   "semestre": 9,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Minería de Datos.docx"
+   ],
+   "objetivos": [
+    "Aplicar técnicas y algoritmos de minería de datos para descubrir patrones, tendencias y conocimiento oculto en grandes volúmenes de datos, utilizando metodologías (CRISP-DM, SEMMA), técnicas de preprocesamiento, algoritmos de clasificación, clustering, reglas de asociación, detección de anomalías, series de tiempo y text mining, capacitando al estudiante para extraer información valiosa que soporte la toma de decisiones empresariales y científicas."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG04",
+     "texto": "Razonamiento cuantitativo",
+     "resultados": [
+      "Comprender fundamentos matemáticos de algoritmos de minería de datos",
+      "Interpretar resultados estadísticos y métricas de evaluación"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Seleccionar técnicas de minería apropiadas para problemas específicos",
+      "Resolver problemas de calidad de datos y desbalanceo de clases"
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Validación de procedimientos",
+     "resultados": [
+      "Evaluar modelos de minería de datos con métricas apropiadas",
+      "Validar descubrimientos mediante técnicas estadísticas"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE12",
+     "texto": "Análisis y evaluación",
+     "resultados": [
+      "Analizar conjuntos de datos complejos para identificar patrones",
+      "Evaluar la calidad y relevancia de patrones descubiertos"
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Modelado y predicción",
+     "resultados": [
+      "Construir modelos predictivos y descriptivos con algoritmos de minería de datos",
+      "Predecir comportamientos y tendencias futuras"
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes",
+     "resultados": [
+      "Integrar pipelines de minería de datos en aplicaciones empresariales",
+      "Desplegar modelos en producción"
+     ]
+    },
+    {
+     "codigo": "CE15",
+     "texto": "Innovación y emprendimiento",
+     "resultados": [
+      "Identificar oportunidades de negocio basadas en descubrimientos de datos",
+      "Evaluar el valor comercial de proyectos de minería de datos"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 56,
+   "nombre": "Propuesta Trabajo de Grado",
+   "semestre": 9,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Propuesta de Trabjao de Grado.docx"
+   ],
+   "objetivos": [
+    "Tiene como propósito orientar al estudiante en la formulación estructurada (identificación de problemáticas y necesidades, Tipologías, Formulación, Diseño, Evaluación y Presentación), metodológicamente sólida y alineada a las líneas de investigación institucionales, de su proyecto de grado, garantizando coherencia con el perfil profesional del Ingeniero de Sistemas de la UniPutumayo y las necesidades del contexto regional. Esta asignatura no es de desarrollo técnico, sino de diseño, análisis y estructuración académica y de proyectos.Usando PMI y PRINCE2."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Identifica y entiende los contenidos locales que conforman un texto.",
+     "resultados": [
+      "Entiende el significado de los elementos que constituyen un texto.",
+      "Identifica los eventos narrados de manera explícita en un texto (literario, descriptivo, caricatura o cómic) y los personajes involucrados (si los hay)."
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Comprende cómo se articulan las partes de un texto para darle un sentido global.",
+     "resultados": [
+      "Comprende la estructura formal de un texto y la función de sus partes.",
+      "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.",
+      "Comprende las relaciones entre diferentes partes o enunciados de un texto.",
+      "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo.",
+      "Identifica el tipo de relación existente entre diferentes elementos de un texto (discontinuo)."
+     ]
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Reflexiona a partir de un texto y evalúa su contenido. (Ciclo profesional)",
+     "resultados": [
+      "Establece la validez e implicaciones de un enunciado de un texto (argumentativo o expositivo).",
+      "Establece relaciones entre un texto y otros textos o enunciados.",
+      "Reconoce contenidos valorativos presentes en un texto.",
+      "Reconoce las estrategias discursivas en un texto.",
+      "Contextualiza adecuadamente un texto o la información contenida en este."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presentada en diferentes formatos como series, gráficas, tablas y esquemas.",
+      "Transforma la representación de una o más piezas de información."
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.",
+     "resultados": [
+      "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.",
+      "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.",
+      "Resuelve un problema que involucra información cuantitativa o esquemática."
+     ]
+    },
+    {
+     "codigo": "CG10",
+     "texto": "Ingles nivel A2 y B1:",
+     "resultados": [
+      "Hablar sobre sus esperanzas personales y profesionales, y sus sueños para el futuro.",
+      "Concertar una entrevista de trabajo y llevarla a cabo, dentro de su área de especialización.",
+      "Hablar sobre sus hábitos de televisión y programas favoritos.",
+      "Describir su educación y estudios, así como sus planes futuros de formación.",
+      "Hablar sobre su música favorita y sobre tendencias musicales, y planear una salida nocturna para escuchar música en directo.",
+      "Hablar sobre llevar un estilo de vida saludable, y dar y recibir consejo sobre hábitos saludables.",
+      "Hablar sobre relaciones personales y citas, incluyendo conocer a personas a través de las redes sociales.",
+      "Ir a un restaurante, pedir la comida, entablar una conversación educada durante la cena y pagar la cuenta.",
+      "Participar en negociaciones relacionadas con su área de especialización, si tiene ayuda para entender algunos puntos.",
+      "Hablar sobre cuestiones de seguridad en el lugar de trabajo, informar sobre una lesión y explicar las reglas y normas.",
+      "Hablar sobre el comportamiento cortés y responder adecuadamente al comportamiento maleducado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Formula y evalúa proyectos con enfoque TIC, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+     "resultados": [
+      "Caracterizar el proyecto de acuerdo con su índole o naturaleza social, económica, de inversión (entre otros) y el entorno utilizando referentes apropiados.",
+      "Aplicar las metodologías apropiadas para la formulación de un proyecto.",
+      "Formular el proyecto, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+      "Analizar e interpretar la viabilidad financiera de un proyecto.",
+      "Cuantificar, en el marco de la planeación de un proyecto, elementos fundamentales como alcance, tiempo y costo."
+     ]
+    },
+    {
+     "codigo": "CE10",
+     "texto": "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios técnicos, económicos y organizacionales.",
+     "resultados": [
+      "Identificar diferentes alternativas de solución a un problema planteado.",
+      "Analizar comparativamente las alternativas de solución con base en criterios técnicos y organizacionales.",
+      "Seleccionar la alternativa más adecuada sustentando la decisión tomada."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 57,
+   "nombre": "Electiva Profesional 5",
+   "semestre": 9,
+   "ciclo": "Profesional",
+   "archivos": [
+    "ELECTIVA PROFESIONAL 5 - Fibra Óptica.docx"
+   ],
+   "objetivos": [
+    "Diseñar, implementar y administrar redes de comunicaciones basadas en tecnología de fibra óptica, aplicando principios de transmisión óptica, tipos de fibra, componentes pasivos y activos, técnicas de empalme y conectorización, mediciones con OTDR, multiplexación WDM, estándares de cableado estructurado y redes metropolitanas (Metro Ethernet, GPON), capacitando al estudiante para desplegar infraestructuras de alta velocidad y largo alcance para redes empresariales y de telecomunicaciones."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Comprensión de conocimientos",
+     "resultados": [
+      "Comprender los fundamentos de la propagación de la luz en fibras ópticas",
+      "Comprender características de atenuación, dispersión y ancho de banda"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Diagnosticar y resolver problemas de enlaces de fibra óptica",
+      "Calcular presupuestos de potencia óptica (power budget)"
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Validación de procedimientos",
+     "resultados": [
+      "Realizar mediciones con OTDR y certificar enlaces de fibra",
+      "Validar instalaciones según estándares (TIA/EIA, ISO/IEC)"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones",
+     "resultados": [
+      "Diseñar redes de fibra óptica para campus, edificios y metropolitanas",
+      "Diseñar rutas de canalización y seleccionar componentes"
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Implementación técnica",
+     "resultados": [
+      "Realizar empalmes por fusión y conectorización de fibra óptica",
+      "Configurar equipos activos (switches ópticos, OLT, ONT)"
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes",
+     "resultados": [
+      "Integrar redes de fibra óptica con redes LAN/WAN existentes",
+      "Configurar arquitecturas FTTH, FTTB, GPON"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 58,
+   "nombre": "Inteligencia Artificial",
+   "semestre": 10,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Inteligencia Artificial.docx"
+   ],
+   "objetivos": [
+    "Diseñar, implementar y evaluar sistemas de inteligencia artificial que resuelvan problemas complejos mediante técnicas de búsqueda, razonamiento, aprendizaje profundo (Deep Learning), procesamiento de lenguaje natural (NLP), visión artificial y sistemas multiagente, aplicando frameworks modernos (TensorFlow, PyTorch, Transformers), capacitando al estudiante para construir aplicaciones inteligentes en dominios como reconocimiento de imágenes, procesamiento de texto, generación de contenido y toma de decisiones autónoma."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Comprensión de conocimientos",
+     "resultados": [
+      "Comprender fundamentos teóricos de la inteligencia artificial (agentes inteligentes, resolución de problemas)",
+      "Comprender arquitecturas de redes neuronales profundas"
+     ]
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Aplicación de conocimientos",
+     "resultados": [
+      "Aplicar técnicas de IA para resolver problemas reales",
+      "Aplicar transfer learning y fine-tuning en modelos preentrenados"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Resolver problemas de búsqueda y planificación con algoritmos de IA",
+      "Implementar soluciones de visión artificial y NLP"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones",
+     "resultados": [
+      "Diseñar arquitecturas de redes neuronales para problemas específicos",
+      "Diseñar pipelines de procesamiento de datos para IA"
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Implementación técnica",
+     "resultados": [
+      "Implementar modelos de Deep Learning con TensorFlow/PyTorch",
+      "Desarrollar aplicaciones de NLP y visión artificial"
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Modelado y predicción",
+     "resultados": [
+      "Entrenar modelos de Deep Learning para clasificación, detección, segmentación",
+      "Predecir resultados mediante modelos de IA"
+     ]
+    },
+    {
+     "codigo": "CE15",
+     "texto": "Innovación y emprendimiento",
+     "resultados": [
+      "Identificar oportunidades de negocio basadas en IA",
+      "Evaluar el impacto ético y social de sistemas de IA"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 59,
+   "nombre": "Gestión de Proyectos TI",
+   "semestre": 10,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Gestión de Proyectos TI new.docx"
+   ],
+   "objetivos": [
+    "Planificar, ejecutar, monitorear y controlar proyectos de tecnologías de información y comunicación aplicando metodologías profesionales (PMI/PMBOK, PRINCE2, Agile), gestión de alcance, tiempo, costos, calidad, recursos humanos, comunicaciones, riesgos, adquisiciones e interesados, utilizando herramientas especializadas (MS Project, Jira, Trello), capacitando al estudiante para liderar proyectos TIC exitosos cumpliendo objetivos de negocio dentro de restricciones de tiempo, presupuesto y calidad."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG02",
+     "texto": "Aplicación de conocimientos",
+     "resultados": [
+      "Aplicar estándares de gestión de proyectos (PMI/PMBOK, ISO 21500, PRINCE2)",
+      "Aplicar metodologías ágiles (Scrum, Kanban, SAFe)"
+     ]
+    },
+    {
+     "codigo": "CG05",
+     "texto": "Resolución de problemas",
+     "resultados": [
+      "Resolver problemas de desviaciones en alcance, tiempo o costos",
+      "Gestionar conflictos en equipos de proyecto"
+     ]
+    },
+    {
+     "codigo": "CG09",
+     "texto": "Liderazgo y trabajo en equipo",
+     "resultados": [
+      "Liderar equipos de proyecto multidisciplinarios",
+      "Negociar con stakeholders y gestionar expectativas"
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Gestión de proyectos TI",
+     "resultados": [
+      "Planificar proyectos TIC con WBS, cronogramas, presupuestos y planes de gestión",
+      "Monitorear y controlar proyectos mediante métricas y análisis de valor ganado (EVM)",
+      "Gestionar cambios, riesgos e interesados del proyecto"
+     ]
+    },
+    {
+     "codigo": "CE12",
+     "texto": "Análisis y evaluación",
+     "resultados": [
+      "Analizar el desempeño del proyecto (SPI, CPI, variaciones)",
+      "Evaluar lecciones aprendidas y mejora continua"
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes",
+     "resultados": [
+      "Integrar planes subsidiarios en un plan integral de proyecto",
+      "Coordinar equipos distribuidos y recursos compartidos"
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 60,
+   "nombre": "Inteligencia de Negocios (BI)",
+   "semestre": 10,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Inteligencia de Negocios (BI) Uniputumayo.docx"
+   ],
+   "objetivos": [
+    "Diseñar, implementar y gestionar soluciones de Inteligencia de Negocios (Business Intelligence) para transformar datos empresariales en información estratégica mediante data warehousing, ETL, modelado dimensional, OLAP, minería de datos y visualización interactiva, capacitando al estudiante para construir sistemas de soporte a la toma de decisiones que generen valor de negocio mediante insights accionables."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG03",
+     "texto": "Reflexiona a partir de un texto y evalúa su contenido.",
+     "resultados": [
+      "Establece la validez e implicaciones de un enunciado de un texto (argumentativo o expositivo).",
+      "Reconoce contenidos valorativos presentes en un texto.",
+      "Reconoce las estrategias discursivas en un texto.",
+      "Contextualiza adecuadamente un texto o la información contenida en este."
+     ]
+    },
+    {
+     "codigo": "CG04",
+     "texto": "Razonamiento cuantitativo: Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.",
+     "resultados": [
+      "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas",
+      "Transforma la representación de una o más piezas de información"
+     ]
+    },
+    {
+     "codigo": "CG06",
+     "texto": "Validación de procedimientos: Validar procedimientos y estrategias matemáticas utilizadas para dar solución a problemas. (Ciclo profesional)",
+     "resultados": [
+      "Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible en el marco de la solución a un problema.",
+      "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos",
+      "Establece la validez o pertinencia de una solución propuesta a un problema dado."
+     ]
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE10",
+     "texto": "Diseño de soluciones: Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software",
+     "resultados": [
+      "Comprender e interpretar en un marco técnico la información para identificar el problema que se requiere resolver en un contexto específico.",
+      "Diferenciar y plantear restricciones y requerimientos del producto tecnológico por diseñar.",
+      "Reconocer alternativas viables de solución para satisfacer requerimientos, restricciones y especificaciones técnicas de diseño.",
+      "Comparar alternativas viables de solución de acuerdo con criterios determinados."
+     ]
+    },
+    {
+     "codigo": "CE11",
+     "texto": "Implementación técnica: Aplica los conocimientos de las matemáticas, la tecnología y las ciencias de la ingeniería para especificar en forma detallada un producto tecnológico.",
+     "resultados": [
+      "Plantear especificaciones para el proceso de desarrollo del producto tecnológico",
+      "Revisar, verificar y validar que una solución cumpla con las especificaciones técnicas de diseño"
+     ]
+    },
+    {
+     "codigo": "CE12",
+     "texto": "Análisis y evaluación: Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.",
+     "resultados": [
+      "Derivar conclusiones consistentes con información que la respalde",
+      "Evaluar la metodología o hipótesis inicial, conjeturas o posibles explicaciones a partir del análisis de los resultados."
+     ]
+    },
+    {
+     "codigo": "CE13",
+     "texto": "Modelado y predicción: Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas",
+     "resultados": [
+      "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.",
+      "Determinar las ventajas y limitaciones de usar un determinado modelo.",
+      "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones."
+     ]
+    },
+    {
+     "codigo": "CE14",
+     "texto": "Integración de componentes: Evalúa la efectividad de recursos tecnológicos que sean usados en la organización basado en la arquitectura empresarial.",
+     "resultados": [
+      "Configurar, usar y administrar recursos tecnológicos (HW/SW)",
+      "Diseñar planes de mejoramiento para el uso eficiente de recursos tecnológicos o su actualización",
+      "Organizar el procesamiento electrónico de información según normatividad de gestión de la información y los protocolos de seguimiento organizacional."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 61,
+   "nombre": "Proyecto de Grado",
+   "semestre": 10,
+   "ciclo": "Profesional",
+   "archivos": [
+    "Trabajo de Grado.docx"
+   ],
+   "objetivos": [
+    "se pretende que el estudiante tenga la posibilidad de profundizar en un área de su interés facilitando las herramientas conceptuales y metodológicas que le sirvan para la realización de su propuesta de trabajo de grado según la modalidad escogida."
+   ],
+   "genericas": [],
+   "especificas": [
+    {
+     "codigo": "CE09",
+     "texto": "Formula y evalúa proyectos con enfoque TIC, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.",
+     "resultados": [
+      "Formular el proyecto, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  },
+  {
+   "id": 62,
+   "nombre": "Electiva Complementaria 3",
+   "semestre": 10,
+   "ciclo": "Profesional",
+   "archivos": [
+    "ELECTIVA COMPLEMENTARIA 3 - Competencias digitales para la educación1.docx"
+   ],
+   "objetivos": [
+    "Comprenderá los fundamentos y tecnologías clave de la Industria 4.0 y su impacto en la academia y el sector productivo.",
+    "Evaluará aplicaciones de tecnologías emergentes (IoT, IA, Big Data, Blockchain, Cloud, AR/VR, Drones, Robótica, Impresión 3D) en contextos reales.",
+    "Desarrollará habilidades prácticas para el diseño e implementación de soluciones tecnológicas innovadoras."
+   ],
+   "genericas": [
+    {
+     "codigo": "CG01",
+     "texto": "Pensamiento crítico y analítico en el desarrollo de soluciones tecnológicas.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG02",
+     "texto": "Capacidad de trabajo en equipo y adaptación a entornos interdisciplinarios.",
+     "resultados": []
+    },
+    {
+     "codigo": "CG03",
+     "texto": "Innovación y creatividad en la aplicación de tecnologías emergentes.",
+     "resultados": []
+    }
+   ],
+   "especificas": [
+    {
+     "codigo": "CE01",
+     "texto": "Comprender y aplicar los conceptos fundamentales de la Industria 4.0 y su impacto en la academia y la industria.",
+     "resultados": [
+      "Explicar los fundamentos teóricos de la Industria 4.0 y su evolución desde las revoluciones industriales anteriores.",
+      "Identificar las principales tecnologías emergentes asociadas a la Industria 4.0 y su aplicación en el sector académico y productivo.",
+      "Comparar el impacto de la Industria 4.0 en diferentes sectores industriales y en la educación, evaluando casos de estudio reales."
+     ]
+    },
+    {
+     "codigo": "CE02",
+     "texto": "Desarrollar proyectos que integren tecnologías emergentes como IoT, Big Data, Ciberseguridad, Cloud Computing, Blockchain, Drones, Realidad Virtual y Aumentada, Robótica e Impresión 3D.",
+     "resultados": [
+      "Diseñar soluciones tecnológicas que integren IoT, Big Data, Blockchain o Cloud Computing, considerando necesidades específicas del entorno académico o empresarial.",
+      "Implementar una aplicación o prototipo basado en al menos una tecnología emergente de la Industria 4.0.",
+      "Evaluar el rendimiento y la escalabilidad de un sistema basado en tecnologías de la Industria 4.0, aplicando metodologías de prueba y optimización."
+     ]
+    },
+    {
+     "codigo": "CE03",
+     "texto": "Analizar casos de uso de la Industria 4.0 en el sector académico y productivo para proponer mejoras tecnológicas.",
+     "resultados": [
+      "Investigar tendencias actuales de la Industria 4.0 en sectores como manufactura, salud, educación y logística, identificando oportunidades de mejora.",
+      "Realizar estudios de viabilidad sobre la implementación de tecnologías emergentes en instituciones educativas o empresas.",
+      "Formular propuestas de optimización basadas en tecnologías de la Industria 4.0, considerando impacto económico, social y ambiental."
+     ]
+    },
+    {
+     "codigo": "CE04",
+     "texto": "Implementar soluciones basadas en tecnologías disruptivas en contextos académicos y empresariales.",
+     "resultados": [
+      "Desarrollar un plan de implementación de una tecnología de la Industria 4.0 en un entorno real o simulado.",
+      "Integrar diferentes herramientas digitales y metodologías para la optimización de procesos mediante Industria 4.0.",
+      "Demostrar la funcionalidad y eficiencia de un sistema basado en tecnologías emergentes mediante pruebas y validaciones en entornos controlados."
+     ]
+    }
+   ],
+   "rae": [],
+   "estado": "completo"
+  }
+ ]
+}

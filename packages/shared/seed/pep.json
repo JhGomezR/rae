@@ -1,0 +1,76 @@
+{
+ "estrategiasDidacticas": [
+  "Mapas mentales",
+  "Mapas conceptuales",
+  "Gráficos o representaciones visuales",
+  "Trabajo de campo virtual (simuladores, RA/RV)",
+  "Rompecabezas grupal (aprendizaje cooperativo)",
+  "Foros de discusión",
+  "Escritura de artículos o revista virtual",
+  "Clases magistrales",
+  "Lecturas con comentarios o discusión",
+  "Tutorías",
+  "Debates o controversias",
+  "Trabajo en grupo",
+  "Exposiciones",
+  "Presentaciones en grupo",
+  "Seminarios",
+  "Show room",
+  "Práctica de laboratorio",
+  "Elaboración de proyectos",
+  "Elaboración de informes",
+  "Análisis y crítica de textos o videos"
+ ],
+ "minDidacticas": 3,
+ "metodologiasActivas": [
+  "Seminario alemán o de investigación",
+  "Aprendizaje basado en proyectos (ABPy)",
+  "Aprendizaje basado en problemas (ABP)",
+  "Estudio o método de caso (ABC)",
+  "Juego de roles (ABJR)",
+  "Aprendizaje basado en el error (ABE)",
+  "Aprendizaje basado en la investigación (ABI)",
+  "Aprendizaje basado en el servicio (ABS)",
+  "Aprendizaje cooperativo (AC)",
+  "Aprendizaje basado en TIC",
+  "Aprendizaje basado en mapas (ABM)"
+ ],
+ "minActivas": 1,
+ "maxActivas": 2,
+ "caracteristicas": [
+  {
+   "ids": [
+    18,
+    19,
+    20
+   ],
+   "nombre": "Integralidad, flexibilidad e interdisciplinariedad del currículo",
+   "aspecto": "Evaluación de la integralidad, flexibilidad e interdisciplinariedad del currículo a partir de la implementación del nuevo plan de estudios y sus syllabus en el 2026.",
+   "objetivo": "Realizar evaluaciones diagnósticas y posteriores a las acciones realizadas por el programa sobre la integralidad, flexibilidad e interdisciplinariedad del currículo.",
+   "meta": "A partir del 2026, aplicar dos evaluaciones para medir el estado del currículo y la efectividad de las mejoras implementadas del nuevo plan de estudios."
+  },
+  {
+   "ids": [
+    21
+   ],
+   "nombre": "Estrategias pedagógicas",
+   "aspecto": "Evaluación de las estrategias pedagógicas.",
+   "objetivo": "Implementar un sistema sistemático de seguimiento y evaluación de las estrategias pedagógicas establecidas en el PEP, a través de mediciones periódicas de su impacto en el aprendizaje, con el fin de optimizar su aplicación y fortalecer la calidad académica del programa, haciendo uso de las rúbricas de evaluación.",
+   "meta": "A partir del 2026, evaluar anualmente las estrategias pedagógicas del PEP y garantizar que al menos el 70 % de las recomendaciones sean aplicadas en el siguiente periodo académico."
+  },
+  {
+   "ids": [
+    22,
+    23,
+    24
+   ],
+   "nombre": "Sistema de evaluación de estudiantes, resultados de aprendizaje y competencias",
+   "aspecto": "Mejoramiento del proceso de evaluación a nivel del programa (PEP) con fines de retroalimentación de los RA y competencias.",
+   "objetivo": "A partir del 2026, realizar seguimiento y retroalimentación continua sobre los resultados de aprendizaje (RA) y las competencias del programa.",
+   "meta": "Establecer un sistema de evaluación y retroalimentación de resultados de aprendizaje (RA) en el 100 % de las asignaturas del programa en un plazo de cuatro años a partir del 2026."
+  }
+ ],
+ "anioInicio": 2026,
+ "aniosMeta": 4,
+ "metaRecomendaciones": 70
+}

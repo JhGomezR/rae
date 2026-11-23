@@ -41,5 +41,8 @@
     "testMatch": [
       "**/*.spec.ts"
     ]
+  },
+  "dependencies": {
+    "zod": "^3.25"
   }
 }

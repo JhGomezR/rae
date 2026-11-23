@@ -1,0 +1,1776 @@
+{
+ "preguntas": {
+  "Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.": {
+   "c": "entender y transformar información numérica presentada en tablas, gráficas y esquemas",
+   "t": "Manejo de información cuantitativa"
+  },
+  "Frente a un problema que involucre la información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.": {
+   "c": "plantear y aplicar estrategias para resolver problemas con datos numéricos",
+   "t": "Solución de problemas cuantitativos"
+  },
+  "El estudiante Contextualiza los conceptos que permiten potenciar la capacidad analítica, lógica, interpretativa y creativa en la solución de aplicaciones y problemas matemáticos tendientes a la construcción y desarrollo del pensamiento lógico –matemático los cuales deben proporcionar la formación profesional adecuada acorde con las necesidades del mundo laboral dentro del contexto real.": {
+   "c": "aplicar el pensamiento lógico-matemático para analizar y resolver problemas reales",
+   "t": "Pensamiento lógico-matemático"
+  },
+  "El estudiante Contextualiza términos, predicados, razonamientos y demostraciones en la solución de situaciones reales que contribuyen con su desarrollo dentro del campo de formación profesional y laboral, donde se provea de las herramientas necesarias que fortalezcan su quehacer docente": {
+   "c": "usar razonamientos y demostraciones lógicas para resolver situaciones reales",
+   "t": "Razonamiento lógico"
+  },
+  "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas.": {
+   "c": "reconocer las características de la información presentada en series, gráficas, tablas y esquemas"
+  },
+  "Transforma la representación de una o más piezas de información.": {
+   "c": "pasar información de un formato a otro (por ejemplo, de una tabla a una gráfica)"
+  },
+  "Diseña planes para la solución de problemas que involucran información cuantitativa o esquemática.": {
+   "c": "diseñar un plan para resolver un problema con información numérica o gráfica"
+  },
+  "Ejecuta un plan de solución para un problema que involucra información cuantitativa o esquemática.": {
+   "c": "ejecutar paso a paso un plan para resolver un problema con datos numéricos"
+  },
+  "Resuelve un problema que involucra información cuantitativa o esquemática.": {
+   "c": "resolver problemas que involucran información numérica o gráfica"
+  },
+  "Capacidad de comprender e interpretar la información aprendida.": {
+   "c": "comprender e interpretar lo aprendido"
+  },
+  "Capacidad de utilizar la información aprendida en situaciones nuevas.": {
+   "c": "usar lo aprendido en situaciones nuevas"
+  },
+  "Utilizar ideas y conceptos para resolver problemas.": {
+   "c": "usar ideas y conceptos para resolver problemas"
+  },
+  "\"Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" y \"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\", proporcionando al estudiante las bases fundamentales de la lógica de programación y el desarrollo de algoritmos que son esenciales para la construcción de soluciones de software.": {
+   "c": "aplicar la lógica de programación y los algoritmos para construir soluciones de software"
+  },
+  "\"El desarrollo de habilidades de comunicación en forma oral y escrita de manera eficiente y efectiva; con aptitudes para trabajar individualmente y en equipo\" mediante la documentación de algoritmos y soluciones computacionales.": {
+   "c": "documentar algoritmos y soluciones de forma clara, de forma individual y en equipo"
+  },
+  "Escribe en lenguaje de programación las funcionalidades definidas durante la etapa de diseño.": {
+   "c": "programar las funcionalidades definidas en el diseño de un software",
+   "t": "Programación de funcionalidades"
+  },
+  "Conocer los fundamentos de programación.": {
+   "c": "explicar los fundamentos de la programación"
+  },
+  "Codificar las funcionalidades del software.": {
+   "c": "programar las funcionalidades de un software"
+  },
+  "Produce documentos técnicos de soporte y/o servicios TIC.": {
+   "c": "elaborar documentos técnicos de soporte y servicios TIC",
+   "t": "Documentación técnica"
+  },
+  "Escribir documentos técnicos relacionados con hardware y software.": {
+   "c": "escribir documentos técnicos sobre hardware y software"
+  },
+  "Ubicar a los estudiantes dentro de lo que significa ser Ingeniero de Sistemas, cuál es su papel dentro de las organizaciones y cuál es su futuro como profesional.": {
+   "c": "explicar el papel del Ingeniero de Sistemas en las organizaciones y su futuro profesional"
+  },
+  "Ofrecer a los estudiantes los elementos esenciales que le permitan empezar a    entender el mundo computacional, su estructuración y la importancia del manejo de las variables tecnológica, así como la cultura de la información en el desarrollo de las organizaciones.": {
+   "c": "comprender cómo funciona el mundo computacional y la importancia de la información en las organizaciones"
+  },
+  "El compromiso con el desarrollo Institucional y de la región, con aprecio por los valores culturales de su entorno, proporcionando al estudiante una visión integral del campo profesional de la Ingeniería de Sistemas, su evolución histórica, fundamentos teóricos y el contexto regional y nacional donde ejercerá su profesión.": {
+   "c": "reconocer la evolución, fundamentos y contexto regional de la Ingeniería de Sistemas"
+  },
+  "Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" introduciendo conceptos fundamentales sobre sistemas, metodologías y técnicas que se aplicarán en el desarrollo de software.": {
+   "c": "reconocer los conceptos básicos de sistemas, metodologías y técnicas del desarrollo de software"
+  },
+  "Identifica y entiende los contenidos locales que conforman un texto.": {
+   "c": "identificar y entender los elementos que forman un texto",
+   "t": "Comprensión de textos"
+  },
+  "Entiende el significado de los elementos que constituyen un texto": {
+   "c": "entender el significado de los elementos que forman un texto"
+  },
+  "Entiende el significado de los elementos que constituyen un texto.": {
+   "c": "entender el significado de los elementos que forman un texto"
+  },
+  "Identifica los eventos narrados de manera explícita en un texto (literario, descriptivo, caricatura o cómic) y los personajes involucrados (si los hay).": {
+   "c": "identificar los hechos y personajes de un texto, cómic o caricatura"
+  },
+  "Reconoce la existencia de diversidad y multiperspectivismo.": {
+   "c": "reconocer que existen diversas perspectivas sobre una misma situación",
+   "t": "Diversidad de perspectivas"
+  },
+  "Reconoce y Analiza en el marco del respeto, la existencia de diferentes perspectivas en situaciones donde    interactúan diferentes partes.": {
+   "c": "analizar con respeto los distintos puntos de vista en una situación con varias partes"
+  },
+  "Analiza un problema o conflicto social desde diferentes perspectivas.": {
+   "c": "analizar un problema o conflicto social desde distintos puntos de vista"
+  },
+  "Comprende cómo se articulan las partes de un texto para darle un sentido global.": {
+   "c": "comprender cómo se relacionan las partes de un texto para darle sentido global",
+   "t": "Sentido global del texto"
+  },
+  "Comprende la estructura formal de un texto y la función de sus partes.": {
+   "c": "reconocer la estructura de un texto y la función de cada una de sus partes"
+  },
+  "Identifica y caracteriza las diferentes voces o situaciones presentes en un texto.": {
+   "c": "identificar las distintas voces o situaciones presentes en un texto"
+  },
+  "Comprende las relaciones entre diferentes partes o enunciados de un texto.": {
+   "c": "comprender cómo se relacionan las ideas de un texto entre sí"
+  },
+  "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo.": {
+   "c": "identificar las ideas principales de un texto informativo"
+  },
+  "Identifica la organización del estado colombiano, los fundamentos del modelo de estado social de derecho y las particularidades de nuestro país.": {
+   "c": "explicar cómo está organizado el Estado colombiano y el Estado social de derecho",
+   "t": "Estado y ciudadanía"
+  },
+  "Conoce la constitución política de Colombia, sus principios fundamentales, derechos, deberes y la organización del estado.": {
+   "c": "explicar la Constitución Política de Colombia: principios, derechos, deberes y organización del Estado"
+  },
+  "Comprende y aplica las técnicas y normas de recolección de información para determinar los requisitos del software y aplicaciones con base en las necesidades del cliente.": {
+   "c": "aplicar técnicas de recolección de información para definir los requisitos de un software según las necesidades del cliente",
+   "t": "Ingeniería de requisitos"
+  },
+  "Conocer los conceptos de requisitos software y sus tipos.": {
+   "c": "explicar qué son los requisitos de software y sus tipos"
+  },
+  "Comprender las normas y modelos técnicos existentes para aplicarlos en la obtención de los requisitos del software.": {
+   "c": "aplicar normas y modelos técnicos para obtener los requisitos de un software"
+  },
+  "Escribir documentos técnicos relacionados con servicios TIC.": {
+   "c": "escribir documentos técnicos sobre servicios TIC"
+  },
+  "Fortalecer prácticas de producción escrita, a partir de la articulación con procesos de interpretación y análisis textual, y la puesta en marcha de ejercicios de planeación, redacción y autocorrección en el propósito de comunicar efectiva y afectivamente como parte de la formación integral.": {
+   "c": "planear, redactar y corregir mis propios textos para comunicarme de forma efectiva"
+  },
+  "Comunicación escrita-La organización del texto: Estructurar el texto siguiendo esquemas adecuados al tipo de actividad propuesta para justificar con argumentos la opinión del tema.": {
+   "c": "organizar un texto con argumentos que sustenten mi opinión",
+   "t": "Escritura argumentativa"
+  },
+  "Lectura crítica-Reflexionar de manera crítica un texto, validando los argumentos para evaluar su contenido.": {
+   "c": "leer críticamente un texto y evaluar sus argumentos",
+   "t": "Lectura crítica"
+  },
+  "Construye documentos escritos teniendo en cuenta la estructura adecuada en cuanto a lo gramatical, sintáctico, semántico, y aplicando reglas de ortografía.": {
+   "c": "escribir documentos bien estructurados, con buena gramática y ortografía"
+  },
+  "Utiliza de forma apropiada el lenguaje escrito, con el propósito de sustentar de manera justificada y asertiva cualquier planteamiento o punto de vista frente a una temática.": {
+   "c": "usar el lenguaje escrito para sustentar mis puntos de vista de forma clara y respetuosa"
+  },
+  "Aproximar al estudiante al conocimiento de las más relevantes perspectivas del estudio de la Constitución Política, con el propósito de promover conciencia sobre los derechos fundamentales de la persona humana y estimular la práctica de los principios y valores de la participación ciudadana, el reconocimiento de las instituciones democráticas y la importancia de promover la democracia como forma de gobierno.": {
+   "c": "explicar los derechos fundamentales y el valor de la participación ciudadana y la democracia"
+  },
+  "Permitir dinamizar, orientar, alimentar y proyectar la actividad académica, investigativa y de proyección social de directivos, docentes, estudiantes y personal administrativo, quienes al estar comprometidos con la calidad de la educación son conscientes de la necesidad del aporte colectivo y personal, que hoy es imprescindible en toda organización": {
+   "c": "reconocer el proyecto pedagógico institucional y mi aporte a la calidad de la institución"
+  },
+  "Estructurar el texto y las ideas siguiendo esquemas adecuados al tipo de actividad propuesta para justificar con argumentos la opinión del tema y la solución a las problemáticas sociales desde el multiperspectivismo y el pensamiento sistémico.": {
+   "c": "escribir textos con argumentos para proponer soluciones a problemas sociales",
+   "t": "Argumentación y pensamiento sistémico"
+  },
+  "Estructurar el texto y las ideas siguiendo esquemas adecuados al tipo de actividad propuesta para justificar con argumentos la opinión del tema y la solución a las problemáticas sociales desde el multiperspectivismo y el pensamiento sistémico": {
+   "c": "escribir textos con argumentos para proponer soluciones a problemas sociales",
+   "t": "Argumentación y pensamiento sistémico"
+  },
+  "Comprende las diferentes perspectivas que se enmarcan en la normatividad vigente necesarias en el contexto ciudadano.": {
+   "c": "comprender las distintas perspectivas de las normas que rigen la vida ciudadana"
+  },
+  "Identifica instrumentos diagnósticos encaminados a la solución de conflictos en el contexto territorial.": {
+   "c": "identificar herramientas para diagnosticar y resolver conflictos en mi territorio"
+  },
+  "Desarrollar la destreza analítica, gráfica, interpretativa y operativa que permitan la comprensión de conceptos como funciones y su representación gráfica, límites, continuidad y diferenciación respecto de funciones reales de una variable real con aplicaciones en el planteamiento y resolución de problemas de ingeniería.": {
+   "c": "interpretar funciones, límites, continuidad y derivadas para resolver problemas de ingeniería"
+  },
+  "Identificar situaciones concretas de manera abstracta aplicando un lenguaje matemático para analizar o resolver problemas del contexto.": {
+   "c": "expresar situaciones reales en lenguaje matemático para analizarlas y resolverlas",
+   "t": "Modelación matemática"
+  },
+  "Transforma la representación de una o más piezas de información": {
+   "c": "pasar información de un formato a otro (por ejemplo, de una tabla a una gráfica)"
+  },
+  "Resuelve un problema que involucra información cuantitativa o esquemática": {
+   "c": "resolver problemas que involucran información numérica o gráfica"
+  },
+  "Razonamiento cuantitativo": {
+   "c": "razonar con información numérica para resolver problemas",
+   "t": "Razonamiento cuantitativo"
+  },
+  "Comprender los fundamentos matemáticos del álgebra lineal y su relación con otras áreas de la ingeniería de sistemas, las ciencias de la computación y el análisis de datos": {
+   "c": "explicar los fundamentos del álgebra lineal y su uso en ingeniería, computación y análisis de datos"
+  },
+  "Aplicar razonamiento abstracto en la verificación de propiedades algebraicas, demostración de teoremas básicos e interpretación geométrica de transformaciones lineales": {
+   "c": "verificar propiedades algebraicas e interpretar geométricamente las transformaciones lineales"
+  },
+  "Resolución de problemas": {
+   "c": "resolver problemas aplicando los conceptos de la unidad",
+   "t": "Resolución de problemas"
+  },
+  "Formular y resolver sistemas de ecuaciones lineales que modelen situaciones reales de ingeniería de sistemas, telecomunicaciones, economía o ciencias de la computación": {
+   "c": "plantear y resolver sistemas de ecuaciones lineales que modelan situaciones reales"
+  },
+  "Seleccionar y aplicar las técnicas de álgebra lineal más apropiadas (eliminación gaussiana, factorización LU, diagonalización, SVD) para cada tipo de problema": {
+   "c": "elegir la técnica de álgebra lineal más adecuada (Gauss, LU, diagonalización, SVD) para cada problema"
+  },
+  "Validación de procedimientos": {
+   "c": "comprobar que los procedimientos y resultados obtenidos son correctos",
+   "t": "Validación de procedimientos"
+  },
+  "Verificar la corrección de cálculos matriciales mediante propiedades algebraicas y herramientas computacionales (NumPy, MATLAB)": {
+   "c": "verificar cálculos con matrices usando propiedades algebraicas y herramientas como NumPy o MATLAB"
+  },
+  "Validar soluciones obtenidas algebraicamente mediante interpretación geométrica e implementación computacional comparada": {
+   "c": "validar soluciones algebraicas con su interpretación geométrica y con programas de computador"
+  },
+  "Modelado matemático": {
+   "c": "representar problemas reales con modelos matemáticos",
+   "t": "Modelado matemático"
+  },
+  "Representar problemas de ingeniería de sistemas como modelos de álgebra lineal: sistemas de ecuaciones, transformaciones lineales o factorizaciones matriciales": {
+   "c": "representar problemas de ingeniería con sistemas de ecuaciones, transformaciones o matrices"
+  },
+  "Analizar e interpretar las soluciones matemáticas en el contexto del problema original de ingeniería": {
+   "c": "interpretar las soluciones matemáticas en el contexto del problema de ingeniería"
+  },
+  "Computación científica y álgebra lineal numérica": {
+   "c": "usar herramientas computacionales para resolver problemas de álgebra lineal",
+   "t": "Computación científica"
+  },
+  "Implementar algoritmos de álgebra lineal computacional en Python con NumPy y SciPy, o en MATLAB/Octave, con código documentado y eficiente": {
+   "c": "programar algoritmos de álgebra lineal en Python (NumPy, SciPy) o MATLAB/Octave"
+  },
+  "Utilizar herramientas de software para la solución de sistemas lineales, cálculo de determinantes, valores propios y descomposición SVD en problemas de ingeniería": {
+   "c": "usar software para resolver sistemas lineales, determinantes, valores propios y SVD"
+  },
+  "Fundamentación matemática para ciencias de datos y aprendizaje automático": {
+   "c": "usar el álgebra lineal como base para la ciencia de datos y el aprendizaje automático",
+   "t": "Matemáticas para ciencia de datos"
+  },
+  "Aplicar conceptos de álgebra lineal (eigenvalores, SVD, proyecciones) como fundamento matemático para el aprendizaje automático, análisis de datos y procesamiento de imágenes": {
+   "c": "aplicar valores propios, SVD y proyecciones en aprendizaje automático y análisis de datos"
+  },
+  "Relacionar la descomposición en valores singulares (SVD) con el Análisis de Componentes Principales (PCA), la compresión de datos y los sistemas de recomendación": {
+   "c": "relacionar la SVD con el PCA, la compresión de datos y los sistemas de recomendación"
+  },
+  "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio de estructuras de datos fundamentales y su implementación usando programación orientada a objetos, lo cual es esencial para crear aplicaciones eficientes y escalables.": {
+   "c": "implementar estructuras de datos con programación orientada a objetos para crear aplicaciones eficientes"
+  },
+  "\"La aplicación de pruebas y mantenimiento de soluciones de software y aplicaciones optimizando recursos y tiempo\" a través del uso de estructuras de datos apropiadas que optimizan el rendimiento de las aplicaciones.": {
+   "c": "elegir estructuras de datos adecuadas para mejorar el rendimiento de una aplicación"
+  },
+  "Integrar las funcionalidades del software.": {
+   "c": "integrar las funcionalidades de un software"
+  },
+  "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" profundizando en estructuras de datos avanzadas y fundamentos de la programación orientada a objetos que son esenciales para el desarrollo de soluciones de software más complejas.": {
+   "c": "usar estructuras de datos avanzadas y programación orientada a objetos en soluciones de software"
+  },
+  "\"La habilidad para adaptarse a los cambios tecnológicos y de sostenibilidad ambiental, con una actitud de formación continua a lo largo de su vida profesional\" mediante el aprendizaje de nuevas estructuras de programación y paradigmas.": {
+   "c": "adaptarme a nuevas estructuras y paradigmas de programación"
+  },
+  "Desarrollar en el estudiante la capacidad de entender, interpretar y evaluar textos, tanto en la vida cotidiana, como en ámbitos académicos; que le permitan tener una compresión lectora donde pueda interpretar, aprender y tomar posturas críticas frente a un texto.": {
+   "c": "entender, interpretar y evaluar textos con una postura crítica"
+  },
+  "Reflexiona a partir de un texto y evalúa su contenido.": {
+   "c": "reflexionar sobre un texto y evaluar su contenido",
+   "t": "Reflexión crítica sobre textos"
+  },
+  "Identifica el tipo de relación existente entre diferentes elementos de un texto (discontinuo).": {
+   "c": "identificar cómo se relacionan los elementos de un texto con gráficos, tablas o listas"
+  },
+  "Dimensionar la convivencia con el entorno ya sea en los ambientes físico bióticos, socioeconómicos, políticos, culturales y ambientales, entendiendo que el desarrollo sostenible de la amazonia constituye un todo, donde la interacción de sus diversos elementos genera una base de sustentación en el tiempo y espacio al servicio de las comunidades.": {
+   "c": "explicar la relación entre las comunidades y el entorno amazónico para su desarrollo sostenible"
+  },
+  "Comprender la dinámica entre grupos étnicos, biota y medio ambiente con la participación de saberes colectivos para ampliar el conocimiento de las relaciones sociales-simbólicas entre cultura y naturaleza.": {
+   "c": "comprender la relación entre grupos étnicos, naturaleza y medio ambiente",
+   "t": "Cultura y naturaleza"
+  },
+  "Comprende el valor de la diversidad étnica y cultural en la dimensión de identidad, saberes y costumbres que contribuyen a la conservación de los recursos natuales del territorio.": {
+   "c": "valorar la diversidad étnica y cultural y su aporte a la conservación del territorio"
+  },
+  "Brindar los conceptos, herramientas y técnicas para la interpretación, representación, formulación, modelación, argumentación, ejecución, aplicaciones  y dar respuesta a problemas en ingeniería mediante el uso del cálculo integral, en una variable.": {
+   "c": "aplicar el cálculo integral para representar, modelar y resolver problemas de ingeniería"
+  },
+  "Razonamiento cuantitativo-Identificar situaciones concretas de manera abstracta aplicando un lenguaje matemático para analizar o resolver problemas del contexto..": {
+   "c": "expresar situaciones reales en lenguaje matemático para analizarlas y resolverlas",
+   "t": "Razonamiento cuantitativo"
+  },
+  "Resuelve problemáticas de carácter esquemático considerando la lógica y la matemática como herramienta de cultura y pensamiento.": {
+   "c": "resolver problemas usando la lógica y las matemáticas como herramientas de pensamiento",
+   "t": "Lógica y matemáticas"
+  },
+  "La estadística es una herramienta fundamental en la formación profesional en diferentes áreas. Es a través de este saber estadístico que el estudiante interactúa con áreas de investigación y aplicación profesional, las cuales son parte esencial de su campo profesional fortaleciendo así su perfil de formación, dado que lo ayudara a una toma inteligente de decisiones": {
+   "c": "usar la estadística para tomar decisiones informadas en mi campo profesional"
+  },
+  "Modelar situaciones concretas de manera abstracta aplicando un lenguaje matemático para analizar o resolver problemas del contexto.": {
+   "c": "modelar situaciones reales con lenguaje matemático para analizarlas y resolverlas",
+   "t": "Modelación matemática"
+  },
+  "Desarrollo fórmulas matemáticas para explicar el comportamiento de sistemas complejos ante situaciones difíciles de observar en la realidad": {
+   "c": "plantear fórmulas matemáticas que expliquen el comportamiento de sistemas complejos"
+  },
+  "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio completo de los principios y técnicas de la Programación Orientada a Objetos, lo cual es fundamental para desarrollar aplicaciones robustas, mantenibles y escalables.": {
+   "c": "aplicar los principios de la programación orientada a objetos para crear aplicaciones robustas y mantenibles"
+  },
+  "\"La aplicación de pruebas y mantenimiento de soluciones de software y aplicaciones optimizando recursos y tiempo\" a través de código bien estructurado que facilita el mantenimiento y las pruebas.": {
+   "c": "escribir código bien estructurado que facilite las pruebas y el mantenimiento"
+  },
+  "Aplica el uso adecuado de distintos mecanismos que le dan cohesión al escrito.": {
+   "c": "usar conectores y otros recursos que dan coherencia a un escrito",
+   "t": "Cohesión en la escritura"
+  },
+  "Produce escritos que establecen claramente el tema y contexto propuestos.": {
+   "c": "escribir textos que presenten con claridad el tema y el contexto"
+  },
+  "Produce escritos que exponen ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.": {
+   "c": "escribir ideas claras y ordenadas, usando bien la puntuación y los conectores"
+  },
+  "Produce escritos con lenguaje apropiado para el auditorio o lector al que se dirige su escrito.": {
+   "c": "adaptar mi lenguaje escrito a quien va dirigido el texto"
+  },
+  "\"Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" proporcionando al estudiante las competencias necesarias para identificar, analizar, documentar y validar los requerimientos de software de manera sistemática y profesional, utilizando técnicas reconocidas internacionalmente.": {
+   "c": "identificar, analizar, documentar y validar requisitos de software con técnicas reconocidas"
+  },
+  "Definir el objetivo y alcance del software en acuerdo a las necesidades del cliente.": {
+   "c": "definir el objetivo y el alcance de un software según las necesidades del cliente"
+  },
+  "Preparar documentos técnicos de requisitos funcionales, no funcionales y restricciones que soporten el diseño del software y aplicaciones.": {
+   "c": "elaborar documentos de requisitos funcionales, no funcionales y restricciones"
+  },
+  "El diseño, mantenimiento, actualización y soporte a bases de datos relacionales y sistemas de información de su entorno\" proporcionando los fundamentos teóricos y conceptuales de las bases de datos relacionales y no relacionales, así como el conocimiento de los Sistemas Gestores de Bases de Datos (SGBD).": {
+   "c": "explicar los fundamentos de las bases de datos relacionales y no relacionales y el uso de un SGBD"
+  },
+  "Desarrollar en el estudiante las competencias básicas para diseñar, mantener, actualizar y dar soporte a bases de datos, mediante la comprensión de los fundamentos teóricos y conceptuales de las bases de datos relacionales y no relacionales, así como del uso de los Sistemas Gestores de Bases de Datos (SGBD).": {
+   "c": "diseñar, mantener y dar soporte a bases de datos usando un SGBD"
+  },
+  "Usa un SGBD para diseñar una base de datos relacional.": {
+   "c": "usar un gestor de bases de datos (SGBD) para diseñar una base de datos relacional",
+   "t": "Diseño de bases de datos"
+  },
+  "Diseñar el modelo E/R y modelo relacional de una BD usando diferentes herramientas de diseño.": {
+   "c": "diseñar el modelo entidad-relación y el modelo relacional de una base de datos"
+  },
+  "Brindar los conceptos y métodos para analizar y resolver las diferentes clases de ecuaciones diferenciales ordinarias, de primer orden y de segundo orden y orden superior, como un medio y una herramienta que permita solucionar  diferentes tipos de problemas en ingeniería y en otras ciencias y áreas aplicadas.": {
+   "c": "analizar y resolver ecuaciones diferenciales de primer, segundo orden y superior aplicadas a la ingeniería"
+  },
+  "Argumentar procedimientos y estrategias a partir de modelos matemáticos y resultados para dar validez o pertinencia a una solución propuesta.": {
+   "c": "argumentar por qué un procedimiento o modelo matemático da una solución válida",
+   "t": "Argumentación matemática"
+  },
+  "Aplica la teoría de modelos para estudiar fenómenos o comportamientos impredecibles en cuanto a su complejidad.": {
+   "c": "usar modelos matemáticos para estudiar fenómenos complejos o difíciles de predecir"
+  },
+  "Interpreta modelos matemáticos en términos de realidad y aproximación científica al comportamiento de un sistema complejo.": {
+   "c": "interpretar qué tan bien un modelo matemático representa un sistema real"
+  },
+  "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio de tecnologías web del lado del cliente (Frontend) para crear interfaces de usuario interactivas y responsivas.": {
+   "c": "crear interfaces de usuario web interactivas y adaptables (Frontend)"
+  },
+  "\"El despliegue y documentación técnica del software y aplicaciones\" proporcionando las bases para publicar aplicaciones web": {
+   "c": "publicar aplicaciones web y documentar su despliegue"
+  },
+  "Concreta el despliegue y documentación del proyecto de software.": {
+   "c": "desplegar un proyecto de software y elaborar su documentación",
+   "t": "Despliegue y documentación"
+  },
+  "Instalar las aplicaciones base y el software de acuerdo a la arquitectura del sistema.": {
+   "c": "instalar el software y sus aplicaciones base según la arquitectura del sistema"
+  },
+  "Construir la documentación técnica del software.": {
+   "c": "elaborar la documentación técnica de un software"
+  },
+  "Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas.": {
+   "c": "comprender los requisitos de un software usando técnicas, modelos y normas"
+  },
+  "El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas.": {
+   "c": "diseñar y desarrollar software empresarial para distintas plataformas"
+  },
+  "Produce un conjunto de artefactos que permite comprender y comunicar la solución del proyecto de software al cliente y al equipo de desarrollo.": {
+   "c": "elaborar modelos y diagramas que comuniquen la solución de software al cliente y al equipo",
+   "t": "Modelado y comunicación de la solución"
+  },
+  "Definir un esbozo de la arquitectura aplicada al diseño.": {
+   "c": "proponer un primer bosquejo de la arquitectura del software"
+  },
+  "Dibujar modelos en lenguajes estandarizados que comuniquen en etapa temprana la solución al proyecto de software.": {
+   "c": "dibujar modelos con lenguajes estándar (como UML) que comuniquen la solución desde el inicio"
+  },
+  "Refinar la arquitectura y modelos con base en las validaciones con el cliente.": {
+   "c": "ajustar la arquitectura y los modelos según lo validado con el cliente"
+  },
+  "Preparar el plan de pruebas del software.": {
+   "c": "preparar el plan de pruebas de un software"
+  },
+  "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" proporcionando las competencias para transformar los requerimientos en diseños técnicos que guíen la implementación de sistemas de información.": {
+   "c": "convertir los requisitos en diseños técnicos que guíen la construcción de un sistema"
+  },
+  "\"Comprensión de los requisitos del software y aplicaciones de acuerdo con técnicas, modelos y normativas\" mediante la aplicación de modelos estándar y técnicas de diseño reconocidas internacionalmente.": {
+   "c": "aplicar modelos y técnicas de diseño estándar a partir de los requisitos"
+  },
+  "\"El diseño, mantenimiento, actualización y soporte a bases de datos relacionales y sistemas de información de su entorno\" profundizando en las técnicas avanzadas de diseño de bases de datos relacionales y proporcionando una introducción práctica al diseño de bases de datos NoSQL.": {
+   "c": "aplicar técnicas avanzadas de diseño de bases de datos relacionales y nociones de NoSQL"
+  },
+  "Comprender los fundamentos de redes de datos y comunicaciones mediante el estudio del modelo de referencia OSI y la arquitectura TCP/IP, aplicando conceptos de direccionamiento IP, subredes, protocolos de las capas de red y transporte, configuración básica de dispositivos de red de capa 1, 2 y 3 (hubs, switches, routers), y técnicas de verificación de conectividad, para diseñar, implementar y brindar soporte técnico a redes LAN básicas en entornos empresariales y educativos, siguiendo estándares y normas internacionales.": {
+   "c": "diseñar, configurar y dar soporte a redes LAN básicas usando los modelos OSI y TCP/IP"
+  },
+  "Entiende el significado de los elementos que constituyen estándares de redes (IEEE 802.3, IEEE 802.11, RFCs).": {
+   "c": "entender los estándares de redes (IEEE 802.3, IEEE 802.11, RFC)"
+  },
+  "Identifica los protocolos y procesos descritos en documentación técnica de redes.": {
+   "c": "identificar protocolos y procesos descritos en documentación técnica de redes"
+  },
+  "Comprende la estructura formal del modelo OSI y TCP/IP y la función de cada capa.": {
+   "c": "explicar la estructura de los modelos OSI y TCP/IP y la función de cada capa"
+  },
+  "Comprende las relaciones entre diferentes protocolos en la comunicación de red (HTTP sobre TCP sobre IP sobre Ethernet).": {
+   "c": "explicar cómo se relacionan los protocolos en una comunicación de red (HTTP, TCP, IP, Ethernet)"
+  },
+  "Transforma representaciones de direcciones IP entre formatos (decimal punteado, binario, hexadecimal).": {
+   "c": "convertir direcciones IP entre formatos decimal, binario y hexadecimal"
+  },
+  "Frente a un problema que involucre información cuantitativa, plantea e implementa estrategias que lleven a soluciones adecuadas.": {
+   "c": "plantear y aplicar estrategias para resolver problemas con datos numéricos",
+   "t": "Solución de problemas cuantitativos"
+  },
+  "Diseña esquemas de direccionamiento IP y subredes calculando rangos, máscaras y cantidad de hosts.": {
+   "c": "diseñar esquemas de direccionamiento IP y subredes (rangos, máscaras y número de hosts)"
+  },
+  "Ejecuta estrategias de troubleshooting de conectividad utilizando herramientas (ping, traceroute, ipconfig).": {
+   "c": "diagnosticar fallas de conectividad con herramientas como ping, traceroute e ipconfig"
+  },
+  "Resuelve problemas de comunicación entre dispositivos analizando direcciones IP, máscaras de subred y rutas.": {
+   "c": "resolver problemas de comunicación entre dispositivos analizando IP, máscaras y rutas"
+  },
+  "Produce documentación técnica de configuración de red con instrucciones claras y secuenciales.": {
+   "c": "documentar la configuración de una red con instrucciones claras y ordenadas"
+  },
+  "Produce diagramas de red con nomenclatura y simbología estándar.": {
+   "c": "elaborar diagramas de red con la simbología estándar"
+  },
+  "Produce informes de troubleshooting con lenguaje técnico apropiado.": {
+   "c": "redactar informes de solución de fallas de red con lenguaje técnico"
+  },
+  "Aplica las normas técnicas para brindar soporte de calidad a redes de datos y comunicaciones en entornos empresariales.": {
+   "c": "aplicar normas técnicas para dar soporte de calidad a redes empresariales",
+   "t": "Soporte a redes de datos"
+  },
+  "Conocer los estándares y normas de aplicación internacional y nacional para el diseño y mantenimiento de redes de datos LAN y WLAN de acuerdo a las necesidades del entorno.": {
+   "c": "aplicar estándares nacionales e internacionales para diseñar y mantener redes LAN y WLAN"
+  },
+  "Comprender el concepto del modelo OSI que se aplica a las redes de datos y comunicaciones.": {
+   "c": "explicar el modelo OSI aplicado a las redes de datos"
+  },
+  "Aplicar configuraciones de red bajo el protocolo TCP/IP.": {
+   "c": "configurar redes con el protocolo TCP/IP"
+  },
+  "Aplicar configuraciones a dispositivos de red capa 1, 2 y 3.": {
+   "c": "configurar dispositivos de red de capa 1, 2 y 3"
+  },
+  "Escribir documentos técnicos relacionados con configuración y mantenimiento de redes.": {
+   "c": "escribir documentos técnicos sobre configuración y mantenimiento de redes"
+  },
+  "Escribir documentos técnicos relacionados con servicios de conectividad y soporte de red.": {
+   "c": "escribir documentos técnicos sobre servicios de conectividad y soporte de red"
+  },
+  "Presentar documentos de diseño de red con diagramas y tablas de direccionamiento.": {
+   "c": "presentar diseños de red con diagramas y tablas de direccionamiento"
+  },
+  "Proponer ideas para que a partir de ellas pueda establecer la relevancia de aquello que pretende conocer dentro de la multitud de objetos de estudio posibles que lo rodea, reconociendo que una buena teoría asegura el éxito de la práctica investigativa.": {
+   "c": "proponer ideas de investigación relevantes apoyadas en una buena base teórica"
+  },
+  "Identificar y analizar problemáticas del contexto académico, social u organizacional, susceptibles de ser abordadas mediante un proceso de investigación.": {
+   "c": "identificar problemas de mi entorno que pueden abordarse con una investigación"
+  },
+  "Aplicar los fundamentos del método científico para la formulación del problema de investigación, los objetivos y la justificación del estudio.": {
+   "c": "formular el problema, los objetivos y la justificación de una investigación con el método científico"
+  },
+  "Diseñar de manera conceptual la metodología de una investigación básica o aplicada, considerando el enfoque, tipo de estudio y criterios éticos y académicos.": {
+   "c": "diseñar la metodología de una investigación considerando enfoque, tipo de estudio y ética"
+  },
+  "Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.": {
+   "c": "analizar críticamente resultados y sacar conclusiones a partir de ellos",
+   "t": "Análisis crítico de resultados"
+  },
+  "Derivar conclusiones consistentes con información que la respalde.": {
+   "c": "sacar conclusiones coherentes y respaldadas por la información"
+  },
+  "Evaluar la metodología o hipótesis inicial, conjeturas o posibles explicaciones a partir del análisis de los resultados.": {
+   "c": "evaluar la metodología o hipótesis inicial a partir del análisis de los resultados"
+  },
+  "Reconoce su papel y responsabilidad disciplinar, social y ética como ingeniero en un contexto de desempeño profesional.": {
+   "c": "reconocer mi responsabilidad ética, social y profesional como ingeniero",
+   "t": "Ética profesional"
+  },
+  "Identificar sus responsabilidades éticas, sociales y técnicas en el ejercicio de su profesión frente a referentes de actuación como códigos y normas.": {
+   "c": "identificar mis responsabilidades éticas, sociales y técnicas según los códigos y normas de la profesión"
+  },
+  "Aplicar principios de diseño de experiencia de usuario (UX) y diseño de interfaz de usuario (UI) para crear aplicaciones móviles y web mediante el uso de metodologías centradas en el usuario (Design Thinking, User-Centered Design), técnicas de investigación de usuarios (personas, user journey maps, entrevistas), prototipado de baja y alta fidelidad, principios de diseño visual (tipografía, color, espaciado, jerarquía), patrones de diseño de interfaces móviles (Material Design, iOS Human Interface Guidelines), y herramientas de diseño (Figma, Adobe XD), para desarrollar prototipos interactivos funcionales y especificaciones de diseño que guíen la implementación de aplicaciones con interfaces intuitivas, accesibles y atractivas visualmente.": {
+   "c": "diseñar prototipos de aplicaciones con buena experiencia de usuario (UX/UI) usando herramientas como Figma"
+  },
+  "Entiende el significado de los elementos que constituyen guías de diseño (Material Design Guidelines, iOS HIG, WCAG).": {
+   "c": "entender las guías de diseño de interfaces (Material Design, iOS HIG, WCAG)"
+  },
+  "Identifica los principios y patrones de diseño descritos en documentación de UX/UI.": {
+   "c": "identificar los principios y patrones de diseño UX/UI en la documentación"
+  },
+  "Comprende las relaciones entre diferentes partes o enunciados de un texto": {
+   "c": "comprender cómo se relacionan las ideas de un texto entre sí"
+  },
+  "Identifica y caracteriza las ideas o afirmaciones presentes en un texto informativo": {
+   "c": "identificar las ideas principales de un texto informativo"
+  },
+  "Identifica el tipo de relación existente entre diferentes elementos de un texto (discontinuo)": {
+   "c": "identificar cómo se relacionan los elementos de un texto con gráficos, tablas o listas"
+  },
+  "Comprender las técnicas de investigación de usuarios (entrevistas, encuestas, observación) para determinar necesidades de diseño.": {
+   "c": "aplicar técnicas de investigación de usuarios (entrevistas, encuestas, observación)"
+  },
+  "Preparar especificaciones de diseño visual y de interacción para el equipo de desarrollo.": {
+   "c": "preparar especificaciones de diseño visual y de interacción para el equipo de desarrollo"
+  },
+  "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el desarrollo de aplicaciones del lado del servidor que gestionan la lógica de negocio y el acceso a datos.": {
+   "c": "desarrollar aplicaciones del lado del servidor que manejen la lógica de negocio y los datos"
+  },
+  "\"El despliegue y documentación técnica del software y aplicaciones\" proporcionando competencias para implementar servicios backend y APIs.": {
+   "c": "implementar servicios backend y APIs"
+  },
+  "Aplicar técnicas y estrategias de pruebas de software para verificar y validar la calidad de aplicaciones mediante la ejecución de pruebas unitarias, de integración, de sistema y de aceptación, utilizando herramientas automatizadas (JUnit, Selenium, Postman), técnicas de depuración, análisis de cobertura de código y estrategias de despliegue controlado, asegurando que el software cumpla con los requisitos funcionales y no funcionales establecidos antes de su implementación en ambientes productivos, aplicando normas técnicas de calidad y generando documentación técnica completa del proceso de pruebas.": {
+   "c": "aplicar pruebas unitarias, de integración, de sistema y de aceptación con herramientas automatizadas"
+  },
+  "Entiende el significado de los elementos que constituyen la documentación técnica de pruebas (planes de prueba, casos de prueba, reportes de defectos).": {
+   "c": "entender la documentación de pruebas: planes, casos de prueba y reportes de defectos"
+  },
+  "Identifica los eventos y procesos descritos en estándares de calidad de software (IEEE 829, ISO 25010).": {
+   "c": "identificar los procesos de los estándares de calidad de software (IEEE 829, ISO 25010)"
+  },
+  "Comprende la estructura formal de un plan de pruebas y la función de sus partes (alcance, estrategia, recursos, cronograma).": {
+   "c": "explicar las partes de un plan de pruebas: alcance, estrategia, recursos y cronograma"
+  },
+  "Identifica y caracteriza las ideas o afirmaciones presentes en documentación de requisitos y especificaciones de pruebas.": {
+   "c": "identificar las ideas clave en documentos de requisitos y especificaciones de pruebas"
+  },
+  "Comprende las relaciones entre diferentes secciones de documentación técnica (requisitos → casos de prueba → resultados).": {
+   "c": "relacionar requisitos, casos de prueba y resultados en la documentación técnica"
+  },
+  "Da cuenta de las características básicas de la información presentada en reportes de cobertura de código (gráficas, tablas, porcentajes).": {
+   "c": "interpretar reportes de cobertura de código (gráficas, tablas y porcentajes)"
+  },
+  "Transforma la representación de métricas de calidad (densidad de defectos, tasas de fallo) en distintos formatos (tablas, gráficos, dashboards).": {
+   "c": "presentar métricas de calidad en tablas, gráficos o tableros"
+  },
+  "Diseña planes de pruebas considerando métricas de cobertura objetivo (porcentajes de líneas, ramas, caminos).": {
+   "c": "diseñar planes de pruebas con metas de cobertura de código"
+  },
+  "Ejecuta estrategias de depuración basadas en análisis de logs y métricas de rendimiento.": {
+   "c": "depurar software analizando registros (logs) y métricas de rendimiento"
+  },
+  "Resuelve problemas de calidad del software calculando y analizando métricas (cobertura de código, densidad de defectos, eficiencia de remoción de defectos).": {
+   "c": "resolver problemas de calidad del software calculando y analizando métricas"
+  },
+  "Produce reportes de pruebas que establecen claramente el contexto, objetivos y resultados obtenidos.": {
+   "c": "redactar reportes de pruebas con contexto, objetivos y resultados claros"
+  },
+  "Produce documentación técnica de casos de prueba con ideas claras, secuenciales, con el debido uso de signos de puntuación y conectores.": {
+   "c": "documentar casos de prueba con ideas claras y ordenadas"
+  },
+  "Produce informes técnicos con lenguaje apropiado para el auditorio técnico y no técnico (desarrolladores, clientes, gerentes).": {
+   "c": "redactar informes técnicos adaptados a públicos técnicos y no técnicos"
+  },
+  "Dibujar modelos y esquemas que comuniquen la estrategia de pruebas (matrices de trazabilidad, diagramas de flujo de pruebas).": {
+   "c": "elaborar diagramas que expliquen la estrategia de pruebas (matrices de trazabilidad, flujos)"
+  },
+  "Conocer los fundamentos de programación aplicados a la escritura de pruebas automatizadas.": {
+   "c": "aplicar la programación a la escritura de pruebas automatizadas"
+  },
+  "Codificar pruebas unitarias y de integración en lenguajes de programación (Java, Python, JavaScript).": {
+   "c": "programar pruebas unitarias y de integración (Java, Python o JavaScript)"
+  },
+  "Integrar las pruebas automatizadas en el flujo de desarrollo del software.": {
+   "c": "integrar las pruebas automatizadas en el flujo de desarrollo"
+  },
+  "Realiza pruebas y mantenimiento al software para garantizar que las funcionalidades se desarrollaron e implementaron correctamente y de acuerdo con las especificaciones del diseño.": {
+   "c": "probar y mantener un software para asegurar que cumple con su diseño",
+   "t": "Pruebas y mantenimiento de software"
+  },
+  "Aplicar el plan de pruebas al software.": {
+   "c": "aplicar el plan de pruebas a un software"
+  },
+  "Realizar pruebas individuales a cada subconjunto del software.": {
+   "c": "probar por separado cada componente de un software"
+  },
+  "Realizar pruebas de integración software.": {
+   "c": "realizar pruebas de integración de un software"
+  },
+  "Realizar pruebas del sistema.": {
+   "c": "realizar pruebas del sistema completo"
+  },
+  "Preparar el informe técnico de las pruebas del software que permitan la refinación del software.": {
+   "c": "preparar el informe técnico de pruebas para mejorar el software"
+  },
+  "Realizar mantenimiento del software a partir de las necesidades identificadas.": {
+   "c": "hacer mantenimiento al software según las necesidades identificadas"
+  },
+  "Capacitar a los diferentes stakeholders (cliente/empresa) sobre el funcionamiento del software.": {
+   "c": "capacitar al cliente y a los usuarios en el uso del software"
+  },
+  "Escribir documentos técnicos relacionados con planes de pruebas, casos de prueba, reportes de defectos y resultados de ejecución.": {
+   "c": "escribir planes de pruebas, casos de prueba y reportes de defectos"
+  },
+  "Escribir documentos técnicos relacionados con servicios de calidad y aseguramiento de software.": {
+   "c": "escribir documentos técnicos sobre aseguramiento de la calidad del software"
+  },
+  "Presentar documentos de métricas de calidad y estimaciones de tiempo para actividades de QA.": {
+   "c": "presentar métricas de calidad y estimaciones de tiempo de las actividades de pruebas"
+  },
+  "\"El diseño, mantenimiento, actualización y soporte a bases de datos relacionales y sistemas de información de su entorno\" mediante el dominio del lenguaje SQL para la manipulación de datos y objetos de base de datos, así como las operaciones de mantenimiento y soporte técnico.": {
+   "c": "usar SQL para manipular datos y objetos de una base de datos y darle mantenimiento"
+  },
+  "\"El desarrollo de habilidades de comunicación en forma oral y escrita de manera eficiente y efectiva\" a través de la documentación técnica de bases de datos.": {
+   "c": "documentar técnicamente una base de datos de forma clara"
+  },
+  "Manipular los objetos de la BD y los datos.": {
+   "c": "manipular los objetos y los datos de una base de datos"
+  },
+  "Realizar mantenimiento a la estructura y datos de una BD usando las estructuras de lenguaje estructurado DDL, DML.": {
+   "c": "mantener la estructura y los datos de una base de datos con sentencias DDL y DML"
+  },
+  "Proveer soporte técnico a BD relacionales de acuerdo a los requerimientos del usuario.": {
+   "c": "dar soporte técnico a bases de datos relacionales según las necesidades del usuario"
+  },
+  "Escribir documentos técnicos relacionados con hardware y software": {
+   "c": "escribir documentos técnicos sobre hardware y software"
+  },
+  "Aplicar conceptos avanzados de redes de datos mediante la configuración de VLANs, enrutamiento estático y dinámico (RIP, OSPF básico), switching avanzado (STP, EtherChannel), protocolos de capa de aplicación (HTTP, FTP, SMTP, DNS), listas de control de acceso (ACL), NAT/PAT, y servicios de red empresariales (DHCP, DNS, NTP), para diseñar, implementar, configurar y administrar redes LAN segmentadas y redes WAN básicas en entornos empresariales, siguiendo estándares internacionales y aplicando técnicas de troubleshooting sistemático para garantizar la disponibilidad y rendimiento de la infraestructura de red.": {
+   "c": "configurar y administrar redes empresariales con VLAN, enrutamiento, ACL, NAT y servicios de red"
+  },
+  "Entiende el significado de los elementos que constituyen documentación técnica de configuración avanzada de redes (comandos IOS, configuraciones VLAN, protocolos de enrutamiento).": {
+   "c": "entender documentación de configuración avanzada de redes (comandos IOS, VLAN, enrutamiento)"
+  },
+  "Identifica los procesos y algoritmos descritos en protocolos de enrutamiento (RIP, OSPF).": {
+   "c": "identificar cómo funcionan los protocolos de enrutamiento RIP y OSPF"
+  },
+  "Comprende la estructura formal de configuraciones de red multi-capa (VLANs, enrutamiento inter-VLAN, ACLs, NAT).": {
+   "c": "explicar configuraciones de red en varias capas (VLAN, inter-VLAN, ACL, NAT)"
+  },
+  "Comprende las relaciones entre diferentes protocolos y servicios en una red empresarial (DHCP, DNS, routing, switching).": {
+   "c": "explicar cómo se relacionan DHCP, DNS, enrutamiento y conmutación en una red empresarial"
+  },
+  "Identifica y caracteriza las diferentes etapas de troubleshooting de red.": {
+   "c": "identificar las etapas para diagnosticar y solucionar fallas de red"
+  },
+  "Da cuenta de las características básicas de tablas de enrutamiento, tablas VLAN, y tablas MAC.": {
+   "c": "interpretar tablas de enrutamiento, tablas VLAN y tablas MAC"
+  },
+  "Transforma representaciones de configuraciones de red entre formatos (comandos CLI, diagramas de topología, tablas de direccionamiento).": {
+   "c": "pasar una configuración de red entre comandos, diagramas de topología y tablas"
+  },
+  "Diseña esquemas de VLANs calculando cantidad de usuarios por segmento y optimizando el tráfico broadcast.": {
+   "c": "diseñar VLAN calculando usuarios por segmento y reduciendo el tráfico broadcast"
+  },
+  "Ejecuta estrategias de troubleshooting de conectividad avanzado (problemas de enrutamiento, VLANs, ACLs).": {
+   "c": "diagnosticar fallas avanzadas de conectividad (enrutamiento, VLAN, ACL)"
+  },
+  "Resuelve problemas de comunicación inter-VLAN y entre redes WAN analizando tablas de enrutamiento y configuraciones.": {
+   "c": "resolver problemas de comunicación entre VLAN y redes WAN"
+  },
+  "Produce documentación técnica de configuración avanzada de red con comandos secuenciales y explicaciones claras.": {
+   "c": "documentar configuraciones avanzadas de red con comandos y explicaciones claras"
+  },
+  "Produce diagramas de red multi-capa con nomenclatura estándar.": {
+   "c": "elaborar diagramas de red de varias capas con nomenclatura estándar"
+  },
+  "Produce informes de troubleshooting avanzado con análisis técnico apropiado.": {
+   "c": "redactar informes de diagnóstico avanzado de redes"
+  },
+  "Comprender el concepto modelo OSI que se aplica a las redes de datos y comunicaciones.": {
+   "c": "explicar el modelo OSI aplicado a las redes de datos"
+  },
+  ". Aplicar configuraciones de red bajo el protocolo TCP/IP.": {
+   "c": "configurar redes con el protocolo TCP/IP"
+  },
+  "Escribir documentos técnicos relacionados con servicios de red empresariales (DHCP, DNS, NTP).": {
+   "c": "escribir documentos técnicos sobre servicios de red empresariales (DHCP, DNS, NTP)"
+  },
+  "Presentar documentos de diseño de red empresarial con diagramas multi-capa y tablas de enrutamiento.": {
+   "c": "presentar diseños de red empresarial con diagramas de varias capas y tablas de enrutamiento"
+  },
+  "Aplicar de manera adecuada las principales técnicas de investigación para la recolección, organización y análisis de información científica, garantizando validez, confiabilidad y rigor académico.": {
+   "c": "aplicar técnicas de investigación para recolectar, organizar y analizar información con rigor"
+  },
+  "Seleccionar y diseñar instrumentos de recolección de datos coherentes con el enfoque metodológico, el tipo de investigación y el problema planteado, considerando criterios éticos y contextuales.": {
+   "c": "diseñar instrumentos de recolección de datos coherentes con mi investigación y con criterios éticos"
+  },
+  "Analizar e interpretar información recolectada mediante técnicas cualitativas y cuantitativas, apoyándose en herramientas básicas de análisis de datos para la toma de decisiones académicas y profesionales.": {
+   "c": "analizar información cualitativa y cuantitativa para tomar decisiones académicas y profesionales"
+  },
+  "Aplicar conceptos avanzados de tecnologías de redes inalámbricas mediante el estudio en profundidad de estándares Wi-Fi (IEEE 802.11a/b/g/n/ac/ax), arquitecturas WLAN empresariales (autónoma vs controlada), técnicas de site survey y planificación de cobertura, configuración avanzada de access points y wireless LAN controllers, seguridad inalámbrica (WPA2-Enterprise, 802.1X, RADIUS), optimización de rendimiento (roaming, load balancing, band steering), introducción a tecnologías inalámbricas complementarias (Bluetooth, ZigBee, LoRaWAN, 5G), y troubleshooting avanzado de WLAN, para diseñar, implementar, administrar y optimizar redes inalámbricas empresariales de alto rendimiento, escalables y seguras, siguiendo mejores prácticas y estándares internacionales.": {
+   "c": "diseñar, configurar y optimizar redes inalámbricas empresariales seguras"
+  },
+  "Entiende el significado de los elementos que constituyen estándares de redes inalámbricas (IEEE 802.11, especificaciones técnicas de equipos).": {
+   "c": "entender los estándares de redes inalámbricas (IEEE 802.11) y las especificaciones de los equipos"
+  },
+  "Identifica los protocolos y tecnologías descritos en documentación técnica de WLAN.": {
+   "c": "identificar los protocolos y tecnologías descritos en documentación de redes WLAN"
+  },
+  "Comprende la estructura formal de arquitecturas WLAN empresariales y la función de sus componentes (APs, WLC, RADIUS).": {
+   "c": "explicar la arquitectura de una red WLAN empresarial y sus componentes (AP, WLC, RADIUS)"
+  },
+  "Comprende las relaciones entre diferentes tecnologías inalámbricas y sus aplicaciones (Wi-Fi, Bluetooth, LoRaWAN).": {
+   "c": "explicar las diferencias y usos de Wi-Fi, Bluetooth y LoRaWAN"
+  },
+  "Da cuenta de las características básicas de información de site survey presentada en mapas de calor (heatmaps), gráficos de niveles de señal, tablas de canales.": {
+   "c": "interpretar mapas de calor, gráficos de señal y tablas de canales de un estudio de cobertura"
+  },
+  "Transforma representaciones de configuraciones WLAN entre formatos (comandos CLI, diagramas de topología, tablas de parámetros RF).": {
+   "c": "pasar una configuración inalámbrica entre comandos, diagramas y tablas de parámetros"
+  },
+  "Diseña redes WLAN calculando cantidad de APs necesarios, ubicación óptima, potencia de transmisión, selección de canales.": {
+   "c": "diseñar una red WLAN calculando número y ubicación de AP, potencia y canales"
+  },
+  "Ejecuta estrategias de troubleshooting de problemas de cobertura, interferencias, roaming, analizando métricas RF (RSSI, SNR, noise floor).": {
+   "c": "diagnosticar problemas de cobertura, interferencia y roaming con métricas de señal (RSSI, SNR)"
+  },
+  "Resuelve problemas de rendimiento de WLAN midiendo throughput, latencia, packet loss, y aplicando técnicas de optimización.": {
+   "c": "mejorar el rendimiento de una WLAN midiendo velocidad, latencia y pérdida de paquetes"
+  },
+  "Produce documentación técnica de diseño de WLAN (site survey reports, design documents) con instrucciones claras y secuenciales.": {
+   "c": "documentar el diseño de una red WLAN con instrucciones claras y ordenadas"
+  },
+  "Produce reportes de site survey con mapas de calor, análisis de cobertura y recomendaciones técnicas.": {
+   "c": "elaborar reportes de cobertura con mapas de calor y recomendaciones técnicas"
+  },
+  "Produce informes de troubleshooting de WLAN con análisis técnico apropiado.": {
+   "c": "redactar informes de diagnóstico de redes inalámbricas"
+  },
+  "Aplicar configuraciones a dispositivos de red capa 1, 2 y 3": {
+   "c": "configurar dispositivos de red de capa 1, 2 y 3"
+  },
+  "Escribir documentos técnicos relacionados con diseño de WLAN (site survey reports, RF design documents, configuration guides).": {
+   "c": "escribir guías de diseño y configuración de redes WLAN"
+  },
+  "Escribir documentos técnicos relacionados con servicios inalámbricos empresariales (políticas de seguridad WLAN, procedimientos de troubleshooting).": {
+   "c": "escribir políticas de seguridad y procedimientos de soporte para redes inalámbricas"
+  },
+  "Presentar documentos de diseño de WLAN con diagramas, mapas de cobertura, y especificaciones técnicas.": {
+   "c": "presentar diseños de WLAN con diagramas, mapas de cobertura y especificaciones"
+  },
+  "\"El diseño y desarrollo de software y aplicaciones de tipo empresarial en diversas plataformas\" mediante el dominio de frameworks modernos de JavaScript para crear aplicaciones web interactivas de tipo SPA (Single Page Application).": {
+   "c": "crear aplicaciones web de una sola página (SPA) con frameworks de JavaScript"
+  },
+  "\"La aplicación de pruebas y mantenimiento de soluciones de software y aplicaciones optimizando recursos y tiempo\" a través del desarrollo de aplicaciones frontend escalables y mantenibles.": {
+   "c": "desarrollar aplicaciones frontend escalables y fáciles de mantener"
+  },
+  "Definir una metodología de desarrollo de software acorde las necesidades y tipo de empresa.": {
+   "c": "elegir una metodología de desarrollo de software adecuada para cada empresa"
+  },
+  "Realiza pruebas individuales a cada subconjunto del software.": {
+   "c": "probar por separado cada componente de un software"
+  },
+  "Aplicar metodologías de desarrollo de software tradicionales y ágiles para gestionar proyectos de software de manera efectiva, comprendiendo los fundamentos de cada enfoque metodológico (cascada, iterativo, incremental, Scrum, Kanban, XP), seleccionando la metodología apropiada según el contexto del proyecto, implementando prácticas ágiles (sprints, retrospectivas, daily meetings, user stories), y documentando el proceso de desarrollo utilizando herramientas de gestión de proyectos (Jira, Trello, Azure DevOps), para garantizar entregas de valor continuas y adaptativas a las necesidades del cliente.": {
+   "c": "aplicar metodologías tradicionales y ágiles (Scrum, Kanban, XP) para gestionar proyectos de software"
+  },
+  "Entiende el significado de los elementos que constituyen documentación de metodologías (Scrum Guide, Manifiesto Ágil, guías de PMBOK).": {
+   "c": "entender la documentación de metodologías (Guía Scrum, Manifiesto Ágil, PMBOK)"
+  },
+  "Identifica los eventos, roles y artefactos descritos en marcos de trabajo ágiles.": {
+   "c": "identificar los eventos, roles y artefactos de los marcos ágiles"
+  },
+  "Comprende la estructura formal de frameworks metodológicos y la función de sus componentes (roles, eventos, artefactos).": {
+   "c": "explicar los roles, eventos y artefactos de un marco metodológico"
+  },
+  "Identifica y caracteriza las diferentes fases de ciclos de vida de desarrollo (SDLC).": {
+   "c": "identificar las fases del ciclo de vida del desarrollo de software"
+  },
+  "Comprende las relaciones entre diferentes ceremonias ágiles y su propósito dentro del ciclo iterativo.": {
+   "c": "explicar el propósito de cada ceremonia ágil dentro de una iteración"
+  },
+  "Diseña planes de iteración (sprints) considerando velocidad del equipo y capacidad.": {
+   "c": "planear sprints según la velocidad y capacidad del equipo"
+  },
+  "Ejecuta estrategias de estimación de esfuerzo utilizando técnicas como Planning Poker y puntos de historia.": {
+   "c": "estimar el esfuerzo con técnicas como Planning Poker y puntos de historia"
+  },
+  "Resuelve problemas de planificación de proyecto calculando métricas ágiles (burndown, velocity, lead time).": {
+   "c": "resolver problemas de planeación con métricas ágiles (burndown, velocidad, lead time)"
+  },
+  "Produce documentación de proyecto (Product Backlog, Sprint Backlog, retrospectivas) con ideas claras y secuenciales.": {
+   "c": "elaborar el Product Backlog, el Sprint Backlog y las retrospectivas con claridad"
+  },
+  "Produce historias de usuario bien estructuradas con formato estándar (Como [rol], quiero [funcionalidad], para [beneficio]).": {
+   "c": "escribir historias de usuario con el formato estándar (Como…, quiero…, para…)"
+  },
+  "Produce informes de seguimiento de proyecto con lenguaje apropiado para stakeholders técnicos y de negocio.": {
+   "c": "redactar informes de avance para públicos técnicos y de negocio"
+  },
+  "Comprender las normas y modelos técnicos existentes para aplicarlos en la obtención de requisitos del software.": {
+   "c": "aplicar normas y modelos técnicos para obtener los requisitos de un software"
+  },
+  "Preparar documentos técnicos de historias de usuario con criterios de aceptación que soporten el diseño del software.": {
+   "c": "escribir historias de usuario con criterios de aceptación"
+  },
+  "Dibujar modelos y diagramas que comuniquen la solución (user story mapping, release plan).": {
+   "c": "elaborar diagramas que comuniquen la solución (mapa de historias, plan de entregas)"
+  },
+  "Definir una metodología de desarrollo de software acorde a las necesidades y tipo de empresa.": {
+   "c": "elegir una metodología de desarrollo de software adecuada para cada empresa"
+  },
+  "Escribir documentos técnicos relacionados con planificación de sprints, retrospectivas, y reportes de avance.": {
+   "c": "documentar la planeación de sprints, las retrospectivas y los reportes de avance"
+  },
+  "Presentar un documento de estimación de costos en el desarrollo de software.": {
+   "c": "estimar el costo de desarrollar un software"
+  },
+  "Aplicar conceptos de servicios telemáticos y tecnologías de comunicación avanzadas mediante el estudio de servicios de red empresariales (VoIP, videoconferencia, streaming), calidad de servicio (QoS), redes inalámbricas (Wi-Fi, configuración de access points, seguridad inalámbrica), virtualización de redes (VPNs, túneles seguros), administración de servidores de red (web, correo, FTP, proxy), y protocolos de gestión (SNMP, Syslog), para diseñar, implementar, administrar y dar soporte a servicios telemáticos integrados en entornos empresariales y de telecomunicaciones, garantizando disponibilidad, rendimiento y seguridad de los servicios según estándares internacionales.": {
+   "c": "diseñar y administrar servicios telemáticos empresariales (VoIP, VPN, QoS, servidores)"
+  },
+  "Entiende el significado de los elementos que constituyen documentación técnica de servicios telemáticos (VoIP, VPN, QoS, protocolos de gestión).": {
+   "c": "entender la documentación de servicios telemáticos (VoIP, VPN, QoS)"
+  },
+  "Identifica los procesos y tecnologías descritos en estándares de telecomunicaciones (IEEE 802.11, SIP, H.323).": {
+   "c": "identificar los procesos de los estándares de telecomunicaciones (IEEE 802.11, SIP, H.323)"
+  },
+  "Comprende la estructura formal de arquitecturas de servicios telemáticos y la función de sus componentes (servidores, gateways, access points, VPN tunnels).": {
+   "c": "explicar la arquitectura de los servicios telemáticos y sus componentes"
+  },
+  "Comprende las relaciones entre diferentes protocolos y servicios en una infraestructura telemática integrada (VoIP sobre VPN, QoS para videoconferencia).": {
+   "c": "explicar cómo se combinan protocolos y servicios en una red telemática (VoIP sobre VPN, QoS)"
+  },
+  "Da cuenta de las características básicas de métricas de QoS presentadas en gráficos (latencia, jitter, packet loss, throughput).": {
+   "c": "interpretar gráficos de calidad de servicio (latencia, jitter, pérdida, velocidad)"
+  },
+  "Transforma representaciones de configuraciones de servicios telemáticos entre formatos (comandos CLI, diagramas de flujo de tráfico, políticas QoS).": {
+   "c": "pasar configuraciones de servicios telemáticos entre comandos, diagramas y políticas"
+  },
+  "Diseña políticas de QoS calculando ancho de banda necesario para servicios críticos (VoIP, videoconferencia).": {
+   "c": "diseñar políticas de QoS calculando el ancho de banda para voz y video"
+  },
+  "Ejecuta estrategias de optimización de redes inalámbricas midiendo niveles de señal, interferencias y throughput.": {
+   "c": "optimizar redes inalámbricas midiendo señal, interferencias y velocidad"
+  },
+  "Resuelve problemas de calidad de servicios telemáticos analizando métricas de rendimiento y logs de servidor.": {
+   "c": "resolver problemas de servicios telemáticos analizando métricas y registros del servidor"
+  },
+  "Produce documentación técnica de configuración de servicios telemáticos con instrucciones claras y secuenciales.": {
+   "c": "documentar la configuración de servicios telemáticos con instrucciones claras"
+  },
+  "Produce diagramas de arquitectura de servicios con nomenclatura estándar.": {
+   "c": "elaborar diagramas de arquitectura de servicios con nomenclatura estándar"
+  },
+  "Produce informes de análisis de rendimiento de servicios telemáticos con lenguaje técnico apropiado.": {
+   "c": "redactar informes de rendimiento de servicios telemáticos"
+  },
+  "Escribir documentos técnicos relacionados con configuración de servicios telemáticos (VoIP, VPN, servidores de red).": {
+   "c": "escribir documentos técnicos sobre configuración de VoIP, VPN y servidores de red"
+  },
+  "Escribir documentos técnicos relacionados con servicios TIC incluyendo manuales de administración de servicios de red.": {
+   "c": "escribir manuales de administración de servicios de red"
+  },
+  "Presentar documentos de diseño de arquitectura de servicios telemáticos con diagramas y especificaciones técnicas.": {
+   "c": "presentar diseños de arquitectura de servicios telemáticos con diagramas y especificaciones"
+  },
+  "Aplicar frameworks modernos de desarrollo de software para construir aplicaciones web full-stack mediante el uso de frameworks backend (Django, Spring Boot, Express.js), frameworks frontend (React, Angular, Vue.js), herramientas de gestión de dependencias (npm, pip, Maven), arquitectura de microservicios básica, contenedorización con Docker, orquestación con Docker Compose, pipelines de CI/CD básicos (GitHub Actions, GitLab CI), y despliegue en plataformas cloud (Heroku, AWS, Azure, Google Cloud), para desarrollar, integrar, desplegar y mantener aplicaciones empresariales escalables, mantenibles y de alto rendimiento siguiendo mejores prácticas de la industria.": {
+   "c": "desarrollar y desplegar aplicaciones web full-stack con frameworks, Docker y CI/CD en la nube"
+  },
+  "Entiende el significado de los elementos que constituyen documentación técnica de frameworks (guías oficiales de Django, React, Spring Boot).": {
+   "c": "entender la documentación oficial de frameworks como Django, React o Spring Boot"
+  },
+  "Identifica los componentes y patrones arquitectónicos descritos en documentación de frameworks (MVC, MVVM, componentes, servicios).": {
+   "c": "identificar patrones de arquitectura en frameworks (MVC, MVVM, componentes, servicios)"
+  },
+  "Comprende la estructura formal de arquitecturas de aplicaciones full-stack y la función de sus componentes (frontend, backend, base de datos, APIs).": {
+   "c": "explicar la arquitectura de una aplicación full-stack: frontend, backend, base de datos y APIs"
+  },
+  "Comprende las relaciones entre diferentes capas de una aplicación (presentación, lógica de negocio, acceso a datos).": {
+   "c": "explicar cómo se relacionan las capas de presentación, lógica de negocio y datos"
+  },
+  "Identifica y caracteriza las diferentes etapas de pipelines de CI/CD (build, test, deploy).": {
+   "c": "identificar las etapas de un pipeline de CI/CD: construir, probar y desplegar"
+  },
+  "Diseña arquitecturas de aplicaciones considerando métricas de rendimiento (tiempo de respuesta, throughput, escalabilidad).": {
+   "c": "diseñar arquitecturas considerando tiempo de respuesta y escalabilidad"
+  },
+  "Ejecuta estrategias de optimización de aplicaciones analizando métricas de carga (tiempo de carga, tamaño de bundles, queries de base de datos).": {
+   "c": "optimizar aplicaciones analizando tiempos de carga, tamaño del código y consultas"
+  },
+  "Resuelve problemas de rendimiento de aplicaciones midiendo y optimizando componentes críticos.": {
+   "c": "resolver problemas de rendimiento midiendo y mejorando los componentes críticos"
+  },
+  "Produce documentación técnica de aplicaciones (README, API docs, guías de despliegue) con instrucciones claras y secuenciales.": {
+   "c": "elaborar README, documentación de APIs y guías de despliegue claras"
+  },
+  "Produce documentación de código con comentarios apropiados y docstrings.": {
+   "c": "documentar el código con comentarios y docstrings adecuados"
+  },
+  "Produce informes de arquitectura de software con diagramas y especificaciones técnicas.": {
+   "c": "redactar informes de arquitectura con diagramas y especificaciones"
+  },
+  "Dibujar modelos que comuniquen la solución: diagramas de arquitectura, diagramas de componentes, diagramas de despliegue.": {
+   "c": "elaborar diagramas de arquitectura, componentes y despliegue"
+  },
+  "Refinar la arquitectura con base en validaciones y pruebas de rendimiento.": {
+   "c": "mejorar la arquitectura a partir de pruebas de rendimiento"
+  },
+  "Preparar documentación técnica de APIs (Swagger/OpenAPI).": {
+   "c": "documentar APIs con Swagger/OpenAPI"
+  },
+  "Aplicar pruebas automatizadas en aplicaciones con frameworks (pruebas unitarias con Jest, pytest; pruebas de integración).": {
+   "c": "escribir pruebas automatizadas en aplicaciones con frameworks (Jest, pytest)"
+  },
+  "Realizar pruebas de APIs con herramientas (Postman, Insomnia).": {
+   "c": "probar APIs con herramientas como Postman o Insomnia"
+  },
+  "Preparar informes de pruebas y cobertura de código.": {
+   "c": "preparar informes de pruebas y de cobertura de código"
+  },
+  "Capacitar sobre el funcionamiento del software mediante documentación clara y demos.": {
+   "c": "enseñar el uso del software con documentación clara y demostraciones"
+  },
+  "Escribir documentos técnicos relacionados con arquitectura de aplicaciones, configuración de frameworks, despliegue con Docker.": {
+   "c": "documentar la arquitectura, la configuración de frameworks y el despliegue con Docker"
+  },
+  "Escribir documentos técnicos relacionados con APIs REST (documentación con Swagger/OpenAPI).": {
+   "c": "documentar APIs REST con Swagger/OpenAPI"
+  },
+  "Presentar documentos de arquitectura de software con diagramas y justificación de decisiones técnicas.": {
+   "c": "presentar la arquitectura de software justificando las decisiones técnicas"
+  },
+  "Analizar e interpretar textos de diversa tipología, identificando ideas principales, intenciones comunicativas y relaciones implícitas, para responder de manera argumentada a preguntas tipo SABER TyT del módulo de Lectura Crítica.": {
+   "c": "analizar textos de distinto tipo para responder con argumentos preguntas tipo Saber TyT"
+  },
+  "Evaluar situaciones problema de carácter social y ciudadano, reconociendo derechos, deberes, principios democráticos y mecanismos de convivencia, con el fin de proponer soluciones fundamentadas en contextos similares a los evaluados en el módulo de Competencias Ciudadanas.": {
+   "c": "evaluar situaciones sociales reconociendo derechos, deberes y principios democráticos"
+  },
+  "Aplicar habilidades de pensamiento crítico y toma de decisiones responsables, integrando la comprensión lectora y el análisis ciudadano, para mejorar su desempeño académico y asumir un rol activo y ético en contextos sociales, académicos y profesionales.": {
+   "c": "tomar decisiones responsables y éticas integrando la lectura crítica y el análisis ciudadano"
+  },
+  "Identifica la organización del estado colombiano, los fundamentos del modelo de estado social de derecho y las": {
+   "c": "explicar cómo está organizado el Estado colombiano y el Estado social de derecho",
+   "t": "Estado y ciudadanía"
+  },
+  "Reconoce y Analiza en el marco del respeto, la existencia de diferentes perspectivas en situaciones donde interactúan diferentes partes.": {
+   "c": "analizar con respeto los distintos puntos de vista en una situación con varias partes"
+  },
+  "Aplicar modelos y técnicas matemáticas de investigación de operaciones para la optimización de recursos y toma de decisiones en sistemas organizacionales, contribuyendo a la formulación, dirección, planeación, evaluación y control de estrategias empresariales en proyectos TI.": {
+   "c": "aplicar modelos de investigación de operaciones para optimizar recursos y tomar decisiones"
+  },
+  "Valida procedimientos y estrategias matemáticas utilizadas para dar solución a problemas.": {
+   "c": "validar los procedimientos matemáticos usados para resolver un problema",
+   "t": "Validación matemática"
+  },
+  "Plantea afirmaciones que sustentan o refutan una interpretación dada a la información disponible en el marco de la solución a un problema.": {
+   "c": "plantear argumentos que apoyen o refuten una interpretación de los datos"
+  },
+  "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos.": {
+   "c": "argumentar a favor o en contra de un procedimiento para resolver un problema"
+  },
+  "Establece la validez o pertinencia de una solución propuesta a un problema dado.": {
+   "c": "determinar si una solución propuesta a un problema es válida y pertinente"
+  },
+  "Formula y evalúa proyectos con enfoque TIC, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.": {
+   "c": "formular y evaluar proyectos TIC con una metodología adecuada",
+   "t": "Formulación de proyectos TIC"
+  },
+  "Caracterizar el proyecto de acuerdo con su índole o naturaleza social, económica, de inversión (entre otros) y el entorno utilizando referentes apropiados.": {
+   "c": "caracterizar un proyecto según su naturaleza (social, económica, de inversión) y su entorno"
+  },
+  "Cuantificar, en el marco de la planeación de un proyecto, elementos fundamentales como alcance, tiempo y costo.": {
+   "c": "calcular el alcance, el tiempo y el costo de un proyecto"
+  },
+  "Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas.": {
+   "c": "usar y proponer modelos para describir, explicar y predecir fenómenos",
+   "t": "Uso de modelos"
+  },
+  "Comprender qué es un modelo y cuál es su relación con un sistema o fenómeno dado.": {
+   "c": "explicar qué es un modelo y cómo se relaciona con el sistema que representa"
+  },
+  "Determinar las ventajas y limitaciones de usar un determinado modelo.": {
+   "c": "identificar las ventajas y limitaciones de un modelo"
+  },
+  "Proponer o utilizar modelos para obtener información, hacer inferencias o predicciones.": {
+   "c": "usar modelos para obtener información y hacer predicciones"
+  },
+  "Desarrollar soluciones de software complejas aplicando técnicas avanzadas de programación, patrones de diseño, estructuras de datos eficientes y paradigmas modernos, para construir aplicaciones escalables y mantenibles que soporten las necesidades de proyectos TI empresariales.": {
+   "c": "desarrollar software complejo con patrones de diseño y estructuras de datos eficientes"
+  },
+  "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software.": {
+   "c": "comparar alternativas de solución y elegir la mejor con criterios técnicos, económicos, sociales y éticos",
+   "t": "Selección de alternativas"
+  },
+  "Comprender e interpretar en un marco técnico la información para identificar el problema que se requiere resolver en un contexto específico.": {
+   "c": "interpretar la información técnica para identificar el problema a resolver"
+  },
+  "Diferenciar y plantear restricciones y requerimientos del producto tecnológico por diseñar.": {
+   "c": "definir las restricciones y requisitos de un producto tecnológico"
+  },
+  "Formular las especificaciones técnicas para el diseño del producto tecnológico.": {
+   "c": "formular las especificaciones técnicas para diseñar un producto tecnológico"
+  },
+  "Reconocer alternativas viables de solución para satisfacer requerimientos, restricciones y especificaciones técnicas de diseño.": {
+   "c": "reconocer alternativas viables para cumplir los requisitos y restricciones"
+  },
+  "Comparar alternativas viables de solución de acuerdo con criterios determinados.": {
+   "c": "comparar alternativas de solución con criterios definidos"
+  },
+  "Seleccionar la alternativa más adecuada de solución.": {
+   "c": "elegir la alternativa de solución más adecuada"
+  },
+  "Aplica los conocimientos de las matemáticas, la tecnología y las ciencias de la ingeniería para especificar en forma detallada un producto tecnológico.": {
+   "c": "aplicar matemáticas, tecnología e ingeniería para especificar en detalle un producto tecnológico",
+   "t": "Especificación de productos tecnológicos"
+  },
+  "Realizar cálculos y procedimientos necesarios para detallar el producto tecnológico y sus componentes.": {
+   "c": "hacer los cálculos necesarios para detallar un producto tecnológico y sus componentes"
+  },
+  "Plantear especificaciones para el proceso de desarrollo del producto tecnológico.": {
+   "c": "definir especificaciones para el proceso de desarrollo de un producto tecnológico"
+  },
+  "Revisar, verificar y validar que una solución cumpla con las especificaciones técnicas de diseño.": {
+   "c": "verificar que una solución cumpla con las especificaciones técnicas del diseño"
+  },
+  "Diseñar arquitecturas de software robustas, escalables y mantenibles que satisfagan requisitos funcionales y atributos de calidad, aplicando estilos arquitectónicos, patrones y tácticas apropiadas para liderar proyectos de desarrollo de software empresarial.": {
+   "c": "diseñar arquitecturas de software robustas y escalables aplicando estilos y patrones"
+  },
+  "Establece la validez e implicaciones de un enunciado de un texto (argumentativo o expositivo).": {
+   "c": "evaluar la validez y las implicaciones de lo que afirma un texto"
+  },
+  "Establece relaciones entre un texto y otros textos o enunciados.": {
+   "c": "relacionar un texto con otros textos o ideas"
+  },
+  "Reconoce las estrategias discursivas en un texto.": {
+   "c": "reconocer las estrategias que usa un autor para convencer o informar"
+  },
+  "Contextualiza adecuadamente un texto o la información contenida en este.": {
+   "c": "ubicar un texto o su información en su contexto"
+  },
+  "Aplicar las metodologías apropiadas para la formulación de un proyecto.": {
+   "c": "aplicar metodologías adecuadas para formular un proyecto"
+  },
+  "Diseñar e implementar soluciones de almacenamiento y gestión de datos utilizando bases de datos NoSQL, seleccionando el tipo apropiado según las características del problema, para soportar aplicaciones modernas con grandes volúmenes de datos, alta escalabilidad y requisitos de rendimiento exigentes.": {
+   "c": "diseñar soluciones con bases de datos NoSQL eligiendo el tipo adecuado para cada problema"
+  },
+  "Evalúa la efectividad de recursos tecnológicos que sean usados en la organización basado en la arquitectura empresarial.": {
+   "c": "evaluar si los recursos tecnológicos de una organización son efectivos según su arquitectura empresarial",
+   "t": "Gestión de recursos tecnológicos"
+  },
+  "Configurar, usar y administrar recursos tecnológicos (HW/SW).": {
+   "c": "configurar, usar y administrar recursos de hardware y software"
+  },
+  "Diseñar planes de mejoramiento para el uso eficiente de recursos tecnológicos o su actualización.": {
+   "c": "diseñar planes para usar mejor o actualizar los recursos tecnológicos"
+  },
+  "Diseñar e implementar soluciones integrales de telecomunicaciones para entornos empresariales, aplicando tecnologías convergentes de voz, datos y video, así como servicios en la nube, para soportar la infraestructura de comunicaciones de organizaciones modernas.": {
+   "c": "diseñar soluciones de telecomunicaciones empresariales que integren voz, datos, video y nube"
+  },
+  "Formular el proyecto, apoyándose en un marco metodológico pertinente, a partir de las consideraciones del entorno y del análisis de alternativas.": {
+   "c": "formular un proyecto con una metodología adecuada, a partir del entorno y de varias alternativas"
+  },
+  "Analizar e interpretar la viabilidad financiera de un proyecto.": {
+   "c": "analizar la viabilidad financiera de un proyecto"
+  },
+  "Organizar el procesamiento electrónico de información según normatividad de gestión de la información y los protocolos de seguimiento organizacional.": {
+   "c": "organizar el procesamiento de información según las normas de gestión de la información"
+  },
+  "Desarrollar una mentalidad emprendedora a través de la implementación y apropiación de herramientas efectivas y, a partir de eventuales iniciativas de emprendimiento empresarial (potenciales negocios), generar valor en el ecosistema emprendedor para proyectarse en el contexto local, nacional o internacional": {
+   "c": "desarrollar una mentalidad emprendedora y proponer iniciativas de negocio que generen valor"
+  },
+  "Aplicar estrategias que permitan la conservación y el uso sostenible de los recursos tecnológicos.": {
+   "c": "aplicar estrategias para conservar y usar de forma sostenible los recursos tecnológicos",
+   "t": "Uso sostenible de la tecnología"
+  },
+  "Conoce herramientas conceptuales, instrumentales y normativas para la evaluación del estado de conservación del patrimonio biológico": {
+   "c": "usar herramientas y normas para evaluar la conservación del patrimonio biológico",
+   "t": "Conservación del patrimonio biológico"
+  },
+  "Comprende el valor de la diversidad étnica y cultural en la dimensión de identidad, saberes y costumbres que contribuyen a la conservación de los recursos naturales del territorio.": {
+   "c": "valorar la diversidad étnica y cultural y su aporte a la conservación del territorio",
+   "t": "Diversidad cultural y territorio"
+  },
+  "Aplicar técnicas y herramientas de analítica de datos para extraer información valiosa, generar insights de negocio y soportar la toma de decisiones basada en datos, mediante el análisis exploratorio, visualización y modelado estadístico de grandes volúmenes de información.": {
+   "c": "analizar datos con visualizaciones y modelos estadísticos para apoyar decisiones de negocio"
+  },
+  "Comprender los fundamentos de los sistemas operativos modernos y administrar recursos del sistema (procesador, memoria, almacenamiento, E/S) mediante técnicas de gestión de procesos, memoria, archivos y concurrencia, capacitando al estudiante para diseñar, optimizar y administrar sistemas operativos en entornos empresariales y de desarrollo.": {
+   "c": "administrar los recursos de un sistema operativo: procesos, memoria, archivos y concurrencia"
+  },
+  "Comprensión de conocimientos": {
+   "c": "comprender los conceptos fundamentales de la unidad",
+   "t": "Comprensión de conocimientos"
+  },
+  "Comprender los fundamentos teóricos de los sistemas operativos (arquitectura, kernel, llamadas al sistema)": {
+   "c": "explicar la arquitectura de un sistema operativo, el kernel y las llamadas al sistema"
+  },
+  "Comprender algoritmos de planificación, gestión de memoria y sistemas de archivos": {
+   "c": "explicar los algoritmos de planificación, la gestión de memoria y los sistemas de archivos"
+  },
+  "Implementar soluciones a problemas de concurrencia, deadlocks y sincronización": {
+   "c": "resolver problemas de concurrencia, bloqueos mutuos (deadlocks) y sincronización"
+  },
+  "Optimizar el rendimiento del sistema mediante técnicas de tuning": {
+   "c": "optimizar el rendimiento de un sistema operativo"
+  },
+  "Validar la correctitud de algoritmos de planificación y gestión de memoria mediante simulaciones": {
+   "c": "validar algoritmos de planificación y de memoria mediante simulaciones"
+  },
+  "Evaluar el desempeño de sistemas operativos en diferentes escenarios": {
+   "c": "evaluar el desempeño de sistemas operativos en distintos escenarios"
+  },
+  "Diseño de soluciones": {
+   "c": "diseñar soluciones técnicas a problemas de la unidad",
+   "t": "Diseño de soluciones"
+  },
+  "Diseñar estrategias de gestión de procesos y memoria para optimizar el rendimiento del sistema": {
+   "c": "diseñar estrategias de gestión de procesos y memoria para mejorar el rendimiento"
+  },
+  "Configurar y personalizar kernels para requisitos específicos": {
+   "c": "configurar y personalizar el kernel según necesidades específicas"
+  },
+  "Implementación técnica": {
+   "c": "implementar soluciones técnicas con las herramientas de la unidad",
+   "t": "Implementación técnica"
+  },
+  "Implementar programas de sistema que interactúan con el kernel mediante syscalls": {
+   "c": "programar aplicaciones que usan llamadas al sistema del kernel"
+  },
+  "Desarrollar scripts de administración y automatización en Linux/Unix": {
+   "c": "escribir scripts de administración y automatización en Linux/Unix"
+  },
+  "Modelado y predicción": {
+   "c": "modelar sistemas y predecir su comportamiento",
+   "t": "Modelado y predicción"
+  },
+  "Modelar el comportamiento de sistemas operativos mediante simuladores": {
+   "c": "modelar el comportamiento de un sistema operativo con simuladores"
+  },
+  "Predecir el rendimiento del sistema bajo diferentes cargas de trabajo": {
+   "c": "predecir el rendimiento de un sistema con distintas cargas de trabajo"
+  },
+  "Integración de componentes": {
+   "c": "integrar distintos componentes en una solución coherente",
+   "t": "Integración de componentes"
+  },
+  "Integrar componentes del sistema operativo (procesos, memoria, E/S) en soluciones coherentes": {
+   "c": "integrar procesos, memoria y entrada/salida en soluciones coherentes"
+  },
+  "Configurar sistemas operativos en entornos virtualizados y contenedores": {
+   "c": "configurar sistemas operativos en máquinas virtuales y contenedores"
+  },
+  "Diseñar, implementar y administrar soluciones de bases de datos escalables y sistemas de almacenamiento masivo para grandes volúmenes de datos (Big Data), aplicando tecnologías de bases de datos distribuidas, NoSQL especializadas, data lakes, almacenamiento en cloud, técnicas de sharding, replicación y optimización de consultas, capacitando al estudiante para gestionar infraestructuras de datos empresariales de alta disponibilidad y rendimiento.": {
+   "c": "diseñar y administrar bases de datos y almacenamiento para grandes volúmenes de datos (Big Data)"
+  },
+  "Comprender modelos de consistencia y teorema CAP en sistemas distribuidos": {
+   "c": "explicar los modelos de consistencia y el teorema CAP"
+  },
+  "Analizar métricas de rendimiento de bases de datos (throughput, latencia, IOPS)": {
+   "c": "analizar métricas de rendimiento de bases de datos (throughput, latencia, IOPS)"
+  },
+  "Resolver problemas de escalabilidad mediante particionamiento y replicación": {
+   "c": "resolver problemas de escalabilidad con particionamiento y replicación"
+  },
+  "Optimizar consultas en bases de datos distribuidas": {
+   "c": "optimizar consultas en bases de datos distribuidas"
+  },
+  "Validar estrategias de respaldo y recuperación ante desastres": {
+   "c": "validar estrategias de respaldo y recuperación ante desastres"
+  },
+  "Evaluar el rendimiento de sistemas de almacenamiento mediante benchmarks": {
+   "c": "evaluar el rendimiento del almacenamiento con pruebas comparativas (benchmarks)"
+  },
+  "Diseñar arquitecturas de bases de datos distribuidas y data lakes": {
+   "c": "diseñar bases de datos distribuidas y data lakes"
+  },
+  "Diseñar estrategias de particionamiento y replicación": {
+   "c": "diseñar estrategias de particionamiento y replicación de datos"
+  },
+  "Implementar clusters de bases de datos distribuidas (Cassandra, MongoDB, CockroachDB)": {
+   "c": "implementar clústeres de bases de datos distribuidas (Cassandra, MongoDB, CockroachDB)"
+  },
+  "Configurar sistemas de almacenamiento en cloud (S3, Azure Blob, GCS)": {
+   "c": "configurar almacenamiento en la nube (S3, Azure Blob, GCS)"
+  },
+  "Modelar esquemas de datos para almacenamiento masivo": {
+   "c": "modelar esquemas de datos para almacenamiento masivo"
+  },
+  "Predecir requisitos de almacenamiento y escalamiento": {
+   "c": "estimar cuánto almacenamiento y escalamiento necesitará un sistema"
+  },
+  "Integrar bases de datos relacionales y NoSQL en arquitecturas políglota": {
+   "c": "combinar bases de datos relacionales y NoSQL en una misma arquitectura"
+  },
+  "Configurar pipelines de ingesta de datos masivos": {
+   "c": "configurar flujos de ingesta de grandes volúmenes de datos"
+  },
+  "Aplicar marcos de referencia de arquitectura empresarial para alinear la estrategia de TI con los objetivos de negocio, diseñando arquitecturas integradas que optimicen procesos, aplicaciones, datos e infraestructura tecnológica en organizaciones.": {
+   "c": "alinear la tecnología con los objetivos del negocio usando marcos de arquitectura empresarial"
+  },
+  "Diseñar e implementar políticas, procedimientos y controles de seguridad de la información para proteger los activos de información organizacionales mediante frameworks de seguridad (ISO 27001, NIST CSF), análisis de riesgos, gestión de vulnerabilidades, cumplimiento normativo, auditorías de seguridad y respuesta a incidentes, capacitando al estudiante para establecer y gestionar Sistemas de Gestión de Seguridad de la Información (SGSI) empresariales.": {
+   "c": "diseñar políticas y controles de seguridad de la información (ISO 27001, NIST)"
+  },
+  "Aplicación de conocimientos": {
+   "c": "aplicar los conocimientos de la unidad en situaciones prácticas",
+   "t": "Aplicación de conocimientos"
+  },
+  "Aplicar frameworks de seguridad (ISO 27001, NIST CSF, CIS Controls)": {
+   "c": "aplicar marcos de seguridad como ISO 27001, NIST CSF y CIS Controls"
+  },
+  "Aplicar metodologías de análisis de riesgos (ISO 27005, NIST RMF)": {
+   "c": "aplicar metodologías de análisis de riesgos (ISO 27005, NIST RMF)"
+  },
+  "Análisis y síntesis": {
+   "c": "analizar información y sintetizar soluciones",
+   "t": "Análisis y síntesis"
+  },
+  "Analizar amenazas y vulnerabilidades de activos de información": {
+   "c": "analizar amenazas y vulnerabilidades de los activos de información"
+  },
+  "Sintetizar políticas de seguridad alineadas a objetivos de negocio": {
+   "c": "proponer políticas de seguridad alineadas con los objetivos del negocio"
+  },
+  "Realizar auditorías de seguridad de la información": {
+   "c": "realizar auditorías de seguridad de la información"
+  },
+  "Evaluar la efectividad de controles de seguridad": {
+   "c": "evaluar si los controles de seguridad son efectivos"
+  },
+  "Gestión de proyectos TI": {
+   "c": "planear y gestionar proyectos de tecnología",
+   "t": "Gestión de proyectos TI"
+  },
+  "Planificar y ejecutar proyectos de implementación de SGSI": {
+   "c": "planear y ejecutar la implementación de un sistema de gestión de seguridad (SGSI)"
+  },
+  "Gestionar presupuestos de seguridad de la información": {
+   "c": "gestionar el presupuesto de seguridad de la información"
+  },
+  "Diseñar arquitecturas de seguridad en profundidad": {
+   "c": "diseñar arquitecturas de seguridad por capas"
+  },
+  "Diseñar políticas y procedimientos de seguridad": {
+   "c": "diseñar políticas y procedimientos de seguridad"
+  },
+  "Análisis y evaluación": {
+   "c": "analizar y evaluar situaciones con criterios técnicos",
+   "t": "Análisis y evaluación"
+  },
+  "Analizar riesgos de seguridad mediante metodologías formales": {
+   "c": "analizar riesgos de seguridad con metodologías formales"
+  },
+  "Evaluar la madurez de la seguridad de la información": {
+   "c": "evaluar el nivel de madurez de la seguridad de una organización"
+  },
+  "Integrar controles de seguridad en infraestructuras existentes": {
+   "c": "integrar controles de seguridad en la infraestructura existente"
+  },
+  "Implementar SGSI completo según ISO 27001": {
+   "c": "implementar un SGSI completo según ISO 27001"
+  },
+  "Diseñar, implementar y gestionar sistemas distribuidos escalables y confiables, aplicando paradigmas de comunicación (RPC, mensajería, streaming), algoritmos de consenso, coordinación distribuida, replicación, particionamiento, tolerancia a fallos, consistencia de datos y arquitecturas modernas (microservicios, serverless, edge computing), capacitando al estudiante para construir sistemas que ejecutan en múltiples nodos coordinados para resolver problemas complejos de gran escala.": {
+   "c": "diseñar y construir sistemas distribuidos escalables y tolerantes a fallos"
+  },
+  "Comprender principios de sistemas distribuidos (transparencia, escalabilidad, tolerancia a fallos)": {
+   "c": "explicar los principios de los sistemas distribuidos: transparencia, escalabilidad y tolerancia a fallos"
+  },
+  "Comprender modelos de consistencia y teorema CAP": {
+   "c": "explicar los modelos de consistencia y el teorema CAP"
+  },
+  "Analizar trade-offs en diseño de sistemas distribuidos (consistencia vs disponibilidad)": {
+   "c": "analizar las ventajas y desventajas entre consistencia y disponibilidad"
+  },
+  "Sintetizar soluciones arquitectónicas para problemas distribuidos": {
+   "c": "proponer arquitecturas para problemas distribuidos"
+  },
+  "Resolver problemas de coordinación y sincronización distribuida": {
+   "c": "resolver problemas de coordinación y sincronización entre nodos"
+  },
+  "Implementar soluciones de tolerancia a fallos": {
+   "c": "implementar mecanismos de tolerancia a fallos"
+  },
+  "Diseñar arquitecturas de sistemas distribuidos escalables": {
+   "c": "diseñar arquitecturas distribuidas escalables"
+  },
+  "Diseñar protocolos de comunicación y coordinación": {
+   "c": "diseñar protocolos de comunicación y coordinación"
+  },
+  "Implementar sistemas distribuidos con frameworks modernos (gRPC, Apache Kafka, ZooKeeper)": {
+   "c": "implementar sistemas distribuidos con gRPC, Kafka o ZooKeeper"
+  },
+  "Desarrollar microservicios comunicados mediante mensajería": {
+   "c": "desarrollar microservicios que se comunican mediante mensajería"
+  },
+  "Modelar comportamiento de sistemas distribuidos bajo fallos": {
+   "c": "modelar el comportamiento de un sistema distribuido cuando ocurren fallos"
+  },
+  "Predecir el rendimiento de sistemas distribuidos": {
+   "c": "predecir el rendimiento de un sistema distribuido"
+  },
+  "Integrar componentes distribuidos heterogéneos": {
+   "c": "integrar componentes distribuidos de distinto tipo"
+  },
+  "Configurar sistemas de orquestación y service mesh": {
+   "c": "configurar herramientas de orquestación y service mesh"
+  },
+  "Diseñar, desarrollar y evaluar sistemas expertos basados en conocimiento para resolver problemas complejos que requieren experiencia humana especializada, aplicando técnicas de representación del conocimiento, motores de inferencia, razonamiento bajo incertidumbre y aprendizaje, capacitando al estudiante para construir sistemas inteligentes de apoyo a la toma de decisiones en dominios especializados (medicina, finanzas, ingeniería, diagnóstico, etc.).": {
+   "c": "diseñar sistemas expertos que apoyen decisiones en áreas especializadas"
+  },
+  "Comprender arquitecturas de sistemas expertos (base de conocimiento, motor de inferencia, interfaz)": {
+   "c": "explicar la arquitectura de un sistema experto: base de conocimiento, motor de inferencia e interfaz"
+  },
+  "Comprender métodos de razonamiento (deductivo, inductivo, abductivo)": {
+   "c": "explicar los métodos de razonamiento deductivo, inductivo y abductivo"
+  },
+  "Aplicar técnicas de ingeniería del conocimiento para capturar expertise": {
+   "c": "aplicar técnicas para capturar el conocimiento de los expertos"
+  },
+  "Aplicar lógica y razonamiento formal en sistemas expertos": {
+   "c": "aplicar lógica y razonamiento formal en sistemas expertos"
+  },
+  "Analizar dominios de conocimiento complejos": {
+   "c": "analizar dominios de conocimiento complejos"
+  },
+  "Sintetizar reglas de conocimiento a partir de expertise humana": {
+   "c": "construir reglas a partir del conocimiento de expertos humanos"
+  },
+  "Diseñar arquitecturas de sistemas expertos para dominios especializados": {
+   "c": "diseñar sistemas expertos para áreas especializadas"
+  },
+  "Diseñar bases de conocimiento con reglas, marcos, redes semánticas": {
+   "c": "diseñar bases de conocimiento con reglas, marcos o redes semánticas"
+  },
+  "Implementar sistemas expertos con herramientas especializadas (CLIPS, Prolog, Drools)": {
+   "c": "implementar sistemas expertos con herramientas como CLIPS, Prolog o Drools"
+  },
+  "Desarrollar motores de inferencia personalizados": {
+   "c": "desarrollar motores de inferencia propios"
+  },
+  "Analizar la completitud y consistencia de bases de conocimiento": {
+   "c": "verificar que una base de conocimiento sea completa y consistente"
+  },
+  "Evaluar el desempeño de sistemas expertos mediante métricas": {
+   "c": "evaluar el desempeño de un sistema experto con métricas"
+  },
+  "Modelar conocimiento experto con ontologías": {
+   "c": "modelar el conocimiento experto con ontologías"
+  },
+  "Predecir diagnósticos y soluciones mediante razonamiento": {
+   "c": "predecir diagnósticos y soluciones mediante razonamiento automático"
+  },
+  "Innovación y emprendimiento": {
+   "c": "proponer soluciones innovadoras con potencial de negocio",
+   "t": "Innovación y emprendimiento"
+  },
+  "Proponer aplicaciones innovadoras de sistemas expertos": {
+   "c": "proponer aplicaciones innovadoras de sistemas expertos"
+  },
+  "Evaluar viabilidad comercial de sistemas expertos empresariales": {
+   "c": "evaluar si un sistema experto es viable comercialmente"
+  },
+  "Formular y evaluar proyectos de tecnologías de información y comunicación (TIC) desde la concepción de la idea hasta el diseño completo del proyecto, aplicando metodologías de formulación (Marco Lógico, Canvas, Lean Startup), análisis de viabilidad técnica, económica, operativa y financiera, elaboración de estudios de mercado, análisis costo-beneficio, identificación de fuentes de financiación y preparación de propuestas profesionales, capacitando al estudiante para presentar proyectos TIC ante inversionistas, entidades financiadoras o dentro de organizaciones.": {
+   "c": "formular y evaluar proyectos TIC desde la idea hasta la propuesta para inversionistas"
+  },
+  "Aplicar metodologías de formulación de proyectos (PMI, Marco Lógico)": {
+   "c": "aplicar metodologías de formulación de proyectos (PMI, Marco Lógico)"
+  },
+  "Aplicar técnicas de evaluación financiera (VAN, TIR, B/C)": {
+   "c": "aplicar técnicas de evaluación financiera (VAN, TIR, beneficio/costo)"
+  },
+  "Analizar la viabilidad de proyectos TIC en múltiples dimensiones": {
+   "c": "analizar la viabilidad de un proyecto TIC desde varias dimensiones"
+  },
+  "Sintetizar información compleja en propuestas ejecutivas": {
+   "c": "resumir información compleja en propuestas ejecutivas"
+  },
+  "Realizar análisis financieros y evaluación económica de proyectos": {
+   "c": "realizar el análisis financiero y económico de un proyecto"
+  },
+  "Interpretar indicadores de rentabilidad y viabilidad": {
+   "c": "interpretar indicadores de rentabilidad y viabilidad"
+  },
+  "Formular proyectos TIC con alcance, cronograma, presupuesto y riesgos": {
+   "c": "formular proyectos TIC con alcance, cronograma, presupuesto y riesgos"
+  },
+  "Gestionar interesados y comunicación del proyecto": {
+   "c": "gestionar los interesados y la comunicación de un proyecto"
+  },
+  "Analizar la factibilidad técnica, económica y operativa de proyectos TIC": {
+   "c": "analizar la factibilidad técnica, económica y operativa de un proyecto TIC"
+  },
+  "Evaluar alternativas de solución mediante criterios múltiples": {
+   "c": "evaluar alternativas de solución con varios criterios"
+  },
+  "Identificar oportunidades de negocio basadas en TIC": {
+   "c": "identificar oportunidades de negocio basadas en tecnología"
+  },
+  "Evaluar modelos de negocio y estrategias de monetización": {
+   "c": "evaluar modelos de negocio y formas de generar ingresos"
+  },
+  "Preparar pitch deck para inversionistas": {
+   "c": "preparar una presentación (pitch) para inversionistas"
+  },
+  "Aplicar técnicas y algoritmos de minería de datos para descubrir patrones, tendencias y conocimiento oculto en grandes volúmenes de datos, utilizando metodologías (CRISP-DM, SEMMA), técnicas de preprocesamiento, algoritmos de clasificación, clustering, reglas de asociación, detección de anomalías, series de tiempo y text mining, capacitando al estudiante para extraer información valiosa que soporte la toma de decisiones empresariales y científicas.": {
+   "c": "aplicar minería de datos para descubrir patrones y tendencias que apoyen decisiones"
+  },
+  "Comprender fundamentos matemáticos de algoritmos de minería de datos": {
+   "c": "explicar los fundamentos matemáticos de los algoritmos de minería de datos"
+  },
+  "Interpretar resultados estadísticos y métricas de evaluación": {
+   "c": "interpretar resultados estadísticos y métricas de evaluación"
+  },
+  "Seleccionar técnicas de minería apropiadas para problemas específicos": {
+   "c": "elegir la técnica de minería de datos adecuada para cada problema"
+  },
+  "Resolver problemas de calidad de datos y desbalanceo de clases": {
+   "c": "resolver problemas de calidad de datos y de clases desbalanceadas"
+  },
+  "Evaluar modelos de minería de datos con métricas apropiadas": {
+   "c": "evaluar modelos de minería de datos con las métricas adecuadas"
+  },
+  "Validar descubrimientos mediante técnicas estadísticas": {
+   "c": "validar los hallazgos con técnicas estadísticas"
+  },
+  "Analizar conjuntos de datos complejos para identificar patrones": {
+   "c": "analizar conjuntos de datos complejos para encontrar patrones"
+  },
+  "Evaluar la calidad y relevancia de patrones descubiertos": {
+   "c": "evaluar la calidad y la utilidad de los patrones encontrados"
+  },
+  "Construir modelos predictivos y descriptivos con algoritmos de minería de datos": {
+   "c": "construir modelos predictivos y descriptivos con algoritmos de minería de datos"
+  },
+  "Predecir comportamientos y tendencias futuras": {
+   "c": "predecir comportamientos y tendencias futuras a partir de datos"
+  },
+  "Integrar pipelines de minería de datos en aplicaciones empresariales": {
+   "c": "integrar procesos de minería de datos en aplicaciones empresariales"
+  },
+  "Desplegar modelos en producción": {
+   "c": "poner modelos en funcionamiento en un entorno real (producción)"
+  },
+  "Identificar oportunidades de negocio basadas en descubrimientos de datos": {
+   "c": "identificar oportunidades de negocio a partir del análisis de datos"
+  },
+  "Evaluar el valor comercial de proyectos de minería de datos": {
+   "c": "evaluar el valor comercial de un proyecto de minería de datos"
+  },
+  "Tiene como propósito orientar al estudiante en la formulación estructurada (identificación de problemáticas y necesidades, Tipologías, Formulación, Diseño, Evaluación y Presentación), metodológicamente sólida y alineada a las líneas de investigación institucionales, de su proyecto de grado, garantizando coherencia con el perfil profesional del Ingeniero de Sistemas de la UniPutumayo y las necesidades del contexto regional. Esta asignatura no es de desarrollo técnico, sino de diseño, análisis y estructuración académica y de proyectos.Usando PMI y PRINCE2.": {
+   "c": "formular mi proyecto de grado de forma estructurada y alineada con las líneas de investigación"
+  },
+  "Reflexiona a partir de un texto y evalúa su contenido. (Ciclo profesional)": {
+   "c": "reflexionar sobre un texto y evaluar su contenido",
+   "t": "Reflexión crítica sobre textos"
+  },
+  "Reconoce contenidos valorativos presentes en un texto.": {
+   "c": "reconocer los valores y juicios presentes en un texto"
+  },
+  "Da cuenta de las características básicas de la información presentada en diferentes formatos como series, gráficas, tablas y esquemas.": {
+   "c": "reconocer las características de la información presentada en series, gráficas, tablas y esquemas"
+  },
+  "Ingles nivel A2 y B1:": {
+   "c": "comunicarme en inglés con nivel A2–B1",
+   "t": "Inglés A2 – B1"
+  },
+  "Hablar sobre sus esperanzas personales y profesionales, y sus sueños para el futuro.": {
+   "c": "hablar en inglés sobre mis metas personales y profesionales"
+  },
+  "Concertar una entrevista de trabajo y llevarla a cabo, dentro de su área de especialización.": {
+   "c": "realizar en inglés una entrevista de trabajo de mi área"
+  },
+  "Hablar sobre sus hábitos de televisión y programas favoritos.": {
+   "c": "hablar en inglés sobre mis hábitos y programas favoritos"
+  },
+  "Describir su educación y estudios, así como sus planes futuros de formación.": {
+   "c": "describir en inglés mi formación y mis planes de estudio"
+  },
+  "Hablar sobre su música favorita y sobre tendencias musicales, y planear una salida nocturna para escuchar música en directo.": {
+   "c": "hablar en inglés sobre música y planear una salida"
+  },
+  "Hablar sobre llevar un estilo de vida saludable, y dar y recibir consejo sobre hábitos saludables.": {
+   "c": "dar y recibir consejos en inglés sobre hábitos saludables"
+  },
+  "Hablar sobre relaciones personales y citas, incluyendo conocer a personas a través de las redes sociales.": {
+   "c": "hablar en inglés sobre relaciones personales y redes sociales"
+  },
+  "Ir a un restaurante, pedir la comida, entablar una conversación educada durante la cena y pagar la cuenta.": {
+   "c": "desenvolverme en inglés en un restaurante (pedir, conversar y pagar)"
+  },
+  "Participar en negociaciones relacionadas con su área de especialización, si tiene ayuda para entender algunos puntos.": {
+   "c": "participar en inglés en negociaciones de mi área con algo de apoyo"
+  },
+  "Hablar sobre cuestiones de seguridad en el lugar de trabajo, informar sobre una lesión y explicar las reglas y normas.": {
+   "c": "hablar en inglés sobre seguridad en el trabajo y explicar normas"
+  },
+  "Hablar sobre el comportamiento cortés y responder adecuadamente al comportamiento maleducado.": {
+   "c": "responder en inglés de forma cortés en distintas situaciones sociales"
+  },
+  "Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios técnicos, económicos y organizacionales.": {
+   "c": "comparar alternativas de solución y elegir la mejor con criterios técnicos, económicos y organizacionales",
+   "t": "Selección de alternativas"
+  },
+  "Identificar diferentes alternativas de solución a un problema planteado.": {
+   "c": "identificar distintas alternativas de solución a un problema"
+  },
+  "Analizar comparativamente las alternativas de solución con base en criterios técnicos y organizacionales.": {
+   "c": "comparar alternativas de solución con criterios técnicos y organizacionales"
+  },
+  "Seleccionar la alternativa más adecuada sustentando la decisión tomada.": {
+   "c": "elegir la mejor alternativa y sustentar la decisión"
+  },
+  "Diseñar, implementar y administrar redes de comunicaciones basadas en tecnología de fibra óptica, aplicando principios de transmisión óptica, tipos de fibra, componentes pasivos y activos, técnicas de empalme y conectorización, mediciones con OTDR, multiplexación WDM, estándares de cableado estructurado y redes metropolitanas (Metro Ethernet, GPON), capacitando al estudiante para desplegar infraestructuras de alta velocidad y largo alcance para redes empresariales y de telecomunicaciones.": {
+   "c": "diseñar, instalar y administrar redes de fibra óptica de alta velocidad"
+  },
+  "Comprender los fundamentos de la propagación de la luz en fibras ópticas": {
+   "c": "explicar cómo se propaga la luz en una fibra óptica"
+  },
+  "Comprender características de atenuación, dispersión y ancho de banda": {
+   "c": "explicar la atenuación, la dispersión y el ancho de banda de la fibra"
+  },
+  "Diagnosticar y resolver problemas de enlaces de fibra óptica": {
+   "c": "diagnosticar y resolver fallas en enlaces de fibra óptica"
+  },
+  "Calcular presupuestos de potencia óptica (power budget)": {
+   "c": "calcular el presupuesto de potencia óptica de un enlace"
+  },
+  "Realizar mediciones con OTDR y certificar enlaces de fibra": {
+   "c": "medir y certificar enlaces de fibra con un OTDR"
+  },
+  "Validar instalaciones según estándares (TIA/EIA, ISO/IEC)": {
+   "c": "validar instalaciones según los estándares TIA/EIA e ISO/IEC"
+  },
+  "Diseñar redes de fibra óptica para campus, edificios y metropolitanas": {
+   "c": "diseñar redes de fibra para campus, edificios y ciudades"
+  },
+  "Diseñar rutas de canalización y seleccionar componentes": {
+   "c": "diseñar rutas de canalización y elegir componentes de fibra"
+  },
+  "Realizar empalmes por fusión y conectorización de fibra óptica": {
+   "c": "realizar empalmes por fusión y conectorizar fibra óptica"
+  },
+  "Configurar equipos activos (switches ópticos, OLT, ONT)": {
+   "c": "configurar equipos ópticos activos (switches ópticos, OLT, ONT)"
+  },
+  "Integrar redes de fibra óptica con redes LAN/WAN existentes": {
+   "c": "integrar redes de fibra con redes LAN y WAN existentes"
+  },
+  "Configurar arquitecturas FTTH, FTTB, GPON": {
+   "c": "configurar arquitecturas FTTH, FTTB y GPON"
+  },
+  "Diseñar, implementar y evaluar sistemas de inteligencia artificial que resuelvan problemas complejos mediante técnicas de búsqueda, razonamiento, aprendizaje profundo (Deep Learning), procesamiento de lenguaje natural (NLP), visión artificial y sistemas multiagente, aplicando frameworks modernos (TensorFlow, PyTorch, Transformers), capacitando al estudiante para construir aplicaciones inteligentes en dominios como reconocimiento de imágenes, procesamiento de texto, generación de contenido y toma de decisiones autónoma.": {
+   "c": "diseñar sistemas de inteligencia artificial con aprendizaje profundo, NLP y visión artificial"
+  },
+  "Comprender fundamentos teóricos de la inteligencia artificial (agentes inteligentes, resolución de problemas)": {
+   "c": "explicar los fundamentos de la inteligencia artificial: agentes y resolución de problemas"
+  },
+  "Comprender arquitecturas de redes neuronales profundas": {
+   "c": "explicar cómo funcionan las redes neuronales profundas"
+  },
+  "Aplicar técnicas de IA para resolver problemas reales": {
+   "c": "aplicar técnicas de inteligencia artificial a problemas reales"
+  },
+  "Aplicar transfer learning y fine-tuning en modelos preentrenados": {
+   "c": "adaptar modelos preentrenados con transfer learning y fine-tuning"
+  },
+  "Resolver problemas de búsqueda y planificación con algoritmos de IA": {
+   "c": "resolver problemas de búsqueda y planificación con algoritmos de IA"
+  },
+  "Implementar soluciones de visión artificial y NLP": {
+   "c": "implementar soluciones de visión artificial y procesamiento de lenguaje natural"
+  },
+  "Diseñar arquitecturas de redes neuronales para problemas específicos": {
+   "c": "diseñar redes neuronales para problemas específicos"
+  },
+  "Diseñar pipelines de procesamiento de datos para IA": {
+   "c": "diseñar flujos de preparación de datos para IA"
+  },
+  "Implementar modelos de Deep Learning con TensorFlow/PyTorch": {
+   "c": "implementar modelos de aprendizaje profundo con TensorFlow o PyTorch"
+  },
+  "Desarrollar aplicaciones de NLP y visión artificial": {
+   "c": "desarrollar aplicaciones de lenguaje natural y visión artificial"
+  },
+  "Entrenar modelos de Deep Learning para clasificación, detección, segmentación": {
+   "c": "entrenar modelos de aprendizaje profundo para clasificar, detectar y segmentar"
+  },
+  "Predecir resultados mediante modelos de IA": {
+   "c": "predecir resultados con modelos de inteligencia artificial"
+  },
+  "Identificar oportunidades de negocio basadas en IA": {
+   "c": "identificar oportunidades de negocio basadas en inteligencia artificial"
+  },
+  "Evaluar el impacto ético y social de sistemas de IA": {
+   "c": "evaluar el impacto ético y social de la inteligencia artificial"
+  },
+  "Planificar, ejecutar, monitorear y controlar proyectos de tecnologías de información y comunicación aplicando metodologías profesionales (PMI/PMBOK, PRINCE2, Agile), gestión de alcance, tiempo, costos, calidad, recursos humanos, comunicaciones, riesgos, adquisiciones e interesados, utilizando herramientas especializadas (MS Project, Jira, Trello), capacitando al estudiante para liderar proyectos TIC exitosos cumpliendo objetivos de negocio dentro de restricciones de tiempo, presupuesto y calidad.": {
+   "c": "planear, ejecutar y controlar proyectos TIC con PMBOK, PRINCE2 o metodologías ágiles"
+  },
+  "Aplicar estándares de gestión de proyectos (PMI/PMBOK, ISO 21500, PRINCE2)": {
+   "c": "aplicar estándares de gestión de proyectos (PMBOK, ISO 21500, PRINCE2)"
+  },
+  "Aplicar metodologías ágiles (Scrum, Kanban, SAFe)": {
+   "c": "aplicar metodologías ágiles (Scrum, Kanban, SAFe)"
+  },
+  "Resolver problemas de desviaciones en alcance, tiempo o costos": {
+   "c": "corregir desviaciones de alcance, tiempo o costo en un proyecto"
+  },
+  "Gestionar conflictos en equipos de proyecto": {
+   "c": "manejar conflictos en un equipo de proyecto"
+  },
+  "Liderazgo y trabajo en equipo": {
+   "c": "liderar y trabajar en equipo",
+   "t": "Liderazgo y trabajo en equipo"
+  },
+  "Liderar equipos de proyecto multidisciplinarios": {
+   "c": "liderar equipos de proyecto de distintas disciplinas"
+  },
+  "Negociar con stakeholders y gestionar expectativas": {
+   "c": "negociar con los interesados y manejar sus expectativas"
+  },
+  "Planificar proyectos TIC con WBS, cronogramas, presupuestos y planes de gestión": {
+   "c": "planear proyectos TIC con EDT, cronograma, presupuesto y planes de gestión"
+  },
+  "Monitorear y controlar proyectos mediante métricas y análisis de valor ganado (EVM)": {
+   "c": "hacer seguimiento a un proyecto con métricas y valor ganado (EVM)"
+  },
+  "Gestionar cambios, riesgos e interesados del proyecto": {
+   "c": "gestionar cambios, riesgos e interesados de un proyecto"
+  },
+  "Analizar el desempeño del proyecto (SPI, CPI, variaciones)": {
+   "c": "analizar el desempeño de un proyecto con indicadores (SPI, CPI)"
+  },
+  "Evaluar lecciones aprendidas y mejora continua": {
+   "c": "identificar lecciones aprendidas para mejorar continuamente"
+  },
+  "Integrar planes subsidiarios en un plan integral de proyecto": {
+   "c": "integrar los planes del proyecto en un plan general"
+  },
+  "Coordinar equipos distribuidos y recursos compartidos": {
+   "c": "coordinar equipos a distancia y recursos compartidos"
+  },
+  "Diseñar, implementar y gestionar soluciones de Inteligencia de Negocios (Business Intelligence) para transformar datos empresariales en información estratégica mediante data warehousing, ETL, modelado dimensional, OLAP, minería de datos y visualización interactiva, capacitando al estudiante para construir sistemas de soporte a la toma de decisiones que generen valor de negocio mediante insights accionables.": {
+   "c": "construir soluciones de inteligencia de negocios (BI) que conviertan datos en información para decidir"
+  },
+  "Razonamiento cuantitativo: Comprende y transforma la información cuantitativa y esquemática presentada en distintos formatos.": {
+   "c": "entender y transformar información numérica presentada en tablas, gráficas y esquemas",
+   "t": "Razonamiento cuantitativo"
+  },
+  "Da cuenta de las características básicas de la información presenta en diferentes formatos como series, gráficas, tablas y esquemas": {
+   "c": "reconocer las características de la información presentada en series, gráficas, tablas y esquemas"
+  },
+  "Validación de procedimientos: Validar procedimientos y estrategias matemáticas utilizadas para dar solución a problemas. (Ciclo profesional)": {
+   "c": "validar los procedimientos matemáticos usados para resolver un problema",
+   "t": "Validación de procedimientos"
+  },
+  "Argumenta a favor o en contra de un procedimiento para resolver un problema a la luz de criterios presentados o establecidos": {
+   "c": "argumentar a favor o en contra de un procedimiento para resolver un problema"
+  },
+  "Diseño de soluciones: Analiza alternativas de solución y selecciona la más adecuada teniendo en cuenta criterios de tipo técnico, económico, financiero, social, ético y ambiental, para un proyecto de diseño de software": {
+   "c": "comparar alternativas de solución para un proyecto de software y elegir la mejor",
+   "t": "Diseño de soluciones"
+  },
+  "Implementación técnica: Aplica los conocimientos de las matemáticas, la tecnología y las ciencias de la ingeniería para especificar en forma detallada un producto tecnológico.": {
+   "c": "aplicar matemáticas, tecnología e ingeniería para especificar en detalle un producto tecnológico",
+   "t": "Implementación técnica"
+  },
+  "Plantear especificaciones para el proceso de desarrollo del producto tecnológico": {
+   "c": "definir especificaciones para el proceso de desarrollo de un producto tecnológico"
+  },
+  "Revisar, verificar y validar que una solución cumpla con las especificaciones técnicas de diseño": {
+   "c": "verificar que una solución cumpla con las especificaciones técnicas del diseño"
+  },
+  "Análisis y evaluación: Analiza críticamente los resultados de información y deriva conclusiones a partir de ello.": {
+   "c": "analizar críticamente resultados y sacar conclusiones a partir de ellos",
+   "t": "Análisis y evaluación"
+  },
+  "Derivar conclusiones consistentes con información que la respalde": {
+   "c": "sacar conclusiones coherentes y respaldadas por la información"
+  },
+  "Modelado y predicción: Comprender, comparar, utilizar o proponer modelos que permiten describir, explicar y predecir fenómenos o sistemas": {
+   "c": "usar y proponer modelos para describir, explicar y predecir fenómenos",
+   "t": "Modelado y predicción"
+  },
+  "Integración de componentes: Evalúa la efectividad de recursos tecnológicos que sean usados en la organización basado en la arquitectura empresarial.": {
+   "c": "evaluar si los recursos tecnológicos de una organización son efectivos",
+   "t": "Integración de componentes"
+  },
+  "Configurar, usar y administrar recursos tecnológicos (HW/SW)": {
+   "c": "configurar, usar y administrar recursos de hardware y software"
+  },
+  "Diseñar planes de mejoramiento para el uso eficiente de recursos tecnológicos o su actualización": {
+   "c": "diseñar planes para usar mejor o actualizar los recursos tecnológicos"
+  },
+  "se pretende que el estudiante tenga la posibilidad de profundizar en un área de su interés facilitando las herramientas conceptuales y metodológicas que le sirvan para la realización de su propuesta de trabajo de grado según la modalidad escogida.": {
+   "c": "profundizar en un área de mi interés para preparar mi propuesta de trabajo de grado"
+  },
+  "Comprenderá los fundamentos y tecnologías clave de la Industria 4.0 y su impacto en la academia y el sector productivo.": {
+   "c": "explicar las tecnologías clave de la Industria 4.0 y su impacto en la academia y la industria"
+  },
+  "Evaluará aplicaciones de tecnologías emergentes (IoT, IA, Big Data, Blockchain, Cloud, AR/VR, Drones, Robótica, Impresión 3D) en contextos reales.": {
+   "c": "evaluar aplicaciones de tecnologías emergentes (IoT, IA, Big Data, Blockchain, nube) en casos reales"
+  },
+  "Desarrollará habilidades prácticas para el diseño e implementación de soluciones tecnológicas innovadoras.": {
+   "c": "diseñar e implementar soluciones tecnológicas innovadoras"
+  },
+  "Pensamiento crítico y analítico en el desarrollo de soluciones tecnológicas.": {
+   "c": "pensar de forma crítica y analítica al desarrollar soluciones tecnológicas",
+   "t": "Pensamiento crítico"
+  },
+  "Capacidad de trabajo en equipo y adaptación a entornos interdisciplinarios.": {
+   "c": "trabajar en equipo y adaptarme a grupos interdisciplinarios",
+   "t": "Trabajo en equipo"
+  },
+  "Innovación y creatividad en la aplicación de tecnologías emergentes.": {
+   "c": "innovar y aplicar con creatividad las tecnologías emergentes",
+   "t": "Innovación y creatividad"
+  },
+  "Comprender y aplicar los conceptos fundamentales de la Industria 4.0 y su impacto en la academia y la industria.": {
+   "c": "aplicar los conceptos de la Industria 4.0 en la academia y la industria",
+   "t": "Fundamentos de Industria 4.0"
+  },
+  "Explicar los fundamentos teóricos de la Industria 4.0 y su evolución desde las revoluciones industriales anteriores.": {
+   "c": "explicar los fundamentos de la Industria 4.0 y su evolución histórica"
+  },
+  "Identificar las principales tecnologías emergentes asociadas a la Industria 4.0 y su aplicación en el sector académico y productivo.": {
+   "c": "identificar las tecnologías emergentes de la Industria 4.0 y sus aplicaciones"
+  },
+  "Comparar el impacto de la Industria 4.0 en diferentes sectores industriales y en la educación, evaluando casos de estudio reales.": {
+   "c": "comparar el impacto de la Industria 4.0 en distintos sectores con casos reales"
+  },
+  "Desarrollar proyectos que integren tecnologías emergentes como IoT, Big Data, Ciberseguridad, Cloud Computing, Blockchain, Drones, Realidad Virtual y Aumentada, Robótica e Impresión 3D.": {
+   "c": "desarrollar proyectos que integren tecnologías emergentes (IoT, Big Data, nube, robótica…)",
+   "t": "Proyectos con tecnologías emergentes"
+  },
+  "Diseñar soluciones tecnológicas que integren IoT, Big Data, Blockchain o Cloud Computing, considerando necesidades específicas del entorno académico o empresarial.": {
+   "c": "diseñar soluciones que integren IoT, Big Data, Blockchain o computación en la nube"
+  },
+  "Implementar una aplicación o prototipo basado en al menos una tecnología emergente de la Industria 4.0.": {
+   "c": "construir un prototipo basado en al menos una tecnología de la Industria 4.0"
+  },
+  "Evaluar el rendimiento y la escalabilidad de un sistema basado en tecnologías de la Industria 4.0, aplicando metodologías de prueba y optimización.": {
+   "c": "evaluar el rendimiento y la escalabilidad de un sistema de Industria 4.0"
+  },
+  "Analizar casos de uso de la Industria 4.0 en el sector académico y productivo para proponer mejoras tecnológicas.": {
+   "c": "analizar casos de uso de la Industria 4.0 para proponer mejoras",
+   "t": "Casos de uso de Industria 4.0"
+  },
+  "Investigar tendencias actuales de la Industria 4.0 en sectores como manufactura, salud, educación y logística, identificando oportunidades de mejora.": {
+   "c": "investigar tendencias de la Industria 4.0 en distintos sectores"
+  },
+  "Realizar estudios de viabilidad sobre la implementación de tecnologías emergentes en instituciones educativas o empresas.": {
+   "c": "realizar estudios de viabilidad para implementar tecnologías emergentes"
+  },
+  "Formular propuestas de optimización basadas en tecnologías de la Industria 4.0, considerando impacto económico, social y ambiental.": {
+   "c": "proponer mejoras con tecnologías 4.0 considerando su impacto económico, social y ambiental"
+  },
+  "Implementar soluciones basadas en tecnologías disruptivas en contextos académicos y empresariales.": {
+   "c": "implementar soluciones con tecnologías disruptivas en contextos reales",
+   "t": "Tecnologías disruptivas"
+  },
+  "Desarrollar un plan de implementación de una tecnología de la Industria 4.0 en un entorno real o simulado.": {
+   "c": "elaborar un plan para implementar una tecnología 4.0 en un entorno real o simulado"
+  },
+  "Integrar diferentes herramientas digitales y metodologías para la optimización de procesos mediante Industria 4.0.": {
+   "c": "integrar herramientas digitales para optimizar procesos"
+  },
+  "Demostrar la funcionalidad y eficiencia de un sistema basado en tecnologías emergentes mediante pruebas y validaciones en entornos controlados.": {
+   "c": "demostrar con pruebas que un sistema basado en tecnologías emergentes funciona bien"
+  }
+ },
+ "descartados": [
+  "________________________________________",
+  "CG05-",
+  "Resultado de aprendizaje del programa académico al que contribuye la unidad de formación:",
+  "particularidades de nuestro país.",
+  "Nivel B1 – Ciclo profesional: El nivel B1 de inglés es el tercer nivel del Marco Común Europeo de Referencia (MCER), que define los distintos niveles de un idioma establecidos por el Consejo de Europa. En lenguaje coloquial, este nivel se denominaría \"intermedio\" y, de hecho, \"intermediate\" es la palabra oficial en inglés que define el nivel en el MCER. (efset.org)",
+  "Para alcanzar esta competencia el estudiante del programa debe certificarse según los mecanismos que ponga a disposición el ITP para evidenciar lo siguiente:",
+  "Será capaz de hacer todas las cosas que puede hacer un estudiante de nivel A2 y además será capaz de:",
+  "Resultados asociados CE09",
+  "Al finalizar la unidad de formación, el estudiante:"
+ ]
+}
