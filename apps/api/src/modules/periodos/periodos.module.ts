@@ -66,15 +66,19 @@ export class PeriodosService {
     });
     if (periodo.activo) {
       if (periodo.apreciacionAbierta && !previo.apreciacionAbierta) {
-        this.emitir(id, Momento.APRECIACION);
+        await this.emitir(id, Momento.APRECIACION);
       }
-      if (periodo.alcanceAbierto && !previo.alcanceAbierto) this.emitir(id, Momento.ALCANCE);
+      if (periodo.alcanceAbierto && !previo.alcanceAbierto) await this.emitir(id, Momento.ALCANCE);
     }
     return periodo;
   }
 
-  private emitir(periodoId: number, momento: Momento): void {
-    this.eventos.emit(EVENTO_MOMENTO_ABIERTO, { periodoId, momento } satisfies MomentoAbierto);
+  /** Se espera el resultado: en serverless el proceso puede congelarse al responder. */
+  private async emitir(periodoId: number, momento: Momento): Promise<void> {
+    await this.eventos.emitAsync(EVENTO_MOMENTO_ABIERTO, {
+      periodoId,
+      momento,
+    } satisfies MomentoAbierto);
   }
 }
 

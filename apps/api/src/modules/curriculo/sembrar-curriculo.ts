@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import type { Prisma, PrismaClient } from '@prisma/client';
@@ -36,6 +37,15 @@ interface Pep {
 
 const carpeta = dirname(require.resolve('@rae/shared/seed/curriculo.json'));
 const leer = <T>(archivo: string) => JSON.parse(readFileSync(join(carpeta, archivo), 'utf8')) as T;
+
+/** Huella de los datos semilla: si no cambió, un despliegue no vuelve a sembrar. */
+export function huellaSemilla(): string {
+  const h = createHash('sha256');
+  for (const a of ['curriculo.json', 'preguntas.json', 'practicas.json', 'pep.json']) {
+    h.update(readFileSync(join(carpeta, a)));
+  }
+  return h.digest('hex');
+}
 
 function cargarSemilla() {
   return {

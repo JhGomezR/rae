@@ -29,8 +29,6 @@ export const perfil = (u: Usuario) => ({
 
 @Injectable()
 export class AuthService {
-  /** Intentos fallidos por documento; la API corre en una sola réplica. */
-  private readonly intentos = new Map<string, { total: number; desde: number }>();
   private hashFicticio?: string;
 
   constructor(
@@ -39,21 +37,21 @@ export class AuthService {
   ) {}
 
   async login(documento: string, clave: string) {
-    this.verificarBloqueo(documento);
+    await this.verificarBloqueo(documento);
     const usuario = await this.prisma.usuario.findUnique({ where: { documento } });
     if (!usuario || !usuario.activo) {
       // Mismo costo que una verificación real, para no revelar si el documento existe.
       this.hashFicticio ??= await argon2.hash(randomBytes(16).toString('hex'));
       await argon2.verify(this.hashFicticio, clave);
-      this.registrarFallo(documento);
+      await this.registrarFallo(documento);
       throw new UnauthorizedException(ERROR_LOGIN);
     }
     const escrita = usuario.debeCambiarClave ? normalizarClave(clave) : clave;
     if (!(await argon2.verify(usuario.passwordHash, escrita))) {
-      this.registrarFallo(documento);
+      await this.registrarFallo(documento);
       throw new UnauthorizedException(ERROR_LOGIN);
     }
-    this.intentos.delete(documento);
+    await this.prisma.intentoLogin.deleteMany({ where: { documento } });
     const actualizado = await this.prisma.usuario.update({
       where: { id: usuario.id },
       data: { ultimoIngreso: new Date() },
@@ -147,18 +145,26 @@ export class AuthService {
     });
   }
 
-  private verificarBloqueo(documento: string): void {
-    const r = this.intentos.get(documento);
+  private async verificarBloqueo(documento: string): Promise<void> {
+    const r = await this.prisma.intentoLogin.findUnique({ where: { documento } });
     if (!r) return;
-    if (Date.now() - r.desde > VENTANA_MS) this.intentos.delete(documento);
-    else if (r.total >= MAX_INTENTOS) {
+    if (Date.now() - r.desde.getTime() > VENTANA_MS) {
+      await this.prisma.intentoLogin.deleteMany({ where: { documento } });
+    } else if (r.total >= MAX_INTENTOS) {
       throw new UnauthorizedException('Demasiados intentos. Vuelve a intentarlo en 15 minutos.');
     }
   }
 
-  private registrarFallo(documento: string): void {
-    const r = this.intentos.get(documento);
-    if (r && Date.now() - r.desde <= VENTANA_MS) r.total += 1;
-    else this.intentos.set(documento, { total: 1, desde: Date.now() });
+  private async registrarFallo(documento: string): Promise<void> {
+    const r = await this.prisma.intentoLogin.findUnique({ where: { documento } });
+    const vigente = r && Date.now() - r.desde.getTime() <= VENTANA_MS;
+    const datos = vigente
+      ? { total: r.total + 1, desde: r.desde }
+      : { total: 1, desde: new Date() };
+    await this.prisma.intentoLogin.upsert({
+      where: { documento },
+      create: { documento, ...datos },
+      update: datos,
+    });
   }
 }

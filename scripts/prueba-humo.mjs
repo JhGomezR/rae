@@ -187,7 +187,7 @@ async function main() {
   const id = cursosAna[0].id;
   const ap = await ana.datos(`/api/encuestas/${id}/apreciacion`);
   const itemsAp = itemsDe(ap);
-  ok(itemsAp.length > 0 && /é\b/.test(itemsAp[0].frase.split(' ')[0]), 'apreciación en futuro');
+  ok(itemsAp.length > 0 && /(^|\s)\p{L}+é(\s|$)/u.test(itemsAp[0].frase), 'apreciación en futuro');
   await ana.datos(`/api/encuestas/${id}/apreciacion/enviar`, {
     metodo: 'POST',
     json: {

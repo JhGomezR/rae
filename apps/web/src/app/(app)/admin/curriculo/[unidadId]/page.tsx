@@ -154,7 +154,7 @@ function EditorItem({ item, onAviso }: { item: Item; onAviso: (t: string) => voi
 }
 
 export default function UnidadPage() {
-  const { unidadId } = useParams<{ unidadId: string }>();
+  const { unidadId } = useParams<{ unidadId: string }>() as { unidadId: string };
   const {
     datos: u,
     error,

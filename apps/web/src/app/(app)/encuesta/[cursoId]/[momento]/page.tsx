@@ -262,7 +262,10 @@ function Formulario({ e }: { e: Encuesta }) {
 }
 
 export default function EncuestaPage() {
-  const { cursoId, momento } = useParams<{ cursoId: string; momento: string }>();
+  const { cursoId, momento } = useParams<{ cursoId: string; momento: string }>() as {
+    cursoId: string;
+    momento: string;
+  };
   const { datos, error, cargando } = useDatos<Encuesta>(`/encuestas/${cursoId}/${momento}`);
   return (
     <Estado cargando={cargando && !datos} error={error}>

@@ -1,4 +1,4 @@
-name: CI e imágenes
+name: CI
 
 on:
   push:
@@ -10,8 +10,27 @@ permissions:
   contents: read
 
 jobs:
-  calidad:
+  calidad-y-humo:
     runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: ci-solo-pruebas
+          POSTGRES_DB: rae
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd="pg_isready -U postgres" --health-interval=5s
+          --health-timeout=5s --health-retries=12
+    env:
+      DATABASE_URL: postgresql://postgres:ci-solo-pruebas@localhost:5432/rae
+      DIRECT_URL: postgresql://postgres:ci-solo-pruebas@localhost:5432/rae
+      JWT_ACCESS_SECRET: ci-secreto-de-prueba-de-al-menos-32-bytes-xx
+      CRON_SECRET: ci-secreto-cron-de-prueba
+      COOKIE_SECURE: 'false'
+      ADMIN_DOCUMENTO: '70000001'
+      ADMIN_CLAVE_INICIAL: CLAVEPRUEBA2026
+      BASE_URL: http://localhost:3000
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -21,83 +40,23 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter api exec prisma generate
-        env:
-          DATABASE_URL: mysql://ci:ci@localhost:3306/ci
       - run: pnpm --filter @rae/shared build
+      - run: pnpm --filter api build
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm test
-
-  imagenes:
-    needs: calidad
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: read
-      packages: write
-    env:
-      API_IMAGE: ghcr.io/jhgomezr/rae-api:${{ github.sha }}
-      WEB_IMAGE: ghcr.io/jhgomezr/rae-web:${{ github.sha }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: docker/setup-buildx-action@v3
-      - name: Construir API
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: apps/api/Dockerfile
-          load: true
-          tags: ${{ env.API_IMAGE }}
-          cache-from: type=gha,scope=api
-          cache-to: type=gha,mode=max,scope=api
-      - name: Construir web
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          file: apps/web/Dockerfile
-          load: true
-          tags: ${{ env.WEB_IMAGE }}
-          cache-from: type=gha,scope=web
-          cache-to: type=gha,mode=max,scope=web
-      - name: Levantar el sistema completo
+      - run: pnpm --filter web build
+      - name: Migrar y sembrar
         run: |
-          cat > .env.prod <<EOF
-          DOMINIO=:80
-          APP_URL=http://localhost:8080
-          COOKIE_SECURE=false
-          HTTP_PORT=8080
-          HTTPS_PORT=8443
-          MYSQL_PASSWORD=$(openssl rand -hex 16)
-          MYSQL_ROOT_PASSWORD=$(openssl rand -hex 16)
-          JWT_ACCESS_SECRET=$(openssl rand -hex 32)
-          ADMIN_DOCUMENTO=70000001
-          ADMIN_CLAVE_INICIAL=CLAVEPRUEBA2026
-          API_IMAGE=$API_IMAGE
-          WEB_IMAGE=$WEB_IMAGE
-          EOF
-          sed -i 's/^ *//' .env.prod
-          docker compose -f docker-compose.prod.yml --env-file .env.prod up -d --wait --wait-timeout 240 --no-build db api web proxy
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: .nvmrc
+          pnpm --filter api exec prisma migrate deploy
+          cd apps/api && node dist/sembrar.js
       - name: Prueba de punta a punta
-        env:
-          ADMIN_DOCUMENTO: '70000001'
-          ADMIN_CLAVE_INICIAL: CLAVEPRUEBA2026
-          BASE_URL: http://localhost:8080
         run: |
-          mkdir -p /tmp/humo && cp deploy/prueba-humo.mjs /tmp/humo/
+          (cd apps/web && NODE_ENV=production pnpm exec next start -p 3000 > /tmp/web.log 2>&1 &)
+          for i in $(seq 1 40); do curl -sf -o /dev/null http://localhost:3000/login && break; sleep 1; done
+          mkdir -p /tmp/humo && cp scripts/prueba-humo.mjs /tmp/humo/
           cd /tmp/humo && npm init -y >/dev/null && npm i exceljs@4 --silent
           node prueba-humo.mjs
       - name: Registros si algo falla
         if: failure()
-        run: docker compose -f docker-compose.prod.yml --env-file .env.prod logs --no-color --tail=80 migrate api web proxy
-      - name: Publicar imágenes
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
-          for par in "$API_IMAGE ghcr.io/jhgomezr/rae-api:latest" "$WEB_IMAGE ghcr.io/jhgomezr/rae-web:latest"; do
-            set -- $par
-            docker tag "$1" "$2"
-            docker push "$1"
-            docker push "$2"
-          done
+        run: tail -60 /tmp/web.log

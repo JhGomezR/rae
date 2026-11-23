@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { JwtModule } from '@nestjs/jwt';
-import { ScheduleModule } from '@nestjs/schedule';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AuditoriaInterceptor } from './common/auditoria.interceptor';
 import { AuthGuard } from './common/auth.guard';
@@ -24,7 +23,6 @@ import { UsuariosModule } from './modules/usuarios/usuarios.controller';
   imports: [
     PrismaModule,
     EventEmitterModule.forRoot(),
-    ScheduleModule.forRoot(),
     // Límite amplio: muchos estudiantes pueden salir por la misma IP de la institución.
     ThrottlerModule.forRoot([{ ttl: 60_000, limit: 600 }]),
     JwtModule.register({

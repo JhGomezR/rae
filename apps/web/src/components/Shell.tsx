@@ -31,7 +31,7 @@ const PERSONA: [string, string][] = [['/mis-encuestas', 'Mis encuestas']];
 const ROL = { ADMIN: 'Administrador', DOCENTE: 'Docente', ESTUDIANTE: 'Estudiante' };
 
 export function Shell({ children }: { children: ReactNode }) {
-  const ruta = usePathname();
+  const ruta = usePathname() ?? '';
   const { datos: yo } = useDatos<Perfil>('/auth/yo');
   const [abierto, setAbierto] = useState(false);
   const menu = [...(yo?.rol === 'ADMIN' ? ADMIN : yo ? PERSONA : []), ['/perfil', 'Mi perfil']];

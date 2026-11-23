@@ -72,7 +72,7 @@ function DetalleUnidad({ momento, id }: { momento: string; id: number }) {
 }
 
 export default function ResultadosPage() {
-  const { momento } = useParams<{ momento: string }>();
+  const { momento } = useParams<{ momento: string }>() as { momento: string };
   const alcance = momento === 'alcance';
   const [semestre, setSemestre] = useState('');
   const [sel, setSel] = useState<number | null>(null);

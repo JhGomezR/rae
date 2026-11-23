@@ -58,7 +58,12 @@ export class UsuariosService {
     const where: Prisma.UsuarioWhereInput = {
       ...(f.rol ? { rol: f.rol } : {}),
       ...(f.q
-        ? { OR: [{ documento: { contains: f.q } }, { nombreCompleto: { contains: f.q } }] }
+        ? {
+            OR: [
+              { documento: { contains: f.q, mode: 'insensitive' } },
+              { nombreCompleto: { contains: f.q, mode: 'insensitive' } },
+            ],
+          }
         : {}),
     };
     const [datos, total] = await Promise.all([

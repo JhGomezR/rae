@@ -1,10 +1,20 @@
-import { Controller, Get, Injectable, Logger, Module, Post, Query } from '@nestjs/common';
+import { timingSafeEqual } from 'node:crypto';
+import {
+  Controller,
+  Get,
+  Headers,
+  Injectable,
+  Logger,
+  Module,
+  Post,
+  Query,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { OnEvent } from '@nestjs/event-emitter';
-import { Cron } from '@nestjs/schedule';
 import { Momento, Rol } from '@rae/shared';
 import { z } from 'zod';
 import { env } from '../../config/env';
-import { Roles } from '../../common/sesion';
+import { Publica, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { LogMailerAdapter, MailerPort, SmtpMailerAdapter } from '../../infrastructure/mail/mailer';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
@@ -14,6 +24,7 @@ const ESPERAS_MIN = [1, 5, 30, 30, 30];
 const MAX_INTENTOS = 5;
 const TRES_DIAS = 3 * 86_400_000;
 const DOS_DIAS = 2 * 86_400_000;
+const TIEMPO_ENVIO_MS = 45_000;
 const paginacion = z.object({
   pagina: z.coerce.number().int().min(1).default(1),
   tamano: z.coerce.number().int().min(1).max(100).default(30),
@@ -139,26 +150,45 @@ export class NotificacionesService {
     return data.length;
   }
 
-  @Cron('0 7 * * *', { timeZone: 'America/Bogota' })
-  async cronRecordatorios(): Promise<void> {
-    await this.encolarRecordatorios();
+  /** Tarea diaria de Vercel: encola recordatorios y envía lo pendiente. */
+  async tareaDiaria() {
+    const encolados = await this.encolarRecordatorios();
+    return { encolados, enviados: await this.enviarPendientes() };
   }
 
-  @Cron('* * * * *')
-  async enviarPendientes(): Promise<void> {
-    const lote = await this.prisma.notificacionOutbox.findMany({
-      where: { estado: 'PENDIENTE', enviarDespuesDe: { lte: new Date() } },
-      include: { usuario: { select: { email: true } } },
-      take: 50,
-      orderBy: { id: 'asc' },
-    });
-    for (const n of lote) {
+  /** Envía por lotes hasta agotar la cola o el tiempo disponible de la función. */
+  async enviarPendientes(): Promise<number> {
+    const limite = Date.now() + TIEMPO_ENVIO_MS;
+    let enviados = 0;
+    for (;;) {
+      const lote = await this.prisma.notificacionOutbox.findMany({
+        where: { estado: 'PENDIENTE', enviarDespuesDe: { lte: new Date() } },
+        include: { usuario: { select: { email: true } } },
+        take: 50,
+        orderBy: { id: 'asc' },
+      });
+      if (!lote.length) return enviados;
+      for (const n of lote) {
+        if (Date.now() >= limite) return enviados;
+        if (await this.enviarUna(n)) enviados++;
+      }
+    }
+  }
+
+  private async enviarUna(n: {
+    id: number;
+    asunto: string;
+    cuerpoHtml: string;
+    intentos: number;
+    usuario: { email: string | null };
+  }): Promise<boolean> {
+    {
       if (!n.usuario.email) {
         await this.prisma.notificacionOutbox.update({
           where: { id: n.id },
           data: { estado: 'FALLIDA', error: 'Sin correo registrado' },
         });
-        continue;
+        return false;
       }
       try {
         await this.mailer.enviar({ para: n.usuario.email, asunto: n.asunto, html: n.cuerpoHtml });
@@ -166,6 +196,7 @@ export class NotificacionesService {
           where: { id: n.id },
           data: { estado: 'ENVIADA', enviadaEn: new Date(), error: null },
         });
+        return true;
       } catch (e) {
         const intentos = n.intentos + 1;
         const espera = ESPERAS_MIN[n.intentos] ?? 30;
@@ -179,6 +210,7 @@ export class NotificacionesService {
             error: (e instanceof Error ? e.message : String(e)).slice(0, 500),
           },
         });
+        return false;
       }
     }
   }
@@ -222,7 +254,27 @@ export class NotificacionesController {
 
   @Post('notificaciones/recordatorios')
   async recordatorios() {
-    return { encolados: await this.servicio.encolarRecordatorios() };
+    const encolados = await this.servicio.encolarRecordatorios();
+    return { encolados, enviados: await this.servicio.enviarPendientes() };
+  }
+
+  @Post('notificaciones/enviar')
+  async enviar() {
+    return { enviados: await this.servicio.enviarPendientes() };
+  }
+
+  /** Vercel Cron envía Authorization: Bearer CRON_SECRET. */
+  @Publica()
+  @Get('cron/diario')
+  cronDiario(@Headers('authorization') autorizacion?: string) {
+    const esperado = Buffer.from(`Bearer ${env.CRON_SECRET ?? ''}`);
+    const recibido = Buffer.from(autorizacion ?? '');
+    const valido =
+      Boolean(env.CRON_SECRET) &&
+      esperado.length === recibido.length &&
+      timingSafeEqual(esperado, recibido);
+    if (!valido) throw new UnauthorizedException('No autorizado.');
+    return this.servicio.tareaDiaria();
   }
 
   @Get('auditoria')

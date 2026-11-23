@@ -39,8 +39,8 @@ export class CursosService {
       ...(f.q
         ? {
             OR: [
-              { unidad: { nombre: { contains: f.q } } },
-              { docente: { nombreCompleto: { contains: f.q } } },
+              { unidad: { nombre: { contains: f.q, mode: 'insensitive' } } },
+              { docente: { nombreCompleto: { contains: f.q, mode: 'insensitive' } } },
             ],
           }
         : {}),

@@ -7,14 +7,15 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "pnpm --filter @rae/shared build && pnpm -r --parallel --filter api --filter web --filter @rae/shared dev",
-    "build": "pnpm -r build",
+    "dev": "pnpm --filter @rae/shared build && pnpm --filter api build && pnpm -r --parallel --filter api --filter web --filter @rae/shared dev",
+    "build": "pnpm --filter @rae/shared build && pnpm --filter api build && pnpm --filter web build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "vercel-build": "node scripts/vercel-build.mjs"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",

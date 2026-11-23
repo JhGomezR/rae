@@ -100,7 +100,7 @@ export class ImportacionService {
     const filas = imp.filas as unknown as FilaConsolidado[];
     const nuevos = await this.prepararUsuarios(filas);
     await this.prisma.$transaction((tx) => this.escribir(tx, filas, nuevos), {
-      timeout: 300_000,
+      timeout: 240_000,
       maxWait: 20_000,
     });
     await this.prisma.importacion.update({

@@ -1,11 +1,12 @@
 generator client {
   provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Rol {
@@ -115,6 +116,19 @@ model RefreshToken {
   usuario    Usuario   @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
 
   @@index([usuarioId])
+}
+
+/// Intentos fallidos de login; en serverless no se pueden guardar en memoria.
+model IntentoLogin {
+  documento String   @id @db.VarChar(20)
+  total     Int
+  desde     DateTime
+}
+
+/// Valores internos del sistema, como la huella de los datos semilla.
+model Configuracion {
+  clave String @id @db.VarChar(60)
+  valor String @db.VarChar(200)
 }
 
 model Sede {
@@ -279,7 +293,7 @@ model RespuestaItem {
   id                 Int           @id @default(autoincrement())
   encuestaId         Int
   itemId             Int
-  nivel              Int?          @db.TinyInt
+  nivel              Int?          @db.SmallInt
   evaluados          Int?
   alcanzan           Int?
   evidencia          String?       @db.VarChar(500)
