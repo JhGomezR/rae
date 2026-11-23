@@ -9,8 +9,14 @@ function buscarUrl(sufijo: string): string | undefined {
   return clave ? process.env[clave] : undefined;
 }
 
-process.env.DATABASE_URL ||= buscarUrl('POSTGRES_PRISMA_URL');
-process.env.DIRECT_URL ||= buscarUrl('POSTGRES_URL_NON_POOLING') ?? process.env.DATABASE_URL;
+process.env.DATABASE_URL ||= conPgbouncer(buscarUrl('PRISMA_URL'));
+process.env.DIRECT_URL ||= buscarUrl('URL_NON_POOLING') ?? process.env.DATABASE_URL;
+
+/** El pooler de Supabase (puerto 6543) exige este parámetro en Prisma. */
+function conPgbouncer(url: string | undefined): string | undefined {
+  if (!url || !url.includes(':6543') || url.includes('pgbouncer=')) return url;
+  return `${url}${url.includes('?') ? '&' : '?'}pgbouncer=true`;
+}
 
 const dominioVercel = process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL;
 const urlPorDefecto = dominioVercel ? `https://${dominioVercel}` : 'http://localhost:3000';

@@ -7,8 +7,14 @@ const buscar = (sufijo) => {
 };
 const correr = (comando, env = process.env) => execSync(comando, { stdio: 'inherit', env });
 
-const pooled = process.env.DATABASE_URL || buscar('POSTGRES_PRISMA_URL');
-const directa = process.env.DIRECT_URL || buscar('POSTGRES_URL_NON_POOLING') || pooled;
+/** El pooler de Supabase (puerto 6543) exige este parámetro en Prisma. */
+function conPgbouncer(url) {
+  if (!url || !url.includes(':6543') || url.includes('pgbouncer=')) return url;
+  return `${url}${url.includes('?') ? '&' : '?'}pgbouncer=true`;
+}
+
+const pooled = process.env.DATABASE_URL || conPgbouncer(buscar('PRISMA_URL'));
+const directa = process.env.DIRECT_URL || buscar('URL_NON_POOLING') || pooled;
 if (!pooled) {
   throw new Error('Falta la base de datos: conecta Supabase al proyecto en Vercel.');
 }
@@ -22,6 +28,9 @@ if (process.env.VERCEL_ENV === 'production') {
     'CRON_SECRET',
   ].filter((k) => !process.env[k]);
   if (faltan.length) throw new Error(`Faltan variables en Vercel: ${faltan.join(', ')}`);
+  if (!/^\d{5,20}$/.test(process.env.ADMIN_DOCUMENTO)) {
+    throw new Error('ADMIN_DOCUMENTO debe ser tu cédula, solo números.');
+  }
 }
 
 correr('pnpm --filter api exec prisma generate', conBd);

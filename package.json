@@ -4,7 +4,7 @@
   "description": "Seguimiento curricular RAE: nivel de apreciación y de alcance de los resultados de aprendizaje.",
   "packageManager": "pnpm@9.12.3",
   "engines": {
-    "node": ">=22"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "pnpm --filter @rae/shared build && pnpm --filter api build && pnpm -r --parallel --filter api --filter web --filter @rae/shared dev",
@@ -26,5 +26,17 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,mjs,cjs,json,md,css,yml,yaml}": "prettier --write"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma",
+      "argon2",
+      "@nestjs/core",
+      "sharp",
+      "unrs-resolver",
+      "@parcel/watcher"
+    ]
   }
 }

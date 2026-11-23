@@ -29,5 +29,8 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "description": "Interfaz web del seguimiento curricular RAE (Next.js)."
+  "description": "Interfaz web del seguimiento curricular RAE (Next.js).",
+  "engines": {
+    "node": "22.x"
+  }
 }
