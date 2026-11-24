@@ -76,6 +76,7 @@ export function Shell({ children }: { children: ReactNode }) {
           <div className="mt-6 border-t border-line pt-4 text-sm">
             <p className="font-semibold break-words">{yo.nombre}</p>
             <p className="text-faint">{ROL[yo.rol]}</p>
+            <p className="mt-3 text-xs text-faint">Creado por: Jhon Alexander Gomez Ruiz</p>
             <button className="btn mt-3 w-full" onClick={() => void salir()}>
               Cerrar sesión
             </button>

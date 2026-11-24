@@ -73,6 +73,8 @@ export default function LoginPage() {
             <p className="mt-1 text-sm text-muted">
               La primera vez: documento + primer apellido (estudiantes) o primer nombre (docentes).
             </p>
+            {/* Dos líneas en blanco entre la ayuda y el crédito. */}
+            <p className="mt-[2lh] text-sm text-faint">Creado por: Jhon Alexander Gomez Ruiz</p>
           </div>
           {error && (
             <p role="alert" className="text-sm text-err">
