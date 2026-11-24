@@ -28,7 +28,10 @@ export class ImportacionService {
 
   private async mapaUnidades(): Promise<Map<string, number>> {
     const [unidades, alias] = await Promise.all([
-      this.prisma.unidadFormacion.findMany({ select: { id: true, nombreClave: true } }),
+      this.prisma.unidadFormacion.findMany({
+        where: { activo: true },
+        select: { id: true, nombreClave: true },
+      }),
       this.prisma.aliasUnidad.findMany(),
     ]);
     const mapa = new Map(unidades.map((u) => [u.nombreClave, u.id]));

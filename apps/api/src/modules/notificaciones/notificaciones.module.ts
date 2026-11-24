@@ -17,6 +17,7 @@ import { env } from '../../config/env';
 import { Publica, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { LogMailerAdapter, MailerPort, SmtpMailerAdapter } from '../../infrastructure/mail/mailer';
+import { CURSO_VIGENTE } from '../../common/vigencia';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { EVENTO_MOMENTO_ABIERTO, MomentoAbierto } from '../periodos/periodos.module';
 
@@ -51,7 +52,7 @@ export class NotificacionesService {
 
   private async participantes(periodoId: number): Promise<Map<number, Set<number>>> {
     const cursos = await this.prisma.curso.findMany({
-      where: { periodoId },
+      where: { periodoId, ...CURSO_VIGENTE },
       select: {
         id: true,
         docenteId: true,

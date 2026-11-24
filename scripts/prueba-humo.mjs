@@ -307,6 +307,176 @@ async function main() {
     );
   }
 
+  console.log('Gestión del currículo');
+  const nueva = await admin.datos('/api/curriculo/unidades', {
+    metodo: 'POST',
+    json: { nombre: 'Unidad de prueba gestión', semestre: 3, ciclo: 'TECNOLOGICO' },
+  });
+  ok(nueva.id === 63, 'crear unidad nueva');
+  ok(
+    (
+      await admin.pedir('/api/curriculo/unidades', {
+        metodo: 'POST',
+        json: { nombre: 'UNIDAD DE PRUEBA GESTION', semestre: 3, ciclo: 'TECNOLOGICO' },
+      })
+    ).status === 409,
+    'no se duplica el nombre de una unidad',
+  );
+  const comp = await admin.datos(`/api/curriculo/unidades/${nueva.id}/competencias`, {
+    metodo: 'POST',
+    json: {
+      codigo: 'CG99',
+      tipo: 'ESPECIFICA',
+      texto: 'Competencia creada en la prueba de gestión',
+      tituloCorto: 'Prueba',
+      capacidad: 'resolver problemas de prueba',
+    },
+  });
+  ok(comp.tipo === 'GENERICA', 'el código CG manda sobre el tipo elegido');
+  await admin.datos(`/api/curriculo/unidades/${nueva.id}/items`, {
+    metodo: 'POST',
+    json: {
+      tipo: 'RA',
+      competenciaUnidadId: comp.id,
+      texto: 'Resultado de aprendizaje de prueba',
+      capacidad: 'aplicar lo aprendido en la prueba',
+    },
+  });
+  const obj = await admin.datos(`/api/curriculo/unidades/${nueva.id}/items`, {
+    metodo: 'POST',
+    json: {
+      tipo: 'OBJETIVO',
+      texto: 'Objetivo de la prueba de gestión',
+      capacidad: 'explicar el objetivo de prueba',
+    },
+  });
+  let det = await admin.datos(`/api/curriculo/unidades/${nueva.id}`);
+  ok(
+    det.items.filter((i) => i.activo).length === 2,
+    'al agregar un RA la competencia deja de preguntarse completa',
+  );
+  await admin.datos(`/api/curriculo/items/${obj.id}`, { metodo: 'PUT', json: { activo: false } });
+  det = await admin.datos(`/api/curriculo/unidades/${nueva.id}`);
+  ok(
+    det.items.length === 3 && det.items.filter((i) => i.activo).length === 1,
+    'eliminar un ítem es borrado lógico',
+  );
+  await admin.datos(`/api/curriculo/competencias/${comp.id}`, {
+    metodo: 'PUT',
+    json: { activo: false },
+  });
+  const lista = await admin.datos('/api/curriculo/unidades');
+  ok(
+    lista.find((u) => u.id === nueva.id).conteo.genericas === 0,
+    'los RA de una competencia eliminada no cuentan',
+  );
+  await admin.datos(`/api/curriculo/unidades/${nueva.id}`, {
+    metodo: 'PATCH',
+    json: { activo: false },
+  });
+  ok(
+    (await admin.datos('/api/curriculo/unidades')).find((u) => u.id === nueva.id).activo === false,
+    'eliminar una unidad es borrado lógico',
+  );
+
+  console.log('Gestión de cursos');
+  const opc = await admin.datos('/api/cursos/opciones');
+  ok(
+    !opc.unidades.some((u) => u.id === nueva.id),
+    'las unidades eliminadas no se ofrecen para cursos',
+  );
+  const docenteId = opc.docentes[0].id;
+  const curso = await admin.datos('/api/cursos', {
+    metodo: 'POST',
+    json: {
+      periodoId: periodo.id,
+      unidadId: 1,
+      docenteId,
+      sede: 'SEDE-PRUEBA',
+      programa: 'INGENIERIA DE SISTEMAS',
+      grupo: 'z',
+      semestreOferta: 1,
+    },
+  });
+  ok(curso.grupo === 'Z', 'crear curso');
+  ok(
+    (
+      await admin.pedir('/api/cursos', {
+        metodo: 'POST',
+        json: {
+          periodoId: periodo.id,
+          unidadId: 1,
+          docenteId,
+          sede: 'SEDE-PRUEBA',
+          programa: 'INGENIERIA DE SISTEMAS',
+          grupo: 'Z',
+          semestreOferta: 1,
+        },
+      })
+    ).status === 409,
+    'no se duplica un curso',
+  );
+  await admin.datos(`/api/cursos/${curso.id}/inscripciones`, {
+    metodo: 'POST',
+    json: { documento: '80000001' },
+  });
+  ok(
+    (await ana.datos('/api/mis-cursos')).some((c) => c.id === curso.id),
+    'inscribir estudiante a un curso',
+  );
+  const panelAntes = await admin.datos('/api/resultados/panel');
+  await admin.datos(`/api/cursos/${curso.id}`, { metodo: 'PATCH', json: { activo: false } });
+  ok(
+    !(await ana.datos('/api/mis-cursos')).some((c) => c.id === curso.id),
+    'un curso inactivo desaparece para el estudiante',
+  );
+  ok(
+    (await ana.pedir(`/api/encuestas/${curso.id}/apreciacion/enviar`, { metodo: 'POST', json: {} }))
+      .status === 409,
+    'un curso inactivo no recibe respuestas',
+  );
+  const panelDespues = await admin.datos('/api/resultados/panel');
+  ok(panelDespues.cursos === panelAntes.cursos - 1, 'un curso inactivo no cuenta en el panel');
+  await admin.datos(`/api/cursos/${curso.id}`, { metodo: 'PATCH', json: { activo: true } });
+  const insc = await admin.datos(`/api/cursos/${curso.id}/inscripciones`);
+  await admin.datos(`/api/cursos/${curso.id}/inscripciones/${insc[0].id}`, {
+    metodo: 'PATCH',
+    json: { activa: false },
+  });
+  ok(
+    !(await ana.datos('/api/mis-cursos')).some((c) => c.id === curso.id),
+    'retirar a un estudiante del curso',
+  );
+  ok(
+    (
+      await admin.pedir(`/api/cursos/${cursos.datos[0].id}`, {
+        metodo: 'PATCH',
+        json: { unidadId: 2 },
+      })
+    ).status === 409,
+    'no se cambia la unidad de un curso con encuestas',
+  );
+
+  console.log('Estadísticas del panel');
+  const est = panelDespues.estadisticas.momentos.ALCANCE;
+  ok(
+    est.estudiantes.esperadas ===
+      est.estudiantes.enviadas + est.estudiantes.borrador + est.estudiantes.pendientes,
+    'enviadas + borrador + pendientes = esperadas',
+  );
+  ok(
+    est.personasEstudiantes.total ===
+      est.personasEstudiantes.completaron +
+        est.personasEstudiantes.parcial +
+        est.personasEstudiantes.ninguna,
+    'personas por estado suman el total',
+  );
+  ok(
+    est.porSemestre.length > 0 && est.porSede.length > 0 && est.nivelesEstudiantes.length === 4,
+    'participación por semestre, sede y niveles',
+  );
+  ok(panelDespues.estadisticas.ingreso.estudiantes.ingresaron >= 2, 'ingreso a la plataforma');
+
   console.log('Sesión');
   const viejo = ana.cookies.get('refresh');
   await ana.datos('/api/auth/refresh', { metodo: 'POST' });

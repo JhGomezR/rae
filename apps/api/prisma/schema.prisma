@@ -145,13 +145,13 @@ model Programa {
 }
 
 model Periodo {
-  id                 Int       @id @default(autoincrement())
-  codigo             String    @unique @db.VarChar(10)
+  id                 Int             @id @default(autoincrement())
+  codigo             String          @unique @db.VarChar(10)
   anio               Int
   numero             Int
-  activo             Boolean   @default(false)
-  apreciacionAbierta Boolean   @default(false)
-  alcanceAbierto     Boolean   @default(false)
+  activo             Boolean         @default(false)
+  apreciacionAbierta Boolean         @default(false)
+  alcanceAbierto     Boolean         @default(false)
   apreciacionCierra  DateTime?
   alcanceCierra      DateTime?
   cursos             Curso[]
@@ -168,6 +168,7 @@ model UnidadFormacion {
   ciclo            Ciclo
   archivosSyllabus Json
   editado          Boolean @default(false)
+  activo           Boolean @default(true)
 
   competencias    CompetenciaUnidad[]
   items           ItemEvaluable[]
@@ -192,6 +193,7 @@ model CompetenciaUnidad {
   texto       String          @db.Text
   tituloCorto String          @db.VarChar(200)
   orden       Int
+  activo      Boolean         @default(true)
   unidad      UnidadFormacion @relation(fields: [unidadId], references: [id], onDelete: Cascade)
   items       ItemEvaluable[]
 
@@ -233,23 +235,24 @@ model PreguntaPractica {
 }
 
 model Curso {
-  id             Int             @id @default(autoincrement())
-  periodoId      Int
-  sedeId         Int
-  programaId     Int
-  unidadId       Int
-  grupo          String          @db.VarChar(5)
-  semestreOferta Int
-  docenteId      Int
-  periodo        Periodo         @relation(fields: [periodoId], references: [id])
-  sede           Sede            @relation(fields: [sedeId], references: [id])
-  programa       Programa        @relation(fields: [programaId], references: [id])
-  unidad         UnidadFormacion @relation(fields: [unidadId], references: [id])
-  docente        Usuario         @relation("DocenteCurso", fields: [docenteId], references: [id])
-  inscripciones  Inscripcion[]
-  encuestas      Encuesta[]
+  id              Int                        @id @default(autoincrement())
+  periodoId       Int
+  sedeId          Int
+  programaId      Int
+  unidadId        Int
+  grupo           String                     @db.VarChar(5)
+  semestreOferta  Int
+  activo          Boolean         @default(true)
+  docenteId       Int
+  periodo         Periodo                    @relation(fields: [periodoId], references: [id])
+  sede            Sede                       @relation(fields: [sedeId], references: [id])
+  programa        Programa                   @relation(fields: [programaId], references: [id])
+  unidad          UnidadFormacion            @relation(fields: [unidadId], references: [id])
+  docente         Usuario                    @relation("DocenteCurso", fields: [docenteId], references: [id])
+  inscripciones   Inscripcion[]
+  encuestas       Encuesta[]
   recomendaciones Recomendacion[]
-  seguimientos   SeguimientoRecomendacion[]
+  seguimientos    SeguimientoRecomendacion[]
 
   @@unique([periodoId, sedeId, programaId, unidadId, grupo, docenteId])
   @@index([docenteId, periodoId])

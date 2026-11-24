@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import type { Prisma } from '@prisma/client';
 import { Momento, nivelDePct, Rol } from '@rae/shared';
+import { CURSO_VIGENTE, ITEM_VIGENTE } from '../../common/vigencia';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
 export interface Filtros {
@@ -81,10 +82,11 @@ export class ResultadosService {
         estado: 'ENVIADA',
         ...(momento ? { momento } : {}),
         curso: {
+          activo: true,
+          unidad: { activo: true, ...(f.semestre ? { semestre: f.semestre } : {}) },
           ...(f.sedeId ? { sedeId: f.sedeId } : {}),
           ...(f.programaId ? { programaId: f.programaId } : {}),
           ...(f.docenteId ? { docenteId: f.docenteId } : {}),
-          ...(f.semestre ? { unidad: { semestre: f.semestre } } : {}),
         },
       },
       include: {
@@ -99,7 +101,7 @@ export class ResultadosService {
 
   private unidades(semestre?: number) {
     return this.prisma.unidadFormacion.findMany({
-      where: semestre ? { semestre } : {},
+      where: { activo: true, ...(semestre ? { semestre } : {}) },
       select: { id: true, nombre: true, semestre: true },
       orderBy: [{ semestre: 'asc' }, { id: 'asc' }],
     });
@@ -131,7 +133,7 @@ export class ResultadosService {
       where: { id: unidadId },
       include: {
         items: {
-          where: { activo: true },
+          where: ITEM_VIGENTE,
           orderBy: { orden: 'asc' },
           include: { competencia: { select: { codigo: true } } },
         },
@@ -210,8 +212,10 @@ export class ResultadosService {
     if (!p) return { periodo: null };
     const [encuestas, cursos, inscripciones, unidades] = await Promise.all([
       this.cargar(p.id),
-      this.prisma.curso.count({ where: { periodoId: p.id } }),
-      this.prisma.inscripcion.count({ where: { activa: true, curso: { periodoId: p.id } } }),
+      this.prisma.curso.count({ where: { periodoId: p.id, ...CURSO_VIGENTE } }),
+      this.prisma.inscripcion.count({
+        where: { activa: true, curso: { periodoId: p.id, ...CURSO_VIGENTE } },
+      }),
       this.unidades(),
     ]);
     const esperadas = inscripciones + cursos;

@@ -8,12 +8,10 @@ import {
   Param,
   ParseIntPipe,
   Post,
-  Query,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import type { Prisma } from '@prisma/client';
 import { normalizarNombreUnidad, Rol } from '@rae/shared';
 import { z } from 'zod';
 import { Roles, UsuarioActual, UsuarioSesion } from '../../common/sesion';
@@ -22,48 +20,10 @@ import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ImportacionService } from './importacion.service';
 
 const alias = z.object({ alias: z.string().trim().min(3).max(150), unidadId: z.number().int() });
-const filtroCursos = z.object({
-  periodoId: z.coerce.number().int().optional(),
-  q: z.string().trim().max(80).optional(),
-  pagina: z.coerce.number().int().min(1).default(1),
-  tamano: z.coerce.number().int().min(1).max(100).default(20),
-});
 
 @Injectable()
-export class CursosService {
+export class ConsultasMatriculaService {
   constructor(private readonly prisma: PrismaService) {}
-
-  async listar(f: z.output<typeof filtroCursos>) {
-    const where: Prisma.CursoWhereInput = {
-      ...(f.periodoId ? { periodoId: f.periodoId } : { periodo: { activo: true } }),
-      ...(f.q
-        ? {
-            OR: [
-              { unidad: { nombre: { contains: f.q, mode: 'insensitive' } } },
-              { docente: { nombreCompleto: { contains: f.q, mode: 'insensitive' } } },
-            ],
-          }
-        : {}),
-    };
-    const [filas, total] = await Promise.all([
-      this.prisma.curso.findMany({
-        where,
-        include: {
-          unidad: { select: { nombre: true } },
-          sede: { select: { codigo: true } },
-          programa: { select: { nombre: true } },
-          docente: { select: { nombreCompleto: true } },
-          periodo: { select: { codigo: true } },
-          _count: { select: { inscripciones: { where: { activa: true } } } },
-        },
-        orderBy: [{ unidadId: 'asc' }, { grupo: 'asc' }],
-        skip: (f.pagina - 1) * f.tamano,
-        take: f.tamano,
-      }),
-      this.prisma.curso.count({ where }),
-    ]);
-    return { datos: filas, total, pagina: f.pagina, tamano: f.tamano };
-  }
 
   listarAlias() {
     return this.prisma.aliasUnidad.findMany({
@@ -95,7 +55,7 @@ export class CursosService {
 export class MatriculasController {
   constructor(
     private readonly importacion: ImportacionService,
-    private readonly cursos: CursosService,
+    private readonly cursos: ConsultasMatriculaService,
   ) {}
 
   @Post('importaciones/consolidado/previsualizar')
@@ -130,15 +90,10 @@ export class MatriculasController {
   crearAlias(@Body(new ZodPipe(alias)) d: z.output<typeof alias>) {
     return this.cursos.crearAlias(d);
   }
-
-  @Get('cursos')
-  listarCursos(@Query(new ZodPipe(filtroCursos)) f: z.output<typeof filtroCursos>) {
-    return this.cursos.listar(f);
-  }
 }
 
 @Module({
   controllers: [MatriculasController],
-  providers: [ImportacionService, CursosService],
+  providers: [ImportacionService, ConsultasMatriculaService],
 })
 export class MatriculasModule {}

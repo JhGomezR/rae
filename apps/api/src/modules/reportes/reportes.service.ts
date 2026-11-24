@@ -4,6 +4,7 @@ import ExcelJS from 'exceljs';
 import type { Response } from 'express';
 import type { Content, TDocumentDefinitions } from 'pdfmake/interfaces';
 import { crearImpresora } from '../../infrastructure/pdf/impresora';
+import { CURSO_VIGENTE } from '../../common/vigencia';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { PlanService } from '../resultados/plan.service';
 import { ResultadosService } from '../resultados/resultados.service';
@@ -95,7 +96,14 @@ export class ReportesService {
     let ultimoId = 0;
     for (;;) {
       const lote = await this.prisma.encuesta.findMany({
-        where: { periodoId: periodo.id, rol, momento, estado: 'ENVIADA', id: { gt: ultimoId } },
+        where: {
+          periodoId: periodo.id,
+          rol,
+          momento,
+          estado: 'ENVIADA',
+          id: { gt: ultimoId },
+          curso: CURSO_VIGENTE,
+        },
         orderBy: { id: 'asc' },
         take: 200,
         include: {

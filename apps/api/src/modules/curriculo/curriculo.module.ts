@@ -4,11 +4,10 @@ import {
   Controller,
   Get,
   HttpCode,
-  Injectable,
   Module,
-  NotFoundException,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
   Put,
 } from '@nestjs/common';
@@ -16,107 +15,11 @@ import { NivelPregunta, Rol } from '@rae/shared';
 import { z } from 'zod';
 import { Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
-import { PrismaService } from '../../infrastructure/prisma/prisma.service';
-import { restaurarUnidad } from './sembrar-curriculo';
+import { CurriculoService, esquemas as e } from './curriculo.service';
 
-const item = z.object({
-  capacidad: z.string().trim().min(3).max(500).optional(),
-  activo: z.boolean().optional(),
-});
-const pregunta = z
-  .object({
-    enunciado: z.string().trim().min(5).max(2000),
-    opciones: z.array(z.string().trim().min(1).max(500)).min(2).max(6),
-    indiceCorrecta: z.number().int().min(0),
-  })
-  .refine((p) => p.indiceCorrecta < p.opciones.length, {
-    message: 'La respuesta correcta debe ser una de las opciones.',
-    path: ['indiceCorrecta'],
-  });
-const competencia = z.object({ tituloCorto: z.string().trim().min(3).max(200) });
+type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
-@Injectable()
-export class CurriculoService {
-  constructor(private readonly prisma: PrismaService) {}
-
-  async listar() {
-    const unidades = await this.prisma.unidadFormacion.findMany({
-      orderBy: [{ semestre: 'asc' }, { id: 'asc' }],
-      include: { items: { where: { activo: true }, select: { seccion: true } } },
-    });
-    return unidades.map(({ items, ...u }) => ({
-      ...u,
-      conteo: {
-        objetivos: items.filter((i) => i.seccion === 'OBJETIVO').length,
-        genericas: items.filter((i) => i.seccion === 'GENERICA').length,
-        especificas: items.filter((i) => i.seccion === 'ESPECIFICA').length,
-        rae: items.filter((i) => i.seccion === 'RAE').length,
-      },
-    }));
-  }
-
-  async detalle(id: number) {
-    const u = await this.prisma.unidadFormacion.findUnique({
-      where: { id },
-      include: {
-        competencias: { orderBy: { orden: 'asc' } },
-        items: { orderBy: { orden: 'asc' }, include: { preguntas: true } },
-      },
-    });
-    if (!u) throw new NotFoundException('Unidad no encontrada.');
-    return u;
-  }
-
-  async editarItem(id: number, d: z.output<typeof item>) {
-    const actual = await this.prisma.itemEvaluable.findUnique({ where: { id } });
-    if (!actual) throw new NotFoundException('Ítem no encontrado.');
-    const [fila] = await this.prisma.$transaction([
-      this.prisma.itemEvaluable.update({ where: { id }, data: d }),
-      this.prisma.unidadFormacion.update({
-        where: { id: actual.unidadId },
-        data: { editado: true },
-      }),
-    ]);
-    return fila;
-  }
-
-  async editarPregunta(itemId: number, nivel: NivelPregunta, d: z.output<typeof pregunta>) {
-    const actual = await this.prisma.itemEvaluable.findUnique({ where: { id: itemId } });
-    if (!actual) throw new NotFoundException('Ítem no encontrado.');
-    const [fila] = await this.prisma.$transaction([
-      this.prisma.preguntaPractica.upsert({
-        where: { itemId_nivel: { itemId, nivel } },
-        create: { itemId, nivel, ...d },
-        update: { ...d, activa: true },
-      }),
-      this.prisma.unidadFormacion.update({
-        where: { id: actual.unidadId },
-        data: { editado: true },
-      }),
-    ]);
-    return fila;
-  }
-
-  async editarCompetencia(id: number, d: z.output<typeof competencia>) {
-    const actual = await this.prisma.competenciaUnidad.findUnique({ where: { id } });
-    if (!actual) throw new NotFoundException('Competencia no encontrada.');
-    const [fila] = await this.prisma.$transaction([
-      this.prisma.competenciaUnidad.update({ where: { id }, data: d }),
-      this.prisma.unidadFormacion.update({
-        where: { id: actual.unidadId },
-        data: { editado: true },
-      }),
-    ]);
-    return fila;
-  }
-
-  async restaurar(id: number): Promise<void> {
-    if (!(await restaurarUnidad(this.prisma, id))) {
-      throw new NotFoundException('La unidad no tiene contenido original.');
-    }
-  }
-}
-
+/** Eliminar = desactivar (activo: false): las respuestas guardadas nunca se pierden. */
 @Roles(Rol.ADMIN)
 @Controller('curriculo')
 export class CurriculoController {
@@ -127,9 +30,22 @@ export class CurriculoController {
     return this.servicio.listar();
   }
 
+  @Post('unidades')
+  crearUnidad(@Body(new ZodPipe(e.unidadCrear)) d: D<'unidadCrear'>) {
+    return this.servicio.crearUnidad(d);
+  }
+
   @Get('unidades/:id')
   detalle(@Param('id', ParseIntPipe) id: number) {
     return this.servicio.detalle(id);
+  }
+
+  @Patch('unidades/:id')
+  editarUnidad(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(new ZodPipe(e.unidadEditar)) d: D<'unidadEditar'>,
+  ) {
+    return this.servicio.editarUnidad(id, d);
   }
 
   @Post('unidades/:id/restaurar')
@@ -138,10 +54,26 @@ export class CurriculoController {
     return this.servicio.restaurar(id);
   }
 
+  @Post('unidades/:id/competencias')
+  crearCompetencia(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(new ZodPipe(e.competenciaCrear)) d: D<'competenciaCrear'>,
+  ) {
+    return this.servicio.crearCompetencia(id, d);
+  }
+
+  @Post('unidades/:id/items')
+  crearItem(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(new ZodPipe(e.itemCrear)) d: D<'itemCrear'>,
+  ) {
+    return this.servicio.crearItem(id, d);
+  }
+
   @Put('items/:id')
   editarItem(
     @Param('id', ParseIntPipe) id: number,
-    @Body(new ZodPipe(item)) d: z.output<typeof item>,
+    @Body(new ZodPipe(e.itemEditar)) d: D<'itemEditar'>,
   ) {
     return this.servicio.editarItem(id, d);
   }
@@ -150,7 +82,7 @@ export class CurriculoController {
   editarPregunta(
     @Param('id', ParseIntPipe) id: number,
     @Param('nivel') nivel: string,
-    @Body(new ZodPipe(pregunta)) d: z.output<typeof pregunta>,
+    @Body(new ZodPipe(e.pregunta)) d: D<'pregunta'>,
   ) {
     if (nivel !== NivelPregunta.ESTUDIANTE && nivel !== NivelPregunta.DOCENTE) {
       throw new BadRequestException('Nivel no válido.');
@@ -161,7 +93,7 @@ export class CurriculoController {
   @Put('competencias/:id')
   editarCompetencia(
     @Param('id', ParseIntPipe) id: number,
-    @Body(new ZodPipe(competencia)) d: z.output<typeof competencia>,
+    @Body(new ZodPipe(e.competenciaEditar)) d: D<'competenciaEditar'>,
   ) {
     return this.servicio.editarCompetencia(id, d);
   }

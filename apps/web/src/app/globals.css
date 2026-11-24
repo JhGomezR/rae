@@ -29,6 +29,7 @@
   --on-lv: #ffffff;
   --serie1: #00909c;
   --serie2: #b45309;
+  --pendiente: #c8c2b4;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,6 +61,7 @@
     --on-lv: #12191b;
     --serie1: #00a6b3;
     --serie2: #d07c25;
+    --pendiente: #56676a;
   }
 }
 

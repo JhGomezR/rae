@@ -166,13 +166,17 @@ export class PlanService {
     if (!periodo) return { periodo: null, caracteristicas: [] };
     const [encuestas, totalUnidades, seguimientos, items, caracteristicas] = await Promise.all([
       this.resultados.cargar(periodo.id),
-      this.prisma.unidadFormacion.count(),
+      this.prisma.unidadFormacion.count({ where: { activo: true } }),
       this.prisma.seguimientoRecomendacion.findMany({
         where: { curso: { periodoId: periodo.id } },
         select: { estado: true },
       }),
       this.prisma.itemEvaluable.findMany({
-        where: { activo: true, competencia: { codigo: { not: null } } },
+        where: {
+          activo: true,
+          unidad: { activo: true },
+          competencia: { codigo: { not: null }, activo: true },
+        },
         select: { id: true, unidadId: true, competencia: { select: { codigo: true } } },
       }),
       this.prisma.caracteristicaPlan.findMany({ orderBy: { orden: 'asc' } }),

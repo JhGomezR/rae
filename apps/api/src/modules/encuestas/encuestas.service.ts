@@ -8,6 +8,7 @@ import {
 import type { Periodo, Prisma } from '@prisma/client';
 import { esquemaGeneral, EstadoEncuesta, Momento, Rol } from '@rae/shared';
 import { UsuarioSesion } from '../../common/sesion';
+import { ITEM_VIGENTE } from '../../common/vigencia';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { EncuestaFactory, fraseDe, ItemConPreguntas, preguntaDe } from './encuesta.factory';
 import { DatosItem, estrategiaPara, limpiarBorrador, RespuestaCruda } from './estrategias';
@@ -35,6 +36,8 @@ export class EncuestasService {
     const cursos = await this.prisma.curso.findMany({
       where: {
         periodo: { activo: true },
+        activo: true,
+        unidad: { activo: true },
         ...(u.rol === Rol.DOCENTE
           ? { docenteId: u.id }
           : { inscripciones: { some: { estudianteId: u.id, activa: true } } }),
@@ -75,7 +78,7 @@ export class EncuestasService {
       where: { id: cursoId },
       include: {
         periodo: true,
-        unidad: { select: { id: true, nombre: true, semestre: true } },
+        unidad: { select: { id: true, nombre: true, semestre: true, activo: true } },
         sede: { select: { codigo: true } },
         inscripciones: { where: { estudianteId: u.id, activa: true }, select: { id: true } },
       },
@@ -89,7 +92,7 @@ export class EncuestasService {
 
   private itemsActivos(unidadId: number): Promise<ItemConPreguntas[]> {
     return this.prisma.itemEvaluable.findMany({
-      where: { unidadId, activo: true },
+      where: { unidadId, ...ITEM_VIGENTE },
       include: { preguntas: true, competencia: true },
       orderBy: { orden: 'asc' },
     });
@@ -118,7 +121,8 @@ export class EncuestasService {
       where: { cursoId_usuarioId_momento: { cursoId, usuarioId: u.id, momento } },
       include: { items: true, estrategias: { select: { estrategiaId: true } } },
     });
-    if (!curso.periodo.activo && encuesta?.estado !== EstadoEncuesta.ENVIADA) {
+    const vigente = curso.activo && curso.unidad.activo;
+    if ((!curso.periodo.activo || !vigente) && encuesta?.estado !== EstadoEncuesta.ENVIADA) {
       throw new NotFoundException('Esta encuesta no está disponible.');
     }
     const [items, estrategias, previas, seguimientos, propias] = await Promise.all([
@@ -158,7 +162,7 @@ export class EncuestasService {
       },
       rol: u.rol,
       momento,
-      abierto: estaAbierto(curso.periodo, momento),
+      abierto: vigente && estaAbierto(curso.periodo, momento),
       estado: encuesta?.estado ?? 'PENDIENTE',
       secciones: this.factory.secciones(items, u.rol, momento, u.id),
       general: encuesta?.general ?? {},
@@ -176,6 +180,9 @@ export class EncuestasService {
   private async preparar(u: UsuarioSesion, cursoId: number, momento: Momento) {
     if (u.rol === Rol.ADMIN) throw new ForbiddenException('Solo docentes y estudiantes responden.');
     const curso = await this.cursoAutorizado(u, cursoId);
+    if (!curso.activo || !curso.unidad.activo) {
+      throw new ConflictException('Este curso no está disponible.');
+    }
     if (!estaAbierto(curso.periodo, momento)) {
       throw new ConflictException('Este momento de la encuesta está cerrado.');
     }

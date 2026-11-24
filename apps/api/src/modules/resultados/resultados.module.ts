@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { ReportesService } from '../reportes/reportes.service';
+import { PanelService } from './panel.service';
 import { PlanService } from './plan.service';
 import { ResultadosService } from './resultados.service';
 
@@ -46,11 +47,15 @@ export class ResultadosController {
     private readonly resultados: ResultadosService,
     private readonly plan: PlanService,
     private readonly reportes: ReportesService,
+    private readonly panel_: PanelService,
   ) {}
 
   @Get('resultados/panel')
-  panel(@Query(new ZodPipe(filtros)) f: z.output<typeof filtros>) {
-    return this.resultados.panel(f.periodoId);
+  async panel(@Query(new ZodPipe(filtros)) f: z.output<typeof filtros>) {
+    const base = await this.resultados.panel(f.periodoId);
+    if (!base.periodo) return { ...base, estadisticas: null };
+    const enviadas = await this.resultados.cargar(base.periodo.id);
+    return { ...base, estadisticas: await this.panel_.calcular(base.periodo.id, enviadas) };
   }
 
   @Get('resultados/comparativo')
@@ -90,6 +95,6 @@ export class ResultadosController {
 
 @Module({
   controllers: [ResultadosController],
-  providers: [ResultadosService, PlanService, ReportesService],
+  providers: [ResultadosService, PlanService, ReportesService, PanelService],
 })
 export class ResultadosModule {}

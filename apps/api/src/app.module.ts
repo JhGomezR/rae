@@ -11,6 +11,7 @@ import { PrismaModule } from './infrastructure/prisma/prisma.service';
 import { AuthController } from './modules/auth/auth.controller';
 import { AuthService } from './modules/auth/auth.service';
 import { CurriculoModule } from './modules/curriculo/curriculo.module';
+import { CursosModule } from './modules/cursos/cursos.module';
 import { EncuestasModule } from './modules/encuestas/encuestas.module';
 import { InformesModule } from './modules/informes/informes.module';
 import { MatriculasModule } from './modules/matriculas/matriculas.module';
@@ -37,6 +38,7 @@ import { UsuariosModule } from './modules/usuarios/usuarios.controller';
     CurriculoModule,
     PeriodosModule,
     MatriculasModule,
+    CursosModule,
     EncuestasModule,
     ResultadosModule,
     InformesModule,

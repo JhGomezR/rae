@@ -49,7 +49,7 @@ export class InformesService {
     const [encuestas, totalUnidades, recomendacionesPeriodo, seguimientos, plan, ajustes] =
       await Promise.all([
         this.resultados.cargar(periodo.id),
-        this.prisma.unidadFormacion.count(),
+        this.prisma.unidadFormacion.count({ where: { activo: true } }),
         this.prisma.recomendacion.count({ where: { periodoId: periodo.id } }),
         this.prisma.seguimientoRecomendacion.findMany({
           where: { curso: { periodoId: periodo.id } },
