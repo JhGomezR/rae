@@ -15,8 +15,15 @@ function conPgbouncer(url) {
 
 const pooled = process.env.DATABASE_URL || conPgbouncer(buscar('PRISMA_URL'));
 const directa = process.env.DIRECT_URL || buscar('URL_NON_POOLING') || pooled;
+// Solo nombres, nunca valores: permite diagnosticar el build desde el log.
+const nombresBd = Object.keys(process.env).filter((k) => /_(PRISMA_URL|URL_NON_POOLING)$/.test(k));
+console.log(
+  `Entorno: ${process.env.VERCEL_ENV ?? 'local'} · Variables de BD: ${nombresBd.join(', ') || 'ninguna'}`,
+);
 if (!pooled) {
-  throw new Error('Falta la base de datos: conecta Supabase al proyecto en Vercel.');
+  throw new Error(
+    `Falta la base de datos en el entorno "${process.env.VERCEL_ENV ?? 'local'}": conecta Supabase a ese entorno en Vercel.`,
+  );
 }
 const conBd = { ...process.env, DATABASE_URL: pooled, DIRECT_URL: directa };
 
