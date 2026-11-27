@@ -430,3 +430,73 @@ model Auditoria {
   @@index([usuarioId])
   @@index([accion])
 }
+
+/// Tipos de indicador del formato F-PIN-001 (hoja «Hoja1» del Excel institucional).
+enum TipoIndicadorPoa {
+  EFICIENCIA
+  CALIDAD
+  GESTION
+  IMPACTO
+  LOGRO
+}
+
+/// Plan Operativo Anual del programa (formato F-PIN-001), uno por vigencia.
+model Poa {
+  id               Int            @id @default(autoincrement())
+  vigencia         Int            @unique
+  fechaElaboracion DateTime       @db.Date
+  dependencia      String         @db.VarChar(300)
+  areaFacultad     String         @db.VarChar(150)
+  responsable      String         @db.VarChar(150)
+  cargo            String         @db.VarChar(150)
+  activo           Boolean        @default(true)
+  creadoEn         DateTime       @default(now())
+  actualizadoEn    DateTime       @updatedAt
+  actividades      PoaActividad[]
+}
+
+/// Fila del POA: ubicación en el PDI, actividad, indicador, meses programados y presupuesto.
+model PoaActividad {
+  id                   Int               @id @default(autoincrement())
+  poaId                Int
+  numero               Int
+  orden                Int
+  ejePgr               String            @db.VarChar(300)
+  ejePdi               String            @db.VarChar(500)
+  programaPdi          String            @db.VarChar(300)
+  subprograma          String            @db.VarChar(300)
+  proyecto             String            @db.VarChar(1000)
+  metaVigencia         Decimal?          @db.Decimal(12, 2)
+  indicadorPdi         String            @db.VarChar(500)
+  actividad            String            @db.VarChar(2000)
+  tipoIndicador        TipoIndicadorPoa?
+  indicadorActividad   String            @db.VarChar(1000)
+  interpretacion       String?           @db.VarChar(1000)
+  responsableEjecucion String            @db.VarChar(300)
+  meses                Int[]
+  presupuesto          Decimal?          @db.Decimal(16, 2)
+  observaciones        String?           @db.VarChar(2000)
+  activo               Boolean           @default(true)
+  creadoEn             DateTime          @default(now())
+  actualizadoEn        DateTime          @updatedAt
+  poa                  Poa               @relation(fields: [poaId], references: [id], onDelete: Cascade)
+  seguimientos         PoaSeguimiento[]
+
+  @@index([poaId, orden])
+}
+
+/// Reporte mensual de avance de una actividad del POA (porcentaje acumulado).
+model PoaSeguimiento {
+  id            Int          @id @default(autoincrement())
+  actividadId   Int
+  mes           Int
+  avance        Int
+  logro         String       @db.VarChar(2000)
+  evidencia     String?      @db.VarChar(500)
+  ejecutado     Decimal?     @db.Decimal(16, 2)
+  usuarioId     Int?
+  actualizadoEn DateTime     @updatedAt
+  actividad     PoaActividad @relation(fields: [actividadId], references: [id], onDelete: Cascade)
+
+  @@unique([actividadId, mes])
+}

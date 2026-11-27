@@ -65,9 +65,31 @@ export const MODULOS: Modulo[] = [
       ],
     },
   },
+  {
+    id: 'poa',
+    nombre: 'Plan Operativo Anual',
+    descripcion: 'POA · formato F-PIN-001',
+    categorias: {
+      ADMIN: [
+        { nombre: 'Planeación', enlaces: [{ href: '/admin/poa', texto: 'Planes y actividades' }] },
+        {
+          nombre: 'Seguimiento',
+          enlaces: [{ href: '/admin/poa/desempeno', texto: 'Desempeño' }],
+        },
+        { nombre: 'Informes', enlaces: [{ href: '/admin/poa/informes', texto: 'Informes POA' }] },
+      ],
+    },
+  },
 ];
 
 export const CUENTA: Enlace[] = [{ href: '/perfil', texto: 'Mi perfil' }];
 
+const coincide = (ruta: string, href: string) => ruta === href || ruta.startsWith(`${href}/`);
+
+const TODOS = [
+  ...MODULOS.flatMap((m) => Object.values(m.categorias).flatMap((c) => c ?? [])),
+].flatMap((c) => c.enlaces.map((e) => e.href));
+
+/** Activo si la ruta es suya y ningún otro enlace más específico la reclama. */
 export const esActivo = (ruta: string, href: string) =>
-  ruta === href || ruta.startsWith(`${href}/`);
+  coincide(ruta, href) && !TODOS.some((h) => h.length > href.length && coincide(ruta, h));

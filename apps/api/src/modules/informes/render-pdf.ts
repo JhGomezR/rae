@@ -6,8 +6,8 @@ import { pdfABuffer } from '../../infrastructure/pdf/impresora';
 import { Bloque, ClaveInforme, Firmante, Informe, TEXTOS_PLANTILLA } from './informe.tipos';
 import { CARPETA_PLANTILLAS, COLORES_SERIE } from './render-docx';
 
-const PAGINA = { ancho: 612, alto: 1008 };
-const MARGEN = 85;
+export const PAGINA = { ancho: 612, alto: 1008 };
+export const MARGEN = 85;
 const ANCHO_INTERNO = PAGINA.ancho - MARGEN * 2 - 12;
 
 const LINEAS = {
@@ -22,9 +22,15 @@ const LINEAS = {
 };
 const LINEAS_INTERNAS = { ...LINEAS, hLineColor: () => '#808080', vLineColor: () => '#808080' };
 
-function tabla(columnas: string[], filas: string[][]): ContentTable {
+function tabla(columnas: string[], filas: string[][], pesos?: number[]): ContentTable {
   const primera = columnas.length === 2 ? '*' : columnas.length >= 5 ? 100 : 150;
-  const widths = columnas.map((_, i) => (i === 0 ? primera : columnas.length === 2 ? 70 : '*'));
+  const total = pesos?.reduce((s, x) => s + x, 0) ?? 0;
+  const widths =
+    pesos && total
+      ? pesos.map((w) => (w / total) * (ANCHO_INTERNO - 4 * columnas.length))
+      : columnas.map((_, i) => (i === 0 ? primera : columnas.length === 2 ? 70 : '*'));
+  // Columnas anchas (texto largo) a la izquierda; las cortas, centradas.
+  const izquierda = (i: number) => i === 0 || (!!pesos && (pesos[i] ?? 0) / total >= 0.3);
   return {
     table: {
       headerRows: 1,
@@ -36,13 +42,13 @@ function tabla(columnas: string[], filas: string[][]): ContentTable {
           bold: true,
           fontSize: 8.5,
           fillColor: '#E7E6E6',
-          alignment: i === 0 ? ('left' as const) : ('center' as const),
+          alignment: izquierda(i) ? ('left' as const) : ('center' as const),
         })),
         ...filas.map((f) =>
           f.map((v, i) => ({
             text: v,
             fontSize: 8.5,
-            alignment: i === 0 ? ('left' as const) : ('center' as const),
+            alignment: izquierda(i) ? ('left' as const) : ('center' as const),
           })),
         ),
       ],
@@ -127,10 +133,10 @@ function barras(b: Extract<Bloque, { tipo: 'barras' }>): Content {
   };
 }
 
-function bloquePdf(b: Bloque): Content {
+export function bloquePdf(b: Bloque): Content {
   if (b.tipo === 'parrafo') return { text: b.texto, alignment: 'justify', margin: [0, 0, 0, 6] };
   if (b.tipo === 'subtitulo') return { text: b.texto, bold: true, margin: [0, 4, 0, 4] };
-  if (b.tipo === 'tabla') return tabla(b.columnas, b.filas);
+  if (b.tipo === 'tabla') return tabla(b.columnas, b.filas, b.anchos);
   return barras(b);
 }
 

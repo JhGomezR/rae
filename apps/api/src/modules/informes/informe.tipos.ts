@@ -15,7 +15,7 @@ export interface FilaBarras {
 export type Bloque =
   | { tipo: 'subtitulo'; texto: string }
   | { tipo: 'parrafo'; texto: string }
-  | { tipo: 'tabla'; columnas: string[]; filas: string[][] }
+  | { tipo: 'tabla'; columnas: string[]; filas: string[][]; anchos?: number[] }
   | {
       tipo: 'barras';
       titulo: string;

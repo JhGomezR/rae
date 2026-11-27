@@ -28,6 +28,8 @@ Monorepo pnpm · Next.js 15 · NestJS 11 como función de Vercel · Prisma 6 · 
 
 En **Informes** se consultan las estadísticas y se descargan en Word y PDF los formatos 021, 022 y 023 del plan de mejoramiento. Allí se registra una sola vez el responsable y, si se desea, su firma; la firma se guarda de forma privada en la base de datos y solo se incluye al marcarla.
 
+El módulo **Plan Operativo Anual** maneja el POA del programa con el formato institucional F-PIN-001: se importa el Excel o se crea en pantalla, se registra el avance mensual de cada actividad (logro, evidencia y presupuesto ejecutado) y se compara con lo programado. Desde **Informes POA** se descarga el F-PIN-001 diligenciado en Excel, con una hoja de seguimiento, y el informe de desempeño con gráficos en Word o PDF.
+
 Los recordatorios corren una vez al día (7:00 a. m., Colombia). En **Correos** se pueden enviar en cualquier momento.
 
 ## Desarrollo local

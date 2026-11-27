@@ -536,6 +536,113 @@ async function main() {
     'momento cerrado no recibe respuestas',
   );
 
+  console.log('Plan Operativo Anual (POA)');
+  const datosPoa = {
+    vigencia: 2025,
+    fechaElaboracion: '2025-03-01',
+    dependencia: 'Programa de prueba',
+    areaFacultad: 'FICB',
+    responsable: 'Responsable Ficticio',
+    cargo: 'Director de programa',
+  };
+  const poa = await admin.datos('/api/poa', { metodo: 'POST', json: datosPoa });
+  const otroPoa = await admin.pedir('/api/poa', { metodo: 'POST', json: datosPoa });
+  ok(otroPoa.status === 409, 'no se permiten dos POA de la misma vigencia');
+  ok((await docente.pedir('/api/poa')).status === 403, 'solo el administrador ve el POA');
+  const actividadPoa = (n, actividad, meses, tipoIndicador) =>
+    admin.datos(`/api/poa/${poa.id}/actividades`, {
+      metodo: 'POST',
+      json: {
+        numero: n,
+        ejePgr: 'Pilar 1: Excelencia Académica',
+        actividad,
+        tipoIndicador,
+        indicadorActividad: '1 documento',
+        responsableEjecucion: 'Dirección de Programa',
+        meses,
+        presupuesto: 1000000,
+      },
+    });
+  await actividadPoa(1, 'Actividad de prueba temprana', [1, 2], 'LOGRO');
+  await actividadPoa(2, 'Actividad de prueba tardía', [11, 12], 'GESTION');
+  let detallePoa = await admin.datos(`/api/poa/${poa.id}`);
+  ok(
+    detallePoa.desempeno.estados.ATRASADA === 2 && detallePoa.desempeno.semaforo === 'CRITICO',
+    'sin seguimiento al cierre de la vigencia todo queda atrasado',
+  );
+  const excelPoa = await admin.pedir(`/api/poa/${poa.id}/descargar?formato=xlsx`);
+  const bytesPoa = Buffer.from(await excelPoa.arrayBuffer());
+  const libroPoa = new ExcelJS.Workbook();
+  await libroPoa.xlsx.load(bytesPoa);
+  const hojaPoa = libroPoa.getWorksheet('POA 2025');
+  ok(
+    hojaPoa?.getCell('J12').value === 'Actividad de prueba temprana' &&
+      hojaPoa.getCell('O12').value === 'X' &&
+      hojaPoa.getCell('AB8').value === 2025,
+    'el Excel sale en el formato F-PIN-001 diligenciado',
+  );
+  ok(!!libroPoa.getWorksheet('Seguimiento 2025'), 'el Excel incluye la hoja de seguimiento');
+  const formPoa = new FormData();
+  formPoa.append('archivo', new Blob([bytesPoa]), 'poa.xlsx');
+  const reimportado = await admin.datos('/api/poa/importar', { metodo: 'POST', form: formPoa });
+  ok(
+    reimportado.actividades === 2 && reimportado.reemplazado,
+    'el Excel F-PIN-001 se vuelve a importar',
+  );
+  detallePoa = await admin.datos(`/api/poa/${poa.id}`);
+  const [temprana, tardia] = detallePoa.actividades;
+  ok(
+    temprana.tipoIndicador === 'LOGRO' &&
+      tardia.meses.join() === '11,12' &&
+      detallePoa.responsable === 'Responsable Ficticio',
+    'la importación conserva tipo, meses e información básica',
+  );
+  const seguir = (a, mes, avance) =>
+    admin.datos(`/api/poa/actividades/${a.id}/seguimiento/${mes}`, {
+      metodo: 'PUT',
+      json: { avance, logro: `Avance de prueba ${avance}`, evidencia: null, ejecutado: 250000 },
+    });
+  await seguir(temprana, 2, 100);
+  await seguir(tardia, 11, 50);
+  const corte = (await admin.datos(`/api/poa/${poa.id}?mes=11`)).desempeno;
+  ok(
+    corte.avance === 75 && corte.indice === 100 && corte.semaforo === 'SATISFACTORIO',
+    'el desempeño compara el avance real con el programado al corte',
+  );
+  ok(
+    corte.estados.CUMPLIDA === 1 && corte.estados.EN_CURSO === 1 && corte.ejecutado === 500000,
+    'estados y presupuesto ejecutado del POA',
+  );
+  const formPoa2 = new FormData();
+  formPoa2.append('archivo', new Blob([bytesPoa]), 'poa.xlsx');
+  const pisar = await admin.pedir('/api/poa/importar', { metodo: 'POST', form: formPoa2 });
+  ok(pisar.status === 409, 'la importación no borra un POA con seguimiento');
+  const wordPoa = await admin.pedir(`/api/poa/${poa.id}/descargar?formato=docx&mes=11`);
+  const zipPoa = await ExcelJSZip.loadAsync(Buffer.from(await wordPoa.arrayBuffer()));
+  const docPoa = await zipPoa.file('word/document.xml').async('string');
+  ok(
+    docPoa.includes('INFORME DE SEGUIMIENTO Y DESEMPEÑO') &&
+      docPoa.includes('Curva de avance acumulado') &&
+      (await zipPoa.file('word/header1.xml').async('string')).includes('PLANEACIÓN INSTITUCIONAL'),
+    'el informe Word del POA trae gráficos y el membrete',
+  );
+  const pdfPoa = await admin.pedir(`/api/poa/${poa.id}/descargar?formato=pdf`);
+  ok(
+    Buffer.from(await pdfPoa.arrayBuffer())
+      .subarray(0, 5)
+      .toString() === '%PDF-',
+    'el informe PDF del POA se genera',
+  );
+  await admin.datos(`/api/poa/actividades/${tardia.id}`, {
+    metodo: 'PUT',
+    json: { activo: false },
+  });
+  detallePoa = await admin.datos(`/api/poa/${poa.id}`);
+  ok(
+    detallePoa.actividades.length === 1 && detallePoa.inactivas.length === 1,
+    'una actividad inactiva sale del desempeño sin borrarse',
+  );
+
   console.log('Límite de intentos');
   const intentar = (clave) =>
     fetch(`${BASE}/api/auth/login`, {

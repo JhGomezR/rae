@@ -12,7 +12,7 @@ const COL_VALOR = 800;
 const COL_CELDA = Math.floor((ANCHO - COL_ETIQUETA - COL_VALOR) / CELDAS_BARRA);
 export const COLORES_SERIE = ['00909C', 'B45309'];
 
-const esc = (t: string) =>
+export const esc = (t: string) =>
   t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 interface OpcionesTexto {
@@ -30,7 +30,7 @@ function run(t: string, o: OpcionesTexto = {}) {
   return `<w:r>${props ? `<w:rPr>${props}</w:rPr>` : ''}<w:t xml:space="preserve">${esc(t)}</w:t></w:r>`;
 }
 
-function parrafo(
+export function parrafo(
   t: string,
   o: OpcionesTexto & { jc?: string; antes?: number; despues?: number; seguir?: boolean } = {},
 ) {
@@ -47,13 +47,19 @@ function celda(contenido: string, ancho: number, extra = '') {
   return `<w:tc><w:tcPr><w:tcW w:w="${ancho}" w:type="dxa"/>${extra}<w:vAlign w:val="center"/></w:tcPr>${contenido}</w:tc>`;
 }
 
-function tabla(columnas: string[], filas: string[][]) {
+function tabla(columnas: string[], filas: string[][], pesos?: number[]) {
   const primera = columnas.length === 2 ? 6500 : columnas.length >= 5 ? 2100 : 3400;
   const resto = Math.floor((ANCHO - primera) / (columnas.length - 1));
-  const anchos = columnas.map((_, i) => (i === 0 ? ANCHO - resto * (columnas.length - 1) : resto));
+  const total = pesos?.reduce((s, x) => s + x, 0) ?? 0;
+  const anchos =
+    pesos && total
+      ? pesos.map((w) => Math.floor((w / total) * ANCHO))
+      : columnas.map((_, i) => (i === 0 ? ANCHO - resto * (columnas.length - 1) : resto));
   const grid = anchos.map((a) => `<w:gridCol w:w="${a}"/>`).join('');
+  // Columnas anchas (texto largo) a la izquierda; las cortas, centradas.
+  const izquierda = (i: number) => i === 0 || (!!pesos && (pesos[i] ?? 0) / total >= 0.3);
   const texto = (t: string, i: number, negrita = false) =>
-    parrafo(t, { tamano: 18, negrita, despues: 0, jc: i === 0 ? 'left' : 'center' });
+    parrafo(t, { tamano: 18, negrita, despues: 0, jc: izquierda(i) ? 'left' : 'center' });
   const cab = `<w:tr><w:trPr><w:cantSplit/><w:tblHeader/></w:trPr>${columnas
     .map((c, i) =>
       celda(
@@ -117,14 +123,16 @@ function barras(b: Extract<Bloque, { tipo: 'barras' }>) {
           )
           .join('')}</w:p>`
       : '';
-  return `${parrafo(b.titulo, { negrita: true, tamano: 20, despues: 60, antes: 60, jc: 'left', seguir: true })}${leyenda}<w:tbl><w:tblPr><w:tblW w:w="${ANCHO}" w:type="dxa"/>${SIN_BORDES}<w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="40" w:type="dxa"/><w:right w:w="40" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${grid}</w:tblGrid>${filas}</w:tbl>${parrafo('', { despues: 80, tamano: 8 })}`;
+  // Cada gráfica se mantiene en una sola página: todas sus filas siguen a la siguiente.
+  const unidas = filas.replace(/<w:pPr>(?!<w:keepNext\/>)/g, '<w:pPr><w:keepNext/>');
+  return `${parrafo(b.titulo, { negrita: true, tamano: 20, despues: 60, antes: 60, jc: 'left', seguir: true })}${leyenda}<w:tbl><w:tblPr><w:tblW w:w="${ANCHO}" w:type="dxa"/>${SIN_BORDES}<w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="40" w:type="dxa"/><w:right w:w="40" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>${grid}</w:tblGrid>${unidas}</w:tbl>${parrafo('', { despues: 80, tamano: 8 })}`;
 }
 
-function bloqueXml(b: Bloque): string {
+export function bloqueXml(b: Bloque): string {
   if (b.tipo === 'parrafo') return parrafo(b.texto);
   if (b.tipo === 'subtitulo')
     return parrafo(b.texto, { negrita: true, jc: 'left', antes: 80, despues: 80, seguir: true });
-  if (b.tipo === 'tabla') return tabla(b.columnas, b.filas);
+  if (b.tipo === 'tabla') return tabla(b.columnas, b.filas, b.anchos);
   return barras(b);
 }
 
