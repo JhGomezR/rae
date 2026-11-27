@@ -12,6 +12,8 @@ export interface Enlace {
 export interface Categoria {
   nombre: string;
   enlaces: Enlace[];
+  /** Categoría de docente que el administrador también ve y usa (él ve todo). */
+  tambienAdmin?: boolean;
 }
 export interface Modulo {
   id: string;
@@ -91,11 +93,20 @@ export const MODULOS: Modulo[] = [
             { href: '/admin/poa/informes', texto: 'Informes POA', permiso: 'poa.gestionar' },
           ],
         },
+      ],
+    },
+  },
+  {
+    id: 'docentes',
+    nombre: 'Gestión docente',
+    descripcion: 'Programador de clases e informes',
+    categorias: {
+      ADMIN: [
         {
-          nombre: 'Informes docentes',
+          nombre: 'Seguimiento',
           enlaces: [
             {
-              href: '/admin/poa/validacion',
+              href: '/admin/docentes/validacion',
               texto: 'Validación de informes',
               permiso: 'docentes.validar',
             },
@@ -104,7 +115,13 @@ export const MODULOS: Modulo[] = [
       ],
       DOCENTE: [
         {
-          nombre: 'Informes docentes',
+          nombre: 'Mi planeación',
+          tambienAdmin: true,
+          enlaces: [{ href: '/docente/programador', texto: 'Programador de clases' }],
+        },
+        {
+          nombre: 'Mis informes',
+          tambienAdmin: true,
           enlaces: [
             {
               href: '/docente/agenda',

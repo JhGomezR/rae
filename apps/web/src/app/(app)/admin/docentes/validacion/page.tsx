@@ -14,6 +14,7 @@ import { ChipEstado, fechaHora } from '@/components/informes-docentes/comun';
 import { Encabezado, Estado, Kpi, Paginador } from '@/components/ui';
 import { useDatos } from '@/lib/api';
 import { Firmantes } from './Firmantes';
+import { Programadores } from './Programadores';
 
 interface Fila {
   id: number;
@@ -29,6 +30,12 @@ interface Resumen {
   conteos: { tipo: string; estado: EstadoInformeDocente; total: number }[];
   pendientes: { id: number; nombreCompleto: string; documento: string; vinculacion: Vinculacion }[];
   sinVinculacion: number;
+  programadores: {
+    cursos: number;
+    entregados: number;
+    aprobados: number;
+    pendientes: { id: number; nombreCompleto: string; cursos: string[] }[];
+  } | null;
 }
 const TIPO = TIPOS_INFORME_DOCENTE;
 
@@ -63,7 +70,7 @@ export default function PaginaValidacion() {
     <>
       <Encabezado
         titulo="Validación de informes"
-        texto="Revisa las agendas e informes de hora cátedra entregados: apruébalos o pide ajustes. Mientras están en revisión, el docente no puede modificarlos."
+        texto="Revisa los programadores de clases, agendas e informes entregados: apruébalos o pide ajustes. Mientras están en revisión, el docente no puede modificarlos."
       />
       <div className="mb-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Kpi
@@ -83,6 +90,9 @@ export default function PaginaValidacion() {
           }
         />
       </div>
+      {resumen.datos?.programadores && (
+        <Programadores p={resumen.datos.programadores} periodo={resumen.datos.periodo?.codigo} />
+      )}
       {resumen.datos &&
         (resumen.datos.pendientes.length > 0 || resumen.datos.sinVinculacion > 0) && (
           <details className="card mb-4">
@@ -140,9 +150,11 @@ export default function PaginaValidacion() {
             onChange={(e) => filtro(() => setTipo(e.target.value))}
           >
             <option value="">Todos</option>
-            <option value="AGENDA">Agenda</option>
-            <option value="EJECUCION">Ejecución de la agenda</option>
-            <option value="CATEDRA">H. Cátedra</option>
+            {(Object.keys(TIPO) as TipoInformeDocente[]).map((k) => (
+              <option key={k} value={k}>
+                {TIPO[k]}
+              </option>
+            ))}
           </select>
         </label>
         <label className="text-sm font-semibold">
@@ -201,7 +213,10 @@ export default function PaginaValidacion() {
                       </td>
                       <td className="whitespace-nowrap">{fechaHora(i.entregadoEn)}</td>
                       <td>
-                        <Link className="btn btn-primary" href={`/admin/poa/validacion/${i.id}`}>
+                        <Link
+                          className="btn btn-primary"
+                          href={`/admin/docentes/validacion/${i.id}`}
+                        >
                           {i.estado === 'ENTREGADO' ? 'Revisar' : 'Ver'}
                         </Link>
                       </td>

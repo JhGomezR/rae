@@ -919,6 +919,85 @@ async function main() {
     'el cumplimiento del corte 3 sale en su columna del Excel',
   );
 
+  console.log('Programador de clases (F-DOC-052)');
+  const miosProg = await otraDocente.datos('/api/mis-informes?tipo=PROGRAMADOR');
+  ok(miosProg.permitido, 'el programador de clases es para todos los docentes, también cátedra');
+  const progDocente = await docente.datos('/api/mis-informes?tipo=PROGRAMADOR');
+  const cursoProg = progDocente.cursos.find((c) => c.periodoId === periodo.id);
+  const prog = await docente.datos('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'PROGRAMADOR', periodoId: periodo.id, cursoId: cursoProg.id },
+  });
+  const detalleProg = await docente.datos(`/api/mis-informes/${prog.id}`);
+  ok(
+    detalleProg.datos.unidad === cursoProg.unidad.nombre &&
+      detalleProg.datos.grupo === cursoProg.grupo &&
+      detalleProg.datos.semanas.length === 16,
+    'el programador nuevo trae el curso y las 16 semanas',
+  );
+  const progRepetido = await docente.pedir('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'PROGRAMADOR', periodoId: periodo.id, cursoId: cursoProg.id },
+  });
+  ok(progRepetido.status === 409, 'un programador por curso');
+  const progAjeno = await otraDocente.pedir('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'PROGRAMADOR', periodoId: periodo.id, cursoId: cursoProg.id },
+  });
+  ok(progAjeno.status === 400, 'no se crea el programador de un curso ajeno');
+  await docente.datos(`/api/mis-informes/${prog.id}`, {
+    metodo: 'PUT',
+    json: {
+      datos: {
+        ...detalleProg.datos,
+        horasSemana: 4,
+        creditos: 3,
+        objetivo: 'Formar en el modelado de datos de prueba.',
+        semanas: detalleProg.datos.semanas.map((x, n) =>
+          n === 0
+            ? {
+                ...x,
+                contenidos: 'Presentación de la unidad de prueba',
+                didacticas: 'Clase participativa',
+                grupales: 'Conversatorio de expectativas',
+                recursos: 'Diapositivas',
+              }
+            : x,
+        ),
+      },
+    },
+  });
+  const wordProg = await docente.pedir(`/api/mis-informes/${prog.id}/descargar?formato=docx`);
+  const zipProg = await ExcelJSZip.loadAsync(Buffer.from(await wordProg.arrayBuffer()));
+  const xmlProg = await zipProg.file('word/document.xml').async('string');
+  const cabProg = await zipProg.file('word/header1.xml').async('string');
+  ok(
+    xmlProg.includes('Presentación de la unidad de prueba') &&
+      xmlProg.includes('w:orient="landscape"') &&
+      cabProg.includes('PROGRAMADOR DE CLASES') &&
+      cabProg.includes('-052'),
+    'el programador sale en Word horizontal con el formato F-DOC-052',
+  );
+  const pdfProg = await docente.pedir(`/api/mis-informes/${prog.id}/descargar?formato=pdf`);
+  ok(
+    Buffer.from(await pdfProg.arrayBuffer())
+      .subarray(0, 5)
+      .toString() === '%PDF-',
+    'el programador sale en PDF',
+  );
+  await docente.datos(`/api/mis-informes/${prog.id}/entregar`, { metodo: 'POST' });
+  const resumenProg = await admin.datos(`/api/validacion-informes/resumen?periodoId=${periodo.id}`);
+  ok(
+    resumenProg.programadores?.entregados >= 1 &&
+      resumenProg.programadores.cursos >= resumenProg.programadores.entregados,
+    'la validación muestra cuántos cursos tienen su programador',
+  );
+  const listaProg = await admin.datos('/api/validacion-informes?tipo=PROGRAMADOR');
+  ok(
+    listaProg.datos.some((i) => i.id === prog.id && i.estado === 'ENTREGADO'),
+    'el revisor ve el programador entregado',
+  );
+
   console.log('Usuarios, roles y permisos (RBAC y ABAC)');
   const roles = await admin.datos('/api/roles');
   ok(

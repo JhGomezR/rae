@@ -55,6 +55,8 @@ export interface Celda {
   span?: number;
   vertical?: boolean;
   centrado?: boolean;
+  /** Combinación vertical: «inicio» abre la celda combinada y «sigue» la continúa. */
+  combinar?: 'inicio' | 'sigue';
 }
 
 export const celda = (contenido: string, ancho: number, o: Partial<Celda> = {}): Celda => ({
@@ -67,6 +69,7 @@ function celdaXml(c: Celda): string {
   const props = [
     `<w:tcW w:w="${c.ancho}" w:type="dxa"/>`,
     c.span && c.span > 1 ? `<w:gridSpan w:val="${c.span}"/>` : '',
+    c.combinar ? `<w:vMerge${c.combinar === 'inicio' ? ' w:val="restart"' : ''}/>` : '',
     c.relleno ? `<w:shd w:val="clear" w:color="auto" w:fill="${c.relleno}"/>` : '',
     c.vertical ? '<w:textDirection w:val="btLr"/>' : '',
     `<w:vAlign w:val="${c.centrado === false ? 'top' : 'center'}"/>`,
@@ -130,14 +133,22 @@ export async function armarDocx(
   cuerpo: string,
   titulo: string,
   encabezado: [string, string][] = [],
+  horizontal = false,
 ): Promise<Buffer> {
   const zip = await JSZip.loadAsync(await readFile(join(CARPETA_DOCENTES, plantilla)));
   if (encabezado.length) {
     const h = await zip.file('word/header1.xml')?.async('string');
     if (h) zip.file('word/header1.xml', cambiarTextos(h, encabezado));
   }
-  const doc = await zip.file('word/document.xml')?.async('string');
+  let doc = await zip.file('word/document.xml')?.async('string');
   if (!doc) throw new Error('Plantilla inválida');
+  if (horizontal) {
+    doc = doc.replace(
+      /<w:pgSz w:w="(\d+)" w:h="(\d+)"([^/]*)\/>/,
+      (_, w: string, h: string, resto: string) =>
+        `<w:pgSz w:w="${h}" w:h="${w}" w:orient="landscape"${resto}/>`,
+    );
+  }
   const ini = doc.indexOf('<w:p><w:r><w:t>{{CUERPO}}</w:t></w:r></w:p>');
   if (ini < 0) throw new Error('Plantilla sin marcador de cuerpo');
   zip.file(

@@ -6,6 +6,16 @@ const raiz = path.join(__dirname, '../..');
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // La validación de informes pasó del POA a Gestión docente.
+  async redirects() {
+    return [
+      {
+        source: '/admin/poa/validacion/:ruta*',
+        destination: '/admin/docentes/validacion/:ruta*',
+        permanent: true,
+      },
+    ];
+  },
   outputFileTracingRoot: raiz,
   serverExternalPackages: ['@prisma/client', 'argon2', 'exceljs', 'pdfmake'],
   // La API (NestJS) corre como función de Vercel y no se empaqueta con webpack.

@@ -59,14 +59,9 @@ function categoriasVisibles(
   permisos: string[],
 ): Categoria[] {
   // Los enlaces por vinculación solo aparecen al docente que corresponde.
-  // El administrador ve todo: además de lo suyo, los informes docentes de cualquier vinculación.
+  // El administrador ve todo: además de lo suyo, el programador y los informes de cualquier vinculación.
   const propias = m.categorias[rol] ?? [];
-  const extra =
-    rol === 'ADMIN'
-      ? (m.categorias.DOCENTE ?? [])
-          .map((c) => ({ ...c, enlaces: c.enlaces.filter((e) => e.vinculaciones) }))
-          .map((c) => ({ ...c, nombre: `${c.nombre} · mis informes` }))
-      : [];
+  const extra = rol === 'ADMIN' ? (m.categorias.DOCENTE ?? []).filter((c) => c.tambienAdmin) : [];
   return [...propias, ...extra]
     .map((c) => ({
       ...c,

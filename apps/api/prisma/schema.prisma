@@ -261,6 +261,7 @@ model Curso {
   encuestas       Encuesta[]
   recomendaciones Recomendacion[]
   seguimientos    SeguimientoRecomendacion[]
+  informes        InformeDocente[]
 
   @@unique([periodoId, sedeId, programaId, unidadId, grupo, docenteId])
   @@index([docenteId, periodoId])
@@ -518,11 +519,13 @@ enum VinculacionDocente {
 }
 
 /// AGENDA = agenda semanal (F-DOC-056); EJECUCION = ejecución de la agenda por corte (F-DOC-004);
-/// CATEDRA = informe de docencia de hora cátedra (F-DOC-047).
+/// CATEDRA = informe de docencia de hora cátedra (F-DOC-047);
+/// PROGRAMADOR = programador de clases por curso y periodo (F-DOC-052), para todos los docentes.
 enum TipoInformeDocente {
   AGENDA
   CATEDRA
   EJECUCION
+  PROGRAMADOR
 }
 
 /// Ciclo: el docente edita (BORRADOR/AJUSTES), entrega (bloqueado) y el revisor aprueba o pide ajustes.
@@ -546,8 +549,11 @@ model InformeDocente {
   entregadoEn   DateTime?
   revisadoEn    DateTime?
   revisorId     Int?
+  /// Curso del programador de clases (uno por curso y periodo).
+  cursoId       Int?
   creadoEn      DateTime               @default(now())
   actualizadoEn DateTime               @updatedAt
+  curso         Curso?                 @relation(fields: [cursoId], references: [id], onDelete: SetNull)
   docente       Usuario                @relation("InformeDocente", fields: [docenteId], references: [id], onDelete: Cascade)
   revisor       Usuario?               @relation("InformeRevisor", fields: [revisorId], references: [id], onDelete: SetNull)
   periodo       Periodo                @relation(fields: [periodoId], references: [id], onDelete: Restrict)
@@ -556,6 +562,7 @@ model InformeDocente {
   @@index([docenteId, tipo])
   @@index([estado, tipo])
   @@index([periodoId])
+  @@index([cursoId])
 }
 
 /// Historial del informe: creación, entregas, ajustes solicitados y aprobación.

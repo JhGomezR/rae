@@ -10,10 +10,12 @@ import {
   datosAgendaSchema,
   datosCatedraSchema,
   datosEjecucionSchema,
+  datosProgramadorSchema,
   FORMATOS_INFORME,
   EDITABLE,
   EstadoInformeDocente,
   Vinculacion,
+  VINCULACIONES,
   VINCULACIONES_AGENDA,
   VINCULACIONES_CATEDRA,
 } from '@rae/shared';
@@ -27,6 +29,10 @@ import { ejecucionDocx } from './ejecucion-docx';
 import { ejecucionExcel } from './ejecucion-excel';
 import { ejecucionPdf } from './ejecucion-pdf';
 import { agendaPdf, catedraPdf } from './pdf-docentes';
+import { datosInicialesProgramador, tituloProgramador } from './programador-datos';
+import { programadorDocx } from './programador-docx';
+import { fechasProgramador } from './programador-firmas';
+import { programadorPdf } from './programador-pdf';
 
 const tipo = z.nativeEnum(TipoInformeDocente);
 export const esquemas = {
@@ -68,11 +74,13 @@ const PERMITIDAS: Record<TipoInformeDocente, Vinculacion[]> = {
   AGENDA: VINCULACIONES_AGENDA,
   EJECUCION: VINCULACIONES_AGENDA,
   CATEDRA: VINCULACIONES_CATEDRA,
+  PROGRAMADOR: Object.keys(VINCULACIONES) as Vinculacion[],
 };
 const NOMBRE: Record<TipoInformeDocente, string> = {
   AGENDA: 'la agenda docente',
   EJECUCION: 'el informe de ejecución de la agenda',
   CATEDRA: 'el informe de hora cátedra',
+  PROGRAMADOR: 'el programador de clases',
 };
 const CLAVE_DECANO = 'informes.decano';
 const CLAVE_VICERRECTOR = 'informes.vicerrector';
@@ -95,6 +103,7 @@ const resumen = {
   revisadoEn: true,
   actualizadoEn: true,
   observacion: true,
+  cursoId: true,
   periodo: { select: { codigo: true } },
 } satisfies Prisma.InformeDocenteSelect;
 
@@ -102,6 +111,7 @@ const ESQUEMAS = {
   AGENDA: datosAgendaSchema,
   CATEDRA: datosCatedraSchema,
   EJECUCION: datosEjecucionSchema,
+  PROGRAMADOR: datosProgramadorSchema,
 } as const;
 
 export const leerDatos = (t: TipoInformeDocente, datos: unknown) => ESQUEMAS[t].parse(datos ?? {});
@@ -119,7 +129,11 @@ export class InformesDocentesService {
   async acceso(docenteId: number, t: TipoInformeDocente) {
     const u = await this.prisma.usuario.findUniqueOrThrow({ where: { id: docenteId } });
     const vinculacion = u.vinculacion;
-    const permitido = u.rol === 'ADMIN' || (!!vinculacion && PERMITIDAS[t].includes(vinculacion));
+    // El programador de clases es para todos los docentes, sin excepción.
+    const permitido =
+      u.rol === 'ADMIN' ||
+      (t === 'PROGRAMADOR' && u.rol === 'DOCENTE') ||
+      (!!vinculacion && PERMITIDAS[t].includes(vinculacion));
     return { vinculacion, permitido };
   }
 
@@ -162,7 +176,13 @@ export class InformesDocentesService {
     if (!periodo) throw new BadRequestException('El periodo no existe.');
     let datos: object;
     let titulo: string;
-    if (d.tipo === 'AGENDA') {
+    let cursoId: number | null = null;
+    if (d.tipo === 'PROGRAMADOR') {
+      const ini = await datosInicialesProgramador(this.prisma, docenteId, periodo, d.cursoId);
+      datos = ini.datos;
+      cursoId = ini.cursoId;
+      titulo = tituloProgramador(ini.datos);
+    } else if (d.tipo === 'AGENDA') {
       const previa = await this.prisma.informeDocente.findFirst({
         where: { docenteId, tipo: 'AGENDA', periodoId: d.periodoId },
       });
@@ -215,6 +235,7 @@ export class InformesDocentesService {
         tipo: d.tipo,
         docenteId,
         periodoId: d.periodoId,
+        cursoId,
         titulo,
         datos,
         eventos: { create: { accion: 'CREADO', usuarioId: docenteId } },
@@ -247,6 +268,9 @@ export class InformesDocentesService {
         datos: parsed.data,
         ...(i.tipo === 'CATEDRA'
           ? { titulo: tituloCatedra(parsed.data as z.output<typeof datosCatedraSchema>) }
+          : {}),
+        ...(i.tipo === 'PROGRAMADOR'
+          ? { titulo: tituloProgramador(parsed.data as z.output<typeof datosProgramadorSchema>) }
           : {}),
       },
     });
@@ -341,9 +365,10 @@ export class InformesDocentesService {
         orderBy: { nombreCompleto: 'asc' },
       }),
     ]);
-    const sinVinculacion = await this.prisma.usuario.count({
-      where: { rol: 'DOCENTE', activo: true, vinculacion: null },
-    });
+    const [sinVinculacion, programadores] = await Promise.all([
+      this.prisma.usuario.count({ where: { rol: 'DOCENTE', activo: true, vinculacion: null } }),
+      periodo ? this.cumplimientoProgramador(periodo.id) : null,
+    ]);
     return {
       periodo: periodo ? { id: periodo.id, codigo: periodo.codigo } : null,
       conteos: grupos.map((g) => ({ tipo: g.tipo, estado: g.estado, total: g._count._all })),
@@ -356,6 +381,35 @@ export class InformesDocentesService {
           vinculacion: d.vinculacion,
         })),
       sinVinculacion,
+      programadores,
+    };
+  }
+
+  /** Cursos del periodo y su programador de clases: cuántos lo entregaron y quién falta. */
+  private async cumplimientoProgramador(periodoId: number) {
+    const cursos = await this.prisma.curso.findMany({
+      where: { periodoId, activo: true },
+      select: {
+        grupo: true,
+        unidad: { select: { nombre: true } },
+        docente: { select: { id: true, nombreCompleto: true } },
+        informes: { where: { tipo: 'PROGRAMADOR' }, select: { estado: true } },
+      },
+      orderBy: [{ docente: { nombreCompleto: 'asc' } }, { unidad: { nombre: 'asc' } }],
+    });
+    const entregado = (c: (typeof cursos)[number]) =>
+      c.informes.some((i) => i.estado !== 'BORRADOR');
+    const faltan = new Map<number, { id: number; nombreCompleto: string; cursos: string[] }>();
+    for (const c of cursos.filter((x) => !entregado(x))) {
+      const f = faltan.get(c.docente.id) ?? { ...c.docente, cursos: [] };
+      f.cursos.push(`${c.unidad.nombre} · grupo ${c.grupo}`);
+      faltan.set(c.docente.id, f);
+    }
+    return {
+      cursos: cursos.length,
+      entregados: cursos.filter(entregado).length,
+      aprobados: cursos.filter((c) => c.informes.some((i) => i.estado === 'APROBADO')).length,
+      pendientes: [...faltan.values()],
     };
   }
 
@@ -440,7 +494,9 @@ export class InformesDocentesService {
         ? `Agenda - ${i.docente.nombreCompleto} - ${i.periodo.codigo}`
         : i.tipo === 'EJECUCION'
           ? `F-DOC-004 ${i.titulo} - ${i.docente.nombreCompleto}`
-          : `Informe docencia - ${i.docente.nombreCompleto} - ${i.titulo}`;
+          : i.tipo === 'PROGRAMADOR'
+            ? `F-DOC-052 Programador - ${i.titulo} - ${i.periodo.codigo}`
+            : `Informe docencia - ${i.docente.nombreCompleto} - ${i.titulo}`;
     return { archivo, nombre: `${base.replace(/[\\/:*?"<>|]/g, '-').slice(0, 150)}.${formato}` };
   }
 
@@ -452,6 +508,11 @@ export class InformesDocentesService {
     if (i.tipo === 'CATEDRA') {
       const d = datosCatedraSchema.parse(i.datos);
       return formato === 'docx' ? catedraDocx(d, c) : catedraPdf(d, c);
+    }
+    if (i.tipo === 'PROGRAMADOR') {
+      const d = datosProgramadorSchema.parse(i.datos);
+      const f = fechasProgramador(i);
+      return formato === 'docx' ? programadorDocx(d, c, f) : programadorPdf(d, c, f);
     }
     const d = datosEjecucionSchema.parse(i.datos);
     const aprobacion =

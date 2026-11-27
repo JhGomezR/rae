@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Encabezado, Estado } from '@/components/ui';
 import { api, useDatos } from '@/lib/api';
 import { ChipEstado, fechaHora, type TipoInforme } from './comun';
+import { CursosProgramador } from './programador/CursosProgramador';
 
 interface Mios {
   vinculacion: string | null;
@@ -17,6 +18,7 @@ interface Mios {
     estado: EstadoInformeDocente;
     entregadoEn: string | null;
     actualizadoEn: string;
+    cursoId: number | null;
     periodo: { codigo: string };
   }[];
   periodos: { id: number; codigo: string; activo: boolean }[];
@@ -50,13 +52,13 @@ export function ListaInformes({
   const periodo = periodoId || datos?.periodos.find((p) => p.activo)?.id || datos?.periodos[0]?.id;
   const cursos = datos?.cursos.filter((c) => c.periodoId === periodo) ?? [];
 
-  const crear = async () => {
+  const crear = async (curso: number | '' = cursoId) => {
     setAviso('');
     try {
       const r = await api<{ id: number }>('/mis-informes', 'POST', {
         tipo,
         periodoId: periodo,
-        ...(cursoId ? { cursoId } : {}),
+        ...(curso ? { cursoId: curso } : {}),
         ...(tipo === 'EJECUCION' ? { corte } : {}),
       });
       router.push(`${base}/${r.id}`);
@@ -115,7 +117,7 @@ export function ListaInformes({
                     </select>
                   </label>
                 )}
-                {tipo === 'CATEDRA' && (
+                {(tipo === 'CATEDRA' || tipo === 'PROGRAMADOR') && (
                   <label className="min-w-0 flex-1 text-sm font-semibold sm:max-w-md">
                     Unidad de formación (opcional, llena los datos)
                     <select
@@ -141,7 +143,9 @@ export function ListaInformes({
                     ? 'Crear agenda'
                     : tipo === 'EJECUCION'
                       ? 'Crear informe del corte'
-                      : 'Nuevo informe'}
+                      : tipo === 'PROGRAMADOR'
+                        ? 'Crear programador'
+                        : 'Nuevo informe'}
                 </button>
                 {aviso && (
                   <p role="alert" className="w-full text-sm text-err">
@@ -149,6 +153,14 @@ export function ListaInformes({
                   </p>
                 )}
               </section>
+              {tipo === 'PROGRAMADOR' && (
+                <CursosProgramador
+                  cursos={cursos}
+                  informes={datos.informes}
+                  base={base}
+                  onCrear={(id) => void crear(id)}
+                />
+              )}
               {!datos.informes.length ? (
                 <p className="card text-muted">No existen datos para esta sección.</p>
               ) : (

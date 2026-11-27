@@ -5,6 +5,7 @@ import {
   type DatosAgenda,
   type DatosCatedra,
   type DatosEjecucion,
+  type DatosProgramador,
   type Vinculacion,
 } from '@rae/shared';
 import Link from 'next/link';
@@ -20,6 +21,7 @@ import {
 import { EditorAgenda } from '@/components/informes-docentes/EditorAgenda';
 import { EditorCatedra } from '@/components/informes-docentes/EditorCatedra';
 import { EditorEjecucion } from '@/components/informes-docentes/EditorEjecucion';
+import { EditorProgramador } from '@/components/informes-docentes/EditorProgramador';
 import { Encabezado, Estado } from '@/components/ui';
 import { api, useDatos } from '@/lib/api';
 
@@ -33,7 +35,7 @@ export default function PaginaRevision() {
     error,
     cargando,
     recargar,
-  } = useDatos<InformeDetalle<DatosAgenda | DatosCatedra | DatosEjecucion>>(
+  } = useDatos<InformeDetalle<DatosAgenda | DatosCatedra | DatosEjecucion | DatosProgramador>>(
     id ? `/validacion-informes/${id}` : null,
   );
   const [observacion, setObservacion] = useState('');
@@ -71,7 +73,7 @@ export default function PaginaRevision() {
             titulo={i.titulo}
             texto={`${i.docente.nombreCompleto} · ${nombreVinculacion(i.docente.vinculacion)} · periodo ${i.periodo.codigo} · entregado ${fechaHora(i.entregadoEn)}`}
           >
-            <Link className="btn" href="/admin/poa/validacion">
+            <Link className="btn" href="/admin/docentes/validacion">
               Volver
             </Link>
           </Encabezado>
@@ -139,7 +141,14 @@ export default function PaginaRevision() {
             </section>
             <Revision informe={i as InformeDetalle<unknown>} />
           </div>
-          {i.tipo === 'EJECUCION' ? (
+          {i.tipo === 'PROGRAMADOR' ? (
+            <EditorProgramador
+              lectura
+              d={i.datos as DatosProgramador}
+              onCambio={() => undefined}
+              docente={{ nombre: i.docente.nombreCompleto, periodo: i.periodo.codigo }}
+            />
+          ) : i.tipo === 'EJECUCION' ? (
             <EditorEjecucion
               lectura
               d={i.datos as DatosEjecucion}

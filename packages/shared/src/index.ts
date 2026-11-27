@@ -10,4 +10,5 @@ export * from './schemas/usuario';
 export * from './schemas/periodo';
 export * from './informes-docentes';
 export * from './ejecucion-agenda';
+export * from './programador';
 export * from './permisos';
