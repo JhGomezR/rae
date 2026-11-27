@@ -14,7 +14,7 @@ import { OnEvent } from '@nestjs/event-emitter';
 import { Momento, Rol } from '@rae/shared';
 import { z } from 'zod';
 import { env } from '../../config/env';
-import { Publica, Roles } from '../../common/sesion';
+import { Permiso, Publica, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { LogMailerAdapter, MailerPort, SmtpMailerAdapter } from '../../infrastructure/mail/mailer';
 import { CURSO_VIGENTE } from '../../common/vigencia';
@@ -232,6 +232,7 @@ export class NotificacionesService {
 }
 
 @Roles(Rol.ADMIN)
+@Permiso('correos.gestionar')
 @Controller()
 export class NotificacionesController {
   constructor(private readonly servicio: NotificacionesService) {}

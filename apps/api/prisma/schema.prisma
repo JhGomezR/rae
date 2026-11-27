@@ -94,6 +94,8 @@ model Usuario {
   debeCambiarClave Boolean             @default(true)
   /// Solo docentes: define qué informes presenta (agenda o informe de hora cátedra).
   vinculacion      VinculacionDocente?
+  /// Rol con permisos (RBAC). Vacío = el rol fijo de su tipo (administrador, docente o estudiante).
+  rolSistemaId     Int?
   activo           Boolean             @default(true)
   ultimoIngreso    DateTime?
   creadoEn         DateTime            @default(now())
@@ -106,6 +108,7 @@ model Usuario {
   notificaciones    NotificacionOutbox[]
   informesDocente   InformeDocente[]     @relation("InformeDocente")
   informesRevisados InformeDocente[]     @relation("InformeRevisor")
+  rolSistema        RolSistema?          @relation(fields: [rolSistemaId], references: [id], onDelete: SetNull)
 
   @@index([rol])
 }
@@ -566,4 +569,20 @@ model InformeDocenteEvento {
   informe    InformeDocente @relation(fields: [informeId], references: [id], onDelete: Cascade)
 
   @@index([informeId])
+}
+
+/// Rol con permisos (RBAC). Los de sistema (administrador, docente, estudiante) no se borran.
+model RolSistema {
+  id            Int       @id @default(autoincrement())
+  clave         String    @unique @db.VarChar(40)
+  nombre        String    @unique @db.VarChar(80)
+  descripcion   String?   @db.VarChar(300)
+  /// Área a la que da acceso: ADMIN (administración), DOCENTE o ESTUDIANTE.
+  base          Rol
+  permisos      String[]
+  sistema       Boolean   @default(false)
+  activo        Boolean   @default(true)
+  creadoEn      DateTime  @default(now())
+  actualizadoEn DateTime  @updatedAt
+  usuarios      Usuario[]
 }

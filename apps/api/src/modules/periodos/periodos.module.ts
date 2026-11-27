@@ -14,7 +14,7 @@ import {
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { Momento, periodoSchema, Rol } from '@rae/shared';
 import { z } from 'zod';
-import { Roles } from '../../common/sesion';
+import { Permiso, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 
@@ -93,11 +93,13 @@ export class PeriodosController {
   }
 
   @Post()
+  @Permiso('periodos.gestionar')
   crear(@Body(new ZodPipe(periodoSchema)) d: z.output<typeof periodoSchema>) {
     return this.servicio.crear(d);
   }
 
   @Patch(':id')
+  @Permiso('periodos.gestionar')
   editar(
     @Param('id', ParseIntPipe) id: number,
     @Body(new ZodPipe(edicion)) d: z.output<typeof edicion>,

@@ -14,6 +14,8 @@ export interface Perfil {
   rol: Rol;
   email: string | null;
   vinculacion: string | null;
+  rolNombre?: string;
+  permisos?: string[];
 }
 
 const ROL = { ADMIN: 'Administrador', DOCENTE: 'Docente', ESTUDIANTE: 'Estudiante' };
@@ -45,6 +47,7 @@ function GrupoModulo({
   m,
   rol,
   vinculacion,
+  permisos,
   ruta,
   abierto,
   onAlternar,
@@ -53,6 +56,7 @@ function GrupoModulo({
   m: Modulo;
   rol: Rol;
   vinculacion: string | null;
+  permisos: string[];
   ruta: string;
   abierto: boolean;
   onAlternar: () => void;
@@ -63,7 +67,9 @@ function GrupoModulo({
     .map((c) => ({
       ...c,
       enlaces: c.enlaces.filter(
-        (e) => !e.vinculaciones || (!!vinculacion && e.vinculaciones.includes(vinculacion)),
+        (e) =>
+          (!e.vinculaciones || (!!vinculacion && e.vinculaciones.includes(vinculacion))) &&
+          (!e.permiso || permisos.includes(e.permiso)),
       ),
     }))
     .filter((c) => c.enlaces.length);
@@ -156,6 +162,7 @@ export function Shell({ children }: { children: ReactNode }) {
                   m={m}
                   rol={yo.rol}
                   vinculacion={yo.vinculacion}
+                  permisos={yo.permisos ?? []}
                   ruta={ruta}
                   // Lo decide el usuario: abierto por defecto, cerrado si así lo dejó.
                   abierto={!cerrados.includes(m.id)}
@@ -176,7 +183,7 @@ export function Shell({ children }: { children: ReactNode }) {
         {yo && (
           <div className="mt-6 border-t border-line pt-4 text-sm">
             <p className="font-semibold break-words">{yo.nombre}</p>
-            <p className="text-faint">{ROL[yo.rol]}</p>
+            <p className="text-faint">{yo.rolNombre ?? ROL[yo.rol]}</p>
             <p className="mt-3 text-xs text-faint">Creado por: Jhon Alexander Gomez Ruiz</p>
             <button className="btn mt-3 w-full" onClick={() => void salir()}>
               Cerrar sesión

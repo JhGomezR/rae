@@ -6,6 +6,8 @@ export interface Enlace {
   texto: string;
   /** Solo para docentes con alguna de estas vinculaciones. */
   vinculaciones?: string[];
+  /** RBAC: permiso necesario para ver el enlace (área administrativa). */
+  permiso?: string;
 }
 export interface Categoria {
   nombre: string;
@@ -25,37 +27,61 @@ export const MODULOS: Modulo[] = [
     descripcion: 'Resultados de aprendizaje',
     categorias: {
       ADMIN: [
-        { nombre: 'Inicio', enlaces: [{ href: '/admin/panel', texto: 'Panel' }] },
+        {
+          nombre: 'Inicio',
+          enlaces: [{ href: '/admin/panel', texto: 'Panel', permiso: 'resultados.ver' }],
+        },
         {
           nombre: 'Resultados',
           enlaces: [
-            { href: '/admin/resultados/apreciacion', texto: 'Nivel de apreciación' },
-            { href: '/admin/resultados/alcance', texto: 'Nivel de alcance' },
-            { href: '/admin/comparativo', texto: 'Comparativo' },
+            {
+              href: '/admin/resultados/apreciacion',
+              texto: 'Nivel de apreciación',
+              permiso: 'resultados.ver',
+            },
+            {
+              href: '/admin/resultados/alcance',
+              texto: 'Nivel de alcance',
+              permiso: 'resultados.ver',
+            },
+            { href: '/admin/comparativo', texto: 'Comparativo', permiso: 'resultados.ver' },
           ],
         },
         {
           nombre: 'Plan de mejoramiento',
           enlaces: [
-            { href: '/admin/plan-mejoramiento', texto: 'Indicadores 18–24' },
-            { href: '/admin/informes', texto: 'Informes' },
+            {
+              href: '/admin/plan-mejoramiento',
+              texto: 'Indicadores 18–24',
+              permiso: 'resultados.ver',
+            },
+            { href: '/admin/informes', texto: 'Informes', permiso: 'informes.gestionar' },
           ],
         },
         {
           nombre: 'Gestión académica',
           enlaces: [
-            { href: '/admin/curriculo', texto: 'Base de conocimiento' },
-            { href: '/admin/periodos', texto: 'Periodos' },
-            { href: '/admin/cursos', texto: 'Cursos' },
-            { href: '/admin/importar', texto: 'Importar consolidado' },
+            {
+              href: '/admin/curriculo',
+              texto: 'Base de conocimiento',
+              permiso: 'curriculo.gestionar',
+            },
+            { href: '/admin/periodos', texto: 'Periodos', permiso: 'periodos.gestionar' },
+            { href: '/admin/cursos', texto: 'Cursos', permiso: 'cursos.gestionar' },
+            {
+              href: '/admin/importar',
+              texto: 'Importar consolidado',
+              permiso: 'consolidado.importar',
+            },
           ],
         },
         {
           nombre: 'Administración',
           enlaces: [
-            { href: '/admin/usuarios', texto: 'Usuarios' },
-            { href: '/admin/notificaciones', texto: 'Correos' },
-            { href: '/admin/auditoria', texto: 'Auditoría' },
+            { href: '/admin/usuarios', texto: 'Usuarios', permiso: 'usuarios.ver' },
+            { href: '/admin/roles', texto: 'Roles y permisos', permiso: 'roles.gestionar' },
+            { href: '/admin/notificaciones', texto: 'Correos', permiso: 'correos.gestionar' },
+            { href: '/admin/auditoria', texto: 'Auditoría', permiso: 'auditoria.ver' },
           ],
         },
       ],
@@ -73,15 +99,31 @@ export const MODULOS: Modulo[] = [
     descripcion: 'POA · formato F-PIN-001',
     categorias: {
       ADMIN: [
-        { nombre: 'Planeación', enlaces: [{ href: '/admin/poa', texto: 'Planes y actividades' }] },
+        {
+          nombre: 'Planeación',
+          enlaces: [
+            { href: '/admin/poa', texto: 'Planes y actividades', permiso: 'poa.gestionar' },
+          ],
+        },
         {
           nombre: 'Seguimiento',
-          enlaces: [{ href: '/admin/poa/desempeno', texto: 'Desempeño' }],
+          enlaces: [{ href: '/admin/poa/desempeno', texto: 'Desempeño', permiso: 'poa.gestionar' }],
         },
-        { nombre: 'Informes', enlaces: [{ href: '/admin/poa/informes', texto: 'Informes POA' }] },
+        {
+          nombre: 'Informes',
+          enlaces: [
+            { href: '/admin/poa/informes', texto: 'Informes POA', permiso: 'poa.gestionar' },
+          ],
+        },
         {
           nombre: 'Informes docentes',
-          enlaces: [{ href: '/admin/poa/validacion', texto: 'Validación de informes' }],
+          enlaces: [
+            {
+              href: '/admin/poa/validacion',
+              texto: 'Validación de informes',
+              permiso: 'docentes.validar',
+            },
+          ],
         },
       ],
       DOCENTE: [

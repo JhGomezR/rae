@@ -11,7 +11,7 @@ import {
 import { Momento, Rol } from '@rae/shared';
 import type { Response } from 'express';
 import { z } from 'zod';
-import { Roles } from '../../common/sesion';
+import { Permiso, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { ReportesService } from '../reportes/reportes.service';
 import { PanelService } from './panel.service';
@@ -41,6 +41,7 @@ function aMomento(v: string): Momento {
 }
 
 @Roles(Rol.ADMIN)
+@Permiso('resultados.ver')
 @Controller()
 export class ResultadosController {
   constructor(

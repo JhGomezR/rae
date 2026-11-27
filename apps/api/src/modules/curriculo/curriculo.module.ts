@@ -13,7 +13,7 @@ import {
 } from '@nestjs/common';
 import { NivelPregunta, Rol } from '@rae/shared';
 import { z } from 'zod';
-import { Roles } from '../../common/sesion';
+import { Permiso, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { CurriculoService, esquemas as e } from './curriculo.service';
 
@@ -21,6 +21,7 @@ type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
 /** Eliminar = desactivar (activo: false): las respuestas guardadas nunca se pierden. */
 @Roles(Rol.ADMIN)
+@Permiso('curriculo.gestionar')
 @Controller('curriculo')
 export class CurriculoController {
   constructor(private readonly servicio: CurriculoService) {}

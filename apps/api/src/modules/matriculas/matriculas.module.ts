@@ -14,7 +14,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { normalizarNombreUnidad, Rol } from '@rae/shared';
 import { z } from 'zod';
-import { Roles, UsuarioActual, UsuarioSesion } from '../../common/sesion';
+import { Permiso, Roles, UsuarioActual, UsuarioSesion } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { ImportacionService } from './importacion.service';
@@ -51,6 +51,7 @@ export class ConsultasMatriculaService {
 }
 
 @Roles(Rol.ADMIN)
+@Permiso('consolidado.importar')
 @Controller()
 export class MatriculasController {
   constructor(

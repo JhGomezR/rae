@@ -19,7 +19,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Rol } from '@rae/shared';
 import type { Response } from 'express';
 import { z } from 'zod';
-import { Roles, UsuarioActual, type UsuarioSesion } from '../../common/sesion';
+import { Permiso, Roles, UsuarioActual, type UsuarioSesion } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { generarExcelPoa } from './excel-poa';
 import { construirInformePoa } from './informe-poa';
@@ -43,6 +43,7 @@ function mesValido(mes: number) {
 
 /** Plan Operativo Anual (F-PIN-001): planeación, seguimiento mensual, desempeño e informes. */
 @Roles(Rol.ADMIN)
+@Permiso('poa.gestionar')
 @Controller('poa')
 export class PoaController {
   constructor(private readonly servicio: PoaService) {}

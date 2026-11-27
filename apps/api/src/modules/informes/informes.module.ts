@@ -17,7 +17,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { Rol } from '@rae/shared';
 import type { Response } from 'express';
 import { z } from 'zod';
-import { Roles } from '../../common/sesion';
+import { Permiso, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { PlanService } from '../resultados/plan.service';
 import { ResultadosService } from '../resultados/resultados.service';
@@ -58,6 +58,7 @@ function aClave(v: string): ClaveInforme {
 }
 
 @Roles(Rol.ADMIN)
+@Permiso('informes.gestionar')
 @Controller('informes')
 export class InformesController {
   constructor(private readonly servicio: InformesService) {}

@@ -12,6 +12,7 @@ import { normalizarClave } from '@rae/shared';
 import * as argon2 from 'argon2';
 import { env } from '../../config/env';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { PermisosService } from '../acceso/permisos.service';
 import { AuditoriaService, ContextoPeticion } from '../auditoria/auditoria.service';
 
 /** Intentos fallidos permitidos antes de bloquear 15 minutos (login y cambio de clave). */
@@ -57,6 +58,7 @@ export class AuthService {
     private readonly prisma: PrismaService,
     private readonly jwt: JwtService,
     private readonly auditoria: AuditoriaService,
+    private readonly acceso: PermisosService,
   ) {}
 
   async login(documento: string, clave: string, ctx: ContextoPeticion = {}) {
@@ -160,7 +162,9 @@ export class AuthService {
   async yo(id: number) {
     const u = await this.prisma.usuario.findUnique({ where: { id } });
     if (!u || !u.activo) throw new UnauthorizedException('Sesión vencida.');
-    return perfil(u);
+    // El menú se arma con el rol y los permisos efectivos (RBAC).
+    const a = await this.acceso.de(id);
+    return { ...perfil(u), rolNombre: a.rol.nombre, permisos: [...a.permisos] };
   }
 
   async cambiarClave(

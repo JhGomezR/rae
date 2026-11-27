@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { Rol } from '@rae/shared';
 import { z } from 'zod';
-import { Roles } from '../../common/sesion';
+import { Permiso, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { CursosService, esquemas as e } from './cursos.service';
 
@@ -19,6 +19,7 @@ type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
 /** Los cursos no se borran: se inactivan y dejan de contar en encuestas y estadísticas. */
 @Roles(Rol.ADMIN)
+@Permiso('cursos.gestionar')
 @Controller('cursos')
 export class CursosController {
   constructor(private readonly servicio: CursosService) {}

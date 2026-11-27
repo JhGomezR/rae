@@ -1,173 +1,77 @@
 import {
   Body,
-  ConflictException,
   Controller,
+  Delete,
   Get,
   HttpCode,
-  Injectable,
   Module,
-  NotFoundException,
   Param,
   ParseIntPipe,
   Patch,
   Post,
   Query,
 } from '@nestjs/common';
-import type { Prisma } from '@prisma/client';
-import { claveInicial, documentoSchema, normalizarClave, parsearNombre, Rol } from '@rae/shared';
-import * as argon2 from 'argon2';
+import { Rol } from '@rae/shared';
 import { z } from 'zod';
-import { Roles } from '../../common/sesion';
+import { Permiso, Roles, UsuarioActual, type UsuarioSesion } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
-import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { esquemas as e, UsuariosService } from './usuarios.service';
 
-const crear = z.object({
-  documento: documentoSchema,
-  nombreCompleto: z.string().trim().min(3).max(150),
-  rol: z.enum(['ADMIN', 'DOCENTE', 'ESTUDIANTE']),
-  email: z.string().trim().toLowerCase().email().max(150).optional(),
-});
-const editar = z.object({
-  nombreCompleto: z.string().trim().min(3).max(150).optional(),
-  email: z.string().trim().toLowerCase().email().max(150).nullable().optional(),
-  activo: z.boolean().optional(),
-  vinculacion: z.enum(['PLANTA', 'OCASIONAL', 'PROVISIONAL', 'CATEDRA']).nullable().optional(),
-});
-const filtro = z.object({
-  q: z.string().trim().max(80).optional(),
-  rol: z.enum(['ADMIN', 'DOCENTE', 'ESTUDIANTE']).optional(),
-  pagina: z.coerce.number().int().min(1).default(1),
-  tamano: z.coerce.number().int().min(1).max(100).default(20),
-});
+type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
-const publico = {
-  id: true,
-  documento: true,
-  nombreCompleto: true,
-  rol: true,
-  email: true,
-  activo: true,
-  debeCambiarClave: true,
-  ultimoIngreso: true,
-  vinculacion: true,
-} satisfies Prisma.UsuarioSelect;
-
-@Injectable()
-export class UsuariosService {
-  constructor(private readonly prisma: PrismaService) {}
-
-  async listar(f: z.output<typeof filtro>) {
-    const where: Prisma.UsuarioWhereInput = {
-      ...(f.rol ? { rol: f.rol } : {}),
-      ...(f.q
-        ? {
-            OR: [
-              { documento: { contains: f.q, mode: 'insensitive' } },
-              { nombreCompleto: { contains: f.q, mode: 'insensitive' } },
-            ],
-          }
-        : {}),
-    };
-    const [datos, total] = await Promise.all([
-      this.prisma.usuario.findMany({
-        where,
-        select: publico,
-        orderBy: { nombreCompleto: 'asc' },
-        skip: (f.pagina - 1) * f.tamano,
-        take: f.tamano,
-      }),
-      this.prisma.usuario.count({ where }),
-    ]);
-    return { datos, total, pagina: f.pagina, tamano: f.tamano };
-  }
-
-  async crear(d: z.output<typeof crear>) {
-    if (await this.prisma.usuario.findUnique({ where: { documento: d.documento } })) {
-      throw new ConflictException('Ya existe un usuario con ese documento.');
-    }
-    const n = parsearNombre(d.nombreCompleto);
-    return this.prisma.usuario.create({
-      data: {
-        ...d,
-        primerApellido: n.primerApellido.slice(0, 60),
-        primerNombre: n.primerNombre.slice(0, 60),
-        passwordHash: await argon2.hash(this.claveBase(d.documento, d.nombreCompleto, d.rol)),
-      },
-      select: publico,
-    });
-  }
-
-  async editar(id: number, d: z.output<typeof editar>) {
-    const u = await this.buscar(id);
-    if (d.vinculacion !== undefined && d.vinculacion !== null && u.rol !== Rol.DOCENTE) {
-      throw new ConflictException('Solo los docentes tienen tipo de vinculación.');
-    }
-    if (d.activo === false) {
-      await this.prisma.refreshToken.updateMany({
-        where: { usuarioId: id, revocadoEn: null },
-        data: { revocadoEn: new Date() },
-      });
-    }
-    return this.prisma.usuario.update({ where: { id }, data: d, select: publico });
-  }
-
-  async reiniciarClave(id: number): Promise<void> {
-    const u = await this.buscar(id);
-    await this.prisma.$transaction([
-      this.prisma.usuario.update({
-        where: { id },
-        data: {
-          passwordHash: await argon2.hash(this.claveBase(u.documento, u.nombreCompleto, u.rol)),
-          debeCambiarClave: true,
-        },
-      }),
-      this.prisma.refreshToken.updateMany({
-        where: { usuarioId: id, revocadoEn: null },
-        data: { revocadoEn: new Date() },
-      }),
-    ]);
-  }
-
-  private claveBase(documento: string, nombre: string, rol: Rol): string {
-    return rol === Rol.ADMIN
-      ? normalizarClave(documento + parsearNombre(nombre).primerApellido)
-      : claveInicial(documento, nombre, rol);
-  }
-
-  private async buscar(id: number) {
-    const u = await this.prisma.usuario.findUnique({ where: { id } });
-    if (!u) throw new NotFoundException('Usuario no encontrado.');
-    return u;
-  }
-}
-
+/**
+ * Gestión de usuarios. RBAC: cada acción exige su permiso. ABAC: el servicio aplica las políticas
+ * (no autogestionarse, no escalar privilegios, conservar un gestor de roles, integridad de datos).
+ */
 @Roles(Rol.ADMIN)
+@Permiso('usuarios.ver')
 @Controller('usuarios')
 export class UsuariosController {
   constructor(private readonly servicio: UsuariosService) {}
 
   @Get()
-  listar(@Query(new ZodPipe(filtro)) f: z.output<typeof filtro>) {
+  listar(@Query(new ZodPipe(e.filtro)) f: D<'filtro'>) {
     return this.servicio.listar(f);
   }
 
+  @Get('opciones')
+  opciones(@UsuarioActual() u: UsuarioSesion) {
+    return this.servicio.opciones(u.id);
+  }
+
   @Post()
-  crear(@Body(new ZodPipe(crear)) d: z.output<typeof crear>) {
-    return this.servicio.crear(d);
+  @Permiso('usuarios.crear')
+  crear(@UsuarioActual() u: UsuarioSesion, @Body(new ZodPipe(e.crear)) d: D<'crear'>) {
+    return this.servicio.crear(u.id, d);
+  }
+
+  @Patch('estado')
+  @Permiso('usuarios.estado')
+  estado(@UsuarioActual() u: UsuarioSesion, @Body(new ZodPipe(e.estado)) d: D<'estado'>) {
+    return this.servicio.estadoMasivo(u.id, d);
   }
 
   @Patch(':id')
+  @Permiso('usuarios.editar', 'usuarios.estado')
   editar(
+    @UsuarioActual() u: UsuarioSesion,
     @Param('id', ParseIntPipe) id: number,
-    @Body(new ZodPipe(editar)) d: z.output<typeof editar>,
+    @Body(new ZodPipe(e.editar)) d: D<'editar'>,
   ) {
-    return this.servicio.editar(id, d);
+    return this.servicio.editar(u.id, id, d);
   }
 
   @Post(':id/reiniciar-clave')
+  @Permiso('usuarios.clave')
   @HttpCode(204)
-  reiniciar(@Param('id', ParseIntPipe) id: number) {
-    return this.servicio.reiniciarClave(id);
+  reiniciar(@UsuarioActual() u: UsuarioSesion, @Param('id', ParseIntPipe) id: number) {
+    return this.servicio.reiniciarClave(u.id, id);
+  }
+
+  @Delete(':id')
+  @Permiso('usuarios.eliminar')
+  eliminar(@UsuarioActual() u: UsuarioSesion, @Param('id', ParseIntPipe) id: number) {
+    return this.servicio.eliminar(u.id, id);
   }
 }
 

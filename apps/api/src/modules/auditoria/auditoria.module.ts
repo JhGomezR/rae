@@ -1,11 +1,12 @@
 import { Controller, Get, Global, Module, Query } from '@nestjs/common';
 import { Rol } from '@rae/shared';
 import { z } from 'zod';
-import { Roles } from '../../common/sesion';
+import { Permiso, Roles } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { AuditoriaService, filtroAuditoria } from './auditoria.service';
 
 @Roles(Rol.ADMIN)
+@Permiso('auditoria.ver')
 @Controller('auditoria')
 export class AuditoriaController {
   constructor(private readonly servicio: AuditoriaService) {}

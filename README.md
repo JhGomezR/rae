@@ -34,6 +34,8 @@ Dentro del POA están los informes docentes. Los profesores de planta, ocasional
 
 Los recordatorios corren una vez al día (7:00 a. m., Colombia). En **Correos** se pueden enviar en cualquier momento.
 
+**Usuarios, roles y permisos.** En Administración → Usuarios se crean, editan, activan o inactivan (de una en una o en bloque) y eliminan cuentas sin información asociada. En Roles y permisos se crean roles administrativos con solo los permisos necesarios (RBAC). Además se aplican reglas por atributos (ABAC): nadie otorga permisos que no tiene, ni se inactiva o elimina a sí mismo, siempre queda una cuenta que gestiona roles, y una cuenta con cursos, encuestas o informes no cambia de tipo ni se elimina.
+
 ## Desarrollo local
 
 ```bash

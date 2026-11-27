@@ -882,6 +882,120 @@ async function main() {
     .toString();
   ok(cabeceraEjec === '%PDF-', 'la ejecución se descarga en PDF');
 
+  console.log('Usuarios, roles y permisos (RBAC y ABAC)');
+  const roles = await admin.datos('/api/roles');
+  ok(
+    ['ADMINISTRADOR', 'DOCENTE', 'ESTUDIANTE'].every((c) => roles.some((r) => r.clave === c)),
+    'existen los roles fijos del sistema',
+  );
+  const rolGestor = await admin.datos('/api/roles', {
+    metodo: 'POST',
+    json: {
+      nombre: 'Gestor de cuentas de prueba',
+      permisos: ['usuarios.ver', 'usuarios.estado'],
+    },
+  });
+  const opcionesRol = await admin.datos('/api/usuarios/opciones');
+  const idRol = (clave) => opcionesRol.find((r) => r.clave === clave)?.id;
+  await admin.datos('/api/usuarios', {
+    metodo: 'POST',
+    json: {
+      documento: '70000077',
+      nombreCompleto: 'PRUEBA GESTOR ANA',
+      rolSistemaId: rolGestor.id,
+    },
+  });
+  const gestor = new Cliente();
+  await gestor.entrar('70000077', '70000077prueba', 'gestor@example.test');
+  const yoGestor = await gestor.datos('/api/auth/yo');
+  ok(
+    yoGestor.permisos.length === 2 && yoGestor.rolNombre === 'Gestor de cuentas de prueba',
+    'el perfil trae el rol y solo sus permisos',
+  );
+  ok((await gestor.pedir('/api/usuarios')).status === 200, 'RBAC: puede ver usuarios');
+  ok((await gestor.pedir('/api/cursos')).status === 403, 'RBAC: sin permiso no ve cursos');
+  ok((await gestor.pedir('/api/roles')).status === 403, 'RBAC: sin permiso no gestiona roles');
+  const crearSinPermiso = await gestor.pedir('/api/usuarios', {
+    metodo: 'POST',
+    json: {
+      documento: '80000098',
+      nombreCompleto: 'NADIE NADA',
+      rolSistemaId: idRol('ESTUDIANTE'),
+    },
+  });
+  ok(crearSinPermiso.status === 403, 'RBAC: sin permiso no crea usuarios');
+  const idJuan = await idDe('80000002');
+  const idAdmin = await idDe(ADMIN);
+  const idGestor = await idDe('70000077');
+  const lote = await gestor.datos('/api/usuarios/estado', {
+    metodo: 'PATCH',
+    json: { ids: [idJuan, idAdmin, idGestor], activo: false },
+  });
+  ok(
+    lote.actualizados === 1 &&
+      lote.omitidos.some((o) => o.id === idAdmin && /administrativas/.test(o.motivo)) &&
+      lote.omitidos.some((o) => o.id === idGestor && /propia cuenta/.test(o.motivo)),
+    'ABAC: el masivo omite la propia cuenta y las administrativas, con motivo',
+  );
+  const reactivar = await gestor.datos('/api/usuarios/estado', {
+    metodo: 'PATCH',
+    json: { ids: [idJuan], activo: true },
+  });
+  ok(reactivar.actualizados === 1, 'activación masiva');
+  const editarSinPermiso = await gestor.pedir(`/api/usuarios/${idJuan}`, {
+    metodo: 'PATCH',
+    json: { nombreCompleto: 'OTRO NOMBRE' },
+  });
+  ok(editarSinPermiso.status === 403, 'RBAC: activar no permite editar datos');
+  const autoInactivar = await admin.pedir(`/api/usuarios/${idAdmin}`, {
+    metodo: 'PATCH',
+    json: { activo: false },
+  });
+  ok(autoInactivar.status === 403, 'ABAC: nadie inactiva su propia cuenta');
+  const editarAdministrador = await admin.pedir(`/api/roles/${idRol('ADMINISTRADOR')}`, {
+    metodo: 'PATCH',
+    json: { permisos: ['usuarios.ver'] },
+  });
+  ok(editarAdministrador.status === 403, 'los roles del sistema no se modifican');
+  const cambioTipo = await admin.pedir(`/api/usuarios/${await idDe('90000001')}`, {
+    metodo: 'PATCH',
+    json: { rolSistemaId: idRol('ESTUDIANTE') },
+  });
+  ok(cambioTipo.status === 409, 'ABAC: una cuenta con cursos no cambia de tipo');
+  const borrarConDatos = await admin.pedir(`/api/usuarios/${await idDe('90000001')}`, {
+    metodo: 'DELETE',
+  });
+  ok(borrarConDatos.status === 409, 'ABAC: una cuenta con información no se elimina');
+  const temporal = await admin.datos('/api/usuarios', {
+    metodo: 'POST',
+    json: {
+      documento: '80000097',
+      nombreCompleto: 'TEMPORAL BORRAR LUZ',
+      rolSistemaId: idRol('ESTUDIANTE'),
+    },
+  });
+  ok(
+    (await admin.pedir(`/api/usuarios/${temporal.id}`, { metodo: 'DELETE' })).status === 200,
+    'una cuenta sin información se elimina',
+  );
+  ok(
+    (await admin.pedir(`/api/roles/${rolGestor.id}`, { metodo: 'DELETE' })).status === 409,
+    'un rol con usuarios no se elimina',
+  );
+  await admin.datos(`/api/roles/${rolGestor.id}`, {
+    metodo: 'PATCH',
+    json: { permisos: ['usuarios.ver'] },
+  });
+  ok(
+    (
+      await gestor.pedir('/api/usuarios/estado', {
+        metodo: 'PATCH',
+        json: { ids: [idJuan], activo: true },
+      })
+    ).status === 403,
+    'RBAC: quitar un permiso al rol se aplica a sus usuarios',
+  );
+
   console.log('Límite de intentos');
   const intentar = (clave) =>
     fetch(`${BASE}/api/auth/login`, {

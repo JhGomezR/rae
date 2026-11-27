@@ -8,8 +8,10 @@ import {
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 import type { Rol } from '@rae/shared';
+import { PermisosService } from '../modules/acceso/permisos.service';
 import {
   ES_PUBLICA,
+  PERMISOS,
   PERMITE_PRIMER_INGRESO,
   RequestConSesion,
   ROLES,
@@ -22,12 +24,13 @@ interface CargaJwt {
   pc: number;
 }
 
-/** Autentica por cookie, fuerza el primer ingreso y aplica los roles de cada ruta. */
+/** Autentica por cookie, fuerza el primer ingreso y aplica roles (área) y permisos (RBAC). */
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor(
     private readonly reflector: Reflector,
     private readonly jwt: JwtService,
+    private readonly acceso: PermisosService,
   ) {}
 
   async canActivate(ctx: ExecutionContext): Promise<boolean> {
@@ -44,6 +47,17 @@ export class AuthGuard implements CanActivate {
     const roles = this.reflector.getAllAndOverride<Rol[] | undefined>(ROLES, objetivos);
     if (roles && !roles.includes(usuario.rol)) {
       throw new ForbiddenException('No tienes acceso a este recurso.');
+    }
+
+    const requeridos = this.reflector.getAllAndOverride<string[] | undefined>(PERMISOS, objetivos);
+    if (requeridos?.length) {
+      const a = await this.acceso.de(usuario.id);
+      if (!a.activo) throw new UnauthorizedException('Sesión vencida.');
+      if (a.base !== usuario.rol)
+        throw new UnauthorizedException('Tu rol cambió; inicia sesión de nuevo.');
+      if (!requeridos.some((p) => a.permisos.has(p))) {
+        throw new ForbiddenException('Tu rol no tiene permiso para esta acción.');
+      }
     }
     return true;
   }

@@ -13,7 +13,7 @@ import {
 import { Rol } from '@rae/shared';
 import type { Response } from 'express';
 import { z } from 'zod';
-import { Roles, UsuarioActual, type UsuarioSesion } from '../../common/sesion';
+import { Permiso, Roles, UsuarioActual, type UsuarioSesion } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
 import { esquemas as e, InformesDocentesService } from './informes-docentes.service';
 
@@ -87,6 +87,7 @@ export class MisInformesController {
 
 /** Validación de los informes entregados por los docentes. */
 @Roles(Rol.ADMIN)
+@Permiso('docentes.validar')
 @Controller('validacion-informes')
 export class ValidacionInformesController {
   constructor(private readonly servicio: InformesDocentesService) {}
