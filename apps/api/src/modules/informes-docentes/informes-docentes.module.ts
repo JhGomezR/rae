@@ -20,11 +20,12 @@ import { esquemas as e, InformesDocentesService } from './informes-docentes.serv
 type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
 const TIPOS = {
+  xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   pdf: 'application/pdf',
 };
 
-function enviar(res: Response, archivo: Buffer, nombre: string, formato: 'docx' | 'pdf') {
+function enviar(res: Response, archivo: Buffer, nombre: string, formato: 'docx' | 'xlsx' | 'pdf') {
   res.setHeader('Content-Type', TIPOS[formato]);
   res.setHeader(
     'Content-Disposition',

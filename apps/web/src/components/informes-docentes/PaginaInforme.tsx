@@ -123,6 +123,7 @@ export function PaginaInforme<T>({
             <span className="ml-auto">
               <DescargarInforme
                 ruta={`/mis-informes/${id}`}
+                tipo={informe.tipo}
                 nombre={`${informe.titulo} - ${informe.docente.nombreCompleto}`}
               />
             </span>

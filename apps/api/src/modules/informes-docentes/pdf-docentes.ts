@@ -24,7 +24,7 @@ import {
 import { logoPlantilla } from './docx-tablas';
 
 const GRIS = '#D9D9D9';
-const LINEAS = {
+export const LINEAS = {
   hLineWidth: () => 0.6,
   vLineWidth: () => 0.6,
   paddingLeft: () => 3,
@@ -33,11 +33,12 @@ const LINEAS = {
   paddingBottom: () => 2,
 };
 
-function documento(
+export function documento(
   f: EncabezadoFormato,
   logo: string | null,
   contenido: Content[],
   titulo: string,
+  horizontal = false,
 ): TDocumentDefinitions {
   const membrete = (pagina: number, total: number): Content => ({
     margin: [57, 28, 57, 0],
@@ -74,7 +75,8 @@ function documento(
     fontSize: 8.5,
   });
   return {
-    pageSize: 'LETTER',
+    pageSize: horizontal ? 'LEGAL' : 'LETTER',
+    pageOrientation: horizontal ? 'landscape' : 'portrait',
     pageMargins: [57, 110, 57, 50],
     info: { title: titulo, author: 'Seguimiento RAE' },
     header: (pagina, total) => membrete(pagina, total),

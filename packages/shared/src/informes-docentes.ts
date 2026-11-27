@@ -13,6 +13,19 @@ export type Vinculacion = keyof typeof VINCULACIONES;
 export const VINCULACIONES_AGENDA: Vinculacion[] = ['PLANTA', 'OCASIONAL', 'PROVISIONAL'];
 export const VINCULACIONES_CATEDRA: Vinculacion[] = ['CATEDRA'];
 
+export const TIPOS_INFORME_DOCENTE = {
+  AGENDA: 'Agenda',
+  EJECUCION: 'Ejecución de la agenda',
+  CATEDRA: 'H. Cátedra',
+} as const;
+export type TipoInformeDocente = keyof typeof TIPOS_INFORME_DOCENTE;
+/** Formatos de descarga: la ejecución es un Excel (F-DOC-004); los demás, documentos Word. */
+export const FORMATOS_INFORME: Record<TipoInformeDocente, ('docx' | 'xlsx' | 'pdf')[]> = {
+  AGENDA: ['docx', 'pdf'],
+  EJECUCION: ['xlsx', 'pdf'],
+  CATEDRA: ['docx', 'pdf'],
+};
+
 export const ESTADOS_INFORME_DOCENTE = {
   BORRADOR: 'Borrador',
   ENTREGADO: 'Entregado · en revisión',

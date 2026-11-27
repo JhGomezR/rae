@@ -45,6 +45,7 @@ export function ListaInformes({
   const { datos, error, cargando } = useDatos<Mios>(`/mis-informes?tipo=${tipo}`);
   const [periodoId, setPeriodoId] = useState<number | ''>('');
   const [cursoId, setCursoId] = useState<number | ''>('');
+  const [corte, setCorte] = useState<1 | 2>(1);
   const [aviso, setAviso] = useState('');
   const periodo = periodoId || datos?.periodos.find((p) => p.activo)?.id || datos?.periodos[0]?.id;
   const cursos = datos?.cursos.filter((c) => c.periodoId === periodo) ?? [];
@@ -56,6 +57,7 @@ export function ListaInformes({
         tipo,
         periodoId: periodo,
         ...(cursoId ? { cursoId } : {}),
+        ...(tipo === 'EJECUCION' ? { corte } : {}),
       });
       router.push(`${base}/${r.id}`);
     } catch (e) {
@@ -94,6 +96,19 @@ export function ListaInformes({
                     ))}
                   </select>
                 </label>
+                {tipo === 'EJECUCION' && (
+                  <label className="text-sm font-semibold">
+                    Corte
+                    <select
+                      className="input mt-1 font-normal"
+                      value={corte}
+                      onChange={(e) => setCorte(e.target.value === '2' ? 2 : 1)}
+                    >
+                      <option value={1}>Corte 1</option>
+                      <option value={2}>Corte 2 (cierre del semestre)</option>
+                    </select>
+                  </label>
+                )}
                 {tipo === 'CATEDRA' && (
                   <label className="min-w-0 flex-1 text-sm font-semibold sm:max-w-md">
                     Unidad de formación (opcional, llena los datos)
@@ -116,7 +131,11 @@ export function ListaInformes({
                   disabled={!periodo}
                   onClick={() => void crear()}
                 >
-                  {tipo === 'AGENDA' ? 'Crear agenda' : 'Nuevo informe'}
+                  {tipo === 'AGENDA'
+                    ? 'Crear agenda'
+                    : tipo === 'EJECUCION'
+                      ? 'Crear informe del corte'
+                      : 'Nuevo informe'}
                 </button>
                 {aviso && (
                   <p role="alert" className="w-full text-sm text-err">

@@ -93,6 +93,11 @@ export const MODULOS: Modulo[] = [
               texto: 'Agenda',
               vinculaciones: ['PLANTA', 'OCASIONAL', 'PROVISIONAL'],
             },
+            {
+              href: '/docente/ejecucion',
+              texto: 'Ejecución de la agenda',
+              vinculaciones: ['PLANTA', 'OCASIONAL', 'PROVISIONAL'],
+            },
             { href: '/docente/catedra', texto: 'H. Cátedra', vinculaciones: ['CATEDRA'] },
           ],
         },

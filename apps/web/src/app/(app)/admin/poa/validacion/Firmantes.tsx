@@ -5,10 +5,10 @@ import { api, useDatos } from '@/lib/api';
 
 /** Nombres que aparecen en las firmas de la agenda (decano y vicerrector académico). */
 export function Firmantes() {
-  const { datos } = useDatos<{ decano: string; vicerrector: string }>(
+  const { datos } = useDatos<{ decano: string; vicerrector: string; director: string }>(
     '/validacion-informes/firmantes',
   );
-  const [v, setV] = useState({ decano: '', vicerrector: '' });
+  const [v, setV] = useState({ decano: '', vicerrector: '', director: '' });
   const [aviso, setAviso] = useState('');
   useEffect(() => {
     if (datos) setV(datos);
@@ -23,11 +23,12 @@ export function Firmantes() {
   };
   return (
     <details className="card">
-      <summary className="cursor-pointer font-semibold">Firmas de la agenda docente</summary>
+      <summary className="cursor-pointer font-semibold">Firmas de los informes docentes</summary>
       <p className="mt-2 text-sm text-muted">
-        Aparecen al final de la agenda (F-DOC-056), junto a la firma del profesor.
+        Decano y vicerrector firman la agenda (F-DOC-056); el director de programa, el informe de
+        ejecución (F-DOC-004).
       </p>
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 grid gap-3 sm:grid-cols-3">
         <label className="text-sm font-semibold">
           Decano de facultad
           <input
@@ -44,6 +45,15 @@ export function Firmantes() {
             maxLength={150}
             value={v.vicerrector}
             onChange={(e) => setV({ ...v, vicerrector: e.target.value })}
+          />
+        </label>
+        <label className="text-sm font-semibold">
+          Director de programa
+          <input
+            className="input mt-1 font-normal"
+            maxLength={150}
+            value={v.director}
+            onChange={(e) => setV({ ...v, director: e.target.value })}
           />
         </label>
       </div>

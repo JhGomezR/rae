@@ -9,3 +9,4 @@ export * from './schemas/encuesta-items';
 export * from './schemas/usuario';
 export * from './schemas/periodo';
 export * from './informes-docentes';
+export * from './ejecucion-agenda';

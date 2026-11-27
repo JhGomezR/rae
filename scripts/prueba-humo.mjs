@@ -802,6 +802,77 @@ async function main() {
     'el resumen de validación cuenta los informes por tipo y estado',
   );
 
+  console.log('Ejecución de la agenda (F-DOC-004)');
+  const ejecucionAjena = await otraDocente.pedir('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'EJECUCION', periodoId: periodo.id, corte: 1 },
+  });
+  ok(ejecucionAjena.status === 403, 'hora cátedra no presenta ejecución de agenda');
+  const corte1 = await docente.datos('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'EJECUCION', periodoId: periodo.id, corte: 1 },
+  });
+  const repetido = await docente.pedir('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'EJECUCION', periodoId: periodo.id, corte: 1 },
+  });
+  ok(repetido.status === 409, 'un informe de ejecución por corte');
+  const ejec1 = await docente.datos(`/api/mis-informes/${corte1.id}`);
+  ok(
+    ejec1.datos.filas.some(
+      (f) => f.actividad === 'dir-encuentro' && /Unidad de formación/.test(f.tarea),
+    ) && ejec1.datos.filas.some((f) => f.actividad === 'inv-semillero' && f.horas === 4),
+    'la ejecución parte de los cursos y de la agenda',
+  );
+  await docente.datos(`/api/mis-informes/${corte1.id}`, {
+    metodo: 'PUT',
+    json: {
+      datos: {
+        ...ejec1.datos,
+        corte: 2,
+        filas: ejec1.datos.filas.map((f) => ({ ...f, corte1: 40, meses: [8, 9] })),
+      },
+    },
+  });
+  const guardado1 = await docente.datos(`/api/mis-informes/${corte1.id}`);
+  ok(
+    guardado1.datos.corte === 1 && guardado1.datos.filas.every((f) => f.corte1 === 40),
+    'el avance del corte se guarda y el corte no cambia',
+  );
+  await docente.datos(`/api/mis-informes/${corte1.id}/entregar`, { metodo: 'POST' });
+  await admin.datos(`/api/validacion-informes/${corte1.id}/revisar`, {
+    metodo: 'POST',
+    json: { decision: 'APROBAR', observacion: '' },
+  });
+  const corte2 = await docente.datos('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'EJECUCION', periodoId: periodo.id, corte: 2 },
+  });
+  const ejec2 = await docente.datos(`/api/mis-informes/${corte2.id}`);
+  ok(
+    ejec2.datos.corte === 2 && ejec2.datos.filas.every((f) => f.corte1 === 40),
+    'el corte 2 continúa con el avance del corte 1',
+  );
+  const excelEjec = await admin.pedir(
+    `/api/validacion-informes/${corte1.id}/descargar?formato=xlsx`,
+  );
+  const libroEjec = new ExcelJS.Workbook();
+  await libroEjec.xlsx.load(Buffer.from(await excelEjec.arrayBuffer()));
+  const hojaEjec = libroEjec.getWorksheet('Seguimiento corte 1');
+  ok(
+    hojaEjec?.getCell('C7').value === 'ROJAS MEJIA LUIS ANDRES' &&
+      hojaEjec.getCell('H12').value === 40 &&
+      hojaEjec.getCell('W8').value !== null,
+    'la ejecución sale en Excel con el formato F-DOC-004 y la fecha de aprobación',
+  );
+  const wordEjec = await docente.pedir(`/api/mis-informes/${corte2.id}/descargar?formato=docx`);
+  ok(wordEjec.status === 400, 'la ejecución se descarga en Excel o PDF, no en Word');
+  const pdfEjec = await docente.pedir(`/api/mis-informes/${corte2.id}/descargar?formato=pdf`);
+  const cabeceraEjec = Buffer.from(await pdfEjec.arrayBuffer())
+    .subarray(0, 5)
+    .toString();
+  ok(cabeceraEjec === '%PDF-', 'la ejecución se descarga en PDF');
+
   console.log('Límite de intentos');
   const intentar = (clave) =>
     fetch(`${BASE}/api/auth/login`, {

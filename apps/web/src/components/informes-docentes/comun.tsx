@@ -1,10 +1,15 @@
 'use client';
 
-import { ESTADOS_INFORME_DOCENTE, type EstadoInformeDocente } from '@rae/shared';
+import {
+  ESTADOS_INFORME_DOCENTE,
+  FORMATOS_INFORME,
+  type EstadoInformeDocente,
+  type TipoInformeDocente,
+} from '@rae/shared';
 import { useState } from 'react';
 import { descargar } from '@/lib/api';
 
-export type TipoInforme = 'AGENDA' | 'CATEDRA';
+export type TipoInforme = TipoInformeDocente;
 
 export interface EventoInforme {
   id: number;
@@ -80,10 +85,20 @@ export function Revision({ informe }: { informe: InformeDetalle<unknown> }) {
 }
 
 /** Botones para descargar el informe en Word o PDF. */
-export function DescargarInforme({ ruta, nombre }: { ruta: string; nombre: string }) {
+const ETIQUETA = { docx: 'Word', xlsx: 'Excel', pdf: 'PDF' };
+
+export function DescargarInforme({
+  ruta,
+  nombre,
+  tipo,
+}: {
+  ruta: string;
+  nombre: string;
+  tipo: TipoInforme;
+}) {
   const [ocupado, setOcupado] = useState('');
   const [error, setError] = useState('');
-  const bajar = async (formato: 'docx' | 'pdf') => {
+  const bajar = async (formato: 'docx' | 'xlsx' | 'pdf') => {
     setOcupado(formato);
     setError('');
     try {
@@ -96,12 +111,11 @@ export function DescargarInforme({ ruta, nombre }: { ruta: string; nombre: strin
   };
   return (
     <span className="flex flex-wrap items-center gap-2">
-      <button className="btn" disabled={!!ocupado} onClick={() => void bajar('docx')}>
-        {ocupado === 'docx' ? 'Generando…' : 'Word'}
-      </button>
-      <button className="btn" disabled={!!ocupado} onClick={() => void bajar('pdf')}>
-        {ocupado === 'pdf' ? 'Generando…' : 'PDF'}
-      </button>
+      {FORMATOS_INFORME[tipo].map((f) => (
+        <button key={f} className="btn" disabled={!!ocupado} onClick={() => void bajar(f)}>
+          {ocupado === f ? 'Generando…' : ETIQUETA[f]}
+        </button>
+      ))}
       {error && <span className="text-sm text-err">{error}</span>}
     </span>
   );

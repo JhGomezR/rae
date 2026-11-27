@@ -2,6 +2,8 @@
 
 import {
   ESTADOS_INFORME_DOCENTE,
+  TIPOS_INFORME_DOCENTE,
+  type TipoInformeDocente,
   VINCULACIONES,
   type EstadoInformeDocente,
   type Vinculacion,
@@ -15,7 +17,7 @@ import { Firmantes } from './Firmantes';
 
 interface Fila {
   id: number;
-  tipo: 'AGENDA' | 'CATEDRA';
+  tipo: TipoInformeDocente;
   titulo: string;
   estado: EstadoInformeDocente;
   entregadoEn: string | null;
@@ -28,7 +30,7 @@ interface Resumen {
   pendientes: { id: number; nombreCompleto: string; documento: string; vinculacion: Vinculacion }[];
   sinVinculacion: number;
 }
-const TIPO = { AGENDA: 'Agenda', CATEDRA: 'H. Cátedra' };
+const TIPO = TIPOS_INFORME_DOCENTE;
 
 export default function PaginaValidacion() {
   const periodos = useDatos<{ id: number; codigo: string; activo: boolean }[]>('/periodos');
@@ -139,6 +141,7 @@ export default function PaginaValidacion() {
           >
             <option value="">Todos</option>
             <option value="AGENDA">Agenda</option>
+            <option value="EJECUCION">Ejecución de la agenda</option>
             <option value="CATEDRA">H. Cátedra</option>
           </select>
         </label>

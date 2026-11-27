@@ -9,6 +9,8 @@ import { Prisma, TipoInformeDocente } from '@prisma/client';
 import {
   datosAgendaSchema,
   datosCatedraSchema,
+  datosEjecucionSchema,
+  FORMATOS_INFORME,
   EDITABLE,
   EstadoInformeDocente,
   Vinculacion,
@@ -19,7 +21,10 @@ import { z } from 'zod';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { agendaDocx } from './agenda-docx';
 import { catedraDocx } from './catedra-docx';
-import { ContextoInforme } from './contexto';
+import { ContextoInforme, fechaCorta } from './contexto';
+import { datosInicialesEjecucion, tituloEjecucion } from './ejecucion-datos';
+import { ejecucionExcel } from './ejecucion-excel';
+import { ejecucionPdf } from './ejecucion-pdf';
 import { agendaPdf, catedraPdf } from './pdf-docentes';
 
 const tipo = z.nativeEnum(TipoInformeDocente);
@@ -29,6 +34,7 @@ export const esquemas = {
     tipo,
     periodoId: z.number().int().positive(),
     cursoId: z.number().int().positive().optional(),
+    corte: z.union([z.literal(1), z.literal(2)]).optional(),
   }),
   guardar: z.object({ datos: z.unknown() }),
   filtro: z.object({
@@ -51,21 +57,25 @@ export const esquemas = {
   firmantes: z.object({
     decano: z.string().trim().max(150),
     vicerrector: z.string().trim().max(150),
+    director: z.string().trim().max(150).default(''),
   }),
-  descarga: z.object({ formato: z.enum(['docx', 'pdf']) }),
+  descarga: z.object({ formato: z.enum(['docx', 'xlsx', 'pdf']) }),
 };
 type D<K extends keyof typeof esquemas> = z.output<(typeof esquemas)[K]>;
 
 const PERMITIDAS: Record<TipoInformeDocente, Vinculacion[]> = {
   AGENDA: VINCULACIONES_AGENDA,
+  EJECUCION: VINCULACIONES_AGENDA,
   CATEDRA: VINCULACIONES_CATEDRA,
 };
 const NOMBRE: Record<TipoInformeDocente, string> = {
   AGENDA: 'la agenda docente',
+  EJECUCION: 'el informe de ejecución de la agenda',
   CATEDRA: 'el informe de hora cátedra',
 };
 const CLAVE_DECANO = 'informes.decano';
 const CLAVE_VICERRECTOR = 'informes.vicerrector';
+const CLAVE_DIRECTOR = 'informes.director';
 
 const incluir = {
   docente: { select: { id: true, nombreCompleto: true, documento: true, vinculacion: true } },
@@ -87,8 +97,13 @@ const resumen = {
   periodo: { select: { codigo: true } },
 } satisfies Prisma.InformeDocenteSelect;
 
-export const leerDatos = (t: TipoInformeDocente, datos: unknown) =>
-  t === 'AGENDA' ? datosAgendaSchema.parse(datos ?? {}) : datosCatedraSchema.parse(datos ?? {});
+const ESQUEMAS = {
+  AGENDA: datosAgendaSchema,
+  CATEDRA: datosCatedraSchema,
+  EJECUCION: datosEjecucionSchema,
+} as const;
+
+export const leerDatos = (t: TipoInformeDocente, datos: unknown) => ESQUEMAS[t].parse(datos ?? {});
 
 function tituloCatedra(d: z.output<typeof datosCatedraSchema>): string {
   const rango = d.desde && d.hasta ? `${d.desde} a ${d.hasta}` : 'sin periodo';
@@ -171,6 +186,11 @@ export class InformesDocentesService {
           : {},
       });
       titulo = `Agenda ${periodo.codigo}`;
+    } else if (d.tipo === 'EJECUCION') {
+      const corte = d.corte ?? 1;
+      const { vinculacion } = await this.acceso(docenteId, d.tipo);
+      datos = await datosInicialesEjecucion(this.prisma, docenteId, periodo, corte, vinculacion);
+      titulo = tituloEjecucion(periodo.codigo, corte);
     } else {
       const curso = d.cursoId
         ? await this.prisma.curso.findFirst({
@@ -212,11 +232,13 @@ export class InformesDocentesService {
 
   async guardar(id: number, docenteId: number, d: D<'guardar'>) {
     const i = await this.editable(id, docenteId);
-    const parsed = (i.tipo === 'AGENDA' ? datosAgendaSchema : datosCatedraSchema).safeParse(
-      d.datos,
-    );
+    const parsed = ESQUEMAS[i.tipo].safeParse(d.datos);
     if (!parsed.success)
       throw new BadRequestException('Revisa los datos del informe: hay valores no válidos.');
+    if (i.tipo === 'EJECUCION') {
+      // El corte no cambia al guardar: es parte de la identidad del informe.
+      (parsed.data as { corte: number }).corte = datosEjecucionSchema.parse(i.datos).corte;
+    }
     await this.prisma.informeDocente.update({
       where: { id },
       data: {
@@ -367,10 +389,14 @@ export class InformesDocentesService {
 
   async firmantes() {
     const filas = await this.prisma.configuracion.findMany({
-      where: { clave: { in: [CLAVE_DECANO, CLAVE_VICERRECTOR] } },
+      where: { clave: { in: [CLAVE_DECANO, CLAVE_VICERRECTOR, CLAVE_DIRECTOR] } },
     });
     const valor = (k: string) => filas.find((f) => f.clave === k)?.valor ?? '';
-    return { decano: valor(CLAVE_DECANO), vicerrector: valor(CLAVE_VICERRECTOR) };
+    return {
+      decano: valor(CLAVE_DECANO),
+      vicerrector: valor(CLAVE_VICERRECTOR),
+      director: valor(CLAVE_DIRECTOR),
+    };
   }
 
   async guardarFirmantes(d: D<'firmantes'>) {
@@ -378,6 +404,7 @@ export class InformesDocentesService {
       [
         [CLAVE_DECANO, d.decano],
         [CLAVE_VICERRECTOR, d.vicerrector],
+        [CLAVE_DIRECTOR, d.director],
       ].map(([clave, valor]) =>
         this.prisma.configuracion.upsert({
           where: { clave: clave as string },
@@ -390,7 +417,10 @@ export class InformesDocentesService {
   }
 
   /** Genera el Word o PDF del informe con el formato institucional. */
-  async documento(i: Completo, formato: 'docx' | 'pdf') {
+  async documento(i: Completo, formato: 'docx' | 'xlsx' | 'pdf') {
+    if (!FORMATOS_INFORME[i.tipo].includes(formato)) {
+      throw new BadRequestException('Este informe no se descarga en ese formato.');
+    }
     const c: ContextoInforme = {
       docente: {
         nombre: i.docente.nombreCompleto,
@@ -402,19 +432,31 @@ export class InformesDocentesService {
       observacion: i.observacion,
       firmantes: await this.firmantes(),
     };
-    const archivo =
-      i.tipo === 'AGENDA'
-        ? formato === 'docx'
-          ? await agendaDocx(datosAgendaSchema.parse(i.datos), c)
-          : await agendaPdf(datosAgendaSchema.parse(i.datos), c)
-        : formato === 'docx'
-          ? await catedraDocx(datosCatedraSchema.parse(i.datos), c)
-          : await catedraPdf(datosCatedraSchema.parse(i.datos), c);
+    const archivo = await this.generar(i, formato, c);
     const base =
       i.tipo === 'AGENDA'
         ? `Agenda - ${i.docente.nombreCompleto} - ${i.periodo.codigo}`
-        : `Informe docencia - ${i.docente.nombreCompleto} - ${i.titulo}`;
+        : i.tipo === 'EJECUCION'
+          ? `F-DOC-004 ${i.titulo} - ${i.docente.nombreCompleto}`
+          : `Informe docencia - ${i.docente.nombreCompleto} - ${i.titulo}`;
     return { archivo, nombre: `${base.replace(/[\\/:*?"<>|]/g, '-').slice(0, 150)}.${formato}` };
+  }
+
+  private generar(i: Completo, formato: 'docx' | 'xlsx' | 'pdf', c: ContextoInforme) {
+    if (i.tipo === 'AGENDA') {
+      const d = datosAgendaSchema.parse(i.datos);
+      return formato === 'docx' ? agendaDocx(d, c) : agendaPdf(d, c);
+    }
+    if (i.tipo === 'CATEDRA') {
+      const d = datosCatedraSchema.parse(i.datos);
+      return formato === 'docx' ? catedraDocx(d, c) : catedraPdf(d, c);
+    }
+    const d = datosEjecucionSchema.parse(i.datos);
+    const aprobacion =
+      i.estado === 'APROBADO' && i.revisadoEn
+        ? fechaCorta(i.revisadoEn.toISOString().slice(0, 10))
+        : '';
+    return formato === 'xlsx' ? ejecucionExcel(d, c, aprobacion) : ejecucionPdf(d, c, aprobacion);
   }
 
   async completo(id: number, usuario?: { id: number }): Promise<Completo> {

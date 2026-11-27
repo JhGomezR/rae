@@ -514,10 +514,12 @@ enum VinculacionDocente {
   CATEDRA
 }
 
-/// AGENDA = agenda semanal docente (F-DOC-056); CATEDRA = informe de docencia de hora cátedra (F-DOC-047).
+/// AGENDA = agenda semanal (F-DOC-056); EJECUCION = ejecución de la agenda por corte (F-DOC-004);
+/// CATEDRA = informe de docencia de hora cátedra (F-DOC-047).
 enum TipoInformeDocente {
   AGENDA
   CATEDRA
+  EJECUCION
 }
 
 /// Ciclo: el docente edita (BORRADOR/AJUSTES), entrega (bloqueado) y el revisor aprueba o pide ajustes.

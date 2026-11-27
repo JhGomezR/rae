@@ -6,7 +6,7 @@ export interface ContextoInforme {
   periodo: { codigo: string; numero: number };
   estado: EstadoInformeDocente;
   observacion: string | null;
-  firmantes: { decano: string; vicerrector: string };
+  firmantes: { decano: string; vicerrector: string; director: string };
 }
 
 export interface EncabezadoFormato {
@@ -21,6 +21,13 @@ export const FORMATO_AGENDA: EncabezadoFormato = {
   version: '03',
   fecha: '09-12-2025',
   titulo: 'AGENDA SEMANAL DOCENTE',
+};
+
+export const FORMATO_EJECUCION: EncabezadoFormato = {
+  codigo: 'F-DOC-004',
+  version: '03',
+  fecha: '18-03-2026',
+  titulo: 'INFORME DE EJECUCIÓN DE LA AGENDA SEMANAL DOCENTE',
 };
 
 export const FORMATO_CATEDRA: EncabezadoFormato = {

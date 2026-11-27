@@ -30,7 +30,7 @@ En **Informes** se consultan las estadísticas y se descargan en Word y PDF los 
 
 El módulo **Plan Operativo Anual** maneja el POA del programa con el formato institucional F-PIN-001: se importa el Excel o se crea en pantalla, se registra el avance mensual de cada actividad (logro, evidencia y presupuesto ejecutado) y se compara con lo programado. Desde **Informes POA** se descarga el F-PIN-001 diligenciado en Excel, con una hoja de seguimiento, y el informe de desempeño con gráficos en Word o PDF.
 
-Dentro del POA están los informes docentes. Los profesores de planta, ocasionales y provisionales diligencian la **Agenda** (F-DOC-056) y los de hora cátedra el **Informe de docencia** (F-DOC-047); la vinculación de cada docente se define en **Usuarios**. Al marcarlo como entregado, el informe queda bloqueado hasta que el administrador lo apruebe o pida ajustes en **Validación de informes**. Ambos se descargan en Word y PDF con el formato institucional.
+Dentro del POA están los informes docentes. Los profesores de planta, ocasionales y provisionales diligencian la **Agenda** (F-DOC-056) y los de hora cátedra el **Informe de docencia** (F-DOC-047); la vinculación de cada docente se define en **Usuarios**. Al marcarlo como entregado, el informe queda bloqueado hasta que el administrador lo apruebe o pida ajustes en **Validación de informes**. Ambos se descargan en Word y PDF con el formato institucional. Los docentes de agenda presentan además el **Informe de ejecución de la agenda** (F-DOC-004) en cada corte: el corte 1 parte de su agenda y cursos, el corte 2 continúa el corte 1, y se descarga en Excel (mismo formato) o PDF.
 
 Los recordatorios corren una vez al día (7:00 a. m., Colombia). En **Correos** se pueden enviar en cualquier momento.
 

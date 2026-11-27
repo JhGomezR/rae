@@ -1,6 +1,12 @@
 'use client';
 
-import { VINCULACIONES, type DatosAgenda, type DatosCatedra, type Vinculacion } from '@rae/shared';
+import {
+  VINCULACIONES,
+  type DatosAgenda,
+  type DatosCatedra,
+  type DatosEjecucion,
+  type Vinculacion,
+} from '@rae/shared';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
@@ -13,6 +19,7 @@ import {
 } from '@/components/informes-docentes/comun';
 import { EditorAgenda } from '@/components/informes-docentes/EditorAgenda';
 import { EditorCatedra } from '@/components/informes-docentes/EditorCatedra';
+import { EditorEjecucion } from '@/components/informes-docentes/EditorEjecucion';
 import { Encabezado, Estado } from '@/components/ui';
 import { api, useDatos } from '@/lib/api';
 
@@ -26,7 +33,7 @@ export default function PaginaRevision() {
     error,
     cargando,
     recargar,
-  } = useDatos<InformeDetalle<DatosAgenda | DatosCatedra>>(
+  } = useDatos<InformeDetalle<DatosAgenda | DatosCatedra | DatosEjecucion>>(
     id ? `/validacion-informes/${id}` : null,
   );
   const [observacion, setObservacion] = useState('');
@@ -75,6 +82,7 @@ export default function PaginaRevision() {
                 <ChipEstado estado={i.estado} />
                 <DescargarInforme
                   ruta={`/validacion-informes/${id}`}
+                  tipo={i.tipo}
                   nombre={`${i.titulo} - ${i.docente.nombreCompleto}`}
                 />
               </div>
@@ -131,7 +139,14 @@ export default function PaginaRevision() {
             </section>
             <Revision informe={i as InformeDetalle<unknown>} />
           </div>
-          {i.tipo === 'AGENDA' ? (
+          {i.tipo === 'EJECUCION' ? (
+            <EditorEjecucion
+              lectura
+              d={i.datos as DatosEjecucion}
+              onCambio={() => undefined}
+              docente={{ nombre: i.docente.nombreCompleto, periodo: i.periodo.codigo }}
+            />
+          ) : i.tipo === 'AGENDA' ? (
             <EditorAgenda
               lectura
               d={i.datos as DatosAgenda}
