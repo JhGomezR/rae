@@ -16,6 +16,7 @@ import { z } from 'zod';
 import { env } from '../../config/env';
 import { PermitePrimerIngreso, Publica, UsuarioActual, UsuarioSesion } from '../../common/sesion';
 import { ZodPipe } from '../../common/zod.pipe';
+import type { ContextoPeticion } from '../auditoria/auditoria.service';
 import { AuthService, Tokens } from './auth.service';
 
 const base: CookieOptions = {
@@ -36,8 +37,13 @@ const cambioClave = z.object({
 
 function ponerCookies(res: Response, t: Tokens): void {
   res.cookie('access', t.access, { ...base, maxAge: env.JWT_ACCESS_MINUTOS * 60_000 });
-  res.cookie('refresh', t.refresh, { ...base, maxAge: env.REFRESH_TTL_DAYS * 86_400_000 });
+  res.cookie('refresh', t.refresh, { ...base, maxAge: env.SESION_INACTIVIDAD_MIN * 60_000 });
 }
+
+const contexto = (req: Request): ContextoPeticion => ({
+  ip: req.ip,
+  agente: req.headers['user-agent'],
+});
 
 const leerRefresh = (req: Request) => (req.cookies as Record<string, string | undefined>).refresh;
 
@@ -53,9 +59,10 @@ export class AuthController {
   @HttpCode(200)
   async login(
     @Body(new ZodPipe(loginSchema)) dto: z.output<typeof loginSchema>,
+    @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const { usuario, tokens } = await this.auth.login(dto.documento, dto.clave);
+    const { usuario, tokens } = await this.auth.login(dto.documento, dto.clave, contexto(req));
     ponerCookies(res, tokens);
     return { usuario };
   }
@@ -90,7 +97,7 @@ export class AuthController {
   @Post('logout')
   @HttpCode(204)
   async logout(@Req() req: Request, @Res({ passthrough: true }) res: Response): Promise<void> {
-    await this.auth.logout(leerRefresh(req));
+    await this.auth.logout(leerRefresh(req), contexto(req), req.query.motivo === 'inactividad');
     res.clearCookie('access', base).clearCookie('refresh', base);
   }
 
@@ -100,13 +107,19 @@ export class AuthController {
   async primerIngreso(
     @UsuarioActual() sesion: UsuarioSesion,
     @Body(new ZodPipe(primerIngreso)) dto: z.output<typeof primerIngreso>,
+    @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ) {
     const actual = await this.auth.yo(sesion.id);
     if (dto.claveNueva.includes(actual.documento)) {
       throw new BadRequestException('La contraseña no puede contener tu documento.');
     }
-    const { usuario, tokens } = await this.auth.primerIngreso(sesion.id, dto.claveNueva, dto.email);
+    const { usuario, tokens } = await this.auth.primerIngreso(
+      sesion.id,
+      dto.claveNueva,
+      dto.email,
+      contexto(req),
+    );
     ponerCookies(res, tokens);
     return { usuario };
   }
@@ -122,9 +135,10 @@ export class AuthController {
   async clave(
     @UsuarioActual() sesion: UsuarioSesion,
     @Body(new ZodPipe(cambioClave)) dto: z.output<typeof cambioClave>,
+    @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ): Promise<void> {
-    await this.auth.cambiarClave(sesion.id, dto.actual, dto.nueva);
+    await this.auth.cambiarClave(sesion.id, dto.actual, dto.nueva, contexto(req));
     res.clearCookie('access', base).clearCookie('refresh', base);
   }
 }

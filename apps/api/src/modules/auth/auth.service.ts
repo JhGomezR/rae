@@ -6,6 +6,7 @@ import { normalizarClave } from '@rae/shared';
 import * as argon2 from 'argon2';
 import { env } from '../../config/env';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
+import { AuditoriaService, ContextoPeticion } from '../auditoria/auditoria.service';
 
 const MAX_INTENTOS = 10;
 const VENTANA_MS = 15 * 60 * 1000;
@@ -34,28 +35,43 @@ export class AuthService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly jwt: JwtService,
+    private readonly auditoria: AuditoriaService,
   ) {}
 
-  async login(documento: string, clave: string) {
-    await this.verificarBloqueo(documento);
+  async login(documento: string, clave: string, ctx: ContextoPeticion = {}) {
     const usuario = await this.prisma.usuario.findUnique({ where: { documento } });
+    const fallo = async (detalle: string, mensaje = ERROR_LOGIN): Promise<never> => {
+      await this.auditoria.sesion('LOGIN_FALLIDO', ctx, {
+        usuarioId: usuario?.id,
+        documento,
+        detalle,
+      });
+      throw new UnauthorizedException(mensaje);
+    };
+    if (await this.bloqueado(documento)) {
+      await fallo(
+        'Bloqueado por intentos fallidos',
+        'Demasiados intentos. Vuelve a intentarlo en 15 minutos.',
+      );
+    }
     if (!usuario || !usuario.activo) {
       // Mismo costo que una verificación real, para no revelar si el documento existe.
       this.hashFicticio ??= await argon2.hash(randomBytes(16).toString('hex'));
       await argon2.verify(this.hashFicticio, clave);
       await this.registrarFallo(documento);
-      throw new UnauthorizedException(ERROR_LOGIN);
+      return fallo(usuario ? 'Usuario inactivo' : 'Documento no registrado');
     }
     const escrita = usuario.debeCambiarClave ? normalizarClave(clave) : clave;
     if (!(await argon2.verify(usuario.passwordHash, escrita))) {
       await this.registrarFallo(documento);
-      throw new UnauthorizedException(ERROR_LOGIN);
+      return fallo('Contraseña incorrecta');
     }
     await this.prisma.intentoLogin.deleteMany({ where: { documento } });
     const actualizado = await this.prisma.usuario.update({
       where: { id: usuario.id },
       data: { ultimoIngreso: new Date() },
     });
+    await this.auditoria.sesion('LOGIN', ctx, { usuarioId: actualizado.id, documento });
     return { usuario: perfil(actualizado), tokens: await this.emitir(actualizado) };
   }
 
@@ -81,15 +97,35 @@ export class AuthService {
     return { usuario: perfil(guardado.usuario), tokens: await this.emitir(guardado.usuario) };
   }
 
-  async logout(token: string | undefined): Promise<void> {
+  async logout(
+    token: string | undefined,
+    ctx: ContextoPeticion = {},
+    porInactividad = false,
+  ): Promise<void> {
     if (!token) return;
+    const sesion = await this.prisma.refreshToken.findUnique({
+      where: { tokenHash: hashToken(token) },
+      include: { usuario: { select: { documento: true } } },
+    });
     await this.prisma.refreshToken.updateMany({
       where: { tokenHash: hashToken(token), revocadoEn: null },
       data: { revocadoEn: new Date() },
     });
+    if (sesion) {
+      await this.auditoria.sesion(porInactividad ? 'CIERRE_INACTIVIDAD' : 'LOGOUT', ctx, {
+        usuarioId: sesion.usuarioId,
+        documento: sesion.usuario.documento,
+        detalle: porInactividad ? '15 minutos sin actividad' : undefined,
+      });
+    }
   }
 
-  async primerIngreso(usuarioId: number, claveNueva: string, email: string) {
+  async primerIngreso(
+    usuarioId: number,
+    claveNueva: string,
+    email: string,
+    ctx: ContextoPeticion = {},
+  ) {
     const enUso = await this.prisma.usuario.findFirst({
       where: { email, NOT: { id: usuarioId } },
       select: { id: true },
@@ -100,6 +136,7 @@ export class AuthService {
       data: { passwordHash: await argon2.hash(claveNueva), email, debeCambiarClave: false },
     });
     await this.revocarTodos(usuarioId);
+    await this.auditoria.sesion('PRIMER_INGRESO', ctx, { usuarioId, documento: usuario.documento });
     return { usuario: perfil(usuario), tokens: await this.emitir(usuario) };
   }
 
@@ -109,7 +146,12 @@ export class AuthService {
     return perfil(u);
   }
 
-  async cambiarClave(id: number, actual: string, nueva: string): Promise<void> {
+  async cambiarClave(
+    id: number,
+    actual: string,
+    nueva: string,
+    ctx: ContextoPeticion = {},
+  ): Promise<void> {
     const u = await this.prisma.usuario.findUniqueOrThrow({ where: { id } });
     if (!(await argon2.verify(u.passwordHash, actual))) {
       throw new UnauthorizedException('La contraseña actual no es correcta.');
@@ -119,6 +161,7 @@ export class AuthService {
       data: { passwordHash: await argon2.hash(nueva) },
     });
     await this.revocarTodos(id);
+    await this.auditoria.sesion('CAMBIO_CLAVE', ctx, { usuarioId: id, documento: u.documento });
   }
 
   private async emitir(u: Usuario): Promise<Tokens> {
@@ -132,7 +175,8 @@ export class AuthService {
       data: {
         usuarioId: u.id,
         tokenHash: hashToken(refresh),
-        expiraEn: new Date(Date.now() + env.REFRESH_TTL_DAYS * 86_400_000),
+        // Ventana deslizante: cada renovación por actividad la extiende; sin actividad, vence.
+        expiraEn: new Date(Date.now() + env.SESION_INACTIVIDAD_MIN * 60_000),
       },
     });
     return { access, refresh };
@@ -145,14 +189,14 @@ export class AuthService {
     });
   }
 
-  private async verificarBloqueo(documento: string): Promise<void> {
+  private async bloqueado(documento: string): Promise<boolean> {
     const r = await this.prisma.intentoLogin.findUnique({ where: { documento } });
-    if (!r) return;
+    if (!r) return false;
     if (Date.now() - r.desde.getTime() > VENTANA_MS) {
       await this.prisma.intentoLogin.deleteMany({ where: { documento } });
-    } else if (r.total >= MAX_INTENTOS) {
-      throw new UnauthorizedException('Demasiados intentos. Vuelve a intentarlo en 15 minutos.');
+      return false;
     }
+    return r.total >= MAX_INTENTOS;
   }
 
   private async registrarFallo(documento: string): Promise<void> {

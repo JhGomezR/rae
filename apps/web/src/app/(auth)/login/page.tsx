@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import { api } from '@/lib/api';
 
 export default function LoginPage() {
@@ -8,6 +8,13 @@ export default function LoginPage() {
   const [clave, setClave] = useState('');
   const [error, setError] = useState('');
   const [enviando, setEnviando] = useState(false);
+  const [aviso, setAviso] = useState('');
+
+  useEffect(() => {
+    const motivo = new URLSearchParams(window.location.search).get('motivo');
+    if (motivo === 'inactividad') setAviso('Tu sesión se cerró por inactividad. Ingresa de nuevo.');
+    if (motivo === 'vencida') setAviso('Tu sesión venció. Ingresa de nuevo.');
+  }, []);
 
   const entrar = async (e: FormEvent) => {
     e.preventDefault();
@@ -43,6 +50,11 @@ export default function LoginPage() {
       <section className="flex items-center justify-center px-4 py-10">
         <form onSubmit={(e) => void entrar(e)} className="card w-full max-w-sm space-y-4">
           <h2>Iniciar sesión</h2>
+          {aviso && (
+            <p role="status" className="rounded-lg bg-primary-soft px-3 py-2 text-sm text-primary">
+              {aviso}
+            </p>
+          )}
           <div>
             <label className="label" htmlFor="documento">
               Número de documento

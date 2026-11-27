@@ -477,7 +477,43 @@ async function main() {
   );
   ok(panelDespues.estadisticas.ingreso.estudiantes.ingresaron >= 2, 'ingreso a la plataforma');
 
+  console.log('Auditoría');
+  const intentoMalo = await fetch(`${BASE}/api/auth/login`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ documento: '80000002', clave: 'clave-equivocada' }),
+  });
+  ok(intentoMalo.status === 401, 'una contraseña equivocada se rechaza');
+  const fallidos = await admin.datos('/api/auditoria?tipo=fallidos&q=80000002');
+  ok(
+    fallidos.datos[0]?.accion === 'LOGIN_FALLIDO' &&
+      /Contraseña incorrecta/.test(fallidos.datos[0].detalle ?? ''),
+    'el intento fallido queda en la auditoría',
+  );
+  const ingresos = await admin.datos('/api/auditoria?tipo=sesiones&q=DE%20LA%20CRUZ');
+  ok(
+    ingresos.datos.some((r) => r.accion === 'LOGIN' && r.usuario?.documento === '80000001'),
+    'el buscador encuentra inicios de sesión por nombre',
+  );
+  ok(
+    ingresos.datos.some((r) => r.accion === 'PRIMER_INGRESO'),
+    'el primer ingreso queda registrado',
+  );
+  const cambios = await admin.datos('/api/auditoria?tipo=cambios');
+  ok(
+    cambios.total > 0 && cambios.datos.every((r) => r.entidad !== 'sesion'),
+    'filtro de cambios de administración',
+  );
+  ok((await ana.pedir('/api/auditoria')).status === 403, 'solo el administrador ve la auditoría');
+
   console.log('Sesión');
+  const sesion = await fetch(`${BASE}/api/auth/login`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ documento: ADMIN, clave: 'Admin-Prueba-2026!' }),
+  });
+  const refresco = sesion.headers.getSetCookie().find((c) => c.startsWith('refresh='));
+  ok(/Max-Age=900\b/i.test(refresco ?? ''), 'la sesión vence tras 15 minutos sin actividad');
   const viejo = ana.cookies.get('refresh');
   await ana.datos('/api/auth/refresh', { metodo: 'POST' });
   const robado = new Cliente();

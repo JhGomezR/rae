@@ -29,7 +29,8 @@ const esquema = z.object({
   DATABASE_URL: z.string().min(10),
   JWT_ACCESS_SECRET: z.string().min(32),
   JWT_ACCESS_MINUTOS: z.coerce.number().int().positive().default(15),
-  REFRESH_TTL_DAYS: z.coerce.number().int().positive().default(7),
+  /** Minutos sin actividad tras los que la sesión deja de poder renovarse. */
+  SESION_INACTIVIDAD_MIN: z.coerce.number().int().min(1).max(240).default(15),
   COOKIE_SECURE: booleano.default(process.env.VERCEL ? 'true' : 'false'),
   CRON_SECRET: z.string().min(16).optional(),
   ADMIN_DOCUMENTO: z

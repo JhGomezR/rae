@@ -229,18 +229,6 @@ export class NotificacionesService {
     ]);
     return { datos, total, pagina, tamano };
   }
-
-  async auditoria({ pagina, tamano }: z.output<typeof paginacion>) {
-    const [filas, total] = await Promise.all([
-      this.prisma.auditoria.findMany({
-        orderBy: { id: 'desc' },
-        skip: (pagina - 1) * tamano,
-        take: tamano,
-      }),
-      this.prisma.auditoria.count(),
-    ]);
-    return { datos: filas.map((f) => ({ ...f, id: f.id.toString() })), total, pagina, tamano };
-  }
 }
 
 @Roles(Rol.ADMIN)
@@ -276,11 +264,6 @@ export class NotificacionesController {
       timingSafeEqual(esperado, recibido);
     if (!valido) throw new UnauthorizedException('No autorizado.');
     return this.servicio.tareaDiaria();
-  }
-
-  @Get('auditoria')
-  auditoria(@Query(new ZodPipe(paginacion)) p: z.output<typeof paginacion>) {
-    return this.servicio.auditoria(p);
   }
 }
 

@@ -242,7 +242,7 @@ model Curso {
   unidadId        Int
   grupo           String                     @db.VarChar(5)
   semestreOferta  Int
-  activo          Boolean         @default(true)
+  activo          Boolean                    @default(true)
   docenteId       Int
   periodo         Periodo                    @relation(fields: [periodoId], references: [id])
   sede            Sede                       @relation(fields: [sedeId], references: [id])
@@ -422,8 +422,11 @@ model Auditoria {
   entidad   String   @db.VarChar(60)
   entidadId String?  @db.VarChar(40)
   ip        String?  @db.VarChar(60)
+  detalle   String?  @db.VarChar(300)
   creadaEn  DateTime @default(now())
 
   @@index([entidad, entidadId])
   @@index([creadaEn])
+  @@index([usuarioId])
+  @@index([accion])
 }
