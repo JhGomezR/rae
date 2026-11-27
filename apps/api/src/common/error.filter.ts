@@ -1,4 +1,11 @@
-import { ArgumentsHost, Catch, ExceptionFilter, HttpException, Logger } from '@nestjs/common';
+import {
+  ArgumentsHost,
+  Catch,
+  ExceptionFilter,
+  HttpException,
+  HttpStatus,
+  Logger,
+} from '@nestjs/common';
 import type { Response } from 'express';
 
 /** Formato único de error: { statusCode, error, message, detalles }. */
@@ -23,7 +30,10 @@ export class ErrorFilter implements ExceptionFilter {
       typeof cuerpo === 'string' ? { message: cuerpo } : (cuerpo as Record<string, unknown>);
     res.status(status).json({
       statusCode: status,
-      error: excepcion.name.replace(/Exception$/, ''),
+      error:
+        excepcion.constructor === HttpException
+          ? (HttpStatus[status] ?? 'Error')
+          : excepcion.name.replace(/Exception$/, ''),
       message: datos.message ?? excepcion.message,
       ...(datos.detalles ? { detalles: datos.detalles } : {}),
     });

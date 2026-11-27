@@ -536,6 +536,27 @@ async function main() {
     'momento cerrado no recibe respuestas',
   );
 
+  console.log('Límite de intentos');
+  const intentar = (clave) =>
+    fetch(`${BASE}/api/auth/login`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ documento: '90000002', clave }),
+    });
+  const respuestas = [];
+  for (let i = 0; i < 5; i++) respuestas.push(await intentar('clave-equivocada'));
+  ok(
+    respuestas.every((r) => r.status === 401),
+    'cinco intentos fallidos se rechazan',
+  );
+  const quinto = await respuestas[4].json();
+  ok(/máximo de intentos/.test(quinto.message), 'el quinto intento avisa del bloqueo');
+  const bloqueado = await intentar('Nueva-Clave-18!x');
+  ok(bloqueado.status === 429, 'tras 5 fallos se bloquea aunque la clave sea correcta');
+  ok(
+    /Vuelve a intentarlo en 1[45] minutos/.test((await bloqueado.json()).message),
+    'el bloqueo indica los minutos de espera',
+  );
   console.log(`\nTodo correcto: ${pruebas} comprobaciones.`);
 }
 

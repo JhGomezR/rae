@@ -1,5 +1,11 @@
 import { createHash, randomBytes } from 'node:crypto';
-import { ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  HttpException,
+  HttpStatus,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import type { Usuario } from '@prisma/client';
 import { normalizarClave } from '@rae/shared';
@@ -8,9 +14,23 @@ import { env } from '../../config/env';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { AuditoriaService, ContextoPeticion } from '../auditoria/auditoria.service';
 
-const MAX_INTENTOS = 10;
+/** Intentos fallidos permitidos antes de bloquear 15 minutos (login y cambio de clave). */
+const MAX_INTENTOS = 5;
 const VENTANA_MS = 15 * 60 * 1000;
 const ERROR_LOGIN = 'Documento o contraseña incorrectos.';
+
+const avisoRestantes = (restantes: number) =>
+  restantes === 0
+    ? ' Alcanzaste el máximo de intentos: espera 15 minutos.'
+    : restantes <= 2
+      ? ` Te ${restantes === 1 ? 'queda 1 intento' : `quedan ${restantes} intentos`} antes de un bloqueo de 15 minutos.`
+      : '';
+
+const demasiados = (minutos: number) =>
+  new HttpException(
+    `Demasiados intentos fallidos. Vuelve a intentarlo en ${minutos} minuto${minutos === 1 ? '' : 's'}.`,
+    HttpStatus.TOO_MANY_REQUESTS,
+  );
 
 export interface Tokens {
   access: string;
@@ -40,30 +60,26 @@ export class AuthService {
 
   async login(documento: string, clave: string, ctx: ContextoPeticion = {}) {
     const usuario = await this.prisma.usuario.findUnique({ where: { documento } });
-    const fallo = async (detalle: string, mensaje = ERROR_LOGIN): Promise<never> => {
-      await this.auditoria.sesion('LOGIN_FALLIDO', ctx, {
-        usuarioId: usuario?.id,
-        documento,
-        detalle,
-      });
-      throw new UnauthorizedException(mensaje);
+    const auditar = (detalle: string) =>
+      this.auditoria.sesion('LOGIN_FALLIDO', ctx, { usuarioId: usuario?.id, documento, detalle });
+    const fallo = async (detalle: string): Promise<never> => {
+      const restantes = await this.registrarFallo(documento);
+      await auditar(`${detalle} (intento ${MAX_INTENTOS - restantes} de ${MAX_INTENTOS})`);
+      throw new UnauthorizedException(ERROR_LOGIN + avisoRestantes(restantes));
     };
-    if (await this.bloqueado(documento)) {
-      await fallo(
-        'Bloqueado por intentos fallidos',
-        'Demasiados intentos. Vuelve a intentarlo en 15 minutos.',
-      );
+    const espera = await this.minutosBloqueo(documento);
+    if (espera) {
+      await auditar('Bloqueado por intentos fallidos');
+      throw demasiados(espera);
     }
     if (!usuario || !usuario.activo) {
       // Mismo costo que una verificación real, para no revelar si el documento existe.
       this.hashFicticio ??= await argon2.hash(randomBytes(16).toString('hex'));
       await argon2.verify(this.hashFicticio, clave);
-      await this.registrarFallo(documento);
       return fallo(usuario ? 'Usuario inactivo' : 'Documento no registrado');
     }
     const escrita = usuario.debeCambiarClave ? normalizarClave(clave) : clave;
     if (!(await argon2.verify(usuario.passwordHash, escrita))) {
-      await this.registrarFallo(documento);
       return fallo('Contraseña incorrecta');
     }
     await this.prisma.intentoLogin.deleteMany({ where: { documento } });
@@ -153,9 +169,16 @@ export class AuthService {
     ctx: ContextoPeticion = {},
   ): Promise<void> {
     const u = await this.prisma.usuario.findUniqueOrThrow({ where: { id } });
+    const clave = `clave:${id}`;
+    const espera = await this.minutosBloqueo(clave);
+    if (espera) throw demasiados(espera);
     if (!(await argon2.verify(u.passwordHash, actual))) {
-      throw new UnauthorizedException('La contraseña actual no es correcta.');
+      const restantes = await this.registrarFallo(clave);
+      throw new UnauthorizedException(
+        'La contraseña actual no es correcta.' + avisoRestantes(restantes),
+      );
     }
+    await this.prisma.intentoLogin.deleteMany({ where: { documento: clave } });
     await this.prisma.usuario.update({
       where: { id },
       data: { passwordHash: await argon2.hash(nueva) },
@@ -189,17 +212,22 @@ export class AuthService {
     });
   }
 
-  private async bloqueado(documento: string): Promise<boolean> {
+  /** Minutos que faltan para desbloquear (0 si no está bloqueado). La clave es el documento o `clave:<id>`. */
+  private async minutosBloqueo(documento: string): Promise<number> {
     const r = await this.prisma.intentoLogin.findUnique({ where: { documento } });
-    if (!r) return false;
-    if (Date.now() - r.desde.getTime() > VENTANA_MS) {
+    if (!r) return 0;
+    const transcurrido = Date.now() - r.desde.getTime();
+    if (transcurrido > VENTANA_MS) {
       await this.prisma.intentoLogin.deleteMany({ where: { documento } });
-      return false;
+      return 0;
     }
-    return r.total >= MAX_INTENTOS;
+    return r.total >= MAX_INTENTOS
+      ? Math.max(1, Math.ceil((VENTANA_MS - transcurrido) / 60_000))
+      : 0;
   }
 
-  private async registrarFallo(documento: string): Promise<void> {
+  /** Suma un intento fallido y devuelve cuántos quedan antes del bloqueo. */
+  private async registrarFallo(documento: string): Promise<number> {
     const r = await this.prisma.intentoLogin.findUnique({ where: { documento } });
     const vigente = r && Date.now() - r.desde.getTime() <= VENTANA_MS;
     const datos = vigente
@@ -210,5 +238,6 @@ export class AuthService {
       create: { documento, ...datos },
       update: datos,
     });
+    return Math.max(0, MAX_INTENTOS - datos.total);
   }
 }
