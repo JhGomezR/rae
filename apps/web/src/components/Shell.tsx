@@ -139,16 +139,14 @@ export function Shell({ children }: { children: ReactNode }) {
         <nav aria-label="Principal" className="space-y-2">
           {yo &&
             MODULOS.map((m) => {
-              const contieneActiva = Object.values(m.categorias[yo.rol] ?? []).some((c) =>
-                c.enlaces.some((e) => esActivo(ruta, e.href)),
-              );
               return (
                 <GrupoModulo
                   key={m.id}
                   m={m}
                   rol={yo.rol}
                   ruta={ruta}
-                  abierto={contieneActiva || !cerrados.includes(m.id)}
+                  // Lo decide el usuario: abierto por defecto, cerrado si así lo dejó.
+                  abierto={!cerrados.includes(m.id)}
                   onAlternar={() => alternar(m.id)}
                   onIr={() => setAbierto(false)}
                 />
