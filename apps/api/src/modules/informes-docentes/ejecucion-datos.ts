@@ -1,6 +1,8 @@
 import { ConflictException } from '@nestjs/common';
 import type { Periodo } from '@prisma/client';
 import {
+  Corte,
+  CORTES,
   datosAgendaSchema,
   datosEjecucionSchema,
   DatosEjecucion,
@@ -19,14 +21,14 @@ export const tituloEjecucion = (codigo: string, corte: number) =>
   `Ejecución de la agenda ${codigo} · corte ${corte}`;
 
 /**
- * Datos iniciales del informe de ejecución (F-DOC-004): el corte 2 continúa el corte 1;
+ * Datos iniciales del informe de ejecución (F-DOC-004): cada corte continúa el anterior;
  * el corte 1 parte de la agenda del periodo y de los cursos asignados.
  */
 export async function datosInicialesEjecucion(
   prisma: PrismaService,
   docenteId: number,
   periodo: Periodo,
-  corte: 1 | 2,
+  corte: Corte,
   vinculacion: Vinculacion | null,
 ): Promise<DatosEjecucion> {
   const previos = await prisma.informeDocente.findMany({
@@ -40,7 +42,11 @@ export async function datosInicialesEjecucion(
     );
   }
   const hoy = new Date().toISOString().slice(0, 10);
-  const anterior = corte === 2 ? deCorte(1) : undefined;
+  // Continúa el corte anterior más reciente (el 3 parte del 2 o, si no existe, del 1).
+  const anterior = CORTES.filter((n) => n < corte)
+    .reverse()
+    .map(deCorte)
+    .find(Boolean);
   if (anterior) {
     const d = datosEjecucionSchema.parse(anterior.datos);
     return { ...d, corte, fechaElaboracion: hoy };
@@ -63,6 +69,7 @@ export async function datosInicialesEjecucion(
     indicador: '',
     corte1: null,
     corte2: null,
+    corte3: null,
     meses: [],
     observaciones: '',
   };

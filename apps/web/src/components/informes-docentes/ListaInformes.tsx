@@ -1,6 +1,6 @@
 'use client';
 
-import type { EstadoInformeDocente } from '@rae/shared';
+import { CORTES, type Corte, type EstadoInformeDocente } from '@rae/shared';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -45,7 +45,7 @@ export function ListaInformes({
   const { datos, error, cargando } = useDatos<Mios>(`/mis-informes?tipo=${tipo}`);
   const [periodoId, setPeriodoId] = useState<number | ''>('');
   const [cursoId, setCursoId] = useState<number | ''>('');
-  const [corte, setCorte] = useState<1 | 2>(1);
+  const [corte, setCorte] = useState<Corte>(1);
   const [aviso, setAviso] = useState('');
   const periodo = periodoId || datos?.periodos.find((p) => p.activo)?.id || datos?.periodos[0]?.id;
   const cursos = datos?.cursos.filter((c) => c.periodoId === periodo) ?? [];
@@ -102,10 +102,16 @@ export function ListaInformes({
                     <select
                       className="input mt-1 font-normal"
                       value={corte}
-                      onChange={(e) => setCorte(e.target.value === '2' ? 2 : 1)}
+                      onChange={(e) =>
+                        setCorte(CORTES.find((n) => String(n) === e.target.value) ?? 1)
+                      }
                     >
-                      <option value={1}>Corte 1</option>
-                      <option value={2}>Corte 2 (cierre del semestre)</option>
+                      {CORTES.map((n) => (
+                        <option key={n} value={n}>
+                          Corte {n}
+                          {n === CORTES[CORTES.length - 1] ? ' (cierre del semestre)' : ''}
+                        </option>
+                      ))}
                     </select>
                   </label>
                 )}

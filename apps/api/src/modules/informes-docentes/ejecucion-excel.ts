@@ -5,7 +5,7 @@ import { ContextoInforme, fechaCorta } from './contexto';
 import { CARPETA_DOCENTES } from './docx-tablas';
 
 const INICIO = 12;
-const COLUMNAS = 23; // A..W
+const COLUMNAS = 24; // A..X
 /** «33%» o «8.25%», sin separador decimal colgando. */
 const formatoPct = (v: number | null) => (v === null || Number.isInteger(v) ? '0"%"' : '0.0#"%"');
 
@@ -39,10 +39,10 @@ export async function ejecucionExcel(
   ws.name = `Seguimiento corte ${d.corte}`;
   ws.getCell('C7').value = c.docente.nombre;
   ws.getCell('H7').value = d.facultad;
-  ws.getCell('W7').value = fechaCorta(d.fechaElaboracion);
+  ws.getCell('X7').value = fechaCorta(d.fechaElaboracion);
   ws.getCell('C8').value = d.escalafon;
   ws.getCell('H8').value = `${c.periodo.codigo} · corte ${d.corte}`;
-  ws.getCell('W8').value = fechaAprobacion;
+  ws.getCell('X8').value = fechaAprobacion;
 
   const modelo = ws.getRow(INICIO);
   const estilos = Array.from({ length: COLUMNAS }, (_, i) => ({ ...modelo.getCell(i + 1).style }));
@@ -65,13 +65,15 @@ export async function ejecucionExcel(
             [7, f.horas],
             [8, f.corte1],
             [9, f.corte2],
-            [10, f.evidencias || null],
-            [23, f.observaciones || null],
+            [10, f.corte3],
+            [11, f.evidencias || null],
+            [24, f.observaciones || null],
           ];
           valores.forEach(([col, v]) => (fila.getCell(col).value = v));
           fila.getCell(8).numFmt = formatoPct(f.corte1);
           fila.getCell(9).numFmt = formatoPct(f.corte2);
-          f.meses.forEach((m) => (fila.getCell(10 + m).value = 'X'));
+          fila.getCell(10).numFmt = formatoPct(f.corte3);
+          f.meses.forEach((m) => (fila.getCell(11 + m).value = 'X'));
         }
         fila.height = alto(
           [
@@ -81,12 +83,12 @@ export async function ejecucionExcel(
             f?.evidencias ?? '',
             f?.observaciones ?? '',
           ],
-          [anchos[3], anchos[4], anchos[5], anchos[9], anchos[22]].map((x) => x ?? 10),
+          [anchos[3], anchos[4], anchos[5], anchos[10], anchos[23]].map((x) => x ?? 10),
         );
         r += 1;
       }
       // Que el nombre de la actividad quepa completo en sus filas.
-      const necesario = alto([a.actividad], [anchos[2] ?? 17]);
+      const necesario = alto([a.actividad], [(anchos[2] ?? 17) * 0.85]);
       let disponible = 0;
       for (let k = inicioActividad; k < r; k++) disponible += ws.getRow(k).height ?? 30;
       if (disponible < necesario) {
@@ -110,11 +112,11 @@ export async function ejecucionExcel(
   };
   pie(firma, 3, 4, c.docente.nombre, true);
   pie(firma + 1, 3, 4, 'Docente', false);
-  pie(firma, 10, 22, c.firmantes.director || ' ', true);
-  pie(firma + 1, 10, 22, 'Director de Programa', false);
+  pie(firma, 11, 23, c.firmantes.director || ' ', true);
+  pie(firma + 1, 11, 23, 'Director de Programa', false);
   for (const col of [3, 4]) ws.getCell(firma, col).border = linea;
-  for (let col = 10; col <= 22; col++) ws.getCell(firma, col).border = linea;
-  ws.pageSetup.printArea = `A1:W${firma + 1}`;
+  for (let col = 11; col <= 23; col++) ws.getCell(firma, col).border = linea;
+  ws.pageSetup.printArea = `A1:X${firma + 1}`;
   ws.pageSetup.fitToPage = true;
   ws.pageSetup.fitToWidth = 1;
   ws.pageSetup.fitToHeight = 0;

@@ -869,7 +869,8 @@ async function main() {
   ok(
     hojaEjec?.getCell('C7').value === 'ROJAS MEJIA LUIS ANDRES' &&
       hojaEjec.getCell('H12').value === 40 &&
-      hojaEjec.getCell('W8').value !== null,
+      hojaEjec.getCell('X8').value !== null &&
+      hojaEjec.getCell('J11').value === 'CUMPLIMIENTO 3 CORTE',
     'la ejecución sale en Excel con el formato F-DOC-004 y la fecha de aprobación',
   );
   const wordEjec = await docente.pedir(`/api/mis-informes/${corte2.id}/descargar?formato=docx`);
@@ -888,6 +889,35 @@ async function main() {
     .subarray(0, 5)
     .toString();
   ok(cabeceraEjec === '%PDF-', 'la ejecución se descarga en PDF');
+  await docente.datos(`/api/mis-informes/${corte2.id}`, {
+    metodo: 'PUT',
+    json: {
+      datos: { ...ejec2.datos, filas: ejec2.datos.filas.map((f) => ({ ...f, corte2: 70 })) },
+    },
+  });
+  const corte3 = await docente.datos('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'EJECUCION', periodoId: periodo.id, corte: 3 },
+  });
+  const ejec3 = await docente.datos(`/api/mis-informes/${corte3.id}`);
+  ok(
+    ejec3.datos.corte === 3 && ejec3.datos.filas.every((f) => f.corte2 === 70 && f.corte3 === null),
+    'el corte 3 continúa con el avance del corte 2',
+  );
+  await docente.datos(`/api/mis-informes/${corte3.id}`, {
+    metodo: 'PUT',
+    json: {
+      datos: { ...ejec3.datos, filas: ejec3.datos.filas.map((f) => ({ ...f, corte3: 95 })) },
+    },
+  });
+  const excel3 = await docente.pedir(`/api/mis-informes/${corte3.id}/descargar?formato=xlsx`);
+  const libro3 = new ExcelJS.Workbook();
+  await libro3.xlsx.load(Buffer.from(await excel3.arrayBuffer()));
+  const hoja3 = libro3.getWorksheet('Seguimiento corte 3');
+  ok(
+    hoja3?.getCell('I12').value === 70 && hoja3.getCell('J12').value === 95,
+    'el cumplimiento del corte 3 sale en su columna del Excel',
+  );
 
   console.log('Usuarios, roles y permisos (RBAC y ABAC)');
   const roles = await admin.datos('/api/roles');

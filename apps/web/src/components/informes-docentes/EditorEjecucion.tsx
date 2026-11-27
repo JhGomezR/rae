@@ -1,7 +1,10 @@
 'use client';
 
 import {
+  campoCorte,
+  CORTES,
   cumplimientoEjecucion,
+  type Corte,
   LABORES_EJECUCION,
   type DatosEjecucion,
   type FilaEjecucion,
@@ -17,6 +20,7 @@ const nueva = (actividad: string): FilaEjecucion => ({
   horas: null,
   corte1: null,
   corte2: null,
+  corte3: null,
   evidencias: '',
   meses: [],
   observaciones: '',
@@ -30,31 +34,36 @@ function Fila({
   onQuitar,
 }: {
   f: FilaEjecucion;
-  corte: 1 | 2;
+  corte: Corte;
   lectura?: boolean;
   onCambio: (f: FilaEjecucion) => void;
   onQuitar: () => void;
 }) {
   const set = <K extends keyof FilaEjecucion>(k: K, v: FilaEjecucion[K]) =>
     onCambio({ ...f, [k]: v });
-  const pct = (k: 'corte1' | 'corte2', etiqueta: string, bloqueado: boolean) => (
-    <label className="text-sm font-semibold">
-      {etiqueta}
-      <input
-        className="input mt-1 font-normal"
-        type="number"
-        min={0}
-        max={100}
-        step="any"
-        readOnly={lectura || bloqueado}
-        title={bloqueado ? 'Se diligencia en el informe del corte 2' : undefined}
-        value={f[k] ?? ''}
-        onChange={(e) => set(k, aNumero(e.target.value, 100))}
-      />
-    </label>
-  );
+  const pct = (n: Corte) => {
+    const k = campoCorte(n);
+    // Cada corte se diligencia en su propio informe; los anteriores siguen editables.
+    const bloqueado = n > corte;
+    return (
+      <label key={k} className="text-sm font-semibold">
+        Cumplimiento corte {n} (%)
+        <input
+          className="input mt-1 font-normal"
+          type="number"
+          min={0}
+          max={100}
+          step="any"
+          readOnly={lectura || bloqueado}
+          title={bloqueado ? `Se diligencia en el informe del corte ${n}` : undefined}
+          value={f[k] ?? ''}
+          onChange={(e) => set(k, aNumero(e.target.value, 100))}
+        />
+      </label>
+    );
+  };
   return (
-    <div className="grid gap-3 rounded-lg border border-line p-3 sm:grid-cols-2 lg:grid-cols-6">
+    <div className="grid items-end gap-3 rounded-lg border border-line p-3 sm:grid-cols-2 lg:grid-cols-6">
       <Campo
         etiqueta="Tareas y/o acciones para cumplir"
         className="sm:col-span-2 lg:col-span-3"
@@ -75,7 +84,7 @@ function Fila({
       />
       <Campo
         etiqueta="Indicador"
-        className="sm:col-span-2 lg:col-span-3"
+        className="sm:col-span-2 lg:col-span-2"
         max={1000}
         valor={f.indicador}
         lectura={lectura}
@@ -94,8 +103,7 @@ function Fila({
           onChange={(e) => set('horas', aNumero(e.target.value, 2000))}
         />
       </label>
-      {pct('corte1', 'Cumplimiento corte 1 (%)', false)}
-      {pct('corte2', 'Cumplimiento corte 2 (%)', corte === 1)}
+      {CORTES.map(pct)}
       <Campo
         etiqueta="Evidencias"
         className="sm:col-span-2 lg:col-span-3"

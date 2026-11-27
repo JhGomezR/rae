@@ -126,6 +126,7 @@ export const filaEjecucionSchema = z.object({
   horas: z.number().min(0).max(2000).nullable().default(null),
   corte1: porcentaje,
   corte2: porcentaje,
+  corte3: porcentaje,
   evidencias: texto(1000),
   meses: z
     .array(z.number().int().min(1).max(12))
@@ -136,9 +137,15 @@ export const filaEjecucionSchema = z.object({
 });
 export type FilaEjecucion = z.infer<typeof filaEjecucionSchema>;
 
+/** Cortes académicos del semestre; cada informe de ejecución reporta uno. */
+export const CORTES = [1, 2, 3] as const;
+export type Corte = (typeof CORTES)[number];
+/** Campo de la fila con el cumplimiento de cada corte. */
+export const campoCorte = (c: Corte) => `corte${c}` as const;
+
 export const datosEjecucionSchema = z.object({
-  /** Corte académico que se reporta: 1 (primer corte) o 2 (cierre del semestre). */
-  corte: z.union([z.literal(1), z.literal(2)]).default(1),
+  /** Corte académico que se reporta: 1, 2 o 3 (el último cierra el semestre). */
+  corte: z.union([z.literal(1), z.literal(2), z.literal(3)]).default(1),
   facultad: texto(200),
   escalafon: texto(100),
   fechaElaboracion: texto(10),
@@ -150,8 +157,8 @@ const promedio = (v: number[]) =>
   v.length ? Math.round((v.reduce((s, x) => s + x, 0) / v.length) * 10) / 10 : null;
 
 /** Cumplimiento promedio por labor y total, en el corte indicado (solo filas con tarea). */
-export function cumplimientoEjecucion(d: Pick<DatosEjecucion, 'filas'>, corte: 1 | 2) {
-  const campo = corte === 1 ? 'corte1' : 'corte2';
+export function cumplimientoEjecucion(d: Pick<DatosEjecucion, 'filas'>, corte: Corte) {
+  const campo = campoCorte(corte);
   const deLabor = (clave: string) => {
     const claves = LABORES_EJECUCION.find((l) => l.clave === clave)?.actividades.map(
       (a) => a.clave,

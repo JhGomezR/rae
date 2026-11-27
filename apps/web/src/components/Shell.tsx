@@ -5,7 +5,15 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState, type ReactNode } from 'react';
 import { api, useDatos } from '@/lib/api';
 import { ControlSesion } from './ControlSesion';
-import { CUENTA, esActivo, MODULOS, type Enlace, type Modulo, type Rol } from './menu';
+import {
+  CUENTA,
+  esActivo,
+  MODULOS,
+  type Categoria,
+  type Enlace,
+  type Modulo,
+  type Rol,
+} from './menu';
 
 export interface Perfil {
   id: number;
@@ -43,6 +51,36 @@ function EnlaceMenu({ e, ruta, onIr }: { e: Enlace; ruta: string; onIr: () => vo
   );
 }
 
+/** Categorías y enlaces de un módulo que este usuario puede ver. */
+function categoriasVisibles(
+  m: Modulo,
+  rol: Rol,
+  vinculacion: string | null,
+  permisos: string[],
+): Categoria[] {
+  // Los enlaces por vinculación solo aparecen al docente que corresponde.
+  // El administrador ve todo: además de lo suyo, los informes docentes de cualquier vinculación.
+  const propias = m.categorias[rol] ?? [];
+  const extra =
+    rol === 'ADMIN'
+      ? (m.categorias.DOCENTE ?? [])
+          .map((c) => ({ ...c, enlaces: c.enlaces.filter((e) => e.vinculaciones) }))
+          .map((c) => ({ ...c, nombre: `${c.nombre} · mis informes` }))
+      : [];
+  return [...propias, ...extra]
+    .map((c) => ({
+      ...c,
+      enlaces: c.enlaces.filter(
+        (e) =>
+          (!e.vinculaciones ||
+            rol === 'ADMIN' ||
+            (!!vinculacion && e.vinculaciones.includes(vinculacion))) &&
+          (!e.permiso || permisos.includes(e.permiso)),
+      ),
+    }))
+    .filter((c) => c.enlaces.length);
+}
+
 function GrupoModulo({
   m,
   rol,
@@ -62,27 +100,7 @@ function GrupoModulo({
   onAlternar: () => void;
   onIr: () => void;
 }) {
-  // Los enlaces por vinculación solo aparecen al docente que corresponde.
-  // El administrador ve todo: además de lo suyo, los informes docentes de cualquier vinculación.
-  const propias = m.categorias[rol] ?? [];
-  const extra =
-    rol === 'ADMIN'
-      ? (m.categorias.DOCENTE ?? [])
-          .map((c) => ({ ...c, enlaces: c.enlaces.filter((e) => e.vinculaciones) }))
-          .map((c) => ({ ...c, nombre: `${c.nombre} · mis informes` }))
-      : [];
-  const categorias = [...propias, ...extra]
-    .map((c) => ({
-      ...c,
-      enlaces: c.enlaces.filter(
-        (e) =>
-          (!e.vinculaciones ||
-            rol === 'ADMIN' ||
-            (!!vinculacion && e.vinculaciones.includes(vinculacion))) &&
-          (!e.permiso || permisos.includes(e.permiso)),
-      ),
-    }))
-    .filter((c) => c.enlaces.length);
+  const categorias = categoriasVisibles(m, rol, vinculacion, permisos);
   if (!categorias.length) return null;
   const id = `modulo-${m.id}`;
   return (
@@ -165,20 +183,38 @@ export function Shell({ children }: { children: ReactNode }) {
         </p>
         <nav aria-label="Principal" className="space-y-2">
           {yo &&
-            MODULOS.map((m) => {
+            [false, true].map((transversal) => {
+              const modulos = MODULOS.filter(
+                (m) =>
+                  !!m.transversal === transversal &&
+                  categoriasVisibles(m, yo.rol, yo.vinculacion, yo.permisos ?? []).length > 0,
+              );
+              if (!modulos.length) return null;
               return (
-                <GrupoModulo
-                  key={m.id}
-                  m={m}
-                  rol={yo.rol}
-                  vinculacion={yo.vinculacion}
-                  permisos={yo.permisos ?? []}
-                  ruta={ruta}
-                  // Lo decide el usuario: abierto por defecto, cerrado si así lo dejó.
-                  abierto={!cerrados.includes(m.id)}
-                  onAlternar={() => alternar(m.id)}
-                  onIr={() => setAbierto(false)}
-                />
+                <div
+                  key={String(transversal)}
+                  className={transversal ? 'space-y-2 border-t border-line pt-3' : 'space-y-2'}
+                >
+                  {transversal && (
+                    <p className="px-3 text-[11px] font-semibold tracking-wider text-faint uppercase">
+                      Transversales
+                    </p>
+                  )}
+                  {modulos.map((m) => (
+                    <GrupoModulo
+                      key={m.id}
+                      m={m}
+                      rol={yo.rol}
+                      vinculacion={yo.vinculacion}
+                      permisos={yo.permisos ?? []}
+                      ruta={ruta}
+                      // Lo decide el usuario: abierto por defecto, cerrado si así lo dejó.
+                      abierto={!cerrados.includes(m.id)}
+                      onAlternar={() => alternar(m.id)}
+                      onIr={() => setAbierto(false)}
+                    />
+                  ))}
+                </div>
               );
             })}
           <div className="border-t border-line pt-3">

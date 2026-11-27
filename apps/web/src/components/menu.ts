@@ -18,6 +18,8 @@ export interface Modulo {
   nombre: string;
   descripcion: string;
   categorias: Partial<Record<Rol, Categoria[]>>;
+  /** Transversal: sirve a todos los módulos (cursos, periodos, usuarios…); va en su propio grupo. */
+  transversal?: boolean;
 }
 
 export const MODULOS: Modulo[] = [
@@ -56,32 +58,6 @@ export const MODULOS: Modulo[] = [
               permiso: 'resultados.ver',
             },
             { href: '/admin/informes', texto: 'Informes', permiso: 'informes.gestionar' },
-          ],
-        },
-        {
-          nombre: 'Gestión académica',
-          enlaces: [
-            {
-              href: '/admin/curriculo',
-              texto: 'Base de conocimiento',
-              permiso: 'curriculo.gestionar',
-            },
-            { href: '/admin/periodos', texto: 'Periodos', permiso: 'periodos.gestionar' },
-            { href: '/admin/cursos', texto: 'Cursos', permiso: 'cursos.gestionar' },
-            {
-              href: '/admin/importar',
-              texto: 'Importar consolidado',
-              permiso: 'consolidado.importar',
-            },
-          ],
-        },
-        {
-          nombre: 'Administración',
-          enlaces: [
-            { href: '/admin/usuarios', texto: 'Usuarios', permiso: 'usuarios.ver' },
-            { href: '/admin/roles', texto: 'Roles y permisos', permiso: 'roles.gestionar' },
-            { href: '/admin/notificaciones', texto: 'Correos', permiso: 'correos.gestionar' },
-            { href: '/admin/auditoria', texto: 'Auditoría', permiso: 'auditoria.ver' },
           ],
         },
       ],
@@ -141,6 +117,65 @@ export const MODULOS: Modulo[] = [
               vinculaciones: ['PLANTA', 'OCASIONAL', 'PROVISIONAL'],
             },
             { href: '/docente/catedra', texto: 'H. Cátedra', vinculaciones: ['CATEDRA'] },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: 'academica',
+    nombre: 'Gestión académica',
+    descripcion: 'Currículo, periodos y cursos',
+    transversal: true,
+    categorias: {
+      ADMIN: [
+        {
+          nombre: 'Currículo',
+          enlaces: [
+            {
+              href: '/admin/curriculo',
+              texto: 'Base de conocimiento',
+              permiso: 'curriculo.gestionar',
+            },
+          ],
+        },
+        {
+          nombre: 'Calendario',
+          enlaces: [{ href: '/admin/periodos', texto: 'Periodos', permiso: 'periodos.gestionar' }],
+        },
+        {
+          nombre: 'Cursos',
+          enlaces: [
+            { href: '/admin/cursos', texto: 'Cursos', permiso: 'cursos.gestionar' },
+            {
+              href: '/admin/importar',
+              texto: 'Importar consolidado',
+              permiso: 'consolidado.importar',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    id: 'administracion',
+    nombre: 'Administración',
+    descripcion: 'Usuarios, roles y auditoría',
+    transversal: true,
+    categorias: {
+      ADMIN: [
+        {
+          nombre: 'Cuentas y acceso',
+          enlaces: [
+            { href: '/admin/usuarios', texto: 'Usuarios', permiso: 'usuarios.ver' },
+            { href: '/admin/roles', texto: 'Roles y permisos', permiso: 'roles.gestionar' },
+          ],
+        },
+        {
+          nombre: 'Sistema',
+          enlaces: [
+            { href: '/admin/notificaciones', texto: 'Correos', permiso: 'correos.gestionar' },
+            { href: '/admin/auditoria', texto: 'Auditoría', permiso: 'auditoria.ver' },
           ],
         },
       ],

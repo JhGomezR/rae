@@ -35,7 +35,7 @@ export const esquemas = {
     tipo,
     periodoId: z.number().int().positive(),
     cursoId: z.number().int().positive().optional(),
-    corte: z.union([z.literal(1), z.literal(2)]).optional(),
+    corte: z.union([z.literal(1), z.literal(2), z.literal(3)]).optional(),
   }),
   guardar: z.object({ datos: z.unknown() }),
   filtro: z.object({

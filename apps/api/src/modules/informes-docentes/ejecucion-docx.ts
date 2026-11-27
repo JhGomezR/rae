@@ -1,4 +1,7 @@
 import {
+  campoCorte,
+  Corte,
+  CORTES,
   cumplimientoEjecucion,
   DatosEjecucion,
   FilaEjecucion,
@@ -24,7 +27,7 @@ const corto = (t: string, n = 60) => {
   return l.length > n ? `${l.slice(0, n - 1)}…` : l;
 };
 const pct = (n: number | null) => (n === null ? '—' : `${numeroTexto(n)} %`);
-const valor = (f: FilaEjecucion, corte: 1 | 2) => (corte === 2 ? f.corte2 : f.corte1);
+const valor = (f: FilaEjecucion, corte: Corte) => f[campoCorte(corte)];
 const MESES = [
   'enero',
   'febrero',
@@ -66,22 +69,27 @@ export function estadisticasEjecucion(d: DatosEjecucion) {
     horasPorLabor,
     horas: horasPorLabor.reduce((s, h) => s + h.horas, 0),
     porMes,
-    corte1: cumplimientoEjecucion(d, 1),
-    corte2: cumplimientoEjecucion(d, 2),
+    /** Cumplimiento de cada corte hasta el que se reporta. */
+    cortes: CORTES.filter((n) => n <= d.corte).map((n) => ({
+      corte: n,
+      ...cumplimientoEjecucion(d, n),
+    })),
   };
 }
 
 function bloques(d: DatosEjecucion, c: ContextoInforme, aprobacion: string): Bloque[] {
   const e = estadisticasEjecucion(d);
-  const actual = d.corte === 2 ? e.corte2 : e.corte1;
-  const series = d.corte === 2 ? ['Corte 1', 'Corte 2'] : ['Corte 1'];
-  const dos = (a: number | null, b: number | null) => (d.corte === 2 ? [a, b] : [a]);
+  const actual = e.cortes[e.cortes.length - 1] ?? cumplimientoEjecucion(d, d.corte);
+  const previo = e.cortes[e.cortes.length - 2];
+  const series = e.cortes.map((k) => `Corte ${k.corte}`);
+  const porCorte = (f: FilaEjecucion) => e.cortes.map((k) => valor(f, k.corte));
   const nombreActividad = (clave: string) =>
     LABORES_EJECUCION.flatMap((l) => l.actividades).find((a) => a.clave === clave)?.actividad ??
     clave;
-  const ordenadas = [...e.corte1.porLabor].map((l, i) => ({
-    ...l,
-    c2: e.corte2.porLabor[i]?.cumplimiento ?? null,
+  const ordenadas = LABORES_EJECUCION.map((l, i) => ({
+    titulo: l.titulo,
+    tareas: actual.porLabor[i]?.tareas ?? 0,
+    valores: e.cortes.map((k) => k.porLabor[i]?.cumplimiento ?? null),
   }));
   const conValor = actual.porLabor
     .filter((l) => l.cumplimiento !== null)
@@ -89,9 +97,9 @@ function bloques(d: DatosEjecucion, c: ContextoInforme, aprobacion: string): Blo
   const analisis = [
     `En el corte ${d.corte} del periodo ${c.periodo.codigo}, ${c.docente.nombre} reporta ${e.tareas.length} tareas en su agenda, con ${numeroTexto(e.horas)} horas registradas y un cumplimiento promedio de ${pct(actual.total)}.`,
     `Tareas cumplidas: ${e.estados.cumplidas}; en avance: ${e.estados.enAvance}; sin avance reportado: ${e.estados.sinAvance}.`,
-    ...(d.corte === 2 && e.corte1.total !== null && e.corte2.total !== null
+    ...(previo && previo.total !== null && actual.total !== null
       ? [
-          `Frente al primer corte (${pct(e.corte1.total)}), el cumplimiento ${e.corte2.total >= e.corte1.total ? 'aumentó' : 'disminuyó'} ${numeroTexto(Math.abs(Math.round((e.corte2.total - e.corte1.total) * 10) / 10))} puntos.`,
+          `Frente al corte ${previo.corte} (${pct(previo.total)}), el cumplimiento ${actual.total >= previo.total ? 'aumentó' : 'disminuyó'} ${numeroTexto(Math.abs(Math.round((actual.total - previo.total) * 10) / 10))} puntos.`,
         ]
       : []),
     ...(conValor.length > 1
@@ -125,8 +133,7 @@ function bloques(d: DatosEjecucion, c: ContextoInforme, aprobacion: string): Blo
       filas: [
         ['Tareas registradas', String(e.tareas.length)],
         ['Horas registradas', numeroTexto(e.horas)],
-        ['Cumplimiento promedio corte 1', pct(e.corte1.total)],
-        ...(d.corte === 2 ? [['Cumplimiento promedio corte 2', pct(e.corte2.total)]] : []),
+        ...e.cortes.map((k) => [`Cumplimiento promedio corte ${k.corte}`, pct(k.total)]),
         ['Tareas cumplidas (100 %)', String(e.estados.cumplidas)],
         ['Tareas en avance', String(e.estados.enAvance)],
         ['Tareas sin avance', String(e.estados.sinAvance)],
@@ -142,7 +149,7 @@ function bloques(d: DatosEjecucion, c: ContextoInforme, aprobacion: string): Blo
       unidad: ' %',
       filas: ordenadas.map((l) => ({
         etiqueta: `${l.titulo} (${l.tareas})`,
-        valores: dos(l.cumplimiento, l.c2),
+        valores: l.valores,
       })),
     },
     {
@@ -179,7 +186,7 @@ function bloques(d: DatosEjecucion, c: ContextoInforme, aprobacion: string): Blo
       series,
       maximo: 100,
       unidad: ' %',
-      filas: e.tareas.map((f) => ({ etiqueta: corto(f.tarea), valores: dos(f.corte1, f.corte2) })),
+      filas: e.tareas.map((f) => ({ etiqueta: corto(f.tarea), valores: porCorte(f) })),
     },
     { tipo: 'subtitulo', texto: '4. Detalle de las actividades' },
     e.tareas.length
@@ -193,9 +200,10 @@ function bloques(d: DatosEjecucion, c: ContextoInforme, aprobacion: string): Blo
             'Horas',
             'Corte 1',
             'Corte 2',
+            'Corte 3',
             'Evidencias',
           ],
-          anchos: [16, 20, 13, 13, 8, 9, 9, 12],
+          anchos: [15, 19, 12, 12, 7, 8, 8, 8, 11],
           filas: e.tareas.map((f) => [
             corto(nombreActividad(f.actividad), 70),
             f.tarea,
@@ -204,6 +212,7 @@ function bloques(d: DatosEjecucion, c: ContextoInforme, aprobacion: string): Blo
             numeroTexto(f.horas),
             pct(f.corte1),
             pct(f.corte2),
+            pct(f.corte3),
             f.evidencias,
           ]),
         }
