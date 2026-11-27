@@ -23,6 +23,7 @@ import { agendaDocx } from './agenda-docx';
 import { catedraDocx } from './catedra-docx';
 import { ContextoInforme, fechaCorta } from './contexto';
 import { datosInicialesEjecucion, tituloEjecucion } from './ejecucion-datos';
+import { ejecucionDocx } from './ejecucion-docx';
 import { ejecucionExcel } from './ejecucion-excel';
 import { ejecucionPdf } from './ejecucion-pdf';
 import { agendaPdf, catedraPdf } from './pdf-docentes';
@@ -456,7 +457,8 @@ export class InformesDocentesService {
       i.estado === 'APROBADO' && i.revisadoEn
         ? fechaCorta(i.revisadoEn.toISOString().slice(0, 10))
         : '';
-    return formato === 'xlsx' ? ejecucionExcel(d, c, aprobacion) : ejecucionPdf(d, c, aprobacion);
+    if (formato === 'xlsx') return ejecucionExcel(d, c, aprobacion);
+    return formato === 'docx' ? ejecucionDocx(d, c, aprobacion) : ejecucionPdf(d, c, aprobacion);
   }
 
   async completo(id: number, usuario?: { id: number }): Promise<Completo> {

@@ -101,12 +101,41 @@ export const casillas = (opciones: [string, boolean][]) =>
   opciones.map(([t, si]) => `${t} ${si ? '☒' : '☐'}`).join('        ');
 
 /** Inserta el cuerpo en la plantilla (membrete y página del formato original). */
+/**
+ * Cambia textos del membrete en orden: cada par busca el siguiente fragmento de texto igual
+ * y lo reemplaza (Word parte «F-DOC-056» en varios fragmentos).
+ */
+export function cambiarTextos(xml: string, cambios: [string, string][]): string {
+  let desde = 0;
+  let salida = xml;
+  for (const [buscar, nuevo] of cambios) {
+    const patron = /<w:t(?: [^>]*)?>([^<]*)<\/w:t>/g;
+    patron.lastIndex = desde;
+    let m: RegExpExecArray | null;
+    while ((m = patron.exec(salida))) {
+      if (m[1] === buscar) {
+        const etiqueta = m[0].slice(0, m[0].indexOf('>') + 1);
+        const reemplazo = `${etiqueta.includes('xml:space') ? etiqueta : etiqueta.replace('<w:t', '<w:t xml:space="preserve"')}${esc(nuevo)}</w:t>`;
+        salida = salida.slice(0, m.index) + reemplazo + salida.slice(m.index + m[0].length);
+        desde = m.index + reemplazo.length;
+        break;
+      }
+    }
+  }
+  return salida;
+}
+
 export async function armarDocx(
   plantilla: string,
   cuerpo: string,
   titulo: string,
+  encabezado: [string, string][] = [],
 ): Promise<Buffer> {
   const zip = await JSZip.loadAsync(await readFile(join(CARPETA_DOCENTES, plantilla)));
+  if (encabezado.length) {
+    const h = await zip.file('word/header1.xml')?.async('string');
+    if (h) zip.file('word/header1.xml', cambiarTextos(h, encabezado));
+  }
   const doc = await zip.file('word/document.xml')?.async('string');
   if (!doc) throw new Error('Plantilla inválida');
   const ini = doc.indexOf('<w:p><w:r><w:t>{{CUERPO}}</w:t></w:r></w:p>');

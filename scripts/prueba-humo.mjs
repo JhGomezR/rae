@@ -866,7 +866,16 @@ async function main() {
     'la ejecución sale en Excel con el formato F-DOC-004 y la fecha de aprobación',
   );
   const wordEjec = await docente.pedir(`/api/mis-informes/${corte2.id}/descargar?formato=docx`);
-  ok(wordEjec.status === 400, 'la ejecución se descarga en Excel o PDF, no en Word');
+  const zipEjec = await ExcelJSZip.loadAsync(Buffer.from(await wordEjec.arrayBuffer()));
+  const xmlEjec = await zipEjec.file('word/document.xml').async('string');
+  ok(
+    xmlEjec.includes('Cumplimiento por labor') &&
+      xmlEjec.includes('Estado de las tareas') &&
+      (await zipEjec.file('word/header1.xml').async('string')).includes('-004'),
+    'la ejecución sale en Word con gráficos y el membrete F-DOC-004',
+  );
+  const csvEjec = await docente.pedir(`/api/mis-informes/${corte2.id}/descargar?formato=csv`);
+  ok(csvEjec.status === 400, 'los formatos de descarga están limitados');
   const pdfEjec = await docente.pedir(`/api/mis-informes/${corte2.id}/descargar?formato=pdf`);
   const cabeceraEjec = Buffer.from(await pdfEjec.arrayBuffer())
     .subarray(0, 5)

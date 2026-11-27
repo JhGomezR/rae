@@ -19,10 +19,10 @@ export const TIPOS_INFORME_DOCENTE = {
   CATEDRA: 'H. Cátedra',
 } as const;
 export type TipoInformeDocente = keyof typeof TIPOS_INFORME_DOCENTE;
-/** Formatos de descarga: la ejecución es un Excel (F-DOC-004); los demás, documentos Word. */
+/** Formatos de descarga: la ejecución sale en su Excel (F-DOC-004) y en Word con gráficos. */
 export const FORMATOS_INFORME: Record<TipoInformeDocente, ('docx' | 'xlsx' | 'pdf')[]> = {
   AGENDA: ['docx', 'pdf'],
-  EJECUCION: ['xlsx', 'pdf'],
+  EJECUCION: ['xlsx', 'docx', 'pdf'],
   CATEDRA: ['docx', 'pdf'],
 };
 
