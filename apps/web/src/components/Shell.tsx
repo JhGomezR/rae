@@ -63,12 +63,22 @@ function GrupoModulo({
   onIr: () => void;
 }) {
   // Los enlaces por vinculación solo aparecen al docente que corresponde.
-  const categorias = (m.categorias[rol] ?? [])
+  // El administrador ve todo: además de lo suyo, los informes docentes de cualquier vinculación.
+  const propias = m.categorias[rol] ?? [];
+  const extra =
+    rol === 'ADMIN'
+      ? (m.categorias.DOCENTE ?? [])
+          .map((c) => ({ ...c, enlaces: c.enlaces.filter((e) => e.vinculaciones) }))
+          .map((c) => ({ ...c, nombre: `${c.nombre} · mis informes` }))
+      : [];
+  const categorias = [...propias, ...extra]
     .map((c) => ({
       ...c,
       enlaces: c.enlaces.filter(
         (e) =>
-          (!e.vinculaciones || (!!vinculacion && e.vinculaciones.includes(vinculacion))) &&
+          (!e.vinculaciones ||
+            rol === 'ADMIN' ||
+            (!!vinculacion && e.vinculaciones.includes(vinculacion))) &&
           (!e.permiso || permisos.includes(e.permiso)),
       ),
     }))

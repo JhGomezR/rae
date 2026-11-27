@@ -656,6 +656,13 @@ async function main() {
     (await ana.pedir('/api/mis-informes?tipo=AGENDA')).status === 403,
     'los estudiantes no tienen informes docentes',
   );
+  const tiposAdmin = await Promise.all(
+    ['AGENDA', 'EJECUCION', 'CATEDRA'].map((t) => admin.datos(`/api/mis-informes?tipo=${t}`)),
+  );
+  ok(
+    tiposAdmin.every((r) => r.permitido),
+    'el administrador ve todo: agenda, ejecución y hora cátedra',
+  );
   const miosAgenda = await docente.datos('/api/mis-informes?tipo=AGENDA');
   ok(!miosAgenda.permitido, 'sin vinculación el docente no ve la agenda');
   await vincular('90000001', 'PLANTA');

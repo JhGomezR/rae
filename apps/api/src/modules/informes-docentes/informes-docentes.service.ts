@@ -115,11 +115,12 @@ function tituloCatedra(d: z.output<typeof datosCatedraSchema>): string {
 export class InformesDocentesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  /** Vinculación del docente y si puede presentar ese tipo de informe. */
+  /** Vinculación del docente y si puede presentar ese tipo de informe. El administrador puede todos. */
   async acceso(docenteId: number, t: TipoInformeDocente) {
     const u = await this.prisma.usuario.findUniqueOrThrow({ where: { id: docenteId } });
     const vinculacion = u.vinculacion;
-    return { vinculacion, permitido: !!vinculacion && PERMITIDAS[t].includes(vinculacion) };
+    const permitido = u.rol === 'ADMIN' || (!!vinculacion && PERMITIDAS[t].includes(vinculacion));
+    return { vinculacion, permitido };
   }
 
   private async exigirAcceso(docenteId: number, t: TipoInformeDocente) {

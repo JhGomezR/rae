@@ -35,8 +35,8 @@ function enviar(res: Response, archivo: Buffer, nombre: string, formato: 'docx' 
   res.send(archivo);
 }
 
-/** Agenda (planta, ocasional, provisional) e informe de hora cátedra: lo que hace el docente. */
-@Roles(Rol.DOCENTE)
+/** Agenda, ejecución y hora cátedra: lo que hace el docente (y el administrador, que ve todo). */
+@Roles(Rol.DOCENTE, Rol.ADMIN)
 @Controller('mis-informes')
 export class MisInformesController {
   constructor(private readonly servicio: InformesDocentesService) {}
