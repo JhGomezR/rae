@@ -1,5 +1,6 @@
 'use client';
 
+import { VINCULACIONES, type Vinculacion } from '@rae/shared';
 import { useState } from 'react';
 import { Encabezado, Estado, Paginador, SinDatos } from '@/components/ui';
 import { api, useDatos } from '@/lib/api';
@@ -12,6 +13,7 @@ interface Usuario {
   email: string | null;
   activo: boolean;
   debeCambiarClave: boolean;
+  vinculacion: Vinculacion | null;
 }
 interface Pagina {
   datos: Usuario[];
@@ -93,6 +95,7 @@ export default function UsuariosPage() {
                     <th>Documento</th>
                     <th>Nombre</th>
                     <th>Rol</th>
+                    <th>Vinculación</th>
                     <th>Correo</th>
                     <th>Estado</th>
                     <th>Acciones</th>
@@ -104,6 +107,33 @@ export default function UsuariosPage() {
                       <td>{u.documento}</td>
                       <td className="min-w-52">{u.nombreCompleto}</td>
                       <td>{u.rol}</td>
+                      <td>
+                        {u.rol === 'DOCENTE' ? (
+                          <select
+                            className="input min-w-36 py-1"
+                            aria-label={`Vinculación de ${u.nombreCompleto}`}
+                            value={u.vinculacion ?? ''}
+                            onChange={(e) =>
+                              void accion(
+                                () =>
+                                  api(`/usuarios/${u.id}`, 'PATCH', {
+                                    vinculacion: e.target.value || null,
+                                  }),
+                                `Vinculación de ${u.nombreCompleto} actualizada.`,
+                              )
+                            }
+                          >
+                            <option value="">Sin definir</option>
+                            {(Object.keys(VINCULACIONES) as Vinculacion[]).map((v) => (
+                              <option key={v} value={v}>
+                                {VINCULACIONES[v]}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          '—'
+                        )}
+                      </td>
                       <td>{u.email ?? '—'}</td>
                       <td>
                         {!u.activo

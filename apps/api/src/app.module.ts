@@ -18,6 +18,7 @@ import { InformesModule } from './modules/informes/informes.module';
 import { MatriculasModule } from './modules/matriculas/matriculas.module';
 import { NotificacionesModule } from './modules/notificaciones/notificaciones.module';
 import { PeriodosModule } from './modules/periodos/periodos.module';
+import { InformesDocentesModule } from './modules/informes-docentes/informes-docentes.module';
 import { PoaModule } from './modules/poa/poa.module';
 import { ResultadosModule } from './modules/resultados/resultados.module';
 import { SaludModule } from './modules/salud/salud.module';
@@ -47,6 +48,7 @@ import { UsuariosModule } from './modules/usuarios/usuarios.controller';
     InformesModule,
     NotificacionesModule,
     PoaModule,
+    InformesDocentesModule,
   ],
   controllers: [AuthController],
   providers: [

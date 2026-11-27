@@ -643,6 +643,165 @@ async function main() {
     'una actividad inactiva sale del desempeño sin borrarse',
   );
 
+  console.log('Agenda, hora cátedra y validación de informes');
+  const idDe = async (documento) =>
+    (await admin.datos(`/api/usuarios?q=${documento}`)).datos.find((u) => u.documento === documento)
+      .id;
+  const vincular = async (documento, vinculacion) =>
+    admin.datos(`/api/usuarios/${await idDe(documento)}`, {
+      metodo: 'PATCH',
+      json: { vinculacion },
+    });
+  ok(
+    (await ana.pedir('/api/mis-informes?tipo=AGENDA')).status === 403,
+    'los estudiantes no tienen informes docentes',
+  );
+  const miosAgenda = await docente.datos('/api/mis-informes?tipo=AGENDA');
+  ok(!miosAgenda.permitido, 'sin vinculación el docente no ve la agenda');
+  await vincular('90000001', 'PLANTA');
+  await vincular('90000002', 'CATEDRA');
+  ok(
+    (await docente.datos('/api/auth/yo')).vinculacion === 'PLANTA',
+    'la vinculación llega al perfil para armar el menú',
+  );
+  const catedraAjena = await docente.pedir('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'CATEDRA', periodoId: periodo.id },
+  });
+  ok(catedraAjena.status === 403, 'un docente de planta no presenta informe de hora cátedra');
+  const agenda = await docente.datos('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'AGENDA', periodoId: periodo.id },
+  });
+  const otraAgenda = await docente.pedir('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'AGENDA', periodoId: periodo.id },
+  });
+  ok(otraAgenda.status === 409, 'una sola agenda por docente y periodo');
+  let detalleAgenda = await docente.datos(`/api/mis-informes/${agenda.id}`);
+  ok(
+    /Impartir las unidades de formación/.test(
+      detalleAgenda.datos.actividades['dir-encuentro']?.descripcion ?? '',
+    ),
+    'la agenda nueva trae sus cursos en docencia directa',
+  );
+  const datosAgenda = {
+    ...detalleAgenda.datos,
+    dedicacion: 'TIEMPO_COMPLETO',
+    escalafon: 'AUXILIAR',
+    franjaHoraria: 'Nocturna',
+    actividades: {
+      ...detalleAgenda.datos.actividades,
+      'dir-encuentro': { ...detalleAgenda.datos.actividades['dir-encuentro'], horas: 16 },
+      'ind-preparacion': { horas: 8, descripcion: 'Preparar clases' },
+      'inv-semillero': { horas: 4, descripcion: 'Semillero de prueba' },
+    },
+  };
+  await docente.datos(`/api/mis-informes/${agenda.id}`, {
+    metodo: 'PUT',
+    json: { datos: datosAgenda },
+  });
+  ok(
+    (await otraDocente.pedir(`/api/mis-informes/${agenda.id}`)).status === 404,
+    'un docente no ve la agenda de otro',
+  );
+  const wordAgenda = await docente.pedir(`/api/mis-informes/${agenda.id}/descargar?formato=docx`);
+  const zipAgenda = await ExcelJSZip.loadAsync(Buffer.from(await wordAgenda.arrayBuffer()));
+  const xmlAgenda = await zipAgenda.file('word/document.xml').async('string');
+  ok(
+    xmlAgenda.includes('DATOS DE IDENTIFICACIÓN DEL PROFESOR') &&
+      xmlAgenda.includes('ROJAS MEJIA LUIS ANDRES') &&
+      xmlAgenda.includes('24 horas') &&
+      (await zipAgenda.file('word/header1.xml').async('string')).includes('AGENDA'),
+    'la agenda sale en Word con el formato F-DOC-056',
+  );
+  await docente.datos(`/api/mis-informes/${agenda.id}/entregar`, { metodo: 'POST' });
+  const bloqueada = await docente.pedir(`/api/mis-informes/${agenda.id}`, {
+    metodo: 'PUT',
+    json: { datos: datosAgenda },
+  });
+  ok(bloqueada.status === 409, 'la agenda entregada queda bloqueada');
+  const porRevisar = await admin.datos('/api/validacion-informes?estado=ENTREGADO');
+  ok(
+    porRevisar.datos.some((i) => i.id === agenda.id),
+    'la agenda entregada aparece en validación',
+  );
+  const sinMotivo = await admin.pedir(`/api/validacion-informes/${agenda.id}/revisar`, {
+    metodo: 'POST',
+    json: { decision: 'AJUSTES', observacion: '' },
+  });
+  ok(sinMotivo.status === 400, 'pedir ajustes exige escribir cuáles');
+  await admin.datos(`/api/validacion-informes/${agenda.id}/revisar`, {
+    metodo: 'POST',
+    json: { decision: 'AJUSTES', observacion: 'Ajustar horas de investigación.' },
+  });
+  detalleAgenda = await docente.datos(`/api/mis-informes/${agenda.id}`);
+  ok(
+    detalleAgenda.estado === 'AJUSTES' && detalleAgenda.observacion.includes('investigación'),
+    'el docente ve los ajustes solicitados',
+  );
+  await docente.datos(`/api/mis-informes/${agenda.id}`, {
+    metodo: 'PUT',
+    json: { datos: datosAgenda },
+  });
+  await docente.datos(`/api/mis-informes/${agenda.id}/entregar`, { metodo: 'POST' });
+  await admin.datos(`/api/validacion-informes/${agenda.id}/revisar`, {
+    metodo: 'POST',
+    json: { decision: 'APROBAR', observacion: 'Agenda aprobada sin novedad.' },
+  });
+  const aprobadaEditada = await docente.pedir(`/api/mis-informes/${agenda.id}`, {
+    metodo: 'PUT',
+    json: { datos: datosAgenda },
+  });
+  ok(aprobadaEditada.status === 409, 'la agenda aprobada no se puede modificar');
+  const pdfAgenda = await admin.pedir(
+    `/api/validacion-informes/${agenda.id}/descargar?formato=pdf`,
+  );
+  const cabeceraPdf = Buffer.from(await pdfAgenda.arrayBuffer())
+    .subarray(0, 5)
+    .toString();
+  ok(cabeceraPdf === '%PDF-', 'el revisor descarga la agenda en PDF');
+  const catedra = await otraDocente.datos('/api/mis-informes', {
+    metodo: 'POST',
+    json: { tipo: 'CATEDRA', periodoId: periodo.id },
+  });
+  const detalleCatedra = await otraDocente.datos(`/api/mis-informes/${catedra.id}`);
+  await otraDocente.datos(`/api/mis-informes/${catedra.id}`, {
+    metodo: 'PUT',
+    json: {
+      datos: {
+        ...detalleCatedra.datos,
+        unidad: 'BASE DE DATOS DE PRUEBA',
+        desde: '2026-09-01',
+        hasta: '2026-09-30',
+        sesiones: [{ numero: 1, fecha: '2026-09-05', tema: 'Modelo relacional' }],
+        horasOrientadas: 6,
+        avancePeriodo: 33,
+      },
+    },
+  });
+  const wordCatedra = await otraDocente.pedir(
+    `/api/mis-informes/${catedra.id}/descargar?formato=docx`,
+  );
+  const zipCatedra = await ExcelJSZip.loadAsync(Buffer.from(await wordCatedra.arrayBuffer()));
+  const xmlCatedra = await zipCatedra.file('word/document.xml').async('string');
+  ok(
+    xmlCatedra.includes('BASE DE DATOS DE PRUEBA') &&
+      xmlCatedra.includes('1 de septiembre de 2026') &&
+      xmlCatedra.includes('Modelo relacional'),
+    'el informe de hora cátedra sale en Word con el formato F-DOC-047',
+  );
+  await otraDocente.datos(`/api/mis-informes/${catedra.id}/entregar`, { metodo: 'POST' });
+  const resumenValidacion = await admin.datos(
+    `/api/validacion-informes/resumen?periodoId=${periodo.id}`,
+  );
+  ok(
+    resumenValidacion.conteos.some(
+      (c) => c.tipo === 'CATEDRA' && c.estado === 'ENTREGADO' && c.total === 1,
+    ),
+    'el resumen de validación cuenta los informes por tipo y estado',
+  );
+
   console.log('Límite de intentos');
   const intentar = (clave) =>
     fetch(`${BASE}/api/auth/login`, {

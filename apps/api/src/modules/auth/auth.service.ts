@@ -46,6 +46,7 @@ export const perfil = (u: Usuario) => ({
   rol: u.rol,
   email: u.email,
   debeCambiarClave: u.debeCambiarClave,
+  vinculacion: u.vinculacion,
 });
 
 @Injectable()

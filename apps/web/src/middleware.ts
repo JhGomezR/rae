@@ -44,6 +44,7 @@ export async function middleware(req: NextRequest) {
   if (pathname === '/' || pathname === '/login' || pathname === '/primer-ingreso')
     return redirigir(req, inicio);
   if (pathname.startsWith('/admin') && sesion.rol !== 'ADMIN') return redirigir(req, inicio);
+  if (pathname.startsWith('/docente') && sesion.rol !== 'DOCENTE') return redirigir(req, inicio);
   if (
     (pathname.startsWith('/mis-encuestas') || pathname.startsWith('/encuesta')) &&
     sesion.rol === 'ADMIN'

@@ -4,6 +4,8 @@ export type Rol = 'ADMIN' | 'DOCENTE' | 'ESTUDIANTE';
 export interface Enlace {
   href: string;
   texto: string;
+  /** Solo para docentes con alguna de estas vinculaciones. */
+  vinculaciones?: string[];
 }
 export interface Categoria {
   nombre: string;
@@ -77,6 +79,23 @@ export const MODULOS: Modulo[] = [
           enlaces: [{ href: '/admin/poa/desempeno', texto: 'Desempeño' }],
         },
         { nombre: 'Informes', enlaces: [{ href: '/admin/poa/informes', texto: 'Informes POA' }] },
+        {
+          nombre: 'Informes docentes',
+          enlaces: [{ href: '/admin/poa/validacion', texto: 'Validación de informes' }],
+        },
+      ],
+      DOCENTE: [
+        {
+          nombre: 'Informes docentes',
+          enlaces: [
+            {
+              href: '/docente/agenda',
+              texto: 'Agenda',
+              vinculaciones: ['PLANTA', 'OCASIONAL', 'PROVISIONAL'],
+            },
+            { href: '/docente/catedra', texto: 'H. Cátedra', vinculaciones: ['CATEDRA'] },
+          ],
+        },
       ],
     },
   },

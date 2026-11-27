@@ -83,25 +83,29 @@ enum EstadoNotificacion {
 }
 
 model Usuario {
-  id               Int       @id @default(autoincrement())
-  documento        String    @unique @db.VarChar(20)
-  nombreCompleto   String    @db.VarChar(150)
-  primerApellido   String    @db.VarChar(60)
-  primerNombre     String    @db.VarChar(60)
+  id               Int                 @id @default(autoincrement())
+  documento        String              @unique @db.VarChar(20)
+  nombreCompleto   String              @db.VarChar(150)
+  primerApellido   String              @db.VarChar(60)
+  primerNombre     String              @db.VarChar(60)
   rol              Rol
-  email            String?   @unique @db.VarChar(150)
-  passwordHash     String    @db.VarChar(255)
-  debeCambiarClave Boolean   @default(true)
-  activo           Boolean   @default(true)
+  email            String?             @unique @db.VarChar(150)
+  passwordHash     String              @db.VarChar(255)
+  debeCambiarClave Boolean             @default(true)
+  /// Solo docentes: define qué informes presenta (agenda o informe de hora cátedra).
+  vinculacion      VinculacionDocente?
+  activo           Boolean             @default(true)
   ultimoIngreso    DateTime?
-  creadoEn         DateTime  @default(now())
-  actualizadoEn    DateTime  @updatedAt
+  creadoEn         DateTime            @default(now())
+  actualizadoEn    DateTime            @updatedAt
 
-  cursosDocente  Curso[]              @relation("DocenteCurso")
-  inscripciones  Inscripcion[]
-  encuestas      Encuesta[]
-  refreshTokens  RefreshToken[]
-  notificaciones NotificacionOutbox[]
+  cursosDocente     Curso[]              @relation("DocenteCurso")
+  inscripciones     Inscripcion[]
+  encuestas         Encuesta[]
+  refreshTokens     RefreshToken[]
+  notificaciones    NotificacionOutbox[]
+  informesDocente   InformeDocente[]     @relation("InformeDocente")
+  informesRevisados InformeDocente[]     @relation("InformeRevisor")
 
   @@index([rol])
 }
@@ -145,19 +149,20 @@ model Programa {
 }
 
 model Periodo {
-  id                 Int             @id @default(autoincrement())
-  codigo             String          @unique @db.VarChar(10)
+  id                 Int              @id @default(autoincrement())
+  codigo             String           @unique @db.VarChar(10)
   anio               Int
   numero             Int
-  activo             Boolean         @default(false)
-  apreciacionAbierta Boolean         @default(false)
-  alcanceAbierto     Boolean         @default(false)
+  activo             Boolean          @default(false)
+  apreciacionAbierta Boolean          @default(false)
+  alcanceAbierto     Boolean          @default(false)
   apreciacionCierra  DateTime?
   alcanceCierra      DateTime?
   cursos             Curso[]
   encuestas          Encuesta[]
   recomendaciones    Recomendacion[]
   informes           InformeAjuste[]
+  informesDocentes   InformeDocente[]
 }
 
 model UnidadFormacion {
@@ -499,4 +504,64 @@ model PoaSeguimiento {
   actividad     PoaActividad @relation(fields: [actividadId], references: [id], onDelete: Cascade)
 
   @@unique([actividadId, mes])
+}
+
+/// Vinculación del docente: planta (carrera), ocasional y provisional presentan agenda; cátedra, informe de docencia.
+enum VinculacionDocente {
+  PLANTA
+  OCASIONAL
+  PROVISIONAL
+  CATEDRA
+}
+
+/// AGENDA = agenda semanal docente (F-DOC-056); CATEDRA = informe de docencia de hora cátedra (F-DOC-047).
+enum TipoInformeDocente {
+  AGENDA
+  CATEDRA
+}
+
+/// Ciclo: el docente edita (BORRADOR/AJUSTES), entrega (bloqueado) y el revisor aprueba o pide ajustes.
+enum EstadoInformeDocente {
+  BORRADOR
+  ENTREGADO
+  AJUSTES
+  APROBADO
+}
+
+model InformeDocente {
+  id            Int                    @id @default(autoincrement())
+  tipo          TipoInformeDocente
+  docenteId     Int
+  periodoId     Int
+  /// Etiqueta corta para distinguir informes del mismo periodo (unidad y mes en hora cátedra).
+  titulo        String                 @db.VarChar(200)
+  estado        EstadoInformeDocente   @default(BORRADOR)
+  datos         Json
+  observacion   String?                @db.VarChar(3000)
+  entregadoEn   DateTime?
+  revisadoEn    DateTime?
+  revisorId     Int?
+  creadoEn      DateTime               @default(now())
+  actualizadoEn DateTime               @updatedAt
+  docente       Usuario                @relation("InformeDocente", fields: [docenteId], references: [id], onDelete: Cascade)
+  revisor       Usuario?               @relation("InformeRevisor", fields: [revisorId], references: [id], onDelete: SetNull)
+  periodo       Periodo                @relation(fields: [periodoId], references: [id], onDelete: Restrict)
+  eventos       InformeDocenteEvento[]
+
+  @@index([docenteId, tipo])
+  @@index([estado, tipo])
+  @@index([periodoId])
+}
+
+/// Historial del informe: creación, entregas, ajustes solicitados y aprobación.
+model InformeDocenteEvento {
+  id         Int            @id @default(autoincrement())
+  informeId  Int
+  accion     String         @db.VarChar(20)
+  usuarioId  Int?
+  comentario String?        @db.VarChar(3000)
+  creadoEn   DateTime       @default(now())
+  informe    InformeDocente @relation(fields: [informeId], references: [id], onDelete: Cascade)
+
+  @@index([informeId])
 }

@@ -13,6 +13,7 @@ export interface Perfil {
   nombre: string;
   rol: Rol;
   email: string | null;
+  vinculacion: string | null;
 }
 
 const ROL = { ADMIN: 'Administrador', DOCENTE: 'Docente', ESTUDIANTE: 'Estudiante' };
@@ -43,6 +44,7 @@ function EnlaceMenu({ e, ruta, onIr }: { e: Enlace; ruta: string; onIr: () => vo
 function GrupoModulo({
   m,
   rol,
+  vinculacion,
   ruta,
   abierto,
   onAlternar,
@@ -50,12 +52,21 @@ function GrupoModulo({
 }: {
   m: Modulo;
   rol: Rol;
+  vinculacion: string | null;
   ruta: string;
   abierto: boolean;
   onAlternar: () => void;
   onIr: () => void;
 }) {
-  const categorias = m.categorias[rol] ?? [];
+  // Los enlaces por vinculación solo aparecen al docente que corresponde.
+  const categorias = (m.categorias[rol] ?? [])
+    .map((c) => ({
+      ...c,
+      enlaces: c.enlaces.filter(
+        (e) => !e.vinculaciones || (!!vinculacion && e.vinculaciones.includes(vinculacion)),
+      ),
+    }))
+    .filter((c) => c.enlaces.length);
   if (!categorias.length) return null;
   const id = `modulo-${m.id}`;
   return (
@@ -144,6 +155,7 @@ export function Shell({ children }: { children: ReactNode }) {
                   key={m.id}
                   m={m}
                   rol={yo.rol}
+                  vinculacion={yo.vinculacion}
                   ruta={ruta}
                   // Lo decide el usuario: abierto por defecto, cerrado si así lo dejó.
                   abierto={!cerrados.includes(m.id)}

@@ -31,6 +31,7 @@ const editar = z.object({
   nombreCompleto: z.string().trim().min(3).max(150).optional(),
   email: z.string().trim().toLowerCase().email().max(150).nullable().optional(),
   activo: z.boolean().optional(),
+  vinculacion: z.enum(['PLANTA', 'OCASIONAL', 'PROVISIONAL', 'CATEDRA']).nullable().optional(),
 });
 const filtro = z.object({
   q: z.string().trim().max(80).optional(),
@@ -48,6 +49,7 @@ const publico = {
   activo: true,
   debeCambiarClave: true,
   ultimoIngreso: true,
+  vinculacion: true,
 } satisfies Prisma.UsuarioSelect;
 
 @Injectable()
@@ -96,7 +98,10 @@ export class UsuariosService {
   }
 
   async editar(id: number, d: z.output<typeof editar>) {
-    await this.buscar(id);
+    const u = await this.buscar(id);
+    if (d.vinculacion !== undefined && d.vinculacion !== null && u.rol !== Rol.DOCENTE) {
+      throw new ConflictException('Solo los docentes tienen tipo de vinculación.');
+    }
     if (d.activo === false) {
       await this.prisma.refreshToken.updateMany({
         where: { usuarioId: id, revocadoEn: null },
