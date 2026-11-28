@@ -1,12 +1,9 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import type { ComponentePermisos } from '@rae/shared';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { api, useDatos } from '@/lib/api';
-
-export interface GrupoPermisos {
-  grupo: string;
-  permisos: Record<string, string>;
-}
+import { MatrizPermisos } from './MatrizPermisos';
 
 export interface RolFila {
   id: number;
@@ -22,33 +19,40 @@ export interface RolFila {
   motivo: string | null;
 }
 
-/** Crea o edita un rol administrativo. Solo se pueden marcar permisos que uno mismo tiene. */
+/**
+ * Crea o edita un rol administrativo en una ventana: nombre, descripción y la matriz de
+ * permisos. Solo se pueden marcar permisos que uno mismo tiene.
+ */
 export function FormRol({
   catalogo,
   rol,
   onListo,
+  onCerrar,
 }: {
-  catalogo: GrupoPermisos[];
+  catalogo: ComponentePermisos[];
   rol?: RolFila;
   onListo: (mensaje: string) => Promise<void>;
+  onCerrar: () => void;
 }) {
   const { datos: yo } = useDatos<{ permisos: string[] }>('/auth/yo');
   const [nombre, setNombre] = useState(rol?.nombre ?? '');
   const [descripcion, setDescripcion] = useState(rol?.descripcion ?? '');
   const [permisos, setPermisos] = useState<Set<string>>(new Set(rol?.permisos ?? []));
   const [error, setError] = useState('');
+  const [ocupado, setOcupado] = useState(false);
+  const dialogo = useRef<HTMLDialogElement>(null);
   const soloDescripcion = !!rol?.sistema;
+  const modulos = new Set([...permisos].map((p) => p.split('.')[0])).size;
 
-  const alternar = (p: string) => {
-    const n = new Set(permisos);
-    if (n.has(p)) n.delete(p);
-    else n.add(p);
-    setPermisos(n);
-  };
+  useEffect(() => {
+    const d = dialogo.current;
+    if (d && !d.open) d.showModal();
+  }, []);
 
   const guardar = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
+    setOcupado(true);
     try {
       if (rol) {
         await api(
@@ -69,73 +73,97 @@ export function FormRol({
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'No se pudo guardar.');
+    } finally {
+      setOcupado(false);
     }
   };
 
   return (
-    <form onSubmit={(e) => void guardar(e)} className="space-y-3">
-      <div className="grid gap-3 sm:grid-cols-2">
-        <label className="text-sm font-semibold">
-          Nombre del rol
-          <input
-            className="input mt-1 font-normal"
-            required
-            minLength={3}
-            maxLength={80}
-            readOnly={soloDescripcion}
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-          />
-        </label>
-        <label className="text-sm font-semibold">
-          Descripción
-          <input
-            className="input mt-1 font-normal"
-            maxLength={300}
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-          />
-        </label>
-      </div>
-      {!soloDescripcion && (
-        <div className="grid gap-3 md:grid-cols-2">
-          {catalogo.map((g) => (
-            <fieldset key={g.grupo} className="rounded-lg border border-line p-3">
-              <legend className="px-1 text-sm font-semibold">{g.grupo}</legend>
-              {Object.entries(g.permisos).map(([clave, texto]) => {
-                const propio = !!yo?.permisos.includes(clave);
-                return (
-                  <label
-                    key={clave}
-                    className={`flex items-start gap-2 py-0.5 text-sm ${propio ? '' : 'text-faint'}`}
-                    title={propio ? undefined : 'No puedes otorgar un permiso que no tienes'}
-                  >
-                    <input
-                      type="checkbox"
-                      className="mt-1"
-                      disabled={!propio}
-                      checked={permisos.has(clave)}
-                      onChange={() => alternar(clave)}
-                    />
-                    {texto}
-                  </label>
-                );
-              })}
-            </fieldset>
-          ))}
+    <dialog
+      ref={dialogo}
+      onClose={onCerrar}
+      aria-labelledby="titulo-rol"
+      className="m-auto w-[min(72rem,calc(100vw-2rem))] max-h-[calc(100vh-2rem)] rounded-xl border border-line bg-surface p-0 text-ink shadow-xl backdrop:bg-black/50"
+    >
+      <form onSubmit={(e) => void guardar(e)} className="flex max-h-[calc(100vh-2rem)] flex-col">
+        <header className="flex items-start justify-between gap-3 border-b border-line p-5">
+          <div>
+            <h2 id="titulo-rol">{rol ? `Editar rol · ${rol.nombre}` : 'Nuevo rol'}</h2>
+            <p className="text-sm text-muted">
+              {soloDescripcion
+                ? 'Es un rol del sistema: solo puedes cambiar su descripción.'
+                : 'Define el nombre y marca lo que podrá hacer en cada módulo.'}
+            </p>
+          </div>
+          <button type="button" className="btn" onClick={() => dialogo.current?.close()}>
+            Cerrar
+          </button>
+        </header>
+        <div className="space-y-5 overflow-y-auto p-5">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <label className="text-sm font-semibold">
+              Nombre del rol
+              <input
+                className="input mt-1 font-normal"
+                required
+                minLength={3}
+                maxLength={80}
+                readOnly={soloDescripcion}
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+              />
+            </label>
+            <label className="text-sm font-semibold">
+              Descripción
+              <input
+                className="input mt-1 font-normal"
+                maxLength={300}
+                placeholder="Para qué sirve este rol"
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
+              />
+            </label>
+          </div>
+          {!soloDescripcion && (
+            <section className="space-y-2">
+              <div>
+                <h3 className="font-sans text-base font-semibold">Permisos</h3>
+                <p className="text-sm text-muted">
+                  Selecciona los permisos que tendrá este rol. Las casillas grises son permisos que
+                  tú no tienes y por eso no puedes otorgar.
+                </p>
+              </div>
+              <MatrizPermisos
+                catalogo={catalogo}
+                valor={permisos}
+                propios={new Set(yo?.permisos ?? [])}
+                onCambio={setPermisos}
+              />
+            </section>
+          )}
         </div>
-      )}
-      <div className="flex items-center gap-3">
-        <button className="btn btn-primary" disabled={!soloDescripcion && permisos.size === 0}>
-          {rol ? 'Guardar rol' : 'Crear rol'}
-        </button>
-        <span className="text-sm text-muted">{permisos.size} permiso(s)</span>
-        {error && (
-          <p role="alert" className="text-sm text-err">
-            {error}
-          </p>
-        )}
-      </div>
-    </form>
+        <footer className="flex flex-wrap items-center gap-3 border-t border-line p-5">
+          <button
+            className="btn btn-primary"
+            disabled={ocupado || (!soloDescripcion && permisos.size === 0)}
+          >
+            {rol ? 'Guardar cambios' : 'Crear rol'}
+          </button>
+          <button type="button" className="btn" onClick={() => dialogo.current?.close()}>
+            Cancelar
+          </button>
+          {!soloDescripcion && (
+            <span className="text-sm text-muted">
+              {permisos.size} permiso(s) en {modulos} módulo(s)
+            </span>
+          )}
+          {error && (
+            <p role="alert" className="w-full text-sm text-err">
+              {error}
+            </p>
+          )}
+        </footer>
+      </form>
+    </dialog>
   );
 }

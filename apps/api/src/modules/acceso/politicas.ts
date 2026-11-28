@@ -1,6 +1,6 @@
 import { ConflictException, ForbiddenException } from '@nestjs/common';
 import type { Rol } from '@prisma/client';
-import { ROL_ADMINISTRADOR } from '@rae/shared';
+import { PERMISO_GESTOR_ROLES, ROL_ADMINISTRADOR } from '@rae/shared';
 
 /**
  * ABAC: reglas que dependen de atributos de quien actúa, de la cuenta o rol sobre el que actúa
@@ -100,7 +100,7 @@ export function puedeEliminar(o: CuentaObjetivo): Decision {
 
 /** Siempre debe quedar al menos una cuenta activa que pueda gestionar roles. */
 export function conservaGestorDeRoles(o: CuentaObjetivo, otrosGestoresActivos: number): Decision {
-  if (o.permisos.has('roles.gestionar') && otrosGestoresActivos === 0) {
+  if (o.permisos.has(PERMISO_GESTOR_ROLES) && otrosGestoresActivos === 0) {
     return NO('Es la última cuenta activa que puede gestionar roles; no se puede quitar.', true);
   }
   return SI;

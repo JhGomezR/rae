@@ -24,7 +24,7 @@ type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
  * (no autogestionarse, no escalar privilegios, conservar un gestor de roles, integridad de datos).
  */
 @Roles(Rol.ADMIN)
-@Permiso('usuarios.ver')
+@Permiso('usuarios')
 @Controller('usuarios')
 export class UsuariosController {
   constructor(private readonly servicio: UsuariosService) {}

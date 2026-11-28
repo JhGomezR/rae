@@ -41,7 +41,7 @@ function aMomento(v: string): Momento {
 }
 
 @Roles(Rol.ADMIN)
-@Permiso('resultados.ver')
+@Permiso('resultados')
 @Controller()
 export class ResultadosController {
   constructor(

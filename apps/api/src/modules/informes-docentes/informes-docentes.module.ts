@@ -87,7 +87,7 @@ export class MisInformesController {
 
 /** Validación de los informes entregados por los docentes. */
 @Roles(Rol.ADMIN)
-@Permiso('docentes.validar')
+@Permiso('validacion')
 @Controller('validacion-informes')
 export class ValidacionInformesController {
   constructor(private readonly servicio: InformesDocentesService) {}
@@ -119,6 +119,7 @@ export class ValidacionInformesController {
   }
 
   @Post(':id/revisar')
+  @Permiso('validacion.editar')
   revisar(
     @UsuarioActual() u: UsuarioSesion,
     @Param('id', ParseIntPipe) id: number,

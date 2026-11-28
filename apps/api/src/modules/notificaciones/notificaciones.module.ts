@@ -232,7 +232,7 @@ export class NotificacionesService {
 }
 
 @Roles(Rol.ADMIN)
-@Permiso('correos.gestionar')
+@Permiso('correos')
 @Controller()
 export class NotificacionesController {
   constructor(private readonly servicio: NotificacionesService) {}

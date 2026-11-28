@@ -58,7 +58,7 @@ function aClave(v: string): ClaveInforme {
 }
 
 @Roles(Rol.ADMIN)
-@Permiso('informes.gestionar')
+@Permiso('informes')
 @Controller('informes')
 export class InformesController {
   constructor(private readonly servicio: InformesService) {}
@@ -79,12 +79,14 @@ export class InformesController {
   }
 
   @Post('configuracion/firma')
+  @Permiso('informes.editar')
   @UseInterceptors(FileInterceptor('archivo', { limits: { fileSize: 1024 * 1024, files: 1 } }))
   guardarFirma(@UploadedFile() archivo: Express.Multer.File | undefined) {
     return this.servicio.guardarFirma(archivo);
   }
 
   @Delete('configuracion/firma')
+  @Permiso('informes.editar')
   quitarFirma() {
     return this.servicio.quitarFirma();
   }

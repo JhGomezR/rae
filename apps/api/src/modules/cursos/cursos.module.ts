@@ -19,7 +19,7 @@ type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
 /** Los cursos no se borran: se inactivan y dejan de contar en encuestas y estadísticas. */
 @Roles(Rol.ADMIN)
-@Permiso('cursos.gestionar')
+@Permiso('cursos')
 @Controller('cursos')
 export class CursosController {
   constructor(private readonly servicio: CursosService) {}

@@ -51,7 +51,7 @@ export class ConsultasMatriculaService {
 }
 
 @Roles(Rol.ADMIN)
-@Permiso('consolidado.importar')
+@Permiso('consolidado')
 @Controller()
 export class MatriculasController {
   constructor(

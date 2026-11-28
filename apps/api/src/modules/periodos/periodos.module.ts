@@ -93,13 +93,13 @@ export class PeriodosController {
   }
 
   @Post()
-  @Permiso('periodos.gestionar')
+  @Permiso('periodos.crear')
   crear(@Body(new ZodPipe(periodoSchema)) d: z.output<typeof periodoSchema>) {
     return this.servicio.crear(d);
   }
 
   @Patch(':id')
-  @Permiso('periodos.gestionar')
+  @Permiso('periodos.editar')
   editar(
     @Param('id', ParseIntPipe) id: number,
     @Body(new ZodPipe(edicion)) d: z.output<typeof edicion>,

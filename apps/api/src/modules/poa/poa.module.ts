@@ -43,7 +43,7 @@ function mesValido(mes: number) {
 
 /** Plan Operativo Anual (F-PIN-001): planeación, seguimiento mensual, desempeño e informes. */
 @Roles(Rol.ADMIN)
-@Permiso('poa.gestionar')
+@Permiso('poa')
 @Controller('poa')
 export class PoaController {
   constructor(private readonly servicio: PoaService) {}

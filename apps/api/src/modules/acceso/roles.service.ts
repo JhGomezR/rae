@@ -1,6 +1,6 @@
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma, RolSistema } from '@prisma/client';
-import { GRUPOS_PERMISOS, PERMISOS, ROL_ADMINISTRADOR, TODOS_LOS_PERMISOS } from '@rae/shared';
+import { COMPONENTES_PERMISOS, PERMISOS, ROL_ADMINISTRADOR, TODOS_LOS_PERMISOS } from '@rae/shared';
 import { z } from 'zod';
 import { PrismaService } from '../../infrastructure/prisma/prisma.service';
 import { PermisosService } from './permisos.service';
@@ -61,7 +61,7 @@ export class RolesService {
   }
 
   catalogo() {
-    return GRUPOS_PERMISOS;
+    return COMPONENTES_PERMISOS;
   }
 
   /** Cuántos usuarios tiene cada rol (los sin rol asignado cuentan en el rol fijo de su tipo). */

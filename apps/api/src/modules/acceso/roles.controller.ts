@@ -9,7 +9,7 @@ type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
 /** Roles y permisos (RBAC); las restricciones por atributos (ABAC) las aplica el servicio. */
 @Roles(Rol.ADMIN)
-@Permiso('roles.gestionar')
+@Permiso('roles')
 @Controller('roles')
 export class RolesController {
   constructor(private readonly servicio: RolesService) {}

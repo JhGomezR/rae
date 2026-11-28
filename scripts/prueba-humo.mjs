@@ -1031,6 +1031,43 @@ async function main() {
   ok((await gestor.pedir('/api/usuarios')).status === 200, 'RBAC: puede ver usuarios');
   ok((await gestor.pedir('/api/cursos')).status === 403, 'RBAC: sin permiso no ve cursos');
   ok((await gestor.pedir('/api/roles')).status === 403, 'RBAC: sin permiso no gestiona roles');
+  const catalogoPermisos = await admin.datos('/api/roles/permisos');
+  ok(
+    [
+      'Seguimiento RAE',
+      'Plan Operativo Anual',
+      'Gestión docente',
+      'Gestión académica',
+      'Administración',
+    ].every((c) => catalogoPermisos.some((x) => x.componente === c)) &&
+      catalogoPermisos.some((c) => c.modulos.some((m) => m.clave === 'validacion')),
+    'la matriz de permisos incluye todos los componentes y módulos',
+  );
+  const claveVieja = await admin.pedir('/api/roles', {
+    metodo: 'POST',
+    json: { nombre: 'Rol con clave anterior', permisos: ['poa.gestionar'] },
+  });
+  ok(claveVieja.status === 400, 'los permisos usan la matriz módulo y acción');
+  const rolLectorPoa = await admin.datos('/api/roles', {
+    metodo: 'POST',
+    json: { nombre: 'Consulta del POA de prueba', permisos: ['poa.ver'] },
+  });
+  await admin.datos('/api/usuarios', {
+    metodo: 'POST',
+    json: {
+      documento: '70000078',
+      nombreCompleto: 'PRUEBA LECTOR POA',
+      rolSistemaId: rolLectorPoa.id,
+    },
+  });
+  const lectorPoa = new Cliente();
+  await lectorPoa.entrar('70000078', '70000078prueba', 'lector@example.test');
+  ok((await lectorPoa.pedir('/api/poa')).status === 200, 'RBAC: con «ver» consulta el POA');
+  const poaSinCrear = await lectorPoa.pedir('/api/poa', {
+    metodo: 'POST',
+    json: { anio: 2031, nombre: 'POA no permitido' },
+  });
+  ok(poaSinCrear.status === 403, 'RBAC: sin «crear» no crea planes del POA');
   const crearSinPermiso = await gestor.pedir('/api/usuarios', {
     metodo: 'POST',
     json: {

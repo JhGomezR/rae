@@ -21,7 +21,7 @@ type D<K extends keyof typeof e> = z.output<(typeof e)[K]>;
 
 /** Eliminar = desactivar (activo: false): las respuestas guardadas nunca se pierden. */
 @Roles(Rol.ADMIN)
-@Permiso('curriculo.gestionar')
+@Permiso('curriculo')
 @Controller('curriculo')
 export class CurriculoController {
   constructor(private readonly servicio: CurriculoService) {}
@@ -50,6 +50,7 @@ export class CurriculoController {
   }
 
   @Post('unidades/:id/restaurar')
+  @Permiso('curriculo.editar')
   @HttpCode(204)
   restaurar(@Param('id', ParseIntPipe) id: number) {
     return this.servicio.restaurar(id);

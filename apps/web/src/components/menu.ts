@@ -59,7 +59,7 @@ export const MODULOS: Modulo[] = [
               texto: 'Indicadores 18–24',
               permiso: 'resultados.ver',
             },
-            { href: '/admin/informes', texto: 'Informes', permiso: 'informes.gestionar' },
+            { href: '/admin/informes', texto: 'Informes', permiso: 'informes.ver' },
           ],
         },
       ],
@@ -79,19 +79,15 @@ export const MODULOS: Modulo[] = [
       ADMIN: [
         {
           nombre: 'Planeación',
-          enlaces: [
-            { href: '/admin/poa', texto: 'Planes y actividades', permiso: 'poa.gestionar' },
-          ],
+          enlaces: [{ href: '/admin/poa', texto: 'Planes y actividades', permiso: 'poa.ver' }],
         },
         {
           nombre: 'Seguimiento',
-          enlaces: [{ href: '/admin/poa/desempeno', texto: 'Desempeño', permiso: 'poa.gestionar' }],
+          enlaces: [{ href: '/admin/poa/desempeno', texto: 'Desempeño', permiso: 'poa.ver' }],
         },
         {
           nombre: 'Informes',
-          enlaces: [
-            { href: '/admin/poa/informes', texto: 'Informes POA', permiso: 'poa.gestionar' },
-          ],
+          enlaces: [{ href: '/admin/poa/informes', texto: 'Informes POA', permiso: 'poa.ver' }],
         },
       ],
     },
@@ -108,7 +104,7 @@ export const MODULOS: Modulo[] = [
             {
               href: '/admin/docentes/validacion',
               texto: 'Validación de informes',
-              permiso: 'docentes.validar',
+              permiso: 'validacion.ver',
             },
           ],
         },
@@ -152,22 +148,22 @@ export const MODULOS: Modulo[] = [
             {
               href: '/admin/curriculo',
               texto: 'Base de conocimiento',
-              permiso: 'curriculo.gestionar',
+              permiso: 'curriculo.ver',
             },
           ],
         },
         {
           nombre: 'Calendario',
-          enlaces: [{ href: '/admin/periodos', texto: 'Periodos', permiso: 'periodos.gestionar' }],
+          enlaces: [{ href: '/admin/periodos', texto: 'Periodos', permiso: 'periodos.ver' }],
         },
         {
           nombre: 'Cursos',
           enlaces: [
-            { href: '/admin/cursos', texto: 'Cursos', permiso: 'cursos.gestionar' },
+            { href: '/admin/cursos', texto: 'Cursos', permiso: 'cursos.ver' },
             {
               href: '/admin/importar',
               texto: 'Importar consolidado',
-              permiso: 'consolidado.importar',
+              permiso: 'consolidado.ver',
             },
           ],
         },
@@ -185,13 +181,13 @@ export const MODULOS: Modulo[] = [
           nombre: 'Cuentas y acceso',
           enlaces: [
             { href: '/admin/usuarios', texto: 'Usuarios', permiso: 'usuarios.ver' },
-            { href: '/admin/roles', texto: 'Roles y permisos', permiso: 'roles.gestionar' },
+            { href: '/admin/roles', texto: 'Roles y permisos', permiso: 'roles.ver' },
           ],
         },
         {
           nombre: 'Sistema',
           enlaces: [
-            { href: '/admin/notificaciones', texto: 'Correos', permiso: 'correos.gestionar' },
+            { href: '/admin/notificaciones', texto: 'Correos', permiso: 'correos.ver' },
             { href: '/admin/auditoria', texto: 'Auditoría', permiso: 'auditoria.ver' },
           ],
         },

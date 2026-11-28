@@ -6,7 +6,7 @@ import { ZodPipe } from '../../common/zod.pipe';
 import { AuditoriaService, filtroAuditoria } from './auditoria.service';
 
 @Roles(Rol.ADMIN)
-@Permiso('auditoria.ver')
+@Permiso('auditoria')
 @Controller('auditoria')
 export class AuditoriaController {
   constructor(private readonly servicio: AuditoriaService) {}

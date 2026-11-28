@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
-import type { Rol } from '@rae/shared';
+import { ACCION_HTTP, type Rol } from '@rae/shared';
 import { PermisosService } from '../modules/acceso/permisos.service';
 import {
   ES_PUBLICA,
@@ -55,7 +55,10 @@ export class AuthGuard implements CanActivate {
       if (!a.activo) throw new UnauthorizedException('Sesión vencida.');
       if (a.base !== usuario.rol)
         throw new UnauthorizedException('Tu rol cambió; inicia sesión de nuevo.');
-      if (!requeridos.some((p) => a.permisos.has(p))) {
+      // «poa» pide la acción del método (GET ver, POST crear, PUT/PATCH editar, DELETE eliminar).
+      const accion = ACCION_HTTP[req.method] ?? 'ver';
+      const claves = requeridos.map((p) => (p.includes('.') ? p : `${p}.${accion}`));
+      if (!claves.some((p) => a.permisos.has(p))) {
         throw new ForbiddenException('Tu rol no tiene permiso para esta acción.');
       }
     }

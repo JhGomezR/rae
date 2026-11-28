@@ -11,6 +11,7 @@ import {
   normalizarClave,
   parsearNombre,
   ROL_ADMINISTRADOR,
+  PERMISO_GESTOR_ROLES,
 } from '@rae/shared';
 import * as argon2 from 'argon2';
 import { z } from 'zod';
@@ -98,7 +99,7 @@ const GESTORES: Prisma.UsuarioWhereInput = {
   OR: [
     { rolSistemaId: null },
     { rolSistema: { clave: ROL_ADMINISTRADOR } },
-    { rolSistema: { activo: true, permisos: { has: 'roles.gestionar' } } },
+    { rolSistema: { activo: true, permisos: { has: PERMISO_GESTOR_ROLES } } },
   ],
 };
 
@@ -220,11 +221,11 @@ export class UsuariosService {
       base = rol.base;
       const nuevos = this.acceso.resolver(id, { activo: true, rol: rol.base, rolSistema: rol });
       quitaGestion =
-        o.cuenta.permisos.has('roles.gestionar') && !nuevos.permisos.has('roles.gestionar');
+        o.cuenta.permisos.has(PERMISO_GESTOR_ROLES) && !nuevos.permisos.has(PERMISO_GESTOR_ROLES);
     }
     if (d.activo === false && o.u.activo) {
       exigir(puedeGestionarCuenta(actor, o.cuenta, 'estado'));
-      quitaGestion = quitaGestion || o.cuenta.permisos.has('roles.gestionar');
+      quitaGestion = quitaGestion || o.cuenta.permisos.has(PERMISO_GESTOR_ROLES);
     }
     if (quitaGestion) exigir(conservaGestorDeRoles(o.cuenta, await this.otrosGestores([id])));
     if (d.documento && d.documento !== o.u.documento) await this.documentoLibre(d.documento);
@@ -288,7 +289,7 @@ export class UsuariosService {
         omitidos.push({ id: u.id, nombre: u.nombreCompleto, motivo: decision.motivo });
         continue;
       }
-      if (!d.activo && cuenta.permisos.has('roles.gestionar')) quitanGestion.push(cuenta);
+      if (!d.activo && cuenta.permisos.has(PERMISO_GESTOR_ROLES)) quitanGestion.push(cuenta);
       aplicar.push(u.id);
     }
     if (quitanGestion.length) {
@@ -343,7 +344,7 @@ export class UsuariosService {
     const o = await this.objetivo(id);
     exigir(puedeGestionarCuenta(actor, o.cuenta, 'eliminar'));
     exigir(puedeEliminar(o.cuenta));
-    if (o.cuenta.permisos.has('roles.gestionar') && o.u.activo) {
+    if (o.cuenta.permisos.has(PERMISO_GESTOR_ROLES) && o.u.activo) {
       exigir(conservaGestorDeRoles(o.cuenta, await this.otrosGestores([id])));
     }
     await this.prisma.usuario.delete({ where: { id } });
